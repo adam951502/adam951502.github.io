@@ -1,267 +1,919 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset = "utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Welcome to Adam's World">
-        <meta name="author" content="Adam and Devcrud">
-        <Title>Adam Tang's World</Title>
-        <!-- Font icons -->
-        <link rel="stylesheet" href="resource/external_resource/themify-icons/css/themify-icons.css">
-        <!-- Bootstrap + main styles -->
-        <link rel="stylesheet" href="resource/css/Adam.css">
-        <!-- web icon -->
-        <link rel="icon" href="resource/imgs/web_icon.ico" type="image/x-icon">
-    </head>
-    <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
-        <!-- Scrollable page -->
-        <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
-            <div class="container">
-                <a class="logo" href="#">Adam</a>         
-                <ul class="nav">
-                    <li class="item">
-                        <a class="link" href="#home">Home</a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="#about">About</a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="#project">Project</a>
-                    </li>
-                    <!-- <li class="item">
-                        <a class="link" href="#blog">Blog</a>
-                    </li> -->
-                    <li class="item">
-                        <a class="link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-                <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
-                    <div class="hamburger-box">
-                      <div class="hamburger-inner"></div>
-                    </div>
-                </a>
-            </div>  
-        </nav>
-        <!-- End Scrollable page -->
-        
-        <!-- Page header -->
-        <header id="home" class="header">
-            <div class="overlay"></div>
-            <div class="header-content container">
-                <h1 class="header-title">
-                    <span class="up">Hello!</span>
-                    <span class="down">My name is Adam Tang</span>
-                </h1>
-                <p class="header-subtitle">DATA SCIENTIST</p>            
-                <button class="btn btn-primary">Visit My Works</button>    
-            </div>              
-        </header>
-        <!-- End Page header -->
 
-        <!-- About Section -->
-        <section class="section pt-0" id="about">
-            <!-- Container -->
-            <div class="container text-center">
-                <!-- About Wrapper -->
-                <div class="about">
-                    <div class="about-img-holder">
-                        <img src="resource/imgs/Adam.png" class="about-img" alt="This is the avatar about me!">
-                    </div>
-                    <div class="about-caption">
-                        <p class="section-subtitle">Who Am I ?</p>
-                        <h2 class="section-title mb-3">About Me</h2>
-                        <p>
-                            My name is Yu-Sheng Tang, also could call me Adam. Currently, I am working at <a href="https://www.emi.fraunhofer.de/"> Frauhofer EMI </a> as a data scientist in Germany.
-                        </p>
-                        <button class="btn-rounded btn btn-outline-primary mt-4"><a href="resource/documents/CV_20210816_Adam.pdf">Check my CV out!</a></button>
-                    </div> 
-                </div>
-                <!-- End About wrapper -->
-            </div>
-            <!-- End Container -->
-        </section>
-        <!-- End About Section-->
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <!-- Expertises -->
-        <section class="section pt-0" id="expertises">
-            <div class="container text-center">
-                <p class="section-subtitle">What I know?</p>
-                <h6 class="section-title mb-6">Knowledge</h6>
-                <!-- row -->
-                <div class="row">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="expertise-card">
-                            <div class="body">
-                                <img src="resource/imgs/management.svg" alt="" class="icon">
-                                <h6 class="title">Project Management</h6>
-                                <p class="subtitle">Agile management, Kanban management, requirement management</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="expertise-card">
-                            <div class="body">
-                                <img src="resource/imgs/website.svg" alt="website icon" class="icon">
-                                <h6 class="title">Website development</h6>
-                                <p class="subtitle">html + css + JavaScript, which also includes the knowledge of internet</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="expertise-card">
-                            <div class="body">
-                                <img src="resource/imgs/network.svg" alt="network icon" class="icon">
-                                <h6 class="title">Knowledge Graph</h6>
-                                <p class="subtitle">Design an ontology for mapping target data into a knowledge graph, and query the data with SPARQL.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="expertise-card">
-                            <div class="body">
-                                <img src="resource/imgs/network.svg" alt="database icon" class="icon">
-                                <h6 class="title">Database</h6>
-                                <p class="subtitle">Build up a relational database, and make a query with SQL.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--
-                    <div class="col-md-6 col-lg-3">
-                        <div class="expertise-card">
-                            <div class="body">
-                                <img src="resource/imgs/ai.svg" alt="" class="icon">
-                                <h6 class="title">Machine Learning</h6>
-                                <p class="subtitle">machine</p>
-                            </div>
-                        </div>
-                    </div>-->
-                </div>
-                <!-- end row -->
-            </div>
-        </section>
-        <!-- End Expertises -->
+  <title>Adam Tang's Portfolio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-        <!-- Project -->
-        <section class="section" id="project">
-            <div class="container text-center">
-                <p class="section-subtitle">What project did I do in the past?</p>
-                <h6 class="section-title mb-6">My Project</h6>
-                <!-- row -->
-                <div class="project-wrapper">
-                    <div class="project-card">
-                        <div class="project-card-header">
-                            <h6 class="project-card-title">Design of the machine instruction | Simulator</h6>
-                        </div>
-                        <div class="project-card-body">
-                            <div class="project-card-list">
-                                <p>1. Designed the register transfers to implement a set of instructions as well as the complete control unit specifications for a complete
-                                    instruction set given the hardware paths</p>
-                                <p>2. Designed the machine instructions to test the functions of the designed complete control unit and arithmetic logic unit</p>
-                            </div>
-                        </div>
-                    </div>
+  <!-- Favicons -->
+  <link href="assets/img/web_icon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon" rel="apple-touch-icon">
 
-                    <div class="project-card">
-                        <div class="project-card-header">
-                            <h6 class="project-card-title">Website Development | HTML, PHP, JavaScript</h6>
-                        </div>
-                        <div class="project-card-body">
-                            <div class="project-card-list">
-                                <p>1. Built up the communicating chatting-board for students to leave messages no matter where they are and successfully conducted a
-                                    community for students graduated from combustion lab</p>
-                                <p>2. Designed the website for a company to enhance their exposure on the internet which makes them successfully apply for three projects from a government in 2022</p>
-                            </div>
-                        </div>
-                    </div>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-                    <div class="project-card">
-                        <div class="project-card-header">
-                            <h6 class="project-card-title">Calligraphy Generator | Python</h6>
-                        </div>
-                        <div class="project-card-body">
-                            <div class="project-card-list">
-                                <p>1. Designed GUI to make users easily generate figures with traditional Chinese calligraphy so users have more flexibility for their creations</p>
-                                <p>2. Generated the web crawler to grab the information from the web so that people can get the desired calligraphy for their words </p>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- end of project wrapper -->
-            </div> <!-- end of container -->
-        </section>
-        <!-- End Project -->
-    
-    <!-- Working Experience -->
-    <section class="section" id="blog">
-        <!-- container -->
-        <div class="container text-center">
-            <p class="section-subtitle">What is my journey?</p>
-            <h6 class="section-title mb-6">Working Experience</h6>
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="resource/imgs/works/FhG-EMI.gif" class="blog-card-img">
-                </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title"> Fraunhofer EMI</h6>
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-                    <p class="blog-card-caption">
-                        <a href="#">Research Engineer</a>
-                        <a href="#"><i class="ti-location-pin text-danger"></i> Freiburg im Breisgau, Germany</a>
-                    </p>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
 
-                    <ul>
-                        <li> Project - Modeling the impact failure (delamination) of different configurations of CFRP under various scenarios with LS-DYNA </li>
-                        <li> Project - Modeling the failure of a single-lap hybrid joint (Al-CFRP) under tensile loading with LS-DYNA </li>
-                        <li> Designed components geometry in Autodesk Inventor</li>
-                        <li> Established a meshed model in HyperMesh</li>
-                        <li> Optimized numerical parameters, analyzed results and built data visualization with Python</li>
-                    </ul>
-                </div>
-            </div><!-- end of blog wrapper -->
+  <!-- =======================================================
+  * Template Name: Personal
+  * Updated: Jun 18 2023 with Bootstrap v5.3.0
+  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
 
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="assets/imgs/img-2.jpg" class="blog-card-img" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">Explicabo illo</h6>
+<body>
 
-                    <p class="blog-card-caption">
-                        <a href="#">By: Admin</a>
-                        <a href="#"><i class="ti-heart text-danger"></i> 456</a>
-                        <a href="#"><i class="ti-comment"></i> 264</a>
-                    </p>
-                    
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit excepturi laborum enim, vitae ipsam atque eum, ad iusto consequuntur voluptas, esse doloribus. Perferendis porro quisquam vitae exercitationem aliquid, minus eos laborum repudiandae, cumque debitis iusto omnis praesentium? Laborum placeat sit adipisci illum tempore maxime, esse qui quae? Molestias excepturi corporis similique doloribus. Esse vitae earum architecto nulla non dolores illum at perspiciatis quod, et deleniti cupiditate reiciendis harum facere, delectus eum commodi soluta distinctio sit repudiandae possimus sunt. Ipsum, rem.</p>
-
-                    <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
-
-        </div><!-- end of container -->
-    </section><!-- end of blog section -->
-
-    <!-- footer -->
+  <!-- ======= Header ======= -->
+  <header id="header">
     <div class="container">
-        <footer class="footer">       
-            <p class="mb-0">Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a> All Rights Reserved - Adam </a> </p>
-            <div class="social-links text-right m-auto ml-sm-auto">
-                <a href="https://github.com/adam951502" class="link"><i class="ti-github"></i></a>
-                <a href="https://www.linkedin.com/in/yu-sheng-tang/" class="link"><i class="ti-linkedin"></i></a>
-                <a href="mailto:adam951502@gmail.com" class="link"><i class="ti-email"></i></a>
+
+      <h1><a href="index.html">Adam Tang</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
+      <h2>I'm a passionate <span>data scientist</span> from Taiwan</h2>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link active" href="#header">Home</a></li>
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#resume">Resume</a></li>
+          <li><a class="nav-link" href="#services">Projects</a></li>
+          <!-- <li><a class="nav-link" href="#portfolio">Portfolio</a></li> -->
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/yu-sheng-tang/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/adam951502" class="github"><i class="bi bi-github"></i></a>
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about">
+
+    <!-- ======= About Me ======= -->
+    <div class="about-me container">
+
+      <div class="section-title">
+        <h2>About</h2>
+        <p>Learn more about me</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4" data-aos="fade-right">
+          <img src="assets/img/adam-avatar.png" class="img-fluid" alt="personal avatar">
+        </div>
+        <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+          <h3>Data Scientist &amp; Entrepreneur </h3>
+          <p class="fst-italic">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.
+          </p>
+          <div class="row">
+            <div class="col-lg-6">
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>20 September 1993</span></li>
+                <li href="adam951502.github.io"><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><a href="adam951502.github.io">adam951502.github.io</a></span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+49 1578 129 1537</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Freiburg im Breisgau, Germany</span></li>
+              </ul>
             </div>
-        </footer>
-    </div> <!-- end of page footer -->
-	
-	<!-- core  -->
-    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+            <div class="col-lg-6">
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>29</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master of Science</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong >Email:</strong> <span><a href="mailto:adam951502@gmail.com">adam951502@gmail.com</a></span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Data Scientist:</strong> <span>Available</span></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <ul>
+              <li>Leveraging a diverse skill set in data science, software engineering, and management to create systems that are resilient, robust, and reliable.</li>
+              <li>Passionate about unlocking insights hidden in data by utilizing advanced analytics techniques to build user-friendly data visualizations that help businesses make informed decisions.</li>
+              <li>Possessing a strong background in multicultural environments and demonstrating leadership, communication, and management skills. A responsible and independent team member who approaches challenges with optimism and a proactive mindset.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <!-- bootstrap 3 affix -->
-	<script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+    </div><!-- End About Me -->
 
-    <!-- Adam js -->
-    <script src="resource/js/Adam.js"></script>
-    </body>
+    <!-- ======= Counts ======= -->
+    <div class="counts container">
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6">
+          <div class="count-box">
+            <i class="bi bi-emoji-smile"></i>
+            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Happy Clients</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+          <div class="count-box">
+            <i class="bi bi-journal-richtext"></i>
+            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Projects</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+          <div class="count-box">
+            <i class="bi bi-headset"></i>
+            <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Hours Of Support</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+          <div class="count-box">
+            <i class="bi bi-award"></i>
+            <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Awards</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- End Counts -->
+
+    <!-- ======= Skills  ======= -->
+    <div class="skills container">
+
+      <div class="section-title">
+        <h2>Skills</h2>
+      </div>
+
+      <div class="row skills-content">
+
+        <div class="col-lg-6">
+
+          <div class="progress">
+            <span class="skill">HTML <i class="val">100%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <div class="progress">
+            <span class="skill">CSS <i class="val">90%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <div class="progress">
+            <span class="skill">JavaScript <i class="val">75%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+          <div class="progress">
+            <span class="skill">PHP <i class="val">80%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <div class="progress">
+            <span class="skill">WordPress/CMS <i class="val">90%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <div class="progress">
+            <span class="skill">Photoshop <i class="val">55%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div><!-- End Skills -->
+
+    <!-- ======= Interests ======= -->
+    <div class="interests container">
+
+      <div class="section-title">
+        <h2>Interests</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3 col-md-4">
+          <div class="icon-box">
+            <i class="ri-store-line" style="color: #ffbb2c;"></i>
+            <h3>Lorem Ipsum</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
+            <h3>Dolor Sitema</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="ri-calendar-todo-line" style="color: #e80368;"></i>
+            <h3>Sed perspiciatis</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
+          <div class="icon-box">
+            <i class="ri-paint-brush-line" style="color: #e361ff;"></i>
+            <h3>Magni Dolores</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="ri-database-2-line" style="color: #47aeff;"></i>
+            <h3>Nemo Enim</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="ri-gradienter-line" style="color: #ffa76e;"></i>
+            <h3>Eiusmod Tempor</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
+            <h3>Midela Teren</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
+            <h3>Pira Neve</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="ri-anchor-line" style="color: #b2904f;"></i>
+            <h3>Dirada Pack</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="ri-disc-line" style="color: #b20969;"></i>
+            <h3>Moton Ideal</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="ri-base-station-line" style="color: #ff5828;"></i>
+            <h3>Verdo Park</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4">
+          <div class="icon-box">
+            <i class="ri-fingerprint-line" style="color: #29cc61;"></i>
+            <h3>Flavor Nivelanda</h3>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- End Interests -->
+
+    <!-- ======= Testimonials ======= -->
+    <div class="testimonials container">
+
+      <div class="section-title">
+        <h2>Testimonials</h2>
+      </div>
+
+      <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+              <h3>Saul Goodman</h3>
+              <h4>Ceo &amp; Founder</h4>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+              <h3>Sara Wilsson</h3>
+              <h4>Designer</h4>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+              <h3>Jena Karlis</h3>
+              <h4>Store Owner</h4>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+              <h3>Matt Brandon</h3>
+              <h4>Freelancer</h4>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+              <h3>John Larson</h3>
+              <h4>Entrepreneur</h4>
+            </div>
+          </div><!-- End testimonial item -->
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <div class="owl-carousel testimonials-carousel">
+
+      </div>
+
+    </div><!-- End Testimonials  -->
+
+  </section><!-- End About Section -->
+
+  <!-- ======= Resume Section ======= -->
+  <section id="resume" class="resume">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Resume</h2>
+        <p>Check My Resume</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <!-- <h3 class="resume-title">Sumary</h3>
+          <div class="resume-item pb-0">
+            <h4>Alice Barkley</h4>
+            <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
+            <p>
+            <ul>
+              <li>Portland par 127,Orlando, FL</li>
+              <li>(123) 456-7891</li>
+              <li>alice.barkley@example.com</li>
+            </ul>
+            </p>
+          </div> -->
+
+          <!-- ======= Education ======= -->
+          <h3 class="resume-title">Education</h3>
+          <div class="resume-item">
+            <img src="assets/img/image_preview.png" alt="Uni Freiburg logo" class="company-logo">
+            <h4>Master of Science </br> Sustainable Systems Engineering</h4>
+            <h5>Oct 2018 - Feb 2021</h5>
+            <p><em>The University of Freiburg, Freiburg im Breisgau, Germany</em></p>
+            <p>Grade: </br>Master Thesis: 1.0</br> Overall 1.7 (German grade), eq. 91/100, 3.6/4.0</p>
+          </div>
+          <div class="resume-item">
+            <img src="assets/img/NTUST_logo.png" alt="NTUST logo" class="company-logo">
+            <h4>Master of Science </br> Graduate Institute of Automation and Control</h4>
+            <h5>Feb 2018 - Aug 2018</h5>
+            <p><em>National Taiwan University of Science and Technology, Taipei, Taiwan</em></p>
+            <p>-</p>
+          </div>
+          <div class="resume-item">
+            <img src="assets/img/cgu.png" alt="CGU logo" class="company-logo">
+            <h4>Bachelor of Science </br> Mechanical Engineering</h4>
+            <h5>Sep 2012 - Jun 2016</h5>
+            <p><em>Chang Gung University, Taoyuan, Taiwan</em></p>
+            <p>Grade: </br>Overall 1.8 (German grade), eq. 3.8/4.0</p>
+          </div>
+        </div>
+        <!-- ======= End Education ======= -->
+
+        <!-- ======= Professional Experience ======= -->
+        <div class="col-lg-6">
+          <h3 class="resume-title">Professional Experience</h3>
+          
+          <div class="resume-item">
+            <img src="assets/img/fraunhofer-favicon.png" alt="Fraunhofer EMI logo" class="company-logo" height="50px">
+            <h4>Data Scientist</h4>
+            <h5>Oct 2021 - Present</h5>
+            <p><em><i class="bi bi-building"></i> Fraunhofer Institute for High-Speed-Dynamics, Ernst-Mach-Institut, EMI</em></p>
+            <p><em><i class="bi bi-geo-alt"></i> Freiburg, Baden-Württemberg, Germany</em></p>
+            <p>
+            <ul>
+              <li>Established a knowledge graph for material life cycle assessment of additive manufacturing process</li>
+            </ul>
+            </p>
+          </div>
+          
+          <div class="resume-item">
+            <img src="assets/img/fraunhofer-favicon.png" alt="Fraunhofer EMI logo" class="company-logo">
+            <h4>Research Assistant</h4>
+            <h5>Apr 2021 - Sep 2021</h5>
+            <p><em><i class="bi bi-building"></i> Fraunhofer Institute for High-Speed-Dynamics, Ernst-Mach-Institut, EMI</em></p>
+            <p><em><i class="bi bi-geo-alt"></i> Freiburg, Baden-Württemberg, Germany</em></p>
+            <p>
+            <ul>
+              <li>Fracture mechanics, FEM modeling, CAE design</li>
+            </ul>
+            </p>
+          </div>
+
+          <div class="resume-item">
+            <img src="assets/img/fraunhofer-favicon.png" alt="Fraunhofer EMI logo" class="company-logo">
+            <h4>Research Assistant</h4>
+            <h5>May 2020 - Dec 2020</h5>
+            <p><em><i class="bi bi-building"></i> Fraunhofer Institute for High-Speed-Dynamics, Ernst-Mach-Institut, EMI</em></p>
+            <p><em><i class="bi bi-geo-alt"></i> Freiburg, Baden-Württemberg, Germany</em></p>
+            <p>
+            <ul>
+              <li>Modeled the failure of a single-lap hybrid joint (Al-CFRP) under tensile loading with LS-DYNA</li>
+            </ul>
+            </p>
+          </div>
+
+          <div class="resume-item">
+            <img src="assets/img/Symbol_RGB_Green_Blue-1.png" alt="cytena logo" class="company-logo">
+            <h4>Research Assistant - Internship</h4>
+            <h5>May 2020 - Dec 2020</h5>
+            <p><em><i class="bi bi-building"></i> cytena Bioprocess Solutions</em></p>
+            <p><em><i class="bi bi-geo-alt"></i> Taipei, Taiwan</em></p>
+            <p>
+            <ul>
+              <li>Tuned and assembled microbioreactors and docking station</li>
+              <li>Soldered microcontroller and other components on control board</li>
+            </ul>
+            </p>
+          </div>
+
+          <div class="resume-item">
+            <img src="assets/img/inatech_logo_web.png" alt="INATECH logo" class="company-logo">
+            <h4>Student Research Assistant</h4>
+            <h5>Dec 2019 - Mar 2020</h5>
+            <p><em><i class="bi bi-building"></i> INATECH, Uni Freiburg</em></p>
+            <p><em><i class="bi bi-geo-alt"></i> Freiburg im Breisgau, Baden-Württemberg, Germany</em></p>
+            <p>Simulation:
+            <ul>
+              <li>Built numerical models of small-scale pivot specimens for torsion tests using LS-Dyna software.</li>
+              <li>Analyzed simulated results and developed data visualizations with Python to aid in interpretation of the results.</li>
+            </ul>
+            </p>
+            <p>Experiment:
+              <ul>
+                <li>Conducted cyclic stress (fatigue) loading for small-scale material characterization experiments.</li>
+                <li>Controlled stepper motors using Python to implement cycling loading and optimized the sleeping time by considering signal frequency, rotation speed, and gear ratio.</li>
+                <li>Assembled required components in the experimental setup through soldering.</li>
+                <li>Analyzed signals and developed data visualizations with Python to enhance the interpretation of the results.</li>
+              </ul>
+            </p>
+          </div>
+
+          <div class="resume-item">
+            <h4>Tutor</h4>
+            <h5>Sep 2012 - Sep 2018</h5>
+            <p><em><i class="bi bi-building"></i> Freelance</em></p>
+            <p><em><i class="bi bi-geo-alt"></i> Taipei, Taiwan</em></p>
+            <p>Simulation:
+            <ul>
+              <li>Built numerical models of small-scale pivot specimens for torsion tests using LS-Dyna software.</li>
+              <li>Analyzed simulated results and developed data visualizations with Python to aid in interpretation of the
+                results.</li>
+            </ul>
+            </p>
+            <p>Experiment:
+            <ul>
+              <li>Taught junior high and high school students in mathematics, physics and chemistry</li>
+              <li>Assisted and proofread students in admission documents</li>
+              <li>Organized and edited teaching curriculums</li>
+              <li>Engaged students in more advanced course material and examination techniques</li>
+              <li>Participated in teaching material editing and learned various techniques to enhance teaching efficiency and leadership</li>
+              <li>Instructed group learning, managed team and center operation</li>
+              <li>Facilitated junior high school student involvement in quantitative calculation and critical thinking, and also in educational counseling</li>
+              <li>Supported high school students on oral examination and personal statement writing</li>
+              <li>Provided special education support (e.g. ADHD)</li>
+            </ul>
+            </p>
+            <p>Skills: Logic and reasoning · Communication · Organization Skills · Leadership
+            </p>
+          </div>
+
+          <div class="resume-item">
+            <img src="assets/img/NTUST_logo.png" alt="NTUST logo" class="company-logo">
+            <h4>Student Research Assistant</h4>
+            <h5>Feb 2018 - Aug 2018</h5>
+            <p><em><i class="bi bi-building"></i> National Taiwan University of Science and Technology</em></p>
+            <p><em><i class="bi bi-geo-alt"></i> Taipei, Taiwan</em></p>
+            <p>
+            <ul>
+              <li> Processed and analyzed the spectrum raw data of microalbumin test using MATLAB</li>
+              <li> Developed an algorithm for baseline correction to enhance signal processing in MATLAB• Processed and analyzed the spectrum raw data of microalbumin test using MATLAB • Developed an algorithm for baseline correction to enhance signal processing in MATLAB
+              </li>
+            </ul>
+            </p>
+            <p>Skills: Organization Skills · Signal Processing · Data Analytics · Matlab</p>
+          </div>
+
+          <div class="resume-item">
+            <img src="assets/img/cgu.png" alt="CGU logo" class="company-logo">
+            <h4>Student Research Assistant</h4>
+            <h5>Feb 2018 - Aug 2018</h5>
+            <p><em><i class="bi bi-building"></i> Prof. Kin Fong Lei's Laboratory on Biomedical Microelectronics, Chang Gung University</em></p>
+            <p><em><i class="bi bi-geo-alt"></i> Taoyuan, Taiwan</em></p>
+            <p>
+            <ul>
+              <li> Processed administrative documents and provided maintenance for research facilities</li>
+              <li> Gained understanding on the manufacturing of PDMS (Polydimethylsiloxane) Capacitive Pressure Sensor</li>
+            </ul>
+            </p>
+            <p>Skills: Organization Skills</p>
+          </div>
+
+          <div class="resume-item">
+            <h4>Mechanical Engineer - Internship</h4>
+            <h5>Jul 2015 - Aug 2015</h5>
+            <p><em><i class="bi bi-building"></i> Yiming Corporation | 翊銘企業社</em></p>
+            <p><em><i class="bi bi-geo-alt"></i> New Taipei City, Taiwan</em></p>
+            <p>
+            <ul>
+              <li>Followed up on clients' request of switchboard parts crafting (ex. drilling, stamping, plating, bending, welding, leveling, etc.)</li>
+              <li>Conducted repeated product testing and revision prior to supervisor's final evaluation</li>
+            </ul>
+            </p>
+          </div>
+
+        </div>
+        <!-- ======= End Professional Experience ======= -->
+      </div>
+
+    </div>
+  </section><!-- End Resume Section -->
+
+  <!-- ======= Projects Section ======= -->
+  <section id="services" class="services">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>Projects</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bxl-dribbble"></i></div>
+            <h4><a href="">Lorem Ipsum</a></h4>
+            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-file"></i></div>
+            <h4><a href="">Sed ut perspiciatis</a></h4>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-tachometer"></i></div>
+            <h4><a href="">Magni Dolores</a></h4>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-world"></i></div>
+            <h4><a href="">Nemo Enim</a></h4>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-slideshow"></i></div>
+            <h4><a href="">Dele cardo</a></h4>
+            <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-arch"></i></div>
+            <h4><a href="">Divera don</a></h4>
+            <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Services Section -->
+
+  <!-- ======= Portfolio Section ======= -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Portfolio</h2>
+        <p>My Works</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center">
+          <ul id="portfolio-flters">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-app">App</li>
+            <li data-filter=".filter-card">Card</li>
+            <li data-filter=".filter-web">Web</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row portfolio-container">
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>App 1</h4>
+              <p>App</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Web 3</h4>
+              <p>Web</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>App 2</h4>
+              <p>App</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Card 2</h4>
+              <p>Card</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Web 2</h4>
+              <p>Web</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>App 3</h4>
+              <p>App</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Card 1</h4>
+              <p>Card</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Card 3</h4>
+              <p>Card</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="portfolio-wrap">
+            <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Web 3</h4>
+              <p>Web</p>
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Portfolio Section -->
+
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Contact Me</p>
+      </div>
+
+      <div class="row mt-2">
+
+        <div class="col-md-6 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-map"></i>
+            <h3>My Address</h3>
+            <p>A108 Adam Street, New York, NY 535022</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-share-alt"></i>
+            <h3>Social Profiles</h3>
+            <div class="social-links">
+              <!-- <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bi bi-skype"></i></a> -->
+              <a href="https://www.linkedin.com/in/yu-sheng-tang/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="https://github.com/adam951502/" class="github"><i class="bi bi-github"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-4 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-envelope"></i>
+            <h3>Email Me</h3>
+            <p>adam951502@gmail.com</p>
+          </div>
+        </div>
+        <div class="col-md-6 mt-4 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-phone-call"></i>
+            <h3>Call Me</h3>
+            <p>+49 1578 129 1537</p>
+          </div>
+        </div>
+      </div>
+
+      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+          </div>
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+        </div>
+        <div class="form-group mt-3">
+          <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+        </div>
+        <div class="my-3">
+          <div class="loading">Loading</div>
+          <div class="error-message"></div>
+          <div class="sent-message">Your message has been sent. Thank you!</div>
+        </div>
+        <div class="text-center"><button type="submit">Send Message</button></div>
+      </form>
+
+    </div>
+  </section><!-- End Contact Section -->
+
+  <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/personal-free-resume-bootstrap-template/ -->
+    <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
 </html>
