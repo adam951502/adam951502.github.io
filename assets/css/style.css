@@ -1880,3 +1880,25 @@ textarea.form-input::-webkit-resizer { display: none; }
   .timeline-text { max-width: 700px; }
 
 }
+
+/* add by Adam */
+.navbar-link-text {
+  display: flex;
+  align-items: center;
+}
+.navbar-link-icon {
+  height: 20px; 
+  vertical-align: middle;
+}
+
+.timeline-content {
+  flex-grow: 1;
+}
+
+.timeline-date {
+  margin-left: auto;
+}
+
+.company-logo {
+  width: 50px;
+}
