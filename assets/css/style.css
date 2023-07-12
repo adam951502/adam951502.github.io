@@ -2225,8 +2225,14 @@ textarea.form-input::-webkit-resizer {
 .skill-icon-box {
   margin-bottom: 10px;
   display: flex;
-  justify-content:space-between;
+  justify-content:flex-start;
   align-items: center;
+  flex-wrap: wrap;
+}
+.skill-icon-box a {
+  flex-basis: 20%; 
+  text-align: center; 
+  padding: 1%; /* adjust this value to create space around logos */
 }
 
 .skill-icon-box img {
