@@ -1131,6 +1131,11 @@ main {
   margin-left: 10px;
 }
 
+.project-time {
+  color: var(--orange-yellow-crayola);
+  margin-left: 10px;
+}
+
 .project-title {
   color: var(--white-2);
   font-size: var(--fs-5);
