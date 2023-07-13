@@ -157,3 +157,54 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+// add by Adam
+// Get the project names
+const projectNames = Array.from(document.querySelectorAll('.portfolio-item-details-button'))
+  .map(button => button.getAttribute('data-project-name'));
+
+let currentProjectIndex = 0;
+
+// Function to load the given project into the modal
+function loadProject(projectName) {
+  fetch(`assets/projects/${projectName}.html`)
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('projectDetail').innerHTML = data;
+      modal.style.display = 'block';
+    });
+}
+
+// Code to open the modal when a project is clicked
+Array.from(document.getElementsByClassName('portfolio-item-details-button')).forEach((button, index) => {
+  button.onclick = function (event) {
+    event.preventDefault();
+    currentProjectIndex = index;
+    loadProject(this.getAttribute('data-project-name'));
+  };
+});
+
+// Get the modal
+const modal = document.getElementById('projectModal');
+
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName('close')[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = 'none';
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+};
+
+// Event listener for the Escape key to close the modal
+window.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') {
+    modal.style.display = 'none';
+  }
+});
