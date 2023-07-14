@@ -208,3 +208,17 @@ window.addEventListener('keydown', function (event) {
     modal.style.display = 'none';
   }
 });
+
+
+function toggleSkills() {
+  var skillsMore = document.getElementById("skills-more");
+  var skillsToggle = document.getElementById("skills-toggle");
+  if (skillsMore.style.display === "none") {
+    skillsMore.style.display = "block";
+    skillsToggle.innerText = "Read less";
+  } else {
+    skillsMore.style.display = "none";
+    skillsToggle.innerText = "Read more";
+  }
+}
+
