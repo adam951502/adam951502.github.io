@@ -920,6 +920,7 @@ main {
 }
 
 
+
 /**
  * skills 
  */
@@ -2168,6 +2169,11 @@ textarea.form-input::-webkit-resizer {
 /*-----------------------------------*\
   # add by Adam
 \*-----------------------------------*/
+.timeline-text ul li {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
 .navbar-link-text {
   display: flex;
   align-items: center;
@@ -2284,7 +2290,7 @@ textarea.form-input::-webkit-resizer {
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 50%;
+  width: 80%;
   border-radius: 10px;
 }
 
