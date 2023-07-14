@@ -209,16 +209,79 @@ window.addEventListener('keydown', function (event) {
   }
 });
 
+// toggle for the content in career page
+function toggleContent(sectionId) {
+  const section = document.getElementById(sectionId);
+  const readMoreLink = section.parentElement.querySelector('.read-more');
 
-function toggleSkills() {
-  var skillsMore = document.getElementById("skills-more");
-  var skillsToggle = document.getElementById("skills-toggle");
-  if (skillsMore.style.display === "none") {
-    skillsMore.style.display = "block";
-    skillsToggle.innerText = "Read less";
+  section.classList.toggle('collapsed');
+  section.classList.toggle('expanded');
+
+  if (section.classList.contains('collapsed')) {
+    readMoreLink.textContent = 'Read more';
   } else {
-    skillsMore.style.display = "none";
-    skillsToggle.innerText = "Read more";
+    readMoreLink.textContent = 'Read less';
   }
 }
+
+// expend all
+function toggleContent(sectionId) {
+  const section = document.getElementById(sectionId);
+  const readMoreLink = section.parentElement.querySelector('.read-more');
+
+  section.classList.toggle('collapsed');
+  section.classList.toggle('expanded');
+
+  if (section.classList.contains('collapsed')) {
+    readMoreLink.textContent = 'Read more';
+  } else {
+    readMoreLink.textContent = 'Read less';
+  }
+}
+
+function expandAll() {
+  const sections = document.querySelectorAll('.content-section');
+  sections.forEach((section) => {
+    section.classList.add('expanded');
+    section.classList.remove('collapsed');
+    const readMoreLink = section.parentElement.querySelector('.read-more');
+    readMoreLink.textContent = 'Read less';
+  });
+
+  const expandAllButton = document.getElementById('expandAllButton');
+  expandAllButton.style.display = 'none';
+
+  const collapseAllButton = document.getElementById('collapseAllButton');
+  collapseAllButton.style.display = 'block';
+}
+
+function collapseAll() {
+  const sections = document.querySelectorAll('.content-section');
+  sections.forEach((section) => {
+    section.classList.add('collapsed');
+    section.classList.remove('expanded');
+    const readMoreLink = section.parentElement.querySelector('.read-more');
+    readMoreLink.textContent = 'Read more';
+  });
+
+  const expandAllButton = document.getElementById('expandAllButton');
+  expandAllButton.style.display = 'block';
+
+  const collapseAllButton = document.getElementById('collapseAllButton');
+  collapseAllButton.style.display = 'none';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

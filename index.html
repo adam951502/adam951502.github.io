@@ -10,7 +10,7 @@
   <!--
     - favicon
   -->
-  <link rel="shortcut icon" href="./assets/images/web_icon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="./assets/images/web-icon.ico" type="image/x-icon">
 
   <!--
     - custom css link
@@ -645,6 +645,9 @@
             </div>
 
             <h3 class="h3">Experience</h3>
+            <button id="expandAllButton" onclick="expandAll()" class="button expand-button">Expand All</button>
+            <button id="collapseAllButton" onclick="collapseAll()" class="button expand-button" style="display: none;">Collapse All</button>
+
           </div>
 
           <ol class="timeline-list">
@@ -657,27 +660,42 @@
                 </p>
                 <span>Oct 2021 - Present</span>
                 <div class="timeline-text">
-                  <strong>Technique:</strong>
-                  <ul class="bullet-list">
-                    <li>Built an ontology for semantic data structure using RDF, RDFs, OWL, and other ontologies</li>
-                    <li>Established a knowledge graph for material life cycle assessment of additive manufacturing process</li>
-                    <li>Analyzed queried data from SPARQL in Python</li>
-                    <li>Built data ETL pipeline in Python</li>
-                    <li>Bridged database APIs and parsed data in Python</li>
-                  </ul>
-                  <strong>Management:</strong>
-                  <ul class="bullet-list">
-                    <li>Applied agile project management</li>
-                    <li>Generated generic use-case guideline of UML diagram and use-case description template to improve the efficiency and quality of software development processes</li>
-                    <li>Monitored and planned requirements engineering cycles</li>
-                    <li>Applied project management, particularly agile management, and requirements management in management software using Jira</li>
-                  </ul>
-                  <strong>Skills:</strong>
-                  <p id="skills-more" style="display: none;">
-                    Jira · Python · Data Science · Project Management · Communication · Organization Skills · Data Modeling · Semantic Technologies · Use Case Analysis · Agile Project Management · Requirements Analysis · Databases · Extract, Transform, Load (ETL) · Data Engineering · Ontology Engineering · Artificial Intelligence (AI) · Data Analytics · Deep Learning · Machine Learning · Leadership · SPARQL
-                  </p>
+                  <div class="content-section collapsed" id="data-scientist-technique">
+                    <strong>Technique:</strong>
+                    <ul class="bullet-list">
+                      <li>Built an ontology for semantic data structure using RDF, RDFs, OWL, and other ontologies</li>
+                      <li>Established a knowledge graph for material life cycle assessment of additive manufacturing
+                        process</li>
+                      <li>Analyzed queried data from SPARQL in Python</li>
+                      <li>Built data ETL pipeline in Python</li>
+                      <li>Bridged database APIs and parsed data in Python</li>
+                    </ul>
+                  </div>
+                  <div class="content-section collapsed" id="data-scientist-management">
+                    <strong>Management:</strong>
+                    <ul class="bullet-list">
+                      <li>Applied agile project management</li>
+                      <li>Generated generic use-case guideline of UML diagram and use-case description template to
+                        improve the efficiency and quality of software development processes</li>
+                      <li>Monitored and planned requirements engineering cycles</li>
+                      <li>Applied project management, particularly agile management, and requirements management in
+                        management software using Jira</li>
+                    </ul>
+                  </div>
+                  <div class="content-section collapsed" id="data-scientist-skills">
+                    <strong>Skills:</strong>
+                    <p>
+                      Jira · Python · Data Science · Project Management · Communication · Organization Skills · Data
+                      Modeling · Semantic Technologies · Use Case Analysis · Agile Project Management · Requirements
+                      Analysis · Databases · Extract, Transform, Load (ETL) · Data Engineering · Ontology Engineering ·
+                      Artificial Intelligence (AI) · Data Analytics · Deep Learning · Machine Learning · Leadership ·
+                      SPARQL
+                    </p>
+                  </div>
                   <p>
-                    <a href="javascript:void(0);" id="skills-toggle" onclick="toggleSkills()">Read more</a>
+                    <a href="javascript:void(0);"
+                      onclick="toggleContent('data-scientist-technique'); toggleContent('data-scientist-management'); toggleContent('data-scientist-skills');"
+                      class="read-more">Read more</a>
                   </p>
                 </div>
               </div>
@@ -686,120 +704,69 @@
                   <img src="assets/images/fraunhofer_icon.png" alt="Fraunhofer logo" class="company-logo">
                 </a>
               </div>
-            </li>            
-
-
-
-            <li class="timeline-item" , style="display: flex ; align-items: flex-start">
-              <div class="timeline-content">
-                <h4 class="h4 timeline-item-title">Data Scientist</h4>
-                <p class="timeline-text">
-                  <em>
-                    <i class="bi bi-building"></i>
-                    Fraunhofer EMI
-                  </em>
-                  <em>
-                    <i class="bi bi-geo-alt" style="margin-left: 10px"></i>
-                    Freiburg, Germany
-                  </em>
-                </p>
-                <span>Oct 2021 - Present</span>
-                <!-- <p class="timeline-text"> -->
-                <!-- Established a knowledge graph for material life cycle assessment of additive manufacturing process -->
-                <div class="timeline-text">
-                  <strong>Technique:</strong>
-                  <ul class="bullet-list">
-                    <li>Built an ontology for semantic data structure using RDF, RDFs, OWL, and other ontologies</li>
-                    <li>Established a knowledge graph for material life cycle assessment of additive manufacturing process</li>
-                    <li>Analyzed queried data from SPARQL in Python</li>
-                    <li>Built data ETL pipeline in Python</li>
-                    <li>Bridged database APIs and parsed data in Python</li>
-                  </ul>
-                  <strong>Management:</strong>
-                  <ul class="bullet-list">
-                    <li>Applied agile project management</li>
-                    <li>Generated generic use-case guideline of UML diagram and use-case description template to improve the efficiency and quality of software development processes</li>
-                    <li>Monitored and planned requirements engineering cycles</li>
-                    <li>Applied project management, particularly agile management, and requirements management in management software using Jira</li>
-                  </ul>
-                  <strong>Skills: </strong><br>
-                  Jira · Python · Data Science · Project Management · Communication · Organization Skills · Data Modeling · Semantic Technologies · Use Case Analysis · Agile Project Management · Requirements Analysis · Databases · Extract, Transform, Load (ETL) · Data Engineering · Ontology Engineering · Artificial Intelligence (AI) · Data Analytics · Deep Learning · Machine Learning · Leadership · SPARQL
-                </div>
-              </div>
-              <div style="display: flex; align-items: center;">
-                <a href="https://www.emi.fraunhofer.de/en/business-units/automotive/digital-engineering.html">
-                  <img src="assets/images/fraunhofer_icon.png" alt="Fraunhofer logo" class="company-logo">
-                </a>
-              </div>
             </li>
 
-            <li class="timeline-item" , style="display: flex ; align-items: flex-start">
-              <div class="timeline-content">
-                <h4 class="h4 timeline-item-title">Data Scientist</h4>
-                <p class="timeline-text">
-                  <em>
-                    <i class="bi bi-building"></i>
-                    Fraunhofer EMI
-                  </em>
-                  <em>
-                    <i class="bi bi-geo-alt" style="margin-left: 10px"></i>
-                    Freiburg, Germany
-                  </em>
-                </p>
-                <span>Oct 2021 - Present</span>
-                <p class="timeline-text">
-                  Established a knowledge graph for material life cycle assessment of additive manufacturing process
-                </p>
-              </div>
-              <div style="display: flex; align-items: center;">
-                <a href="https://www.emi.fraunhofer.de/en/business-units/automotive/digital-engineering.html">
-                  <img src="assets/images/fraunhofer_icon.png" alt="Fraunhofer logo" class="company-logo">
-                </a>
-              </div>
-            </li>
 
-            <li class="timeline-item" , style="display: flex ; align-items: flex-start">
+            <li class="timeline-item" style="display: flex; align-items: flex-start;">
               <div class="timeline-content">
                 <h4 class="h4 timeline-item-title">Co-founder, CEO</h4>
                 <p class="timeline-text">
-                  <em>
-                    <i class="bi bi-building"></i>
-                    Aurore Collection Ltd.
-                  </em>
-                  <em>
-                    <i class="bi bi-geo-alt" style="margin-left: 10px"></i>
-                    Taipei, Taiwan
-                  </em>
+                  <em><i class="bi bi-building"></i> Aurore Collection Ltd.</em>
+                  <em><i class="bi bi-geo-alt" style="margin-left: 10px;"></i> Taipei, Taiwan</em>
                 </p>
                 <span>March 2023 - Present</span>
-                <p class="timeline-text">
-                  Managed and led an e-commerce company in Taiwan, responsible for overseeing management, website
-                  building, marketing, and business model development. </p>
+                <div class="timeline-text">
+                  <div class="content-section collapsed" id="ceo-section">
+                    Managed and led an e-commerce company in Taiwan, responsible for overseeing management, website
+                    building, marketing, and business model development.
+                  </div>
+                  <p>
+                    <a href="javascript:void(0);" onclick="toggleContent('ceo-section')" class="read-more">Read more</a>
+                  </p>
+                </div>
               </div>
               <div style="display: flex; align-items: center;">
                 <a href="https://www.aurorecollection.com/">
-                  <img src="assets/images/aurore_icon.svg" alt="Fraunhofer logo" class="company-logo">
+                  <img src="assets/images/aurore_icon.svg" alt="Aurore Collection logo" class="company-logo">
                 </a>
               </div>
             </li>
 
-            <li class="timeline-item" , style="display: flex ; align-items: flex-start">
+
+
+            <li class="timeline-item" style="display: flex; align-items: flex-start;">
               <div class="timeline-content">
                 <h4 class="h4 timeline-item-title">Research Assistant</h4>
                 <p class="timeline-text">
-                  <em>
-                    <i class="bi bi-building"></i>
-                    Fraunhofer EMI
-                  </em>
-                  <em>
-                    <i class="bi bi-geo-alt" style="margin-left: 10px"></i>
-                    Freiburg, Germany
-                  </em>
+                  <em><i class="bi bi-building"></i> Fraunhofer EMI</em>
+                  <em><i class="bi bi-geo-alt" style="margin-left: 10px;"></i> Freiburg, Germany</em>
                 </p>
                 <span>Apr 2021 - Sep 2021</span>
-                <p class="timeline-text">
-                  Fracture mechanics, FEM modeling, CAE design
-                </p>
+                <div class="timeline-text">
+                  <div class="content-section collapsed" id="research-assistant-project">
+                    <ul class="bullet-list">
+                      <li>Project for modeling the impact failure (delamination) of different configurations of CFRP
+                        under various scenarios in LS-DYNA</li>
+                      <li>Designed a geometry of components with Autodesk Inventor</li>
+                      <li>Established the meshed model with HyperMesh</li>
+                      <li>Optimized the numerical parameters (non-physical) with Python</li>
+                      <li>Analyzed simulated results and built data visualization with Python</li>
+                      <li>Fracture mechanics, FEM modeling, CAE design</li>
+                    </ul>
+                  </div>
+                  <div class="content-section collapsed" id="research-assistant-skills">
+                    <strong>Skills:</strong>
+                    <p>
+                      Python · Composites · Finite Element Analysis (FEA) · Data Analytics · Computer-Aided Engineering
+                      (CAE)
+                    </p>
+                  </div>
+                  <p>
+                    <a href="javascript:void(0);"
+                      onclick="toggleContent('research-assistant-project'); toggleContent('research-assistant-skills')"
+                      class="read-more">Read more</a>
+                  </p>
+                </div>
               </div>
               <div style="display: flex; align-items: center;">
                 <a
@@ -809,23 +776,43 @@
               </div>
             </li>
 
-            <li class="timeline-item" , style="display: flex ; align-items: flex-start">
+
+
+
+            <li class="timeline-item" style="display: flex; align-items: flex-start;">
               <div class="timeline-content">
                 <h4 class="h4 timeline-item-title">Research Assistant</h4>
                 <p class="timeline-text">
-                  <em>
-                    <i class="bi bi-building"></i>
-                    Fraunhofer EMI
-                  </em>
-                  <em>
-                    <i class="bi bi-geo-alt" style="margin-left: 10px"></i>
-                    Freiburg, Germany
-                  </em>
+                  <em><i class="bi bi-building"></i> Fraunhofer EMI</em>
+                  <em><i class="bi bi-geo-alt" style="margin-left: 10px;"></i> Freiburg, Germany</em>
                 </p>
                 <span>May 2020 - Dec 2020</span>
-                <p class="timeline-text">
-                  Modeled the failure of a single-lap hybrid joint (Al-CFRP) under tensile loading with LS-DYNA
-                </p>
+                <div class="timeline-text">
+                  <div class="content-section collapsed" id="research-assistant-project">
+                    <ul class="bullet-list">
+                      <li>Modeled the failure of a single-lap hybrid joint (Al-CFRP) under tensile loading with LS-DYNA
+                      </li>
+                      <li>Designed components with Autodesk Inventor</li>
+                      <li>Established the meshed model in HyperMesh</li>
+                      <li>Calculated required numerical parameters by creating the scripts in Python</li>
+                      <li>Harvested the binary data from the numerical model to CSV format using LS-PrePost Scripting
+                        Command Language (SCL)</li>
+                      <li>Analyzed simulated results and built data visualization with Python</li>
+                    </ul>
+                  </div>
+                  <div class="content-section collapsed" id="research-assistant-skills">
+                    <strong>Skills:</strong>
+                    <p>
+                      Python · Fracture Mechanics · Finite Element Analysis (FEA) · Data Analytics · Computer-Aided
+                      Engineering (CAE)
+                    </p>
+                  </div>
+                  <p>
+                    <a href="javascript:void(0);"
+                      onclick="toggleContent('research-assistant-project'); toggleContent('research-assistant-skills')"
+                      class="read-more">Read more</a>
+                  </p>
+                </div>
               </div>
               <div style="display: flex; align-items: center;">
                 <a href="https://www.emi.fraunhofer.de/en/business-units/aviation.html">
@@ -834,24 +821,35 @@
               </div>
             </li>
 
-            <li class="timeline-item" , style="display: flex ; align-items: flex-start">
+
+
+            <li class="timeline-item" style="display: flex; align-items: flex-start;">
               <div class="timeline-content">
                 <h4 class="h4 timeline-item-title">Research Assistant - Internship</h4>
                 <p class="timeline-text">
-                  <em>
-                    <i class="bi bi-building"></i>
-                    cytena Bioprocess Solutions
-                  </em>
-                  <em>
-                    <i class="bi bi-geo-alt" style="margin-left: 10px"></i>
-                    Taipei, Taiwan
-                  </em>
+                  <em><i class="bi bi-building"></i> cytena Bioprocess Solutions</em>
+                  <em><i class="bi bi-geo-alt" style="margin-left: 10px;"></i> Taipei, Taiwan</em>
                 </p>
                 <span>May 2020 - Dec 2020</span>
-                <p class="timeline-text">
-                  Tuned and assembled microbioreactors and docking station </br>
-                  Soldered microcontroller and other components on control board
-                </p>
+                <div class="timeline-text">
+                  <div class="content-section collapsed" id="cytena-research-section"> <!-- Added id attribute -->
+                    <ul class="bullet-list">
+                      <li>Tuned and assembled microbioreactors and docking station</li>
+                      <li>Soldered microcontroller and other components on the control board</li>
+                    </ul>
+                  </div>
+                  <div class="content-section collapsed" id="cytena-skills-section"> <!-- Added id attribute -->
+                    <strong>Skills:</strong>
+                    <p>
+                      Communication · Micro Soldering · Medical Devices
+                    </p>
+                  </div>
+                  <p>
+                    <a href="javascript:void(0);"
+                      onclick="toggleContent('cytena-research-section'); toggleContent('cytena-skills-section');"
+                      class="read-more">Read more</a> <!-- Updated onclick attribute -->
+                  </p>
+                </div>
               </div>
               <div style="display: flex; align-items: center;">
                 <a href="https://www.cytena-bps.com/">
@@ -860,22 +858,53 @@
               </div>
             </li>
 
-            <li class="timeline-item" , style="display: flex ; align-items: flex-start">
+
+
+
+
+
+
+
+            <li class="timeline-item" style="display: flex; align-items: flex-start;">
               <div class="timeline-content">
                 <h4 class="h4 timeline-item-title">Student Research Assistant</h4>
                 <p class="timeline-text">
-                  <em>
-                    <i class="bi bi-building"></i>
-                    Inatech, SSE
-                  </em>
-                  <em>
-                    <i class="bi bi-geo-alt" style="margin-left: 10px"></i>
-                    Freiburg, Germany
-                  </em>
+                  <em><i class="bi bi-building"></i> Inatech, SSE</em>
+                  <em><i class="bi bi-geo-alt" style="margin-left: 10px;"></i> Freiburg, Germany</em>
                 </p>
                 <span>Dec 2019 - Mar 2020</span>
-                <p class="timeline-text">
-                </p>
+                <div class="timeline-text">
+                  <div class="content-section collapsed" id="inatech-research-section">
+                    <strong>Simulation:</strong>
+                    <ul class="bullet-list">
+                      <li>Built numerical models of small-scale pivot specimens for torsion tests using LS-Dyna software
+                      </li>
+                      <li>Analyzed simulated results and developed data visualizations with Python to aid in
+                        interpretation of the results</li>
+                    </ul>
+                    <strong>Experiment:</strong>
+                    <ul class="bullet-list">
+                      <li>Conducted cyclic stress (fatigue) loading for small-scale material characterization
+                        experiments</li>
+                      <li>Controlled stepper motors using Python to implement cycling loading and optimized the sleeping
+                        time by considering signal frequency, rotation speed, and gear ratio</li>
+                      <li>Assembled required components in the experimental setup through soldering</li>
+                      <li>Analyzed signals and developed data visualizations with Python to enhance the interpretation
+                        of the results</li>
+                    </ul>
+                  </div>
+                  <div class="content-section collapsed" id="inatech-skills-section">
+                    <strong>Skills:</strong>
+                    <p>
+                      Python (Programming Language) · Finite Element Analysis (FEA) · Computer-Aided Design (CAD)
+                    </p>
+                  </div>
+                  <p>
+                    <a href="javascript:void(0);"
+                      onclick="toggleContent('inatech-research-section'); toggleContent('inatech-skills-section');"
+                      class="read-more">Read more</a>
+                  </p>
+                </div>
               </div>
               <div style="display: flex; align-items: center;">
                 <a href="https://www.inatech.de/stefan-hiermaier">
@@ -884,23 +913,47 @@
               </div>
             </li>
 
-            <li class="timeline-item" , style="display: flex ; align-items: flex-start">
+
+
+
+
+
+            <li class="timeline-item" style="display: flex; align-items: flex-start;">
               <div class="timeline-content">
                 <h4 class="h4 timeline-item-title">Tutor</h4>
                 <p class="timeline-text">
-                  <em>
-                    <i class="bi bi-building"></i>
-                    Freelance
-                  </em>
-                  <em>
-                    <i class="bi bi-geo-alt" style="margin-left: 10px"></i>
-                    Taipei, Taiwan
-                  </em>
+                  <em><i class="bi bi-building"></i> Freelance</em>
+                  <em><i class="bi bi-geo-alt" style="margin-left: 10px;"></i> Taipei, Taiwan</em>
                 </p>
                 <span>Sep 2012 - Sep 2018</span>
-                <p class="timeline-text">
-
-                </p>
+                <div class="timeline-text">
+                  <div class="content-section collapsed" id="tutor-bullet-section">
+                    <ul class="bullet-list">
+                      <li>Taught junior high and high school students in mathematics, physics, and chemistry</li>
+                      <li>Assisted and proofread students in admission documents</li>
+                      <li>Organized and edited teaching curriculums</li>
+                      <li>Engaged students in more advanced course material and examination techniques</li>
+                      <li>Participated in teaching material editing and learned various techniques to enhance teaching
+                        efficiency and leadership</li>
+                      <li>Instructed group learning, managed team and center operation</li>
+                      <li>Facilitated junior high school student involvement in quantitative calculation and critical
+                        thinking, and also in educational counseling</li>
+                      <li>Supported high school students on oral examination and personal statement writing</li>
+                      <li>Provided special education support (e.g., ADHD)</li>
+                    </ul>
+                  </div>
+                  <div class="content-section collapsed" id="tutor-skills-section"> <!-- Added id attribute -->
+                    <strong>Skills:</strong>
+                    <p>
+                      Logic and reasoning · Communication · Organization Skills · Leadership
+                    </p>
+                  </div>
+                  <p>
+                    <a href="javascript:void(0);"
+                      onclick="toggleContent('tutor-bullet-section'); toggleContent('tutor-skills-section');"
+                      class="read-more">Read more</a> <!-- Updated onclick attribute -->
+                  </p>
+                </div>
               </div>
               <div style="display: flex; align-items: center;">
                 <a>
@@ -909,23 +962,38 @@
               </div>
             </li>
 
-            <li class="timeline-item" , style="display: flex ; align-items: flex-start">
+
+
+
+
+            <li class="timeline-item" style="display: flex; align-items: flex-start;">
               <div class="timeline-content">
                 <h4 class="h4 timeline-item-title">Student Research Assistant</h4>
                 <p class="timeline-text">
-                  <em>
-                    <i class="bi bi-building"></i>
-                    Taiwan Tech
-                  </em>
-                  <em>
-                    <i class="bi bi-geo-alt" style="margin-left: 10px"></i>
-                    Taipei, Taiwan
-                  </em>
+                  <em><i class="bi bi-building"></i> Taiwan Tech</em>
+                  <em><i class="bi bi-geo-alt" style="margin-left: 10px;"></i> Taipei, Taiwan</em>
                 </p>
                 <span>Feb 2018 - Aug 2018</span>
-                <p class="timeline-text">
-
-                </p>
+                <div class="timeline-text">
+                  <div class="content-section collapsed" id="research-assistant-section">
+                    <ul class="bullet-list">
+                      <li>Processed and analyzed the spectrum raw data of microalbumin test using MATLAB</li>
+                      <li>Developed an algorithm for baseline correction to enhance signal processing in MATLAB</li>
+                    </ul>
+                  </div>
+                  <div class="content-section collapsed" id="research-assistant-skills-section">
+                    <!-- Added id attribute -->
+                    <strong>Skills:</strong>
+                    <p>
+                      Organization Skills · Signal Processing · Data Analytics · MATLAB
+                    </p>
+                  </div>
+                  <p>
+                    <a href="javascript:void(0);"
+                      onclick="toggleContent('research-assistant-section'); toggleContent('research-assistant-skills-section');"
+                      class="read-more">Read more</a>
+                  </p>
+                </div>
               </div>
               <div style="display: flex; align-items: center;">
                 <a href="https://www.gsac.ntust.edu.tw/p/404-1020-84677.php?Lang=en">
@@ -934,23 +1002,36 @@
               </div>
             </li>
 
-            <li class="timeline-item" , style="display: flex ; align-items: flex-start">
+
+
+            <li class="timeline-item" style="display: flex; align-items: flex-start;">
               <div class="timeline-content">
                 <h4 class="h4 timeline-item-title">Student Research Assistant</h4>
                 <p class="timeline-text">
-                  <em>
-                    <i class="bi bi-building"></i>
-                    Prof. Kin Fong Lei's Lab, CGU
-                  </em>
-                  <em>
-                    <i class="bi bi-geo-alt" style="margin-left: 10px"></i>
-                    Taoyuan, Taiwan
-                  </em>
+                  <em><i class="bi bi-building"></i> Prof. Kin Fong Lei's Lab, CGU</em>
+                  <em><i class="bi bi-geo-alt" style="margin-left: 10px;"></i> Taoyuan, Taiwan</em>
                 </p>
                 <span>Oct 2015 - Jan 2016</span>
-                <p class="timeline-text">
-
-                </p>
+                <div class="timeline-text">
+                  <div class="content-section collapsed" id="research-assistant-section-cgu">
+                    <ul class="bullet-list">
+                      <li>Processed administrative documents and provided maintenance for research facilities</li>
+                      <li>Gained understanding on the manufacturing of PDMS (Polydimethylsiloxane) Capacitive Pressure
+                        Sensor</li>
+                    </ul>
+                  </div>
+                  <div class="content-section collapsed" id="research-assistant-skills-section-cgu">
+                    <strong>Skills:</strong>
+                    <p>
+                      Organization Skills
+                    </p>
+                  </div>
+                  <p>
+                    <a href="javascript:void(0);"
+                      onclick="toggleContent('research-assistant-section-cgu'); toggleContent('research-assistant-skills-section-cgu');"
+                      id="read-more-link" class="read-more">Read more</a>
+                  </p>
+                </div>
               </div>
               <div style="display: flex; align-items: center;">
                 <a href="https://www1.cgmh.org.tw/intr/intr2/c3s000/research/e_mechanical6.html">
@@ -958,6 +1039,8 @@
                 </a>
               </div>
             </li>
+
+
 
             <li class="timeline-item" , style="display: flex ; align-items: flex-start">
               <div class="timeline-content">
@@ -973,9 +1056,26 @@
                   </em>
                 </p>
                 <span>Jul 2015 - Aug 2015</span>
-                <p class="timeline-text">
-
-                </p>
+                <div class="timeline-text">
+                  <div class="content-section collapsed" id="mechanical-engineer-section">
+                    <ul class="bullet-list">
+                      <li>Followed up on clients' request of switchboard parts crafting (ex. drilling, stamping,
+                        plating, bending, welding, leveling, etc.)</li>
+                      <li>Conducted repeated product testing and revision prior to supervisor's final evaluation</li>
+                    </ul>
+                  </div>
+                  <div class="content-section collapsed" id="mechanical-engineer-skills-section">
+                    <strong>Skills:</strong>
+                    <p>
+                      Organization Skills
+                    </p>
+                  </div>
+                  <p>
+                    <a href="javascript:void(0);"
+                      onclick="toggleContent('mechanical-engineer-section'); toggleContent('mechanical-engineer-skills-section');"
+                      class="read-more">Read more</a>
+                  </p>
+                </div>
               </div>
               <div style="display: flex; align-items: center;">
                 <a>
@@ -983,6 +1083,8 @@
                 </a>
               </div>
             </li>
+
+
 
           </ol>
 

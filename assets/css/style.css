@@ -44,7 +44,7 @@
   --bg-gradient-jet-skill: linear-gradient(to bottom right,
       hsla(45, 100%, 71%, 0.251) 0%,
       hsla(35, 100%, 68%, 0) 59.86%), hsl(35, 63%, 46%);
-
+  
   /* solid */
 
   --jet: hsl(0, 0%, 22%);
@@ -2324,8 +2324,59 @@ textarea.form-input::-webkit-resizer {
   background-color: #e5e5eb86;
 }
 
-
+/* mask the project img */
 .project-img-preview{
   filter: grayscale(80%); 
   opacity: 0.7;
 }
+
+/* read more */
+/* Add your existing CSS styles here */
+
+.read-more {
+  color: rgba(185, 185, 183, 0.838);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.read-more:hover {
+  color: red;
+}
+
+.collapsed {
+  display: none;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.expanded {
+  display: block;
+  opacity: 1;
+  max-height: 1000px; /* Adjust the value as per your needs */
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+
+.bullet-list{
+  text-align: justify;
+}
+
+
+
+/* Expand All */
+.button {
+  background: linear-gradient(to right,rgba(255, 237, 0, 0.8), rgba(255, 165, 0, 0.8)); /* Replace with your desired gradient colors */
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.expand-button {
+  margin-left: auto;
+}
+
