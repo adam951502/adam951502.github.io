@@ -2380,3 +2380,25 @@ textarea.form-input::-webkit-resizer {
   margin-left: auto;
 }
 
+/* LIC */
+.project-img-lic {
+  position: relative;
+  /* width: 100%; */
+  height: 200px;
+  aspect-ratio: 4/3;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.project-img-lic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 1;
+  transition: var(--transition-1);
+}
