@@ -272,15 +272,47 @@ function collapseAll() {
 }
 
 
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Selectors for various parts of the document
+  const select = document.querySelector("[data-select]");
+  const selectValue = document.querySelector("[data-select-value]");
+  const filterBtns = document.querySelectorAll("[data-filter-btn]");
+  const filterItems = document.querySelectorAll("[data-filter-item]");
+  const selectItems = document.querySelectorAll("[data-select-item]");
 
+  // Function to filter items based on the selected value
+  function filterFunc(selectedValue) {
+    filterItems.forEach(item => {
+      if (selectedValue === "all" || selectedValue === item.dataset.category) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+    });
+  }
 
+  // Event listener for select click
+  select.addEventListener("click", function () {
+    this.classList.toggle("active");
+  });
 
+  // Event listeners for select items
+  selectItems.forEach(item => {
+    item.addEventListener("click", function () {
+      selectValue.innerText = this.innerText;
+      select.classList.remove("active");
+      filterFunc(this.innerText.toLowerCase());
+    });
+  });
 
-
-
-
-
-
-
-
-
+  // Event listeners for filter buttons
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", function () {
+      const selectedValue = this.innerText.toLowerCase();
+      selectValue.innerText = this.innerText;
+      filterFunc(selectedValue);
+      filterBtns.forEach(btn => btn.classList.remove("active"));
+      this.classList.add("active");
+    });
+  });
+});
