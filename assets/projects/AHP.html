@@ -1,24 +1,80 @@
-<div class="container">
-  <div class="row">
-    <div class="portfolio-info">
-      <h2 style="color: #000000;">Comparison of sustainability assessment methods for electricity generation
-        technologies</h2>
+<!DOCTYPE html>
+<html>
 
-      <ul class="info-list">
-        <li><strong>Tech Stack: </strong>Multi-criteria decision making, TOPSIS, WSM, AHP, python</li>
-        <!-- <li><strong>Website URL:</strong><a href="https://ml-dl-webapp.herokuapp.com/" target="_blank">Link</a></li>
-        <li><strong>Github URL:</strong><a href="https://github.com/rajaprerak/ML_DL_WebApp" target="_blank">Project Link</a></li> -->
-      </ul>
-      <br>
+<head>
+  <style>
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
 
-      <p class="info-description">
-        Assessing sustainability of electricity generation technologies using multi-criteria decision methods like
-        WSM(Weighted Sum Model),
-        TOPSIS(Technique for Order Preference by Similarity to Ideal Solution), and AHP(Analytic Hierarchy Process).
-        These methods help select the most suitable technology based on specific criteria with
-        different weights, resulting in scores and rankings. Many types of decision methods are available, each with
-        unique characteristics and approaches for ranking technologies.
-      </p>
+    .portfolio-info {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .portfolio-info h2 {
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    .info-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .info-list li {
+      margin-bottom: 10px;
+    }
+
+    .info-list li a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    .info-list li a:hover {
+      text-decoration: underline;
+    }
+
+    .project-image {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="portfolio-info">
+        <h2>Analytical Hierarchy Process for Operations Research</h2>
+        <ul class="info-list">
+          <li><strong>Tech Stack: </strong>Python, Numpy, xlrd, Multi-criteria decision making, TOPSIS, WSM, AHP</li>
+          <li><strong>Repository URL: </strong><a href="https://github.com/adam951502/multi-criteria-decision-making-ahp" target="_blank">Link</a></li>
+          <li style="text-align: justify;">
+            <strong>Project Description:</strong>
+            <p>This project is an implementation of the Analytical Hierarchy Process (AHP), a framework for decision making that involves structuring a hierarchy from a given set of data. The project uses the AHP method to analyze operations research data from a provided Excel file. The data represents various factors to consider, including Levelized Cost of Electricity (LCOE), ability to respond to demand, efficiency, capacity factor, land use, environmental external costs, human health external costs, job creation, social acceptability, and external supply risk.</p>
+            <br>
+            <p>The script computes the weight of each factor using the AHP method, checks the consistency ratio to ensure it is below 0.1, and then calculates the final score for each factor.</p>
+            <br>
+            <p>The project also makes use of other multi-criteria decision methods such as WSM (Weighted Sum Model) and TOPSIS (Technique for Order Preference by Similarity to Ideal Solution) to assess the sustainability of electricity generation technologies. These methods help select the most suitable technology based on specific criteria with different weights, resulting in scores and rankings.</p>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
+</body>
+
+
+</html>
+
+
+
