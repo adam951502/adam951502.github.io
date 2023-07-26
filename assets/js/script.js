@@ -75,6 +75,7 @@ for (let i = 0; i < selectItems.length; i++) {
   });
 }
 
+
 // filter variables
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
@@ -272,47 +273,53 @@ function collapseAll() {
 }
 
 
-document.addEventListener('DOMContentLoaded', (event) => {
-  // Selectors for various parts of the document
-  const select = document.querySelector("[data-select]");
-  const selectValue = document.querySelector("[data-select-value]");
-  const filterBtns = document.querySelectorAll("[data-filter-btn]");
-  const filterItems = document.querySelectorAll("[data-filter-item]");
-  const selectItems = document.querySelectorAll("[data-select-item]");
+// section for license session
+// custom select variables for license
+const selectLic = document.querySelector("[data-select-lic]");
+const selectItemsLic = document.querySelectorAll("[data-select-item-lic]");
+const selectValueLic = document.querySelector("[data-select-value-lic]");
+const filterBtnLic = document.querySelectorAll("[data-filter-btn-lic]");
 
-  // Function to filter items based on the selected value
-  function filterFunc(selectedValue) {
-    filterItems.forEach(item => {
-      if (selectedValue === "all" || selectedValue === item.dataset.category) {
-        item.classList.add("active");
-      } else {
-        item.classList.remove("active");
-      }
-    });
+// add event to the select button for license
+selectLic.addEventListener("click", function () { elementToggleFunc(this); });
+
+// add event to all select items for license
+for (let i = 0; i < selectItemsLic.length; i++) {
+  selectItemsLic[i].addEventListener("click", function () {
+    let selectedValue = this.innerText.toLowerCase();
+    selectValueLic.innerText = this.innerText;
+    elementToggleFunc(selectLic);
+    filterFuncLic(selectedValue);
+  });
+}
+
+// filter variables for license
+const filterItemsLic = document.querySelectorAll("[data-filter-item-lic]");
+
+// filter function for license
+const filterFuncLic = function (selectedValue) {
+  for (let i = 0; i < filterItemsLic.length; i++) {
+    if (selectedValue === "all") {
+      filterItemsLic[i].classList.add("active");
+    } else if (selectedValue === filterItemsLic[i].dataset.category) {
+      filterItemsLic[i].classList.add("active");
+    } else {
+      filterItemsLic[i].classList.remove("active");
+    }
   }
+}
 
-  // Event listener for select click
-  select.addEventListener("click", function () {
-    this.classList.toggle("active");
-  });
+// add event in all filter button items for license
+let lastClickedBtnLic = filterBtnLic[0];
 
-  // Event listeners for select items
-  selectItems.forEach(item => {
-    item.addEventListener("click", function () {
-      selectValue.innerText = this.innerText;
-      select.classList.remove("active");
-      filterFunc(this.innerText.toLowerCase());
-    });
-  });
+for (let i = 0; i < filterBtnLic.length; i++) {
+  filterBtnLic[i].addEventListener("click", function () {
+    let selectedValue = this.innerText.toLowerCase();
+    selectValueLic.innerText = this.innerText;
+    filterFuncLic(selectedValue);
 
-  // Event listeners for filter buttons
-  filterBtns.forEach(btn => {
-    btn.addEventListener("click", function () {
-      const selectedValue = this.innerText.toLowerCase();
-      selectValue.innerText = this.innerText;
-      filterFunc(selectedValue);
-      filterBtns.forEach(btn => btn.classList.remove("active"));
-      this.classList.add("active");
-    });
+    lastClickedBtnLic.classList.remove("active");
+    this.classList.add("active");
+    lastClickedBtnLic = this;
   });
-});
+}
