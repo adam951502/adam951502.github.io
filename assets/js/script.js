@@ -323,3 +323,89 @@ for (let i = 0; i < filterBtnLic.length; i++) {
     lastClickedBtnLic = this;
   });
 }
+
+/* 
+// blog function
+*/
+
+// Function to fetch and display a specific blog post
+function fetchBlogPost(filename) {
+  // Fetch the blog post file
+  fetch(`assets/blogs/${filename}`)
+    .then(response => response.text())
+    .then(data => {
+      // Convert the Markdown to HTML and display it
+      const converter = new showdown.Converter();
+      const html = converter.makeHtml(data);
+
+      // Create a back button
+      const backButton = document.createElement('button');
+      backButton.textContent = 'Back to blog list';
+
+      const blogPostsList = document.querySelector('.blog-posts-list');
+      blogPostsList.innerHTML = `<li class="blog-post-item">${html}</li>`;
+
+      // Append the back button to the blog posts list
+      blogPostsList.appendChild(backButton);
+
+      // Add event listener to the back button
+      backButton.addEventListener('click', fetchBlogIndex);
+    });
+}
+
+
+// Function to display the list of blog posts
+function displayBlogPosts(blogIndex) {
+  const blogPostsList = document.querySelector('.blog-posts-list');
+
+  // Clear the blog posts list
+  blogPostsList.innerHTML = '';
+
+  for (let post of blogIndex) {
+    // Create an element for the blog post
+    const postElement = document.createElement('li');
+    postElement.classList.add('blog-post-item');
+    postElement.innerHTML = `
+      <a href="#">
+        <figure class="blog-banner-box">
+          <img src="${post.image}" alt="${post.title}" loading="lazy">
+        </figure>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <p class="blog-category">${post.keywords.join(', ')}</p>
+            <time datetime="${post.date}">${post.date}</time>
+          </div>
+          <h3 class="h3 blog-item-title">${post.title}</h3>
+        </div>
+      </a>
+    `;
+
+    // Add an event listener to fetch and display the full blog post when clicked
+    postElement.querySelector('a').addEventListener('click', (event) => {
+      event.preventDefault();
+      fetchBlogPost(post.filename);
+    });
+
+    // Add the blog post element to the blog posts list
+    blogPostsList.appendChild(postElement);
+  }
+}
+
+// Function to fetch the blog index and display the blog posts
+function fetchBlogIndex() {
+  fetch('assets/blogs/blog_index.json')
+    .then(response => response.json())
+    .then(data => displayBlogPosts(data));
+}
+
+// Fetch the blog index and display the blog posts when the page is loaded
+fetchBlogIndex();
+
+// Also fetch the blog index and display the blog posts when the "Blog" button is clicked
+document.querySelector('button[data-nav-link="Blog"]').addEventListener('click', (event) => {
+  event.preventDefault();
+  fetchBlogIndex();
+});
+
+
+
