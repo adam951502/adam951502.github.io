@@ -1,0 +1,14 @@
+[
+  {
+    "title": "My First Blog Post",
+    "date": "2023-07-30",
+    "keywords": ["first", "introduction"],
+    "filename": "My First Blog Post.md"
+  },
+  {
+    "title": "My Second Blog Post",
+    "date": "2023-08-01",
+    "keywords": ["second", "follow-up"],
+    "filename": "My Second Blog Post.md"
+  }
+]
