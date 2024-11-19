@@ -2433,67 +2433,41 @@ textarea.form-input::-webkit-resizer {
   display: block;
 }
 
-.resume-img {
+.resume-container {
   position: relative;
   width: 100%;
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 15px;
 }
 
-.resume-img::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  z-index: 1;
-  transition: var(--transition-1);
-}
-
-.resume-item a:hover .resume-img::before {
-  background: hsla(0, 0%, 0%, 0.5);
-}
-
-.resume-item-icon-box {
-  --scale: 0.8;
-  background: var(--jet);
-  color: var(--orange-yellow-crayola);
+.resume-title-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(var(--scale));
-  font-size: 20px;
-  padding: 18px;
-  border-radius: 12px;
-  opacity: 0;
-  z-index: 1;
-  transition: var(--transition-1);
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 2;
+  pointer-events: none; /* Prevents the overlay from interfering with click on the image */
 }
 
-.resume-item a:hover .resume-item-icon-box {
-  --scale: 1;
-  opacity: 1;
-}
-
-.resume-img img {
+.resume-img {
   width: 100%;
   height: auto;
-  object-fit: cover;
-  transition: var(--transition-1);
+  border-radius: 16px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.resume-item a:hover img {
-  transform: scale(1.1);
+.resume-container:hover .resume-img {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
 }
 
-.resume-title {
-  color: var(--white-2);
-  font-size: var(--fs-5);
-  font-weight: var(--fw-400);
-  text-transform: capitalize;
-  line-height: 1.3;
-  text-align: center;
+.resume-container:hover .resume-title-overlay {
+  background: rgba(45, 45, 45, 0.8);
 }
+
