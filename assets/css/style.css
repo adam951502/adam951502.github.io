@@ -2415,3 +2415,85 @@ textarea.form-input::-webkit-resizer {
   z-index: 1;
   transition: var(--transition-1);
 }
+
+/* Resume */
+.resume-section {
+  margin-bottom: 30px;
+}
+
+.resume-list {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.resume-item {
+  width: 48%;
+  display: block;
+}
+
+.resume-img {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.resume-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 1;
+  transition: var(--transition-1);
+}
+
+.resume-item a:hover .resume-img::before {
+  background: hsla(0, 0%, 0%, 0.5);
+}
+
+.resume-item-icon-box {
+  --scale: 0.8;
+  background: var(--jet);
+  color: var(--orange-yellow-crayola);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(var(--scale));
+  font-size: 20px;
+  padding: 18px;
+  border-radius: 12px;
+  opacity: 0;
+  z-index: 1;
+  transition: var(--transition-1);
+}
+
+.resume-item a:hover .resume-item-icon-box {
+  --scale: 1;
+  opacity: 1;
+}
+
+.resume-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: var(--transition-1);
+}
+
+.resume-item a:hover img {
+  transform: scale(1.1);
+}
+
+.resume-title {
+  color: var(--white-2);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-400);
+  text-transform: capitalize;
+  line-height: 1.3;
+  text-align: center;
+}
