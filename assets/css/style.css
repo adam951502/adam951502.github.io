@@ -2239,12 +2239,26 @@ textarea.form-input::-webkit-resizer {
   z-index: -1;
 }
 
-.skill-icon-box {
+/* .skill-icon-box {
   margin-bottom: 10px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
+} */
+
+.skill-icon-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 12px;
+  justify-items: center;
+  align-items: center;
+}
+
+.skill-icon-box img {
+  max-width: 60px;
+  max-height: 60px;
+  object-fit: contain;
 }
 
 .skill-icon-box a {
