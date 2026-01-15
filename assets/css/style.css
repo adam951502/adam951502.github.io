@@ -457,6 +457,17 @@ p {
   align-items: center;
 }
 
+.summary-icons .icon-badge,
+.summary-icons .pill {
+  margin: 0;
+}
+
+.summary-icons .pill {
+  height: 36px;
+  padding: 0 12px;
+  line-height: 1.2;
+}
+
 .inline-details {
   margin-top: 10px;
 }
@@ -547,6 +558,13 @@ p {
   color: var(--accent);
   font-size: 20px;
   box-shadow: var(--shadow-soft);
+}
+
+.project-top .pill {
+  margin: 0;
+  height: 40px;
+  padding: 0 12px;
+  line-height: 1.2;
 }
 
 .license-img {
