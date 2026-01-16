@@ -1,4 +1,5 @@
 (function () {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
   const projectCards = Array.from(document.querySelectorAll('#projectGrid .project'));
 
@@ -24,6 +25,30 @@
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  const navSections = navLinks
+    .map((link) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return null;
+      return { link, target };
+    })
+    .filter(Boolean);
+
+  const highlightSection = () => {
+    if (!navSections.length) return;
+    const scrollPos = window.scrollY + 140;
+    let activeLink = null;
+
+    navSections.forEach(({ link, target }) => {
+      const top = target.offsetTop;
+      const bottom = top + target.offsetHeight;
+      if (scrollPos >= top && scrollPos < bottom) {
+        activeLink = link;
+      }
+    });
+
+    navLinks.forEach((link) => link.classList.toggle('active', link === activeLink));
+  };
 
   // License filters
   const licenseButtons = Array.from(document.querySelectorAll('[data-license-filter]'));
@@ -86,17 +111,129 @@
     applyTheme(nextTheme);
   });
 
+  const heroCard = document.querySelector('.hero-card');
+  const heroGrid = document.querySelector('.hero-grid');
+  const glowLayer = heroCard?.querySelector('.glow');
+
+  if (heroCard && heroGrid && !prefersReducedMotion) {
+    const resetTilt = () => {
+      heroCard.style.transform = 'perspective(1100px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+      if (glowLayer) {
+        glowLayer.style.transform = 'translate3d(0, 0, 0)';
+      }
+    };
+
+    heroGrid.addEventListener('pointermove', (event) => {
+      const rect = heroGrid.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      const rotateY = x * 12;
+      const rotateX = -y * 10;
+      heroCard.style.transform = `perspective(1100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(8px)`;
+      if (glowLayer) {
+        glowLayer.style.transform = `translate3d(${x * 16}px, ${y * 16}px, 0)`;
+      }
+    });
+
+    heroGrid.addEventListener('pointerleave', resetTilt);
+  }
+
+  const siteHeader = document.querySelector('.site-header');
   // Back to top button
   const backToTop = document.getElementById('backToTop');
   const handleScroll = () => {
-    if (!backToTop) return;
-    backToTop.hidden = window.scrollY < 200;
+    siteHeader?.classList.toggle('scrolled', window.scrollY > 12);
+    highlightSection();
+    if (backToTop) {
+      backToTop.hidden = window.scrollY < 200;
+    }
   };
 
   handleScroll();
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleScroll, { passive: true });
 
   backToTop?.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  // Bookmark quick nav
+  const bookmarkToggle = document.querySelector('.bookmark-toggle');
+  const bookmarkMenu = document.getElementById('bookmarkMenu');
+  const bookmarkLinks = bookmarkMenu ? Array.from(bookmarkMenu.querySelectorAll('a')) : [];
+  let bookmarkCloseTimer;
+
+  const closeBookmarkMenu = () => {
+    if (!bookmarkMenu || !bookmarkToggle) return;
+    bookmarkMenu.classList.remove('is-visible');
+    bookmarkToggle.setAttribute('aria-expanded', 'false');
+    if (bookmarkCloseTimer) {
+      clearTimeout(bookmarkCloseTimer);
+    }
+    bookmarkCloseTimer = window.setTimeout(() => {
+      bookmarkMenu.hidden = true;
+    }, 250);
+  };
+
+  const openBookmarkMenu = () => {
+    if (!bookmarkMenu || !bookmarkToggle) return;
+    if (bookmarkCloseTimer) {
+      clearTimeout(bookmarkCloseTimer);
+    }
+    bookmarkMenu.hidden = false;
+    requestAnimationFrame(() => {
+      bookmarkMenu.classList.add('is-visible');
+      bookmarkToggle.setAttribute('aria-expanded', 'true');
+    });
+  };
+
+  bookmarkToggle?.addEventListener('click', () => {
+    if (!bookmarkMenu) return;
+    const isOpen = bookmarkToggle.getAttribute('aria-expanded') === 'true';
+    if (isOpen) {
+      closeBookmarkMenu();
+    } else {
+      openBookmarkMenu();
+    }
+  });
+
+  bookmarkLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      closeBookmarkMenu();
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!bookmarkMenu || !bookmarkToggle) return;
+    if (bookmarkMenu.hidden) return;
+    const clickTarget = event.target;
+    if (!bookmarkMenu.contains(clickTarget) && !bookmarkToggle.contains(clickTarget)) {
+      closeBookmarkMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeBookmarkMenu();
+    }
+  });
+
+  // Position bookmark menu above to-top when both exist
+  const adjustBookmarkPosition = () => {
+    const toTop = document.getElementById('backToTop');
+    if (!bookmarkMenu || !bookmarkToggle || !toTop) return;
+    const toggleRect = bookmarkToggle.getBoundingClientRect();
+    const toTopRect = toTop.getBoundingClientRect();
+    const overlap = toggleRect.bottom > toTopRect.top - 8 && Math.abs(toggleRect.right - toTopRect.right) < 80;
+    if (overlap) {
+      bookmarkToggle.style.bottom = '84px';
+      bookmarkMenu.style.bottom = '138px';
+    }
+  };
+
+  adjustBookmarkPosition();
+  window.addEventListener('resize', adjustBookmarkPosition);
 })();

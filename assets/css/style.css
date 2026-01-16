@@ -147,12 +147,18 @@ p {
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
   box-shadow: var(--shadow-soft);
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, padding 0.25s ease;
 }
 
 :root[data-theme='light'] .site-header {
   background: rgba(255, 255, 255, 0.82);
   border-bottom-color: rgba(0, 32, 64, 0.08);
+}
+
+.site-header.scrolled {
+  padding: 10px 16px;
+  box-shadow: var(--shadow-strong);
+  transform: translateY(-2px);
 }
 
 .brand {
@@ -198,12 +204,19 @@ p {
   padding: 8px 10px;
   color: var(--muted);
   border-radius: 8px;
-  transition: color 0.2s ease, background 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .site-nav a:hover {
   color: var(--text);
   background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+.site-nav a.active {
+  color: var(--text);
+  background: rgba(126, 249, 192, 0.08);
+  box-shadow: inset 0 -2px 0 var(--accent);
 }
 
 .header-actions {
@@ -329,6 +342,8 @@ p {
   backdrop-filter: blur(14px);
   position: relative;
   overflow: hidden;
+  will-change: transform;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero-card::before {
@@ -891,6 +906,105 @@ p {
   display: none !important;
 }
 
+.bookmark-toggle {
+  position: fixed;
+  bottom: 84px;
+  right: 18px;
+  z-index: 9;
+  padding: 10px 12px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-strong);
+  background: linear-gradient(135deg, rgba(126, 249, 192, 0.16), rgba(123, 183, 255, 0.16));
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+:root[data-theme='light'] .bookmark-toggle {
+  background: linear-gradient(135deg, rgba(31, 195, 139, 0.14), rgba(31, 125, 220, 0.14));
+}
+
+.bookmark-menu {
+  position: fixed;
+  bottom: 138px;
+  right: 18px;
+  width: 230px;
+  padding: 12px 12px 14px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow-strong);
+  z-index: 9;
+  opacity: 0;
+  transform: translateY(12px) scale(0.92);
+  pointer-events: none;
+  transform-origin: bottom right;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.bookmark-menu::before {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  right: 18px;
+  width: 14px;
+  height: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.bookmark-menu .label {
+  margin: 0 0 8px;
+}
+
+.bookmark-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.bookmark-menu.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  animation: dockPop 0.22s ease;
+}
+
+.bookmark-menu a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.bookmark-menu a:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  background: rgba(126, 249, 192, 0.08);
+}
+
+@keyframes dockPop {
+  0% {
+    transform: translateY(12px) scale(0.9);
+  }
+  60% {
+    transform: translateY(-2px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes pulseGlow {
   0% {
     transform: scale(1);
@@ -903,6 +1017,14 @@ p {
   100% {
     transform: scale(1);
     opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -939,18 +1061,19 @@ p {
   .site-header {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 10px;
+    gap: 10px;
+    padding: 12px 14px;
   }
 
   .brand-mark {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
   }
 
   .brand-name {
-    font-size: 15px;
+    font-size: 17px;
+    line-height: 1.2;
   }
 
   .brand-role {
@@ -962,11 +1085,11 @@ p {
   }
 
   .site-nav {
-    gap: 6px;
+    gap: 10px;
     overflow-x: auto;
     white-space: nowrap;
     flex-wrap: nowrap;
-    padding: 4px 0;
+    padding: 8px 0;
     margin: 0;
     scroll-snap-type: x mandatory;
     position: relative;
@@ -976,8 +1099,9 @@ p {
   }
 
   .site-nav a {
-    padding: 6px 8px;
-    font-size: 13px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-weight: 600;
     scroll-snap-align: start;
     display: inline-flex;
     align-items: center;
@@ -986,14 +1110,14 @@ p {
   .header-actions {
     width: auto;
     justify-content: flex-end;
-    gap: 6px;
+    gap: 8px;
     flex: 0 0 auto;
     flex-shrink: 0;
   }
 
   .header-actions .btn {
-    padding: 6px 8px;
-    font-size: 12px;
+    padding: 8px 11px;
+    font-size: 13px;
   }
 
   .theme-toggle {
