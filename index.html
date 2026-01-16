@@ -43,6 +43,9 @@
     <div class="header-actions">
       <a class="btn ghost" href="assets/resume/CV_Adam_20250527.pdf" target="_blank" rel="noopener">Resume</a>
       <a class="btn primary" href="mailto:adam951502@gmail.com">Let's talk</a>
+      <button class="btn ghost theme-toggle" type="button" aria-label="Toggle theme">
+        <i class="ri-sun-line" aria-hidden="true"></i><span class="theme-toggle-label">Light</span>
+      </button>
     </div>
   </header>
 
@@ -179,8 +182,8 @@
               <h3>MSc Sustainable Systems Engineering - University of Freiburg</h3>
             </div>
             <div class="summary-icons">
-              <i class="ri-graduation-cap-line icon-badge small" aria-hidden="true"></i>
               <span class="pill">MSc</span>
+              <img class="icon-badge school-logo" src="assets/images/uni.png" alt="University of Freiburg logo">
             </div>
           </summary>
           <div class="disclosure-body">
@@ -195,13 +198,13 @@
               <h3>MSc Graduate Institute of Automation and Control - NTUST</h3>
             </div>
             <div class="summary-icons">
-              <i class="ri-graduation-cap-line icon-badge small" aria-hidden="true"></i>
               <span class="pill">MSc</span>
+              <img class="icon-badge school-logo" src="assets/images/NTUST_logo.png" alt="NTUST logo">
             </div>
           </summary>
           <div class="disclosure-body">
             <p>Completed required coursework; admitted to Freiburg to continue thesis and degree.</p>
-            <p class="muted">Strengthened control systems, automation, and applied research skills.</p>
+            <p class="muted">Strengthened control systems, automation, and applied research skills; accepted to continue MSc thesis in Freiburg.</p>
           </div>
         </details>
         <details class="timeline-card">
@@ -211,8 +214,8 @@
               <h3>BSc Mechanical Engineering - Chang Gung University</h3>
             </div>
             <div class="summary-icons">
-              <i class="ri-graduation-cap-line icon-badge small" aria-hidden="true"></i>
               <span class="pill">BSc</span>
+              <img class="icon-badge school-logo" src="assets/images/cgu.png" alt="Chang Gung University logo">
             </div>
           </summary>
           <div class="disclosure-body">
@@ -741,40 +744,80 @@
       <div class="section-heading">
         <p class="eyebrow">Skills</p>
         <h2>Toolbox</h2>
+        <p class="muted">Instruments I reach for most when shipping AI and data products.</p>
       </div>
       <div class="skills-grid">
         <div class="skill-card">
-          <p class="label">AI & GenAI</p>
+          <div class="skill-top">
+            <div class="skill-icon"><i class="ri-robot-2-line" aria-hidden="true"></i></div>
+            <div>
+              <p class="label">AI & GenAI</p>
+              <p class="skill-note">Copilots, eval, and safety rails.</p>
+            </div>
+          </div>
+          <div class="skill-meter" aria-hidden="true"><span style="width: 90%"></span></div>
           <div class="chips">
-            <span class="chip">LangChain</span><span class="chip">LlamaIndex</span><span class="chip">RAG</span><span class="chip">Prompt Ops</span><span class="chip">Evaluation</span>
+            <span class="chip chip-icon"><img src="assets/images/skill-icons/langchain.svg" alt="LangChain" loading="lazy"><span>LangChain</span></span><span class="chip chip-icon"><img src="assets/images/skill-icons/langgraph.svg" alt="LangGraph" loading="lazy"><span>LangGraph</span></span><span class="chip chip-icon"><img src="assets/images/skill-icons/llamaindex.png" alt="LlamaIndex" loading="lazy"><span>LlamaIndex</span></span><span class="chip chip-icon"><i class="ri-database-2-line" aria-hidden="true"></i><span>RAG</span></span><span class="chip chip-icon"><i class="ri-terminal-line" aria-hidden="true"></i><span>Prompt Ops</span></span><span class="chip chip-icon"><i class="ri-checkbox-circle-line" aria-hidden="true"></i><span>Evaluation</span></span>
           </div>
         </div>
         <div class="skill-card">
-          <p class="label">Engineering</p>
+          <div class="skill-top">
+            <div class="skill-icon"><i class="ri-terminal-window-line" aria-hidden="true"></i></div>
+            <div>
+              <p class="label">Engineering</p>
+              <p class="skill-note">APIs, delivery, and observability.</p>
+            </div>
+          </div>
+          <div class="skill-meter" aria-hidden="true"><span style="width: 86%"></span></div>
           <div class="chips">
-            <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">GitHub Actions</span>
+            <span class="chip chip-icon"><img src="assets/images/skill-icons/python.svg" alt="" loading="lazy"><span>Python</span></span><span class="chip chip-icon"><img src="assets/images/skill-icons/fastapi.svg" alt="" loading="lazy"><span>FastAPI</span></span><span class="chip chip-icon"><img src="assets/images/skill-icons/flask.svg" alt="" loading="lazy"><span>Flask</span></span><span class="chip chip-icon"><img src="assets/images/icon-docker.svg" alt="" loading="lazy"><span>Docker</span></span><span class="chip chip-icon"><i class="ri-loop-right-line" aria-hidden="true"></i><span>CI/CD</span></span><span class="chip chip-icon"><img src="assets/images/skill-github-action.svg" alt="" loading="lazy"><span>GitHub Actions</span></span>
           </div>
         </div>
         <div class="skill-card">
-          <p class="label">Data & Semantics</p>
+          <div class="skill-top">
+            <div class="skill-icon"><i class="ri-database-2-line" aria-hidden="true"></i></div>
+            <div>
+              <p class="label">Data & Semantics</p>
+              <p class="skill-note">Pipelines, graphs, and analytics.</p>
+            </div>
+          </div>
+          <div class="skill-meter" aria-hidden="true"><span style="width: 88%"></span></div>
           <div class="chips">
-            <span class="chip">ETL</span><span class="chip">SPARQL</span><span class="chip">Knowledge Graphs</span><span class="chip">SQL</span><span class="chip">Pandas</span>
+            <span class="chip chip-icon"><i class="ri-swap-box-line" aria-hidden="true"></i><span>ETL</span></span><span class="chip chip-icon"><i class="ri-article-line" aria-hidden="true"></i><span>SPARQL</span></span><span class="chip chip-icon"><i class="ri-node-tree" aria-hidden="true"></i><span>GraphDB</span></span><span class="chip chip-icon"><i class="ri-bubble-chart-line" aria-hidden="true"></i><span>Neo4j</span></span><span class="chip chip-icon"><i class="ri-share-box-line" aria-hidden="true"></i><span>Knowledge Graphs</span></span><span class="chip chip-icon"><i class="ri-database-2-line" aria-hidden="true"></i><span>SQL</span></span><span class="chip chip-icon"><img src="assets/images/skill-icons/pandas.svg" alt="" loading="lazy"><span>Pandas</span></span>
           </div>
         </div>
         <div class="skill-card">
-          <p class="label">Product & Delivery</p>
+          <div class="skill-top">
+            <div class="skill-icon"><i class="ri-compass-3-line" aria-hidden="true"></i></div>
+            <div>
+              <p class="label">Product & Delivery</p>
+              <p class="skill-note">Roadmaps, stakeholders, and launch.</p>
+            </div>
+          </div>
+          <div class="skill-meter" aria-hidden="true"><span style="width: 82%"></span></div>
           <div class="chips">
-            <span class="chip">Agile</span><span class="chip">Jira</span><span class="chip">Roadmapping</span><span class="chip">Stakeholder mgmt.</span>
+            <span class="chip chip-icon"><i class="ri-run-line" aria-hidden="true"></i><span>Agile</span></span><span class="chip chip-icon"><img src="assets/images/skill-icons/jira.svg" alt="" loading="lazy"><span>Jira</span></span><span class="chip chip-icon"><i class="ri-map-pin-line" aria-hidden="true"></i><span>Roadmapping</span></span><span class="chip chip-icon"><i class="ri-team-line" aria-hidden="true"></i><span>Stakeholder mgmt.</span></span>
           </div>
         </div>
         <div class="skill-card">
-          <p class="label">Mechanical</p>
+          <div class="skill-top">
+            <div class="skill-icon"><i class="ri-tools-line" aria-hidden="true"></i></div>
+            <div>
+              <p class="label">Mechanical</p>
+              <p class="skill-note">Simulation, CAD, and testing.</p>
+            </div>
+          </div>
+          <div class="skill-meter" aria-hidden="true"><span style="width: 78%"></span></div>
           <div class="chips">
-            <span class="chip">FEM</span><span class="chip">LS-DYNA</span><span class="chip">CAD</span><span class="chip">Simulation</span>
+            <span class="chip chip-icon"><i class="ri-box-3-line" aria-hidden="true"></i><span>FEM</span></span><span class="chip chip-icon"><img src="assets/images/skill-icons/ls-dyna.png" alt="LS-DYNA" loading="lazy"><span>LS-DYNA</span></span><span class="chip chip-icon"><i class="ri-compasses-2-line" aria-hidden="true"></i><span>CAD</span></span><span class="chip chip-icon"><i class="ri-3d-cube-line" aria-hidden="true"></i><span>Simulation</span></span>
           </div>
         </div>
       </div>
     </section>
+
+    <button id="backToTop" class="btn ghost to-top" type="button" aria-label="Back to top" hidden>
+      <i class="ri-arrow-up-line" aria-hidden="true"></i>
+    </button>
 
     <section id="contact" class="section contact">
       <div class="section-heading">

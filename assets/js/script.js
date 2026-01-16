@@ -42,8 +42,8 @@
   });
 
   // Project cards: default to a compact view with toggle
-  const projectCards = Array.from(document.querySelectorAll('.card.project'));
-  projectCards.forEach((card) => {
+  const projectToggleCards = Array.from(document.querySelectorAll('.card.project'));
+  projectToggleCards.forEach((card) => {
     card.classList.add('collapsed');
     const body = card.querySelector('.project-body');
     if (!body) return;
@@ -60,5 +60,43 @@
     });
 
     body.appendChild(toggle);
+  });
+
+  // Theme toggle
+  const themeToggle = document.querySelector('.theme-toggle');
+  const themeToggleLabel = document.querySelector('.theme-toggle-label');
+  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  const savedTheme = localStorage.getItem('theme');
+  const initialTheme = savedTheme || (prefersLight ? 'light' : 'dark');
+
+  const applyTheme = (theme) => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+    if (themeToggleLabel && themeToggle) {
+      const isLight = theme === 'light';
+      themeToggleLabel.textContent = isLight ? 'Light' : 'Dark';
+      themeToggle.querySelector('i').className = isLight ? 'ri-sun-line' : 'ri-moon-line';
+    }
+  };
+
+  applyTheme(initialTheme);
+
+  themeToggle?.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    applyTheme(nextTheme);
+  });
+
+  // Back to top button
+  const backToTop = document.getElementById('backToTop');
+  const handleScroll = () => {
+    if (!backToTop) return;
+    backToTop.hidden = window.scrollY < 200;
+  };
+
+  handleScroll();
+  window.addEventListener('scroll', handleScroll);
+
+  backToTop?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 })();
