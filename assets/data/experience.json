@@ -1,0 +1,112 @@
+[
+  {
+    "id": "fraunhofer-2021",
+    "datesKey": "experience.fraunhofer2021.dates",
+    "titleKey": "experience.fraunhofer2021.title",
+    "pillKey": "experience.pills.fulltime",
+    "pillIcon": "ri-brain-line",
+    "descKey": "experience.fraunhofer2021.desc",
+    "listKey": "experience.fraunhofer2021.list",
+    "open": true,
+    "inlineOpen": true
+  },
+  {
+    "id": "aurore",
+    "datesKey": "experience.aurore.dates",
+    "titleKey": "experience.aurore.title",
+    "pillKey": "experience.pills.founder",
+    "pillIcon": "ri-store-2-line",
+    "descKey": "experience.aurore.desc",
+    "listKey": "experience.aurore.list",
+    "open": true,
+    "inlineOpen": true
+  },
+  {
+    "id": "fraunhofer-2021spring",
+    "datesKey": "experience.fraunhofer2021spring.dates",
+    "titleKey": "experience.fraunhofer2021spring.title",
+    "pillKey": "experience.pills.research",
+    "pillIcon": "ri-flask-line",
+    "descKey": "experience.fraunhofer2021spring.desc",
+    "listKey": "experience.fraunhofer2021spring.list",
+    "open": false,
+    "inlineOpen": true
+  },
+  {
+    "id": "fraunhofer-2020",
+    "datesKey": "experience.fraunhofer2020.dates",
+    "titleKey": "experience.fraunhofer2020.title",
+    "pillKey": "experience.pills.research",
+    "pillIcon": "ri-flask-line",
+    "descKey": "experience.fraunhofer2020.desc",
+    "listKey": "experience.fraunhofer2020.list",
+    "open": false,
+    "inlineOpen": true
+  },
+  {
+    "id": "cytena",
+    "datesKey": "experience.cytena.dates",
+    "titleKey": "experience.cytena.title",
+    "pillKey": "experience.pills.internship",
+    "pillIcon": "ri-flask-line",
+    "descKey": "experience.cytena.desc",
+    "listKey": "experience.cytena.list",
+    "open": false,
+    "inlineOpen": true
+  },
+  {
+    "id": "inatech",
+    "datesKey": "experience.inatech.dates",
+    "titleKey": "experience.inatech.title",
+    "pillKey": "experience.pills.research",
+    "pillIcon": "ri-flask-line",
+    "descKey": "experience.inatech.desc",
+    "listKey": "experience.inatech.list",
+    "open": false,
+    "inlineOpen": true
+  },
+  {
+    "id": "taiwan-tech",
+    "datesKey": "experience.taiwanTech.dates",
+    "titleKey": "experience.taiwanTech.title",
+    "pillKey": "experience.pills.research",
+    "pillIcon": "ri-flask-line",
+    "descKey": "experience.taiwanTech.desc",
+    "listKey": "experience.taiwanTech.list",
+    "open": false,
+    "inlineOpen": true
+  },
+  {
+    "id": "tutor",
+    "datesKey": "experience.tutor.dates",
+    "titleKey": "experience.tutor.title",
+    "pillKey": "experience.pills.teaching",
+    "pillIcon": "ri-team-line",
+    "descKey": "experience.tutor.desc",
+    "listKey": "experience.tutor.list",
+    "open": false,
+    "inlineOpen": true
+  },
+  {
+    "id": "cgu-2015",
+    "datesKey": "experience.cgu2015.dates",
+    "titleKey": "experience.cgu2015.title",
+    "pillKey": "experience.pills.research",
+    "pillIcon": "ri-flask-line",
+    "descKey": "experience.cgu2015.desc",
+    "listKey": "experience.cgu2015.list",
+    "open": false,
+    "inlineOpen": true
+  },
+  {
+    "id": "yiming",
+    "datesKey": "experience.yiming.dates",
+    "titleKey": "experience.yiming.title",
+    "pillKey": "experience.pills.internship",
+    "pillIcon": "ri-tools-line",
+    "descKey": "experience.yiming.desc",
+    "listKey": "experience.yiming.list",
+    "open": false,
+    "inlineOpen": true
+  }
+]

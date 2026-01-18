@@ -1,0 +1,178 @@
+[
+  {
+    "id": "production-copilot",
+    "category": "genai",
+    "pillKey": "projects.pills.genai",
+    "icon": "ri-robot-2-line",
+    "image": "assets/images/project-production-copilot.png",
+    "titleKey": "projects.production.title",
+    "descKey": "projects.production.desc",
+    "datesKey": "projects.production.dates",
+    "chips": ["RAG", "LangChain", "FastAPI"]
+  },
+  {
+    "id": "chatbot",
+    "category": "genai",
+    "pillKey": "projects.pills.genai",
+    "icon": "ri-robot-2-line",
+    "image": "assets/images/project-chatbot.png",
+    "titleKey": "projects.chatbot.title",
+    "descKey": "projects.chatbot.desc",
+    "datesKey": "projects.chatbot.dates",
+    "chips": ["Agents", "Guardrails", "UX"]
+  },
+  {
+    "id": "heraklion",
+    "category": "data",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-heraklion-4-3.jpg",
+    "titleKey": "projects.heraklion.title",
+    "descKey": "projects.heraklion.desc",
+    "datesKey": "projects.heraklion.dates",
+    "chips": ["Knowledge Graph", "SPARQL", "ETL"]
+  },
+  {
+    "id": "sustrace",
+    "category": "data",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-sustrace.png",
+    "titleKey": "projects.sustrace.title",
+    "descKey": "projects.sustrace.desc",
+    "datesKey": "projects.sustrace.dates",
+    "chips": ["Python", "APIs", "Dashboards"]
+  },
+  {
+    "id": "ecommerce",
+    "category": "web",
+    "pillKey": "projects.pills.web",
+    "icon": "ri-global-line",
+    "image": "assets/images/project-aurore-website.png",
+    "titleKey": "projects.ecommerce.title",
+    "descKey": "projects.ecommerce.desc",
+    "datesKey": "projects.ecommerce.dates",
+    "chips": ["E-commerce", "Analytics", "Growth"]
+  },
+  {
+    "id": "impact",
+    "category": "mechanics",
+    "pillKey": "projects.pills.mechanics",
+    "icon": "ri-tools-line",
+    "image": "assets/images/project-impact.gif",
+    "titleKey": "projects.impact.title",
+    "descKey": "projects.impact.desc",
+    "datesKey": "projects.impact.dates",
+    "chips": ["FEM", "Python", "Simulation"]
+  },
+  {
+    "id": "union",
+    "category": "web",
+    "pillKey": "projects.pills.web",
+    "icon": "ri-global-line",
+    "image": "assets/images/project-union-website.png",
+    "titleKey": "projects.union.title",
+    "descKey": "projects.union.desc",
+    "datesKey": "projects.union.dates",
+    "chips": ["Landing", "Content", "Multi-language"]
+  },
+  {
+    "id": "xor",
+    "category": "data",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-nns.png",
+    "titleKey": "projects.xor.title",
+    "descKey": "projects.xor.desc",
+    "datesKey": "projects.xor.dates",
+    "chips": ["Neural Nets", "Python", "Demo"]
+  },
+  {
+    "id": "hybrid-joint",
+    "category": "mechanics",
+    "pillKey": "projects.pills.mechanics",
+    "icon": "ri-tools-line",
+    "image": "assets/images/project-master-thesis.png",
+    "titleKey": "projects.hybridJoint.title",
+    "descKey": "projects.hybridJoint.desc",
+    "datesKey": "projects.hybridJoint.dates",
+    "chips": ["LS-DYNA", "FEM", "Simulation"]
+  },
+  {
+    "id": "sustainability",
+    "category": "data",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-AHP-Tree.jpg",
+    "titleKey": "projects.sustainability.title",
+    "descKey": "projects.sustainability.desc",
+    "datesKey": "projects.sustainability.dates",
+    "chips": ["AHP", "Modeling", "Analysis"]
+  },
+  {
+    "id": "cyclic",
+    "category": "mechanics",
+    "pillKey": "projects.pills.mechanics",
+    "icon": "ri-tools-line",
+    "image": "assets/images/project-master-project.gif",
+    "titleKey": "projects.cyclicTest.title",
+    "descKey": "projects.cyclicTest.desc",
+    "datesKey": "projects.cyclicTest.dates",
+    "chips": ["Fatigue", "Testing", "Data"]
+  },
+  {
+    "id": "energy",
+    "category": "data",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-energy.png",
+    "titleKey": "projects.energy.title",
+    "descKey": "projects.energy.desc",
+    "datesKey": "projects.energy.dates",
+    "chips": ["Energy", "Analytics", "Python"]
+  },
+  {
+    "id": "solar",
+    "category": "data",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-pv.png",
+    "titleKey": "projects.solar.title",
+    "descKey": "projects.solar.desc",
+    "datesKey": "projects.solar.dates",
+    "chips": ["PV", "Lab", "Reporting"]
+  },
+  {
+    "id": "spectro",
+    "category": "data",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-ntust.jpg",
+    "titleKey": "projects.spectro.title",
+    "descKey": "projects.spectro.desc",
+    "datesKey": "projects.spectro.dates",
+    "chips": ["Signal", "MATLAB", "Analytics"]
+  },
+  {
+    "id": "injection",
+    "category": "mechanics",
+    "pillKey": "projects.pills.mechanics",
+    "icon": "ri-tools-line",
+    "image": "assets/images/project-injection.png",
+    "titleKey": "projects.injection.title",
+    "descKey": "projects.injection.desc",
+    "datesKey": "projects.injection.dates",
+    "chips": ["Manufacturing", "QA", "Operations"]
+  },
+  {
+    "id": "flight",
+    "category": "mechanics",
+    "pillKey": "projects.pills.mechanics",
+    "icon": "ri-tools-line",
+    "image": "assets/images/project-quadcopter.jpg",
+    "titleKey": "projects.flight.title",
+    "descKey": "projects.flight.desc",
+    "datesKey": "projects.flight.dates",
+    "chips": ["Control", "Embedded", "Flight"]
+  }
+]

@@ -26,25 +26,39 @@
     <div class="brand">
       <div class="brand-mark">AT</div>
       <div>
-        <p class="brand-name">Adam Tang</p>
-        <p class="brand-role">GenAI Engineer | Data Scientist</p>
+        <p class="brand-name" data-i18n="brand.name">Adam Tang</p>
+        <p class="brand-role" data-i18n="brand.role">GenAI Engineer | Data Scientist</p>
       </div>
     </div>
     <nav class="site-nav" aria-label="Primary">
-      <a href="#hero">Intro</a>
-      <a href="#focus">Focus</a>
-      <a href="#education">Education</a>
-      <a href="#licenses">Licenses</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+      <a href="#hero" data-i18n="nav.intro">Intro</a>
+      <a href="#focus" data-i18n="nav.focus">Focus</a>
+      <a href="#education" data-i18n="nav.education">Education</a>
+      <a href="#licenses" data-i18n="nav.licenses">Licenses</a>
+      <a href="#experience" data-i18n="nav.experience">Experience</a>
+      <a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#skills" data-i18n="nav.skills">Skills</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
     <div class="header-actions">
-      <a class="btn ghost" href="assets/resume/CV_Adam_20250527.pdf" target="_blank" rel="noopener">Resume</a>
-      <a class="btn primary" href="mailto:adam951502@gmail.com">Let's talk</a>
+      <div class="language-dropdown">
+        <button class="lang-toggle" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <span class="lang-icon-wrap">
+            <img src="assets/images/icon-i18n.png" alt="" class="lang-icon" loading="lazy">
+          </span>
+          <span class="lang-label" data-i18n="language.name.en">English</span>
+          <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+        </button>
+        <ul class="lang-menu" role="listbox" hidden>
+          <li><button type="button" class="lang-option" role="option" data-lang="en" data-i18n="language.name.en">English</button></li>
+          <li><button type="button" class="lang-option" role="option" data-lang="zh" data-i18n="language.name.zh">中文</button></li>
+          <li><button type="button" class="lang-option" role="option" data-lang="de" data-i18n="language.name.de">Deutsch</button></li>
+        </ul>
+      </div>
+      <a class="btn ghost" href="assets/resume/CV_Adam_20250527.pdf" target="_blank" rel="noopener" data-i18n="actions.resume">Resume</a>
+      <a class="btn primary" href="mailto:adam951502@gmail.com" data-i18n="actions.talk">Let's talk</a>
       <button class="btn ghost theme-toggle" type="button" aria-label="Toggle theme">
-        <i class="ri-sun-line" aria-hidden="true"></i><span class="theme-toggle-label">Light</span>
+        <i class="ri-sun-line" aria-hidden="true"></i><span class="theme-toggle-label" data-i18n="theme.light">Light</span>
       </button>
     </div>
   </header>
@@ -53,25 +67,25 @@
     <section id="hero" class="section hero">
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">GenAI Engineer | Data Scientist</p>
-          <h1>Adam Tang — focused builder across data science, software engineering, and delivery.</h1>
-          <p class="lede">I uncover insights, design resilient systems, and ship user-friendly experiences that keep teams decisive. Multicultural teams know me for pairing pragmatic execution with clear communication.</p>
+          <p class="eyebrow" data-i18n="hero.tagline">GenAI Engineer | Data Scientist</p>
+          <h1 data-i18n="hero.title">Adam Tang — focused builder across data science, software engineering, and delivery.</h1>
+          <p class="lede" data-i18n="hero.lede">I uncover insights, design resilient systems, and ship user-friendly experiences that keep teams decisive. Multicultural teams know me for pairing pragmatic execution with clear communication.</p>
           <div class="hero-actions">
-            <a class="btn primary" href="mailto:adam951502@gmail.com">Book a call</a>
-            <a class="btn ghost" href="assets/resume/CV_Adam_20250527.pdf" target="_blank" rel="noopener">Download resume</a>
+            <a class="btn primary" href="mailto:adam951502@gmail.com" data-i18n="hero.book">Book a call</a>
+            <a class="btn ghost" href="assets/resume/CV_Adam_20250527.pdf" target="_blank" rel="noopener" data-i18n="hero.download">Download resume</a>
           </div>
           <div class="meta-bar">
             <div class="meta-item">
-              <span class="label">Location</span>
-              <span>Taipei, Taiwan</span>
+              <span class="label" data-i18n="hero.location.label">Location</span>
+              <span data-i18n="hero.location.value">Taipei, Taiwan</span>
             </div>
             <div class="meta-item">
-              <span class="label">Focus</span>
-              <span>GenAI, Data Engineering, Product Strategy</span>
+              <span class="label" data-i18n="hero.focus.label">Focus</span>
+              <span data-i18n="hero.focus.value">GenAI, Data Engineering, Product Strategy</span>
             </div>
             <div class="meta-item">
-              <span class="label">Contact</span>
-              <span><a href="mailto:adam951502@gmail.com">adam951502@gmail.com</a></span>
+              <span class="label" data-i18n="hero.contact.label">Contact</span>
+              <span><a href="mailto:adam951502@gmail.com" data-i18n="hero.contact.value">adam951502@gmail.com</a></span>
             </div>
           </div>
         </div>
@@ -82,20 +96,20 @@
           </div>
           <div class="stat-grid">
             <div class="stat">
-              <p class="stat-value">8+ yrs</p>
-              <p class="stat-label">building software & data products</p>
+              <p class="stat-value" data-i18n="hero.stats.years.value">8+ yrs</p>
+              <p class="stat-label" data-i18n="hero.stats.years.label">building software & data products</p>
             </div>
             <div class="stat">
-              <p class="stat-value">GenAI</p>
-              <p class="stat-label">RAG, agents, LangChain/LlamaIndex</p>
+              <p class="stat-value" data-i18n="hero.stats.genai.value">GenAI</p>
+              <p class="stat-label" data-i18n="hero.stats.genai.label">RAG, agents, LangChain/LlamaIndex</p>
             </div>
             <div class="stat">
-              <p class="stat-value">Engineering</p>
-              <p class="stat-label">Python, FastAPI, Flask, Docker, CI/CD</p>
+              <p class="stat-value" data-i18n="hero.stats.engineering.value">Engineering</p>
+              <p class="stat-label" data-i18n="hero.stats.engineering.label">Python, FastAPI, Flask, Docker, CI/CD</p>
             </div>
             <div class="stat">
-              <p class="stat-value">Leadership</p>
-              <p class="stat-label">Product ownership, agile delivery, mentoring</p>
+              <p class="stat-value" data-i18n="hero.stats.leadership.value">Leadership</p>
+              <p class="stat-label" data-i18n="hero.stats.leadership.label">Product ownership, agile delivery, mentoring</p>
             </div>
           </div>
         </div>
@@ -104,19 +118,19 @@
 
     <section id="focus" class="section">
       <div class="section-heading">
-        <p class="eyebrow">What I do</p>
-        <h2>High-impact focus areas</h2>
-        <p class="muted">From architecture to delivery, I keep teams aligned on outcomes, safety, and speed.</p>
+        <p class="eyebrow" data-i18n="focus.eyebrow">What I do</p>
+        <h2 data-i18n="focus.title">High-impact focus areas</h2>
+        <p class="muted" data-i18n="focus.lede">From architecture to delivery, I keep teams aligned on outcomes, safety, and speed.</p>
       </div>
       <div class="card-grid four">
         <article class="card">
           <i class="ri-todo-line icon-badge" aria-hidden="true"></i>
-          <div class="pill">Project Management</div>
-          <h3>Agile delivery and requirements</h3>
-          <p class="muted">Scrum, Kanban, and clear scope control.</p>
+          <div class="pill" data-i18n="focus.projectManagement.pill">Project Management</div>
+          <h3 data-i18n="focus.projectManagement.title">Agile delivery and requirements</h3>
+          <p class="muted" data-i18n="focus.projectManagement.body">Scrum, Kanban, and clear scope control.</p>
           <details class="inline-details" open>
-            <summary>See tactics</summary>
-            <ul class="mini-list">
+            <summary data-i18n="common.seeTactics">See tactics</summary>
+            <ul class="mini-list" data-i18n="focus.projectManagement.list" data-i18n-html="true">
               <li>Agile management and requirements refinement</li>
               <li>Scrum and Kanban workflows with stakeholder updates</li>
               <li>Risk tracking and proactive issue resolution</li>
@@ -125,12 +139,12 @@
         </article>
         <article class="card">
           <i class="ri-leaf-line icon-badge" aria-hidden="true"></i>
-          <div class="pill">Sustainability</div>
-          <h3>Resilience & renewable systems</h3>
-          <p class="muted">Energy, sustainable materials, and resilience engineering.</p>
+          <div class="pill" data-i18n="focus.sustainability.pill">Sustainability</div>
+          <h3 data-i18n="focus.sustainability.title">Resilience & renewable systems</h3>
+          <p class="muted" data-i18n="focus.sustainability.body">Energy, sustainable materials, and resilience engineering.</p>
           <details class="inline-details">
-            <summary>See tactics</summary>
-            <ul class="mini-list">
+            <summary data-i18n="common.seeTactics">See tactics</summary>
+            <ul class="mini-list" data-i18n="focus.sustainability.list" data-i18n-html="true">
               <li>Renewable energy and lifecycle analysis</li>
               <li>Sustainable material assessment</li>
               <li>Resilience engineering approaches</li>
@@ -139,12 +153,12 @@
         </article>
         <article class="card">
           <i class="ri-code-box-line icon-badge" aria-hidden="true"></i>
-          <div class="pill">Web development</div>
-          <h3>Full-stack product build</h3>
-          <p class="muted">Frontend, backend, data, and deployment.</p>
+          <div class="pill" data-i18n="focus.webdev.pill">Web development</div>
+          <h3 data-i18n="focus.webdev.title">Full-stack product build</h3>
+          <p class="muted" data-i18n="focus.webdev.body">Frontend, backend, data, and deployment.</p>
           <details class="inline-details">
-            <summary>See tactics</summary>
-            <ul class="mini-list">
+            <summary data-i18n="common.seeTactics">See tactics</summary>
+            <ul class="mini-list" data-i18n="focus.webdev.list" data-i18n-html="true">
               <li>APIs, servers, Dockerized services</li>
               <li>Databases and RESTful interfaces</li>
               <li>Data space integrations</li>
@@ -153,12 +167,12 @@
         </article>
         <article class="card">
           <i class="ri-mind-map icon-badge" aria-hidden="true"></i>
-          <div class="pill">Knowledge Engineering</div>
-          <h3>Semantic technologies</h3>
-          <p class="muted">Ontology and graph-first data products.</p>
+          <div class="pill" data-i18n="focus.knowledge.pill">Knowledge Engineering</div>
+          <h3 data-i18n="focus.knowledge.title">Semantic technologies</h3>
+          <p class="muted" data-i18n="focus.knowledge.body">Ontology and graph-first data products.</p>
           <details class="inline-details">
-            <summary>See tactics</summary>
-            <ul class="mini-list">
+            <summary data-i18n="common.seeTactics">See tactics</summary>
+            <ul class="mini-list" data-i18n="focus.knowledge.list" data-i18n-html="true">
               <li>Ontology design and knowledge graphs</li>
               <li>Graph databases and SPARQL pipelines</li>
               <li>Semantic modeling for search and insight</li>
@@ -170,58 +184,58 @@
 
     <section id="education" class="section">
       <div class="section-heading">
-        <p class="eyebrow">Education</p>
-        <h2>Academic foundation</h2>
-        <p class="muted">Meta view of where I trained; expand any item for the full context.</p>
+        <p class="eyebrow" data-i18n="education.eyebrow">Education</p>
+        <h2 data-i18n="education.title">Academic foundation</h2>
+        <p class="muted" data-i18n="education.lede">Meta view of where I trained; expand any item for the full context.</p>
       </div>
       <div class="disclosures">
         <details class="timeline-card" open>
           <summary>
             <div class="summary-text">
-              <p class="label">Oct 2018 - Feb 2021 | Freiburg</p>
-              <h3>MSc Sustainable Systems Engineering - University of Freiburg</h3>
+              <p class="label" data-i18n="education.freiburg.dates">Oct 2018 - Feb 2021 | Freiburg</p>
+              <h3 data-i18n="education.freiburg.title">MSc Sustainable Systems Engineering - University of Freiburg</h3>
             </div>
             <div class="summary-icons">
-              <span class="pill">MSc</span>
+              <span class="pill" data-i18n="education.freiburg.degree">MSc</span>
               <img class="icon-badge school-logo" src="assets/images/uni.png" alt="University of Freiburg logo">
             </div>
           </summary>
           <div class="disclosure-body">
-            <p>Master Thesis: 1.0 (German grade), equiv. 100/100, 4.0/4.0.</p>
-            <p>Overall Grade: 1.7 (German grade), equiv. 91/100, 3.6/4.0.</p>
-            <p class="muted">Focused on sustainable systems, materials, and data-driven analysis.</p>
+            <p data-i18n="education.freiburg.thesis">Master Thesis: 1.0 (German grade), equiv. 100/100, 4.0/4.0.</p>
+            <p data-i18n="education.freiburg.grade">Overall Grade: 1.7 (German grade), equiv. 91/100, 3.6/4.0.</p>
+            <p class="muted" data-i18n="education.freiburg.note">Focused on sustainable systems, materials, and data-driven analysis.</p>
           </div>
         </details>
         <details class="timeline-card">
           <summary>
             <div class="summary-text">
-              <p class="label">Feb 2018 - Aug 2018 | Taipei</p>
-              <h3>MSc Graduate Institute of Automation and Control - NTUST</h3>
+              <p class="label" data-i18n="education.ntust.dates">Feb 2018 - Aug 2018 | Taipei</p>
+              <h3 data-i18n="education.ntust.title">MSc Graduate Institute of Automation and Control - NTUST</h3>
             </div>
             <div class="summary-icons">
-              <span class="pill">MSc</span>
+              <span class="pill" data-i18n="education.ntust.degree">MSc</span>
               <img class="icon-badge school-logo" src="assets/images/NTUST_logo.png" alt="NTUST logo">
             </div>
           </summary>
           <div class="disclosure-body">
-            <p>Completed all required courses; received admission to Freiburg to continue thesis and degree.</p>
-            <p class="muted">Strengthened control systems, automation, and applied research skills; accepted to continue MSc thesis in Freiburg.</p>
+            <p data-i18n="education.ntust.detail">Completed all required courses; received admission to Freiburg to continue thesis and degree.</p>
+            <p class="muted" data-i18n="education.ntust.note">Strengthened control systems, automation, and applied research skills; accepted to continue MSc thesis in Freiburg.</p>
           </div>
         </details>
         <details class="timeline-card">
           <summary>
             <div class="summary-text">
-              <p class="label">Sep 2012 - Jun 2016 | New Taipei City</p>
-              <h3>BSc Mechanical Engineering - Chang Gung University</h3>
+              <p class="label" data-i18n="education.cgu.dates">Sep 2012 - Jun 2016 | New Taipei City</p>
+              <h3 data-i18n="education.cgu.title">BSc Mechanical Engineering - Chang Gung University</h3>
             </div>
             <div class="summary-icons">
-              <span class="pill">BSc</span>
+              <span class="pill" data-i18n="education.cgu.degree">BSc</span>
               <img class="icon-badge school-logo" src="assets/images/cgu.png" alt="Chang Gung University logo">
             </div>
           </summary>
           <div class="disclosure-body">
-            <p>Overall grade: 1.3 (equiv. 3.8/4.0). Dean's List: Feb 2014, Sep 2014, Feb 2015.</p>
-            <p class="muted">Foundation in mechanics, materials, and engineering workflows.</p>
+            <p data-i18n="education.cgu.detail">Overall grade: 1.3 (equiv. 3.8/4.0). Dean's List: Feb 2014, Sep 2014, Feb 2015.</p>
+            <p class="muted" data-i18n="education.cgu.note">Foundation in mechanics, materials, and engineering workflows.</p>
           </div>
         </details>
       </div>
@@ -229,103 +243,103 @@
 
     <section id="licenses" class="section">
       <div class="section-heading">
-        <p class="eyebrow">Credentials</p>
-        <h2>Licenses & Certifications</h2>
-        <p class="muted">Snapshot of current credentials. Filter for what you care about.</p>
+        <p class="eyebrow" data-i18n="licenses.eyebrow">Credentials</p>
+        <h2 data-i18n="licenses.title">Licenses & Certifications</h2>
+        <p class="muted" data-i18n="licenses.lede">Snapshot of current credentials. Filter for what you care about.</p>
         <div class="filters" role="tablist" aria-label="License category filters">
-          <button class="filter active" data-license-filter="all">All</button>
-          <button class="filter" data-license-filter="genai">GenAI</button>
-          <button class="filter" data-license-filter="data">Data Science</button>
-          <button class="filter" data-license-filter="management">Management</button>
+          <button class="filter active" data-license-filter="all" data-i18n="licenses.filter.all">All</button>
+          <button class="filter" data-license-filter="genai" data-i18n="licenses.filter.genai">GenAI</button>
+          <button class="filter" data-license-filter="data" data-i18n="licenses.filter.data">Data Science</button>
+          <button class="filter" data-license-filter="management" data-i18n="licenses.filter.management">Management</button>
         </div>
       </div>
       <div class="card-grid three" id="licenseGrid">
         <article class="card license" data-license-category="genai">
           <div class="license-img" style="background-image: url('https://udemy-certificate.s3.amazonaws.com/image/UC-ea6c953c-1ded-43bb-b9cb-9dbc727b59ae.jpg?v=1748267186000');"></div>
           <div class="license-body">
-            <div class="pill">GenAI</div>
+            <div class="pill" data-i18n="licenses.pills.genai">GenAI</div>
             <h3>RAG Strategy & Execution</h3>
-            <p class="label"><a href="https://www.udemy.com/certificate/UC-ea6c953c-1ded-43bb-b9cb-9dbc727b59ae/" target="_blank" rel="noopener">View credential</a></p>
+            <p class="label"><a href="https://www.udemy.com/certificate/UC-ea6c953c-1ded-43bb-b9cb-9dbc727b59ae/" target="_blank" rel="noopener" data-i18n="licenses.viewCredential">View credential</a></p>
           </div>
         </article>
         <article class="card license" data-license-category="management">
           <div class="license-img" style="background-image: url('assets/images/fraunhofer_icon.png');"></div>
           <div class="license-body">
-            <div class="pill">Management</div>
+            <div class="pill" data-i18n="licenses.pills.management">Management</div>
             <h3>Project Management Best Practices</h3>
-            <p class="label"><a href="assets/doc/certificate_of_participation_PM_best_practices_Yu-Sheng_Tang.pdf" target="_blank" rel="noopener">View certificate</a></p>
+            <p class="label"><a href="assets/doc/certificate_of_participation_PM_best_practices_Yu-Sheng_Tang.pdf" target="_blank" rel="noopener" data-i18n="licenses.viewCertificate">View certificate</a></p>
           </div>
         </article>
         <article class="card license" data-license-category="management">
           <div class="license-img" style="background-image: url('https://d9jmtjs5r4cgq.cloudfront.net/ComplementaryCourseCertificate/2612206/original/Yu-Sheng_Tang20230519-71-mu6bov.jpg');"></div>
           <div class="license-body">
-            <div class="pill">Management</div>
+            <div class="pill" data-i18n="licenses.pills.management">Management</div>
             <h3>Jira Project Management</h3>
-            <p class="label"><a href="https://verify.mygreatlearning.com/verify/SJLHRNBU" target="_blank" rel="noopener">View certificate</a></p>
+            <p class="label"><a href="https://verify.mygreatlearning.com/verify/SJLHRNBU" target="_blank" rel="noopener" data-i18n="licenses.viewCertificate">View certificate</a></p>
           </div>
         </article>
         <article class="card license" data-license-category="data">
           <div class="license-img" style="background-image: url('assets/images/badge/coursera-ibm-specialization-data-science.png');"></div>
           <div class="license-body">
-            <div class="pill">Data Science</div>
+            <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Data Science Foundations</h3>
-            <p class="label"><a href="https://www.credly.com/badges/a294304e-2d97-4ba7-ae44-11ae2f7e8250" target="_blank" rel="noopener">View badge</a></p>
+            <p class="label"><a href="https://www.credly.com/badges/a294304e-2d97-4ba7-ae44-11ae2f7e8250" target="_blank" rel="noopener" data-i18n="licenses.viewBadge">View badge</a></p>
           </div>
         </article>
         <article class="card license" data-license-category="data">
           <div class="license-img" style="background-image: url('assets/images/badge/coursera-ibm-databases.png');"></div>
           <div class="license-body">
-            <div class="pill">Data Science</div>
+            <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Databases and SQL for Data Science</h3>
-            <p class="label"><a href="https://www.credly.com/badges/0ce0a915-7889-40c9-9957-3c15c8e05106" target="_blank" rel="noopener">View badge</a></p>
+            <p class="label"><a href="https://www.credly.com/badges/0ce0a915-7889-40c9-9957-3c15c8e05106" target="_blank" rel="noopener" data-i18n="licenses.viewBadge">View badge</a></p>
           </div>
         </article>
         <article class="card license" data-license-category="data">
           <div class="license-img" style="background-image: url('assets/images/badge/coursera-ibm-python-project-data-science.png');"></div>
           <div class="license-body">
-            <div class="pill">Data Science</div>
+            <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Python Project for Data Science</h3>
-            <p class="label"><a href="https://www.credly.com/badges/ce2d7ab5-1f6f-42ee-ba76-8cb464d8431c" target="_blank" rel="noopener">View badge</a></p>
+            <p class="label"><a href="https://www.credly.com/badges/ce2d7ab5-1f6f-42ee-ba76-8cb464d8431c" target="_blank" rel="noopener" data-i18n="licenses.viewBadge">View badge</a></p>
           </div>
         </article>
         <article class="card license" data-license-category="data">
           <div class="license-img" style="background-image: url('assets/images/badge/coursera-ibm-python-data-science-ai.png');"></div>
           <div class="license-body">
-            <div class="pill">Data Science</div>
+            <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Python for Data Science and AI</h3>
-            <p class="label"><a href="https://www.credly.com/badges/a5bf8a71-76ba-401a-9b05-7238d5c6c094" target="_blank" rel="noopener">View badge</a></p>
+            <p class="label"><a href="https://www.credly.com/badges/a5bf8a71-76ba-401a-9b05-7238d5c6c094" target="_blank" rel="noopener" data-i18n="licenses.viewBadge">View badge</a></p>
           </div>
         </article>
         <article class="card license" data-license-category="data">
           <div class="license-img" style="background-image: url('https://images.credly.com/size/680x680/images/46defa53-a922-47bd-94ea-b43488f5cd8a/Data_Science_Methodology_Foundational.png');"></div>
           <div class="license-body">
-            <div class="pill">Data Science</div>
+            <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Data Science Methodology</h3>
-            <p class="label"><a href="https://www.credly.com/badges/c8d82676-f37e-46d9-9451-a2031a8536b1/public_url" target="_blank" rel="noopener">View badge</a></p>
+            <p class="label"><a href="https://www.credly.com/badges/c8d82676-f37e-46d9-9451-a2031a8536b1/public_url" target="_blank" rel="noopener" data-i18n="licenses.viewBadge">View badge</a></p>
           </div>
         </article>
         <article class="card license" data-license-category="data">
           <div class="license-img" style="background-image: url('https://images.credly.com/size/680x680/images/60cf69ce-6129-425d-9a42-7732fa07da1e/Tools_for_Data_Science_Foundational.png');"></div>
           <div class="license-body">
-            <div class="pill">Data Science</div>
+            <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Tools for Data Science</h3>
-            <p class="label"><a href="https://www.credly.com/badges/dc2f125f-f1b3-4235-97de-22421d1cc5c6" target="_blank" rel="noopener">View badge</a></p>
+            <p class="label"><a href="https://www.credly.com/badges/dc2f125f-f1b3-4235-97de-22421d1cc5c6" target="_blank" rel="noopener" data-i18n="licenses.viewBadge">View badge</a></p>
           </div>
         </article>
         <article class="card license" data-license-category="data">
           <div class="license-img" style="background-image: url('https://images.credly.com/size/680x680/images/5fc2d535-e716-46c4-881a-f4822b8da0e5/Cognitive_Class_-_What_is_Data_Science.png');"></div>
           <div class="license-body">
-            <div class="pill">Data Science</div>
+            <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Data Science Orientation</h3>
-            <p class="label"><a href="https://www.credly.com/badges/3d00e84f-6869-44d2-a947-eb7eeab8f6b9" target="_blank" rel="noopener">View badge</a></p>
+            <p class="label"><a href="https://www.credly.com/badges/3d00e84f-6869-44d2-a947-eb7eeab8f6b9" target="_blank" rel="noopener" data-i18n="licenses.viewBadge">View badge</a></p>
           </div>
         </article>
         <article class="card license" data-license-category="data">
           <div class="license-img" style="background-image: url('assets/images/lic-linkedin.png');"></div>
           <div class="license-body">
-            <div class="pill">Data Science</div>
+            <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Learning Data Analytics</h3>
-            <p class="label"><a href="https://www.linkedin.com/learning/certificates/0b952ad6a4dfc36df9b4c1ac29c9d7fa871000c37d44249fe4255ce3d42665e9" target="_blank" rel="noopener">View certificate</a></p>
+            <p class="label"><a href="https://www.linkedin.com/learning/certificates/0b952ad6a4dfc36df9b4c1ac29c9d7fa871000c37d44249fe4255ce3d42665e9" target="_blank" rel="noopener" data-i18n="licenses.viewCertificate">View certificate</a></p>
           </div>
         </article>
       </div>
@@ -333,490 +347,41 @@
 
     <section id="experience" class="section">
       <div class="section-heading">
-        <p class="eyebrow">Experience</p>
-        <h2>Recent impact</h2>
-        <p class="muted">Quick meta view; open any role to see responsibilities and outcomes.</p>
+        <p class="eyebrow" data-i18n="experience.eyebrow">Experience</p>
+        <h2 data-i18n="experience.title">Recent impact</h2>
+        <p class="muted" data-i18n="experience.lede">Quick meta view; open any role to see responsibilities and outcomes.</p>
       </div>
-      <div class="timeline">
-        <details class="timeline-card" open>
-          <summary>
-            <div class="summary-text">
-              <p class="label">Oct 2021 - Oct 2025 | Freiburg</p>
-              <h3>Backend Developer & Data Scientist — Fraunhofer EMI</h3>
-            </div>
-            <div class="summary-icons">
-              <i class="ri-brain-line icon-badge small" aria-hidden="true"></i>
-              <span class="pill">Full-time</span>
-            </div>
-          </summary>
-          <p class="muted">Building GenAI assistants, knowledge graphs, and data pipelines for material life-cycle analysis and production planning.</p>
-          <details class="inline-details" open>
-            <summary>Key work</summary>
-            <ul class="mini-list">
-              <li>Built RDF/OWL ontologies and knowledge graphs for additive manufacturing LCA</li>
-              <li>Ran SPARQL pipelines in GraphDB with Python ETL for downstream analytics</li>
-              <li>Delivered RESTful Flask services in Docker with CI/CD and API integrations</li>
-              <li>Supervised a master student, led agile requirements, and Jira-based delivery</li>
-            </ul>
-          </details>
-        </details>
-        <details class="timeline-card" open>
-          <summary>
-            <div class="summary-text">
-              <p class="label">Mar 2023 - Jul 2024 | Taipei</p>
-              <h3>Co-founder & CEO — Aurore Collection</h3>
-            </div>
-            <div class="summary-icons">
-              <i class="ri-store-2-line icon-badge small" aria-hidden="true"></i>
-              <span class="pill">Founder</span>
-            </div>
-          </summary>
-          <p class="muted">Managed an e-commerce company end-to-end: management, site build, marketing, and business model.</p>
-          <details class="inline-details">
-            <summary>Key work</summary>
-            <ul class="mini-list">
-              <li>Launched the site, payments, fulfillment, and analytics stack</li>
-              <li>Drove growth via marketing experiments and conversion tracking</li>
-              <li>Led a lean remote team and vendor partners</li>
-            </ul>
-          </details>
-        </details>
-        <details class="timeline-card">
-          <summary>
-            <div class="summary-text">
-              <p class="label">Apr 2021 - Sep 2021 | Freiburg</p>
-              <h3>Research Assistant (Mechanical) — Fraunhofer EMI</h3>
-            </div>
-            <div class="summary-icons">
-              <i class="ri-flask-line icon-badge small" aria-hidden="true"></i>
-              <span class="pill">Research</span>
-            </div>
-          </summary>
-          <p class="muted">Impact and delamination modeling for CFRP configurations with end-to-end simulation workflow.</p>
-          <details class="inline-details">
-            <summary>Key work</summary>
-            <ul class="mini-list">
-              <li>Built LS-DYNA models, meshing, and parameter tuning</li>
-              <li>Analyzed results and visualized insights in Python</li>
-              <li>Created geometry in Autodesk Inventor and HyperMesh</li>
-            </ul>
-          </details>
-        </details>
-        <details class="timeline-card">
-          <summary>
-            <div class="summary-text">
-              <p class="label">May 2020 - Dec 2020 | Freiburg</p>
-              <h3>Research Assistant (Mechanical) — Fraunhofer EMI</h3>
-            </div>
-            <div class="summary-icons">
-              <i class="ri-flask-line icon-badge small" aria-hidden="true"></i>
-              <span class="pill">Research</span>
-            </div>
-          </summary>
-          <p class="muted">Failure modeling for hybrid lap joints under tensile loading.</p>
-          <details class="inline-details">
-            <summary>Key work</summary>
-            <ul class="mini-list">
-              <li>Designed and meshed components for LS-DYNA studies</li>
-              <li>Converted simulation outputs and automated calculations in Python</li>
-              <li>Visualized fracture mechanics results for reporting</li>
-            </ul>
-          </details>
-        </details>
-        <details class="timeline-card">
-          <summary>
-            <div class="summary-text">
-              <p class="label">May 2020 - Dec 2020 | Taipei</p>
-              <h3>Research Assistant (Internship) — cytena Bioprocess Solutions</h3>
-            </div>
-            <div class="summary-icons">
-              <i class="ri-flask-line icon-badge small" aria-hidden="true"></i>
-              <span class="pill">Internship</span>
-            </div>
-          </summary>
-          <p class="muted">Supported bioprocess hardware assembly and electronics for microbioreactors.</p>
-          <details class="inline-details">
-            <summary>Key work</summary>
-            <ul class="mini-list">
-              <li>Tuned and assembled microbioreactors and docking stations</li>
-              <li>Soldered microcontrollers and components on control boards</li>
-            </ul>
-          </details>
-        </details>
-        <details class="timeline-card">
-          <summary>
-            <div class="summary-text">
-              <p class="label">Dec 2019 - Mar 2020 | Freiburg</p>
-              <h3>Student Research Assistant — Inatech, SSE</h3>
-            </div>
-            <div class="summary-icons">
-              <i class="ri-flask-line icon-badge small" aria-hidden="true"></i>
-              <span class="pill">Research</span>
-            </div>
-          </summary>
-          <p class="muted">Simulation and experimental support for torsion and fatigue studies.</p>
-          <details class="inline-details">
-            <summary>Key work</summary>
-            <ul class="mini-list">
-              <li>Built LS-DYNA models for torsion tests and analyzed results in Python</li>
-              <li>Ran cyclic stress tests, automating stepper motor control in Python</li>
-              <li>Assembled experimental setups and soldered components</li>
-            </ul>
-          </details>
-        </details>
-        <details class="timeline-card">
-          <summary>
-            <div class="summary-text">
-              <p class="label">Feb 2018 - Aug 2018 | Taipei</p>
-              <h3>Student Research Assistant - Taiwan Tech</h3>
-            </div>
-            <div class="summary-icons">
-              <i class="ri-flask-line icon-badge small" aria-hidden="true"></i>
-              <span class="pill">Research</span>
-            </div>
-          </summary>
-          <p class="muted">Spectrum data processing for microalbumin urine tests.</p>
-          <details class="inline-details">
-            <summary>Key work</summary>
-            <ul class="mini-list">
-              <li>Built baseline correction and signal-processing routines in MATLAB</li>
-              <li>Analyzed raw spectroscopic datasets and reported findings</li>
-            </ul>
-          </details>
-        </details>
-        <details class="timeline-card">
-          <summary>
-            <div class="summary-text">
-              <p class="label">Sep 2012 - Sep 2018 | Taipei</p>
-              <h3>Tutor — Freelance</h3>
-            </div>
-            <div class="summary-icons">
-              <i class="ri-team-line icon-badge small" aria-hidden="true"></i>
-              <span class="pill">Teaching</span>
-            </div>
-          </summary>
-          <p class="muted">Tutored math, physics, and chemistry while supporting students’ applications.</p>
-          <details class="inline-details">
-            <summary>Key work</summary>
-            <ul class="mini-list">
-              <li>Taught STEM subjects and edited curricula for junior high and high school</li>
-              <li>Guided admission documents, oral exams, and personal statements</li>
-              <li>Supported special education needs and group learning programs</li>
-            </ul>
-          </details>
-        </details>
-        <details class="timeline-card">
-          <summary>
-            <div class="summary-text">
-              <p class="label">Oct 2015 - Jan 2016 | Taoyuan</p>
-              <h3>Student Research Assistant - CGU</h3>
-            </div>
-            <div class="summary-icons">
-              <i class="ri-flask-line icon-badge small" aria-hidden="true"></i>
-              <span class="pill">Research</span>
-            </div>
-          </summary>
-          <p class="muted">Supported lab operations and PDMS sensor fabrication research.</p>
-          <details class="inline-details">
-            <summary>Key work</summary>
-            <ul class="mini-list">
-              <li>Handled documentation and equipment maintenance</li>
-              <li>Learned PDMS capacitive pressure sensor manufacturing steps</li>
-            </ul>
-          </details>
-        </details>
-        <details class="timeline-card">
-          <summary>
-            <div class="summary-text">
-              <p class="label">Jul 2015 - Aug 2015 | New Taipei City</p>
-              <h3>Mechanical Engineer Intern - Yiming Corporation</h3>
-            </div>
-            <div class="summary-icons">
-              <i class="ri-tools-line icon-badge small" aria-hidden="true"></i>
-              <span class="pill">Internship</span>
-            </div>
-          </summary>
-          <p class="muted">Shop-floor support for switchboard parts manufacturing.</p>
-          <details class="inline-details">
-            <summary>Key work</summary>
-            <ul class="mini-list">
-              <li>Coordinated client requests across drilling, stamping, plating, and welding steps</li>
-              <li>Performed repeat testing and revisions before supervisor review</li>
-            </ul>
-          </details>
-        </details>
-      </div>
+      <div class="timeline" id="experienceList"></div>
     </section>
 
     <section id="projects" class="section">
       <div class="section-heading">
-        <p class="eyebrow">Selected projects</p>
-        <h2>Shipping AI and data products</h2>
+        <p class="eyebrow" data-i18n="projects.eyebrow">Selected projects</p>
+        <h2 data-i18n="projects.title">Shipping AI and data products</h2>
         <div class="filters" role="tablist" aria-label="Project category filters">
-          <button class="filter active" data-filter="all">All</button>
-          <button class="filter" data-filter="genai">GenAI</button>
-          <button class="filter" data-filter="data">Data</button>
-          <button class="filter" data-filter="web">Website</button>
-          <button class="filter" data-filter="mechanics">Mechanics</button>
+          <button class="filter active" data-filter="all" data-i18n="projects.filter.all">All</button>
+          <button class="filter" data-filter="genai" data-i18n="projects.filter.genai">GenAI</button>
+          <button class="filter" data-filter="data" data-i18n="projects.filter.data">Data</button>
+          <button class="filter" data-filter="web" data-i18n="projects.filter.web">Website</button>
+          <button class="filter" data-filter="mechanics" data-i18n="projects.filter.mechanics">Mechanics</button>
         </div>
       </div>
-      <div class="card-grid three" id="projectGrid">
-        <article class="card project" data-category="genai">
-          <div class="project-img" style="background-image: url('assets/images/project-production-copilot.png');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-robot-2-line project-icon" aria-hidden="true"></i>
-              <div class="pill">GenAI</div>
-            </div>
-            <h3>Production Planning Copilot</h3>
-            <p class="project-desc">Assistant that transforms product specs into optimized production plans with domain RAG and safety rails.</p>
-            <p class="label">Nov 2025 - Present</p>
-            <div class="chips">
-              <span class="chip">RAG</span><span class="chip">LangChain</span><span class="chip">FastAPI</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="genai">
-          <div class="project-img" style="background-image: url('assets/images/project-chatbot.png');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-robot-2-line project-icon" aria-hidden="true"></i>
-              <div class="pill">GenAI</div>
-            </div>
-            <h3>Assistant Chatbot - Automotive R&D</h3>
-            <p class="project-desc">Recommender system with retrieval, grounding, and policy-aware responses for automotive R&D.</p>
-            <p class="label">Oct 2024 - Oct 2025</p>
-            <div class="chips">
-              <span class="chip">Agents</span><span class="chip">Guardrails</span><span class="chip">UX</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="data">
-          <div class="project-img" style="background-image: url('assets/images/project-heraklion-4-3.jpg');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-database-2-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Data</div>
-            </div>
-            <h3>HERAKLION</h3>
-            <p class="project-desc">Material lifecycle knowledge graph with SPARQL analytics powering sustainability reporting.</p>
-            <p class="label">Mar 2022 - Oct 2025</p>
-            <div class="chips">
-              <span class="chip">Knowledge Graph</span><span class="chip">SPARQL</span><span class="chip">ETL</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="data">
-          <div class="project-img" style="background-image: url('assets/images/project-sustrace.png');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-database-2-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Data</div>
-            </div>
-            <h3>ADAM-SusTrace</h3>
-            <p class="project-desc">Data pipeline and visualization for sustainability scoring across additive manufacturing processes.</p>
-            <p class="label">Oct 2021 - Feb 2022</p>
-            <div class="chips">
-              <span class="chip">Python</span><span class="chip">APIs</span><span class="chip">Dashboards</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="web">
-          <div class="project-img" style="background-image: url('assets/images/project-aurore-website.png');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-global-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Web</div>
-            </div>
-            <h3>E-commerce Platform</h3>
-            <p class="project-desc">Shop build, payments, and marketing analytics for Aurore Collection.</p>
-            <p class="label">May 2023 - May 2024</p>
-            <div class="chips">
-              <span class="chip">E-commerce</span><span class="chip">Analytics</span><span class="chip">Growth</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="mechanics">
-          <div class="project-img" style="background-image: url('assets/images/project-impact.gif');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-tools-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Mechanics</div>
-            </div>
-            <h3>Composite Impact Modeling</h3>
-            <p class="project-desc">Delamination modelling and visualization for high-speed helicopter components.</p>
-            <p class="label">Mar 2021 - Sep 2021</p>
-            <div class="chips">
-              <span class="chip">FEM</span><span class="chip">Python</span><span class="chip">Simulation</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="web">
-          <div class="project-img" style="background-image: url('assets/images/project-union-website.png');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-global-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Web</div>
-            </div>
-            <h3>ZHFLU-Union Website</h3>
-            <p class="project-desc">Union information site with clear navigation and member resources.</p>
-            <p class="label">Feb 2023 - Mar 2023</p>
-            <div class="chips">
-              <span class="chip">Landing</span><span class="chip">Content</span><span class="chip">Multi-language</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="data">
-          <div class="project-img" style="background-image: url('assets/images/project-nns.png');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-database-2-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Data</div>
-            </div>
-            <h3>NNs for XOR-Logic Prediction</h3>
-            <p class="project-desc">Small neural net demo for logical gates with lightweight visualization.</p>
-            <p class="label">Apr 2022</p>
-            <div class="chips">
-              <span class="chip">Neural Nets</span><span class="chip">Python</span><span class="chip">Demo</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="mechanics">
-          <div class="project-img" style="background-image: url('assets/images/project-master-thesis.png');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-tools-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Mechanics</div>
-            </div>
-            <h3>Hybrid Joint Modeling</h3>
-            <p class="project-desc">Failure modeling for hybrid lap joints under tensile loading in LS-DYNA.</p>
-            <p class="label">May 2020 - Jan 2021</p>
-            <div class="chips">
-              <span class="chip">LS-DYNA</span><span class="chip">FEM</span><span class="chip">Simulation</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="data">
-          <div class="project-img" style="background-image: url('assets/images/project-AHP-Tree.jpg');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-database-2-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Data</div>
-            </div>
-            <h3>Sustainability Assessment</h3>
-            <p class="project-desc">AHP model to rank sustainability criteria across materials and processes.</p>
-            <p class="label">Oct 2019 - Feb 2020</p>
-            <div class="chips">
-              <span class="chip">AHP</span><span class="chip">Modeling</span><span class="chip">Analysis</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="mechanics">
-          <div class="project-img" style="background-image: url('assets/images/project-master-project.gif');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-tools-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Mechanics</div>
-            </div>
-            <h3>Cyclic Stress Loading Test</h3>
-            <p class="project-desc">Test rig and analysis for small-scale material fatigue under cyclic stress.</p>
-            <p class="label">Oct 2019 - Feb 2020</p>
-            <div class="chips">
-              <span class="chip">Fatigue</span><span class="chip">Testing</span><span class="chip">Data</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="data">
-          <div class="project-img" style="background-image: url('assets/images/project-energy.png');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-database-2-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Data</div>
-            </div>
-            <h3>Energy Market Analysis</h3>
-            <p class="project-desc">Market value evaluation for wind and solar across electricity markets.</p>
-            <p class="label">Apr 2019 - Jul 2019</p>
-            <div class="chips">
-              <span class="chip">Energy</span><span class="chip">Analytics</span><span class="chip">Python</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="data">
-          <div class="project-img" style="background-image: url('assets/images/project-pv.png');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-database-2-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Data</div>
-            </div>
-            <h3>Solar Cells Comparison</h3>
-            <p class="project-desc">Lab study comparing PV cell performance with structured reporting.</p>
-            <p class="label">Apr 2019 - Jul 2019</p>
-            <div class="chips">
-              <span class="chip">PV</span><span class="chip">Lab</span><span class="chip">Reporting</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="data">
-          <div class="project-img" style="background-image: url('assets/images/project-ntust.jpg');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-database-2-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Data</div>
-            </div>
-            <h3>Spectroscopic Data Processing</h3>
-            <p class="project-desc">Signal processing pipeline for microalbumin test spectra in MATLAB.</p>
-            <p class="label">Feb 2018 - Sep 2018</p>
-            <div class="chips">
-              <span class="chip">Signal</span><span class="chip">MATLAB</span><span class="chip">Analytics</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="mechanics">
-          <div class="project-img" style="background-image: url('assets/images/project-injection.png');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-tools-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Mechanics</div>
-            </div>
-            <h3>Injection Molding Manufacturing</h3>
-            <p class="project-desc">Process follow-up and testing for switchboard parts manufacturing.</p>
-            <p class="label">Sep 2015 - Jan 2016</p>
-            <div class="chips">
-              <span class="chip">Manufacturing</span><span class="chip">QA</span><span class="chip">Operations</span>
-            </div>
-          </div>
-        </article>
-        <article class="card project" data-category="mechanics">
-          <div class="project-img" style="background-image: url('assets/images/project-quadcopter.jpg');"></div>
-          <div class="project-body">
-            <div class="project-top">
-              <i class="ri-tools-line project-icon" aria-hidden="true"></i>
-              <div class="pill">Mechanics</div>
-            </div>
-            <h3>Automatic Flight Control</h3>
-            <p class="project-desc">Quadcopter flight control design and testing with sensor feedback.</p>
-            <p class="label">Mar 2015 - Jun 2015</p>
-            <div class="chips">
-              <span class="chip">Control</span><span class="chip">Embedded</span><span class="chip">Flight</span>
-            </div>
-          </div>
-        </article>
-      </div>
+      <div class="card-grid three" id="projectGrid"></div>
     </section>
 
     <section id="skills" class="section">
       <div class="section-heading">
-        <p class="eyebrow">Skills</p>
-        <h2>Toolbox</h2>
-        <p class="muted">Instruments I reach for most when shipping AI and data products.</p>
+        <p class="eyebrow" data-i18n="skills.eyebrow">Skills</p>
+        <h2 data-i18n="skills.title">Toolbox</h2>
+        <p class="muted" data-i18n="skills.lede">Instruments I reach for most when shipping AI and data products.</p>
       </div>
       <div class="skills-grid">
         <div class="skill-card">
           <div class="skill-top">
             <div class="skill-icon"><i class="ri-robot-2-line" aria-hidden="true"></i></div>
             <div>
-              <p class="label">AI & GenAI</p>
-              <p class="skill-note">LLMs, RAG, and agentic tooling.</p>
+              <p class="label" data-i18n="skills.ai.label">AI & GenAI</p>
+              <p class="skill-note" data-i18n="skills.ai.note">LLMs, RAG, and agentic tooling.</p>
             </div>
           </div>
           <div class="skill-meter" aria-hidden="true"><span style="width: 90%"></span></div>
@@ -828,8 +393,8 @@
           <div class="skill-top">
             <div class="skill-icon"><i class="ri-terminal-window-line" aria-hidden="true"></i></div>
             <div>
-              <p class="label">Languages & Delivery</p>
-              <p class="skill-note">Clean code, versioning, and automation.</p>
+              <p class="label" data-i18n="skills.languages.label">Languages & Delivery</p>
+              <p class="skill-note" data-i18n="skills.languages.note">Clean code, versioning, and automation.</p>
             </div>
           </div>
           <div class="skill-meter" aria-hidden="true"><span style="width: 86%"></span></div>
@@ -841,8 +406,8 @@
           <div class="skill-top">
             <div class="skill-icon"><i class="ri-database-2-line" aria-hidden="true"></i></div>
             <div>
-              <p class="label">Data & Semantics</p>
-              <p class="skill-note">Graphs, ontology, and analytics.</p>
+              <p class="label" data-i18n="skills.data.label">Data & Semantics</p>
+              <p class="skill-note" data-i18n="skills.data.note">Graphs, ontology, and analytics.</p>
             </div>
           </div>
           <div class="skill-meter" aria-hidden="true"><span style="width: 88%"></span></div>
@@ -854,8 +419,8 @@
           <div class="skill-top">
             <div class="skill-icon"><i class="ri-compass-3-line" aria-hidden="true"></i></div>
             <div>
-              <p class="label">Frameworks & Delivery</p>
-              <p class="skill-note">APIs, testing, and deployment.</p>
+              <p class="label" data-i18n="skills.frameworks.label">Frameworks & Delivery</p>
+              <p class="skill-note" data-i18n="skills.frameworks.note">APIs, testing, and deployment.</p>
             </div>
           </div>
           <div class="skill-meter" aria-hidden="true"><span style="width: 82%"></span></div>
@@ -867,8 +432,8 @@
           <div class="skill-top">
             <div class="skill-icon"><i class="ri-tools-line" aria-hidden="true"></i></div>
             <div>
-              <p class="label">Mechanical</p>
-              <p class="skill-note">Simulation, CAD, and hardware.</p>
+              <p class="label" data-i18n="skills.mechanical.label">Mechanical</p>
+              <p class="skill-note" data-i18n="skills.mechanical.note">Simulation, CAD, and hardware.</p>
             </div>
           </div>
           <div class="skill-meter" aria-hidden="true"><span style="width: 78%"></span></div>
@@ -886,39 +451,40 @@
       <i class="ri-bookmark-line" aria-hidden="true"></i>
     </button>
     <div id="bookmarkMenu" class="bookmark-menu" hidden>
-      <p class="label">Jump to</p>
+      <p class="label" data-i18n="bookmark.jump">Jump to</p>
       <ul>
-        <li><a href="#hero"><i class="ri-user-3-line" aria-hidden="true"></i>Intro</a></li>
-        <li><a href="#focus"><i class="ri-compass-3-line" aria-hidden="true"></i>Focus</a></li>
-        <li><a href="#education"><i class="ri-graduation-cap-line" aria-hidden="true"></i>Education</a></li>
-        <li><a href="#licenses"><i class="ri-bear-smile-line" aria-hidden="true"></i>Licenses</a></li>
-        <li><a href="#experience"><i class="ri-briefcase-4-line" aria-hidden="true"></i>Experience</a></li>
-        <li><a href="#projects"><i class="ri-stack-line" aria-hidden="true"></i>Projects</a></li>
-        <li><a href="#skills"><i class="ri-tools-line" aria-hidden="true"></i>Skills</a></li>
-        <li><a href="#contact"><i class="ri-send-plane-2-line" aria-hidden="true"></i>Contact</a></li>
+        <li><a href="#hero"><span class="bookmark-icon"><i class="ri-user-3-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.intro">Intro</span></a></li>
+        <li><a href="#focus"><span class="bookmark-icon"><i class="ri-compass-3-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.focus">Focus</span></a></li>
+        <li><a href="#education"><span class="bookmark-icon"><i class="ri-graduation-cap-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.education">Education</span></a></li>
+        <li><a href="#licenses"><span class="bookmark-icon"><i class="ri-bear-smile-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.licenses">Licenses</span></a></li>
+        <li><a href="#experience"><span class="bookmark-icon"><i class="ri-briefcase-4-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.experience">Experience</span></a></li>
+        <li><a href="#projects"><span class="bookmark-icon"><i class="ri-stack-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.projects">Projects</span></a></li>
+        <li><a href="#skills"><span class="bookmark-icon"><i class="ri-tools-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.skills">Skills</span></a></li>
+        <li><a href="#contact"><span class="bookmark-icon"><i class="ri-send-plane-2-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.contact">Contact</span></a></li>
       </ul>
     </div>
 
     <section id="contact" class="section contact">
       <div class="section-heading">
-        <p class="eyebrow">Let's collaborate</p>
-        <h2>Need a builder for your next AI product?</h2>
-        <p class="muted">I'm open to consulting, fractional leadership, or full-time roles that value pragmatic shipping.</p>
+        <p class="eyebrow" data-i18n="contact.eyebrow">Let's collaborate</p>
+        <h2 data-i18n="contact.title">Need a builder for your next AI product?</h2>
+        <p class="muted" data-i18n="contact.lede">I'm open to consulting, fractional leadership, or full-time roles that value pragmatic shipping.</p>
       </div>
       <div class="contact-actions">
-        <a class="btn primary" href="mailto:adam951502@gmail.com">Email Adam</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/yu-sheng-tang/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        <a class="btn primary" href="mailto:adam951502@gmail.com" data-i18n="contact.email">Email Adam</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/yu-sheng-tang/" target="_blank" rel="noopener" data-i18n="contact.linkedin">Connect on LinkedIn</a>
       </div>
       <div class="contact-meta">
-        <span class="chip">Taipei, Taiwan</span>
-        <span class="chip">Global · Remote-friendly</span>
-        <span class="chip">Mandarin / English / German</span>
+        <span class="chip" data-i18n="contact.location">Taipei, Taiwan</span>
+        <span class="chip" data-i18n="contact.remote">Global · Remote-friendly</span>
+        <span class="chip" data-i18n="contact.languages">Mandarin / English / German</span>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>Made by Adam Tang | <a href="https://github.com/adam951502">@adam951502</a></p>
+    <p data-i18n="footer.madeBy" data-i18n-html="true">Made by Adam Tang | <a href="https://github.com/adam951502">@adam951502</a></p>
+    <p data-i18n="footer.rights">All rights reserved.</p>
   </footer>
 
   <script src="./assets/js/script.js"></script>
