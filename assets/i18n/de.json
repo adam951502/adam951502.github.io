@@ -33,7 +33,7 @@
   "hero.stats.years.value": "8+ Jahre",
   "hero.stats.years.label": "Software- & Datenprodukte gebaut",
   "hero.stats.genai.value": "GenAI",
-  "hero.stats.genai.label": "RAG, Agents, LangChain/LlamaIndex",
+  "hero.stats.genai.label": "LLMs, RAG, Agents, LangChain, LangGraph",
   "hero.stats.engineering.value": "Engineering",
   "hero.stats.engineering.label": "Python, FastAPI, Flask, Docker, CI/CD",
   "hero.stats.leadership.value": "Leadership",

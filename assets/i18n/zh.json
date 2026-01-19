@@ -33,7 +33,7 @@
   "hero.stats.years.value": "8+ 年",
   "hero.stats.years.label": "打造軟體與資料產品",
   "hero.stats.genai.value": "生成式 AI",
-  "hero.stats.genai.label": "RAG、智能體、LangChain/LlamaIndex",
+  "hero.stats.genai.label": "LLM、RAG、智能體、LangChain、LangGraph",
   "hero.stats.engineering.value": "工程",
   "hero.stats.engineering.label": "Python、FastAPI、Flask、Docker、CI/CD",
   "hero.stats.leadership.value": "領導",
