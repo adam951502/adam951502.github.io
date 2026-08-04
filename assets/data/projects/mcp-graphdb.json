@@ -1,0 +1,96 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "mcp-graphdb",
+  "category": "genai",
+  "sortStart": "2025-05",
+  "sortEnd": "2025-06",
+  "pillKey": "projects.pills.genai",
+  "icon": "ri-node-tree",
+  "image": "assets/images/project-mcp-graphdb-v2.png",
+  "chips": [
+    "MCP",
+    "GraphDB",
+    "SPARQL",
+    "JavaScript",
+    "LLM tools"
+  ],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/adam951502/mcp-graphdb",
+      "icon": "ri-github-line"
+    }
+  ],
+  "content": {
+    "en": {
+      "title": "GraphDB MCP Server",
+      "summary": "Open-source Model Context Protocol connector that gives LLM clients controlled, read-only access to GraphDB repositories and SPARQL.",
+      "dates": "May 2025 - Jun 2025",
+      "status": "Open-source connector",
+      "role": "Protocol & knowledge-graph engineer",
+      "challenge": "LLM clients needed a narrow, read-only way to inspect approved knowledge graphs and execute SPARQL without receiving broad database credentials or write access.",
+      "contribution": [
+        "Implemented an MCP server that exposes GraphDB repository discovery and read-only SPARQL operations as model tools.",
+        "Defined the protocol boundary between conversational clients and the semantic database.",
+        "Published the connector and its usage documentation as an open-source repository."
+      ],
+      "technical": [
+        "JavaScript MCP server accepts structured tool requests from compatible LLM clients.",
+        "GraphDB HTTP endpoints execute repository discovery and read-only SPARQL queries.",
+        "Responses are normalized for conversational use while the server preserves a constrained access surface."
+      ],
+      "architecture": [
+        {
+          "label": "LLM client",
+          "detail": "An MCP-compatible assistant requests graph discovery or a bounded query."
+        },
+        {
+          "label": "MCP server",
+          "detail": "Tool schemas validate requests and enforce the read-only connector boundary."
+        },
+        {
+          "label": "GraphDB",
+          "detail": "Repository APIs and SPARQL endpoints evaluate approved semantic queries."
+        },
+        {
+          "label": "Grounded result",
+          "detail": "Normalized graph results return to the model for explanation or downstream reasoning."
+        }
+      ],
+      "outcomes": [
+        "Shows practical integration of the Model Context Protocol with enterprise semantic infrastructure.",
+        "Reduces the privilege surface by focusing the public connector on read-only graph access.",
+        "Reuses knowledge-graph experience from sustainability and R&D systems in a portable developer tool."
+      ]
+    },
+    "zh": {
+      "title": "GraphDB MCP 伺服器",
+      "summary": "開源 Model Context Protocol 連接器，讓 LLM 用戶端能以受控唯讀方式存取 GraphDB 儲存庫與 SPARQL。",
+      "dates": "2025 年 5 月 - 2025 年 6 月",
+      "status": "開源連接器",
+      "role": "協定與知識圖譜工程師",
+      "challenge": "LLM 用戶端需要一種範圍明確且唯讀的方式，檢視經核准的知識圖譜並執行 SPARQL，同時避免取得廣泛資料庫憑證或寫入權限。",
+      "contribution": [
+        "實作 MCP 伺服器，將 GraphDB 儲存庫探索與唯讀 SPARQL 操作公開為模型工具。",
+        "定義對話式用戶端與語意資料庫之間的協定邊界。",
+        "將連接器與使用文件發布為開源儲存庫。"
+      ],
+      "technical": [
+        "JavaScript MCP 伺服器接收相容 LLM 用戶端傳入的結構化工具請求。",
+        "GraphDB HTTP 端點執行儲存庫探索與唯讀 SPARQL 查詢。",
+        "回傳結果經標準化以供對話使用，同時維持受限的伺服器存取範圍。"
+      ],
+      "architecture": [
+        { "label": "LLM 用戶端", "detail": "相容 MCP 的助理要求探索圖譜或執行範圍受限的查詢。" },
+        { "label": "MCP 伺服器", "detail": "工具結構驗證請求，並強制執行唯讀連接器邊界。" },
+        { "label": "GraphDB", "detail": "儲存庫 API 與 SPARQL 端點執行經核准的語意查詢。" },
+        { "label": "具依據的結果", "detail": "標準化圖譜結果回傳模型，用於說明或後續推理。" }
+      ],
+      "outcomes": [
+        "展示 Model Context Protocol 與企業語意基礎設施的實際整合。",
+        "將公開連接器聚焦於唯讀圖譜存取，降低權限暴露範圍。",
+        "把永續與研發系統的知識圖譜經驗轉化為可攜式開發工具。"
+      ]
+    }
+  }
+}

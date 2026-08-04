@@ -1,0 +1,101 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "ollama-docker",
+  "category": "genai",
+  "sortStart": "2024-04",
+  "sortEnd": "2025-03",
+  "pillKey": "projects.pills.genai",
+  "icon": "ri-server-line",
+  "image": "assets/images/project-ollama-docker-v2.png",
+  "chips": [
+    "Ollama",
+    "Docker Compose",
+    "Python",
+    "Azure",
+    "REST"
+  ],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/adam951502/ollama-docker",
+      "icon": "ri-github-line"
+    },
+    {
+      "label": "Demo",
+      "url": "https://ollama-docker.azurewebsites.net/",
+      "icon": "ri-external-link-line"
+    }
+  ],
+  "content": {
+    "en": {
+      "title": "Ollama Docker Deployment",
+      "summary": "Reproducible container setup for local LLM serving, persistence, service integration, and hosted demonstrations.",
+      "dates": "Apr 2024 - Mar 2025",
+      "status": "Open-source deployment",
+      "role": "Backend & DevOps engineer",
+      "challenge": "Local LLM experimentation becomes difficult to reproduce when model serving, dependencies, persistence, and network settings are installed manually on each machine.",
+      "contribution": [
+        "Packaged Ollama and its supporting service configuration into a repeatable Docker Compose workflow.",
+        "Documented model startup, persistence, environment settings, and deployment paths.",
+        "Published a public repository and hosted demonstration endpoint for easier evaluation."
+      ],
+      "technical": [
+        "Docker Compose defines the model runtime, service networking, volumes, and application dependencies.",
+        "Python service code exposes health and model-facing integration points for local or hosted use.",
+        "Environment-based configuration keeps development and cloud deployment paths aligned."
+      ],
+      "architecture": [
+        {
+          "label": "Client",
+          "detail": "Local applications or API users send prompts or health requests."
+        },
+        {
+          "label": "Application service",
+          "detail": "Python integration layer validates and forwards model operations."
+        },
+        {
+          "label": "Model runtime",
+          "detail": "Ollama serves configured models inside an isolated container with persistent storage."
+        },
+        {
+          "label": "Delivery",
+          "detail": "Docker Compose runs locally; the same configuration can be adapted for hosted demonstrations."
+        }
+      ],
+      "outcomes": [
+        "Makes a multi-service local LLM environment reproducible with one documented startup path.",
+        "Provides a reusable base for later RAG, chatbot, and copilot prototypes.",
+        "Demonstrates container, API, and model-runtime integration beyond notebook experimentation."
+      ]
+    },
+    "zh": {
+      "title": "Ollama Docker 部署",
+      "summary": "可重現的本機 LLM 容器化設定，涵蓋持久化、服務整合與線上展示。",
+      "dates": "2024 年 4 月 - 2025 年 3 月",
+      "status": "開源部署",
+      "role": "後端與 DevOps 工程師",
+      "challenge": "若在每台電腦上手動安裝模型服務、相依套件、持久化與網路設定，本地 LLM 實驗將難以重現。",
+      "contribution": [
+        "將 Ollama 與其支援服務設定封裝為可重複使用的 Docker Compose 工作流程。",
+        "記錄模型啟動、持久化、環境設定與部署路徑。",
+        "發布公開儲存庫與線上展示端點，降低評估門檻。"
+      ],
+      "technical": [
+        "Docker Compose 定義模型執行環境、服務網路、Volume 與應用程式相依項目。",
+        "Python 服務程式碼提供健康檢查及面向模型的整合端點，支援本地或託管使用。",
+        "以環境變數為基礎的設定，讓開發與雲端部署路徑保持一致。"
+      ],
+      "architecture": [
+        { "label": "用戶端", "detail": "本地應用程式或 API 使用者送出提示詞或健康檢查請求。" },
+        { "label": "應用服務", "detail": "Python 整合層驗證並轉送模型操作。" },
+        { "label": "模型執行環境", "detail": "Ollama 在具持久化儲存的隔離容器內提供指定模型。" },
+        { "label": "交付", "detail": "Docker Compose 可在本地啟動，同一設定也能調整為線上展示。" }
+      ],
+      "outcomes": [
+        "透過一條文件化的啟動路徑，讓多服務本地 LLM 環境可重現。",
+        "為後續 RAG、聊天機器人與 Copilot 原型提供可重用基礎。",
+        "展現超越 Notebook 實驗的容器、API 與模型執行環境整合能力。"
+      ]
+    }
+  }
+}

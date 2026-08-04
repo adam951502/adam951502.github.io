@@ -1,0 +1,102 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "heraklion",
+  "category": "data",
+  "sortStart": "2022-03",
+  "sortEnd": "2025-10",
+  "pillKey": "projects.pills.data",
+  "icon": "ri-database-2-line",
+  "image": "assets/images/project-heraklion-4-3.jpg",
+  "imageFit": "cover",
+  "chips": [
+    "Python",
+    "Knowledge Graph",
+    "SPARQL",
+    "ETL",
+    "CI/CD"
+  ],
+  "links": [
+    {
+      "label": "Project site",
+      "url": "https://www.heraklion-projekt.de/",
+      "icon": "ri-external-link-line"
+    },
+    {
+      "label": "Video",
+      "url": "https://www.youtube.com/watch?v=2JG96MAhk3w",
+      "icon": "ri-youtube-line"
+    }
+  ],
+  "content": {
+    "en": {
+      "title": "HERAKLION",
+      "summary": "Material lifecycle knowledge graph with SPARQL analytics powering sustainability reporting.",
+      "dates": "Mar 2022 - Oct 2025",
+      "status": "Research data space",
+      "role": "Backend, data & knowledge engineer",
+      "challenge": "Crisis and resilience stakeholders needed to exchange heterogeneous data with shared meaning, provenance, and reusable analytics across organizational boundaries.",
+      "contribution": [
+        "Developed Python data-provider and metadata-extraction components for the resilience data space.",
+        "Modeled semantic concepts with ontologies and knowledge graphs, then queried them through SPARQL workflows.",
+        "Contributed requirements, API delivery, CI/CD, documentation, and agile coordination across the project."
+      ],
+      "technical": [
+        "Python ETL and APIs normalize source data and publish interoperable metadata.",
+        "Ontology and graph layers provide shared semantics and queryable relationships.",
+        "Containerized services and CI/CD support repeatable integration across project partners."
+      ],
+      "architecture": [
+        {
+          "label": "Providers",
+          "detail": "Partner systems publish domain data and descriptive metadata."
+        },
+        {
+          "label": "Interoperability",
+          "detail": "Python pipelines normalize payloads and align them to shared semantic models."
+        },
+        {
+          "label": "Data space",
+          "detail": "Connector and governance services exchange data while retaining provenance and control."
+        },
+        {
+          "label": "Knowledge & apps",
+          "detail": "Ontologies, graphs, SPARQL analytics, and resilience applications consume the integrated data."
+        }
+      ],
+      "outcomes": [
+        "Delivered reusable data and semantic components in a multi-partner research setting.",
+        "Connected backend engineering with ontology, graph, requirements, and delivery responsibilities.",
+        "Supported data-driven resilience analysis while preserving the architecture of a distributed data space."
+      ]
+    },
+    "zh": {
+      "title": "HERAKLION",
+      "summary": "以 SPARQL 分析支持永續報告的材料生命週期知識圖譜。",
+      "dates": "2022 年 3 月 - 2025 年 10 月",
+      "status": "研究資料空間",
+      "role": "後端、資料與知識工程師",
+      "challenge": "危機管理與韌性領域的利害關係人需要跨組織交換異質資料，同時維持共同語意、資料來源與可重用分析能力。",
+      "contribution": [
+        "為韌性資料空間開發 Python 資料提供者與詮釋資料擷取元件。",
+        "以本體與知識圖譜建模語意概念，並透過 SPARQL 工作流程查詢。",
+        "參與需求分析、API 交付、CI/CD、文件撰寫與跨團隊敏捷協作。"
+      ],
+      "technical": [
+        "Python ETL 與 API 將來源資料標準化，並發布可互通的詮釋資料。",
+        "本體與圖譜層提供共同語意與可查詢的關係。",
+        "容器化服務與 CI/CD 支援專案夥伴之間可重複的系統整合。"
+      ],
+      "architecture": [
+        { "label": "資料提供者", "detail": "合作夥伴系統發布領域資料與描述性詮釋資料。" },
+        { "label": "互通層", "detail": "Python 管線標準化資料內容，並對齊共同語意模型。" },
+        { "label": "資料空間", "detail": "連接器與治理服務交換資料，同時保留來源與控制權。" },
+        { "label": "知識與應用", "detail": "本體、圖譜、SPARQL 分析與韌性應用程式使用整合後的資料。" }
+      ],
+      "outcomes": [
+        "在多夥伴研究環境中交付可重用的資料與語意元件。",
+        "將後端工程與本體、圖譜、需求及交付責任整合。",
+        "在維持分散式資料空間架構的同時，支援資料驅動的韌性分析。"
+      ]
+    }
+  }
+}

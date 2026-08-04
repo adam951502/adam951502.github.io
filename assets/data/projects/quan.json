@@ -1,0 +1,91 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "quan",
+  "category": "data",
+  "sortStart": "2026-07",
+  "sortEnd": "9999-12",
+  "sortUpdated": "2026-07-22",
+  "pillKey": "projects.pills.data",
+  "icon": "ri-line-chart-line",
+  "image": "assets/images/project-quan.svg",
+  "imageFit": "cover",
+  "chips": [
+    "Python",
+    "Backtrader",
+    "Shioaji",
+    "Pandas",
+    "Pytest"
+  ],
+  "content": {
+    "en": {
+      "title": "quan — Taiwan Quant Research Toolkit",
+      "summary": "Python research-to-paper-trading framework with Taiwan market data, cost-aware backtests, walk-forward validation, and Shioaji adapters.",
+      "dates": "Jul 2026 - Present",
+      "status": "Research framework",
+      "role": "Quant research & platform engineer",
+      "challenge": "Taiwan-market research needs consistent data, realistic costs, repeatable backtests, strong validation, and a safe path from strategy output to paper execution before any live deployment.",
+      "contribution": [
+        "Designed a layered Python package and CLI for data preparation, strategy research, reporting, and broker-neutral execution.",
+        "Implemented Taiwan futures cost models, continuous-contract helpers, strategy comparison, parameter sweeps, and walk-forward validation.",
+        "Integrated paper execution and Shioaji adapters with market-hours, expiry, order-size, kill-switch, rate-limit, and reconciliation guards."
+      ],
+      "technical": [
+        "Canonical OHLCV pipeline with Yahoo Finance, FinMind, TAIFEX, local CSV, and Shioaji real-time adapters.",
+        "Backtrader event-driven research with eleven strategy templates, external strategy loading, metrics, CSV/JSON reports, and SVG charts.",
+        "Target-position runtime separates strategy decisions from broker orders so the same logic can move from dry-run to simulation safely."
+      ],
+      "architecture": [
+        {
+          "label": "Market data",
+          "detail": "Downloaders and adapters normalize OHLCV, futures contracts, calendars, and live ticks."
+        },
+        {
+          "label": "Research",
+          "detail": "Strategies run through Backtrader with Taiwan-market costs, benchmarks, optimization, and walk-forward validation."
+        },
+        {
+          "label": "Decision",
+          "detail": "Validated strategy output is converted into target positions rather than direct orders."
+        },
+        {
+          "label": "Execution",
+          "detail": "Runtime guards, paper/Shioaji adapters, callbacks, reconciliation, and reports control downstream execution."
+        }
+      ],
+      "outcomes": [
+        "Delivered a repeatable research-to-paper-trading foundation with automated tests and explicit safety boundaries.",
+        "Made strategies extensible without modifying the core package through scaffolding, config files, and external loading.",
+        "Documents limitations clearly: the framework is research infrastructure, not a claim of profitable or unattended live trading."
+      ]
+    },
+    "zh": {
+      "title": "quan — 台灣量化研究工具組",
+      "summary": "從研究到模擬交易的 Python 框架，整合台灣市場資料、交易成本回測、滾動前推驗證與 Shioaji 介面。",
+      "dates": "2026 年 7 月 - 目前",
+      "status": "研究框架",
+      "role": "量化研究與平台工程師",
+      "challenge": "台灣市場研究需要一致資料、合理交易成本、可重複回測、嚴謹驗證，以及在正式上線前從策略輸出安全銜接至模擬交易的路徑。",
+      "contribution": [
+        "設計分層 Python 套件與命令列介面，涵蓋資料準備、策略研究、報告與券商中立的執行層。",
+        "實作台灣期貨成本模型、連續合約工具、策略比較、參數掃描與滾動前推驗證。",
+        "整合模擬執行與 Shioaji 介面，加入交易時段、到期日、下單量、緊急停止、速率限制與對帳防護。"
+      ],
+      "technical": [
+        "標準 OHLCV 管線整合 Yahoo Finance、FinMind、TAIFEX、本地 CSV 與 Shioaji 即時資料介面。",
+        "以 Backtrader 進行事件驅動研究，提供十一種策略範本、外部策略載入、指標、CSV／JSON 報告與 SVG 圖表。",
+        "目標部位執行環境將策略決策與券商訂單分離，使同一邏輯能安全地從試跑移至模擬交易。"
+      ],
+      "architecture": [
+        { "label": "市場資料", "detail": "下載器與介面標準化 OHLCV、期貨合約、交易日曆與即時報價。" },
+        { "label": "研究", "detail": "策略透過 Backtrader 執行，納入台灣市場成本、基準、最佳化與滾動前推驗證。" },
+        { "label": "決策", "detail": "通過驗證的策略輸出會轉換為目標部位，而非直接產生訂單。" },
+        { "label": "執行", "detail": "執行防護、模擬與 Shioaji 介面、回呼、對帳及報告共同控制後續交易。" }
+      ],
+      "outcomes": [
+        "交付可重複的研究至模擬交易基礎，包含自動化測試與明確安全邊界。",
+        "透過腳手架、設定檔與外部載入機制，使策略可擴充而不必修改核心套件。",
+        "清楚說明限制：此框架是研究基礎設施，不代表獲利保證或可無人監督進行實盤交易。"
+      ]
+    }
+  }
+}

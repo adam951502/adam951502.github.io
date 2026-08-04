@@ -1,0 +1,89 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "flight",
+  "category": "mechanics",
+  "sortStart": "2015-03",
+  "sortEnd": "2015-06",
+  "pillKey": "projects.pills.mechanics",
+  "icon": "ri-tools-line",
+  "image": "assets/images/project-quadcopter.jpg",
+  "chips": [
+    "Arduino",
+    "C++",
+    "PID",
+    "IMU",
+    "Motor Control"
+  ],
+  "content": {
+    "en": {
+      "title": "Automatic Flight Control",
+      "summary": "Quadcopter flight control design and testing with sensor feedback.",
+      "dates": "Mar 2015 - Jun 2015",
+      "status": "Embedded control project",
+      "role": "Control & embedded engineer",
+      "challenge": "A quadcopter must estimate attitude and continuously correct four motor outputs fast enough to remain stable despite sensor noise and disturbances.",
+      "contribution": [
+        "Integrated the frame, motors, ESCs, sensors, power system, and microcontroller.",
+        "Implemented sensor reading, attitude estimation, PID control, and motor mixing in embedded code.",
+        "Tuned and tested the controller iteratively with safety-conscious ground and flight checks."
+      ],
+      "technical": [
+        "IMU measurements are filtered into roll, pitch, and yaw estimates.",
+        "PID loops compare desired and measured attitude and calculate corrective control signals.",
+        "Motor mixing converts control outputs into four ESC commands for the airframe."
+      ],
+      "architecture": [
+        {
+          "label": "Sensing",
+          "detail": "IMU measurements capture angular rate and acceleration."
+        },
+        {
+          "label": "Estimation",
+          "detail": "Embedded filtering produces a stable attitude estimate."
+        },
+        {
+          "label": "Control",
+          "detail": "PID loops calculate roll, pitch, yaw, and throttle corrections."
+        },
+        {
+          "label": "Actuation",
+          "detail": "Motor mixing and ESC signals adjust four propellers; motion feeds back to the sensors."
+        }
+      ],
+      "outcomes": [
+        "Built an end-to-end real-time feedback system across hardware and software.",
+        "Developed practical understanding of noisy sensors, controller tuning, and actuator limits.",
+        "Established an early foundation for later automation, data, and systems engineering work."
+      ]
+    },
+    "zh": {
+      "title": "自動飛行控制",
+      "summary": "四軸飛行器的控制設計與感測回饋測試。",
+      "dates": "2015 年 3 月 - 2015 年 6 月",
+      "status": "嵌入式控制專案",
+      "role": "控制與嵌入式工程師",
+      "challenge": "四軸飛行器必須估測姿態，並持續快速修正四顆馬達輸出，才能在感測雜訊與外部擾動下保持穩定。",
+      "contribution": [
+        "整合機架、馬達、電子變速器、感測器、電源系統與微控制器。",
+        "在嵌入式程式中實作感測讀取、姿態估測、PID 控制與馬達混控。",
+        "透過重視安全的地面與飛行檢查，反覆調校並測試控制器。"
+      ],
+      "technical": [
+        "將 IMU 量測值濾波為滾轉、俯仰與偏航姿態估計。",
+        "PID 迴路比較目標與量測姿態，計算修正控制訊號。",
+        "馬達混控將控制輸出轉換為四組電子變速器指令。"
+      ],
+      "architecture": [
+        { "label": "感測", "detail": "IMU 量測角速度與加速度。" },
+        { "label": "估測", "detail": "嵌入式濾波產生穩定的姿態估計。" },
+        { "label": "控制", "detail": "PID 迴路計算滾轉、俯仰、偏航與油門修正量。" },
+        { "label": "致動", "detail": "馬達混控與電子變速器訊號調整四個螺旋槳，運動結果再回饋至感測器。" }
+      ],
+      "outcomes": [
+        "完成橫跨硬體與軟體的端到端即時回授系統。",
+        "累積處理感測雜訊、控制器調校與致動器限制的實務經驗。",
+        "奠定後續自動化、資料與系統工程工作的早期基礎。"
+      ]
+    }
+  }
+}

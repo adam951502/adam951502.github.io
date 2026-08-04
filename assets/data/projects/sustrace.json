@@ -1,0 +1,90 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "sustrace",
+  "category": "data",
+  "sortStart": "2021-10",
+  "sortEnd": "2022-02",
+  "pillKey": "projects.pills.data",
+  "icon": "ri-database-2-line",
+  "image": "assets/images/project-sustrace.png",
+  "imageFit": "cover",
+  "chips": [
+    "Python",
+    "LCA",
+    "Ontology",
+    "Knowledge Graph",
+    "Visualization"
+  ],
+  "content": {
+    "en": {
+      "title": "ADAM-SusTrace",
+      "summary": "Data pipeline and visualization for sustainability scoring across additive manufacturing processes.",
+      "dates": "Oct 2021 - Feb 2022",
+      "status": "Sustainability data prototype",
+      "role": "Data & knowledge engineer",
+      "challenge": "Additive-manufacturing sustainability data spans materials, process steps, energy, and lifecycle impacts, making consistent traceability and comparison difficult.",
+      "contribution": [
+        "Modeled manufacturing and lifecycle concepts as an ontology and knowledge graph.",
+        "Built Python data-processing steps for lifecycle and sustainability indicators.",
+        "Created a traceable prototype that connects source data, semantic context, and visual analysis."
+      ],
+      "technical": [
+        "Process and material records are cleaned and aligned to lifecycle-assessment concepts.",
+        "Ontology and graph structures preserve relationships and provenance across manufacturing stages.",
+        "Python analytics derive indicators that can be presented in dashboards or reports."
+      ],
+      "architecture": [
+        {
+          "label": "Sources",
+          "detail": "Material, machine, energy, and process records provide lifecycle evidence."
+        },
+        {
+          "label": "Data pipeline",
+          "detail": "Python validates, transforms, and aligns heterogeneous records."
+        },
+        {
+          "label": "Semantic layer",
+          "detail": "Ontology and knowledge graph connect products, steps, resources, and impacts."
+        },
+        {
+          "label": "Analysis",
+          "detail": "Queries and visualizations expose traceability and sustainability indicators."
+        }
+      ],
+      "outcomes": [
+        "Established a graph-first foundation for digital traceability in additive manufacturing.",
+        "Connected lifecycle assessment with practical data engineering and semantic modeling.",
+        "Prepared reusable patterns later applied in larger research and data-space projects."
+      ]
+    },
+    "zh": {
+      "title": "ADAM-SusTrace",
+      "summary": "為積層製程的永續評分建立資料管線與視覺化。",
+      "dates": "2021 年 10 月 - 2022 年 2 月",
+      "status": "永續資料原型",
+      "role": "資料與知識工程師",
+      "challenge": "積層製造的永續資料橫跨材料、製程步驟、能源與生命週期衝擊，使一致的可追溯性與比較變得困難。",
+      "contribution": [
+        "將製造與生命週期概念建模為本體及知識圖譜。",
+        "建立 Python 資料處理步驟，計算生命週期與永續指標。",
+        "打造可追溯原型，連結來源資料、語意脈絡與視覺分析。"
+      ],
+      "technical": [
+        "清理製程與材料紀錄，並對齊生命週期評估概念。",
+        "本體與圖譜結構保存跨製造階段的關係與資料來源。",
+        "Python 分析產生可呈現在儀表板或報告中的指標。"
+      ],
+      "architecture": [
+        { "label": "資料來源", "detail": "材料、機台、能源與製程紀錄提供生命週期證據。" },
+        { "label": "資料管線", "detail": "Python 驗證、轉換並對齊異質紀錄。" },
+        { "label": "語意層", "detail": "本體與知識圖譜連結產品、步驟、資源與衝擊。" },
+        { "label": "分析", "detail": "查詢與視覺化呈現可追溯性及永續指標。" }
+      ],
+      "outcomes": [
+        "為積層製造的數位可追溯性建立以圖譜為核心的基礎。",
+        "將生命週期評估與實務資料工程及語意建模連結。",
+        "建立可重用模式，並於後續更大型的研究與資料空間專案中延伸應用。"
+      ]
+    }
+  }
+}

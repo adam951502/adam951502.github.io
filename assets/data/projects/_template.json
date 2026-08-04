@@ -1,0 +1,96 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "project-slug",
+  "category": "data",
+  "sortStart": "2026-08",
+  "sortEnd": "9999-12",
+  "sortUpdated": "2026-08",
+  "pillKey": "projects.pills.data",
+  "icon": "ri-code-box-line",
+  "image": "assets/images/project-slug.png",
+  "chips": [
+    "Primary technology",
+    "Secondary technology"
+  ],
+  "links": [
+    {
+      "label": "View project",
+      "url": "https://example.com",
+      "icon": "ri-external-link-line"
+    }
+  ],
+  "content": {
+    "en": {
+      "title": "Project title",
+      "summary": "One or two recruiter-friendly sentences explaining what the project does and why it matters.",
+      "dates": "Aug 2026 - Present",
+      "status": "Active build",
+      "role": "Product owner & engineer",
+      "challenge": "Describe the user, operational, or technical problem that motivated the project.",
+      "contribution": [
+        "Describe the most important feature or system you personally designed and built.",
+        "Describe another contribution that demonstrates ownership or delivery."
+      ],
+      "technical": [
+        "Explain the implementation, important technology choices, and engineering constraints.",
+        "Explain testing, security, deployment, performance, or reliability decisions."
+      ],
+      "architecture": [
+        {
+          "label": "Experience",
+          "detail": "Describe the user-facing interface or entry point."
+        },
+        {
+          "label": "Application",
+          "detail": "Describe the core application or service layer."
+        },
+        {
+          "label": "Data & integrations",
+          "detail": "Describe storage, APIs, models, queues, or external systems."
+        },
+        {
+          "label": "Delivery",
+          "detail": "Describe testing, deployment, monitoring, and operational controls."
+        }
+      ],
+      "outcomes": [
+        "Describe a concrete result, verified capability, or evidence without inventing metrics."
+      ]
+    },
+    "zh": {
+      "title": "專案名稱",
+      "summary": "用一至兩句適合招募者閱讀的繁體中文，說明專案功能與價值。",
+      "dates": "2026 年 8 月 - 目前",
+      "status": "持續開發",
+      "role": "產品負責人與工程師",
+      "challenge": "說明促成此專案的使用者、作業或技術問題。",
+      "contribution": [
+        "說明你親自設計與完成的主要功能或系統。"
+      ],
+      "technical": [
+        "說明實作方式、重要技術選擇與工程限制。"
+      ],
+      "architecture": [
+        {
+          "label": "使用體驗",
+          "detail": "說明使用者介面或系統入口。"
+        },
+        {
+          "label": "應用層",
+          "detail": "說明核心應用程式或服務層。"
+        },
+        {
+          "label": "資料與整合",
+          "detail": "說明儲存、API、模型、佇列或外部系統。"
+        },
+        {
+          "label": "交付與維運",
+          "detail": "說明測試、部署、監控與操作控制。"
+        }
+      ],
+      "outcomes": [
+        "說明具體成果、已驗證能力或可查證證據，避免虛構指標。"
+      ]
+    }
+  }
+}

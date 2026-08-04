@@ -1,0 +1,89 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "market-888",
+  "category": "web",
+  "sortStart": "2026-02",
+  "sortEnd": "2026-03",
+  "pillKey": "projects.pills.web",
+  "icon": "ri-store-2-line",
+  "image": "assets/images/project-888-market.png",
+  "chips": [
+    "Vue 3",
+    "Express",
+    "MySQL",
+    "Docker",
+    "PDFKit"
+  ],
+  "content": {
+    "en": {
+      "title": "888 Card Market Platform",
+      "summary": "Full-stack vendor reservation and administration system with booth availability, rental inventory, and generated contracts.",
+      "dates": "Feb 2026 - Mar 2026",
+      "status": "Full-stack demo",
+      "role": "Solution architect & full-stack engineer",
+      "challenge": "A physical card market needed one system for brand presentation, vendor onboarding, booth availability, reservations, rental extras, contract generation, and staff administration.",
+      "contribution": [
+        "Designed the vendor journey from registration and login through date/booth selection, equipment rental, reservation, and contract creation.",
+        "Built role-protected admin operations for users, bookings, contracts, open dates, rental inventory, and CSV exchange.",
+        "Containerized the Vue client, Node API, and MySQL database with an optional Cloudflare tunnel for demonstrations."
+      ],
+      "technical": [
+        "Vue 3/Vite single-page frontend with Pinia and route-based Home, Reserve, and Admin experiences.",
+        "Express/Sequelize API handles JWT auth, availability, reservations, staff roles, uploads, and management endpoints.",
+        "PDFKit generates Chinese reservation contracts; Docker volumes preserve contracts and MySQL data."
+      ],
+      "architecture": [
+        {
+          "label": "Client",
+          "detail": "Vue SPA presents the brand site, vendor reservation flow, and role-aware administration."
+        },
+        {
+          "label": "API",
+          "detail": "Express validates identity and coordinates booth, date, rental, reservation, and admin services."
+        },
+        {
+          "label": "Domain data",
+          "detail": "Sequelize persists members, availability, reservations, and configuration in MySQL."
+        },
+        {
+          "label": "Documents & delivery",
+          "detail": "PDFKit creates contracts in persistent storage; Docker Compose runs client, API, database, and optional tunnel."
+        }
+      ],
+      "outcomes": [
+        "Delivered an end-to-end demonstrator rather than a disconnected marketing page and admin mockup.",
+        "Automated reservation contracts and centralized the operational settings staff need to run open market dates.",
+        "Defined a clear extension path for payments, e-signature, audit logs, object storage, and commerce modules."
+      ]
+    },
+    "zh": {
+      "title": "888 卡牌市集平台",
+      "summary": "全端攤商預約與管理系統，整合攤位可用性、租賃庫存與合約產生。",
+      "dates": "2026 年 2 月 - 2026 年 3 月",
+      "status": "全端展示",
+      "role": "解決方案架構師與全端工程師",
+      "challenge": "實體卡牌市集需要一套系統，統一處理品牌展示、攤商加入、攤位可用性、預約、加租設備、合約產生與員工管理。",
+      "contribution": [
+        "設計從註冊登入、日期與攤位選擇、設備租借，到預約及合約建立的完整攤商流程。",
+        "建置角色權限保護的後台作業，管理使用者、預約、合約、開放日期、租賃庫存與 CSV 交換。",
+        "將 Vue 用戶端、Node API 與 MySQL 資料庫容器化，並提供選用的 Cloudflare Tunnel 進行展示。"
+      ],
+      "technical": [
+        "以 Vue 3、Vite 與 Pinia 建立單頁前端，並透過路由區分首頁、預約與管理體驗。",
+        "Express 與 Sequelize API 處理 JWT 驗證、可用性、預約、員工角色、上傳及管理端點。",
+        "PDFKit 產生中文預約合約，Docker Volume 保存合約與 MySQL 資料。"
+      ],
+      "architecture": [
+        { "label": "用戶端", "detail": "Vue 單頁應用呈現品牌網站、攤商預約流程與依角色顯示的管理介面。" },
+        { "label": "API", "detail": "Express 驗證身分，並協調攤位、日期、租賃、預約與後台服務。" },
+        { "label": "領域資料", "detail": "Sequelize 將會員、可用性、預約與設定資料保存至 MySQL。" },
+        { "label": "文件與交付", "detail": "PDFKit 將合約存入持久化儲存空間；Docker Compose 啟動用戶端、API、資料庫與選用通道。" }
+      ],
+      "outcomes": [
+        "交付端到端展示系統，而非彼此分離的行銷頁面與後台模型。",
+        "自動產生預約合約，並集中管理營運市集開放日期所需的設定。",
+        "為金流、電子簽章、稽核紀錄、物件儲存與商務模組定義清楚的擴充路徑。"
+      ]
+    }
+  }
+}

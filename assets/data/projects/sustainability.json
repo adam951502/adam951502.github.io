@@ -1,0 +1,97 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "sustainability",
+  "category": "data",
+  "sortStart": "2019-10",
+  "sortEnd": "2020-02",
+  "pillKey": "projects.pills.data",
+  "icon": "ri-database-2-line",
+  "image": "assets/images/project-AHP-Tree.jpg",
+  "imageFit": "cover",
+  "chips": [
+    "Python",
+    "AHP",
+    "WSM",
+    "TOPSIS",
+    "Excel"
+  ],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/adam951502/AHP-Operations-Research",
+      "icon": "ri-github-line"
+    }
+  ],
+  "content": {
+    "en": {
+      "title": "Sustainability Assessment",
+      "summary": "AHP model to rank sustainability criteria across materials and processes.",
+      "dates": "Oct 2019 - Feb 2020",
+      "status": "Decision-analysis project",
+      "role": "Data analyst",
+      "challenge": "Sustainability choices combine environmental, economic, and social criteria with different units and stakeholder priorities, so a transparent ranking method was required.",
+      "contribution": [
+        "Structured the decision hierarchy and pairwise-comparison inputs for Analytic Hierarchy Process weighting.",
+        "Implemented AHP consistency checks and alternative rankings with weighted-sum and TOPSIS methods.",
+        "Built Python/Excel data flows and visualizations to make assumptions and sensitivity visible."
+      ],
+      "technical": [
+        "Excel inputs capture criteria, alternatives, and stakeholder judgments.",
+        "Python/NumPy calculates normalized matrices, priority vectors, and consistency ratios.",
+        "WSM and TOPSIS compare alternatives and provide cross-method validation."
+      ],
+      "architecture": [
+        {
+          "label": "Decision model",
+          "detail": "Goal, criteria, subcriteria, alternatives, and pairwise judgments define the hierarchy."
+        },
+        {
+          "label": "Weighting",
+          "detail": "AHP derives criteria priorities and checks judgment consistency."
+        },
+        {
+          "label": "Ranking",
+          "detail": "WSM and TOPSIS score alternatives under the selected weights."
+        },
+        {
+          "label": "Review",
+          "detail": "Tables and plots expose ranking, sensitivity, and disagreements between methods."
+        }
+      ],
+      "outcomes": [
+        "Produced an auditable sustainability decision model instead of an opaque single score.",
+        "Demonstrated operations research, data preparation, numerical implementation, and stakeholder framing.",
+        "Published the implementation as a reusable public repository."
+      ]
+    },
+    "zh": {
+      "title": "永續性評估",
+      "summary": "以 AHP 評估材料與製程的永續性優先順序。",
+      "dates": "2019 年 10 月 - 2020 年 2 月",
+      "status": "決策分析專案",
+      "role": "資料分析師",
+      "challenge": "永續決策同時包含單位不同的環境、經濟與社會準則，以及各異的利害關係人優先順序，因此需要透明的排序方法。",
+      "contribution": [
+        "建立決策階層與成對比較輸入，用於層級分析法的權重計算。",
+        "實作 AHP 一致性檢查，並以加權總和法與 TOPSIS 進行替代方案排序。",
+        "建立 Python 與 Excel 資料流程及視覺化，使假設與敏感度清楚可見。"
+      ],
+      "technical": [
+        "Excel 輸入記錄準則、替代方案與利害關係人判斷。",
+        "Python 與 NumPy 計算正規化矩陣、優先向量及一致性比率。",
+        "WSM 與 TOPSIS 比較替代方案，並提供跨方法驗證。"
+      ],
+      "architecture": [
+        { "label": "決策模型", "detail": "目標、準則、次準則、替代方案與成對判斷共同定義階層。" },
+        { "label": "權重計算", "detail": "AHP 推導準則優先順序，並檢查判斷的一致性。" },
+        { "label": "排序", "detail": "WSM 與 TOPSIS 依選定權重計算替代方案分數。" },
+        { "label": "檢視", "detail": "表格與圖表呈現排序、敏感度及不同方法之間的差異。" }
+      ],
+      "outcomes": [
+        "建立可稽核的永續決策模型，而非不透明的單一分數。",
+        "展現作業研究、資料準備、數值實作與利害關係人問題框架能力。",
+        "將實作發布為可重用的公開儲存庫。"
+      ]
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "hybrid-joint",
+  "category": "mechanics",
+  "sortStart": "2020-05",
+  "sortEnd": "2021-01",
+  "pillKey": "projects.pills.mechanics",
+  "icon": "ri-tools-line",
+  "image": "assets/images/project-master-thesis.png",
+  "imageFit": "cover",
+  "chips": [
+    "LS-DYNA",
+    "HyperMesh",
+    "Cohesive Zone",
+    "Python"
+  ],
+  "content": {
+    "en": {
+      "title": "Hybrid Joint Modeling",
+      "summary": "Failure modeling for hybrid lap joints under tensile loading in LS-DYNA.",
+      "dates": "May 2020 - Jan 2021",
+      "status": "Master's thesis",
+      "role": "Mechanical simulation researcher",
+      "challenge": "Single-lap aluminum–CFRP hybrid joints fail through interacting adhesive, interface, and structural mechanisms that are difficult to observe directly in tests.",
+      "contribution": [
+        "Built and calibrated finite-element models for the hybrid lap-joint specimens.",
+        "Applied cohesive-zone behavior to represent adhesive initiation and progressive failure.",
+        "Automated result extraction and compared simulated force/displacement and failure patterns with experiments."
+      ],
+      "technical": [
+        "HyperMesh defines joint geometry, mesh, contacts, and material/adhesive regions.",
+        "LS-DYNA solves tensile loading and progressive interface damage.",
+        "Python post-processing aligns simulation outputs with experimental curves and failure observations."
+      ],
+      "architecture": [
+        {
+          "label": "Experiment",
+          "detail": "Specimen geometry, materials, boundary conditions, and tensile measurements define the reference."
+        },
+        {
+          "label": "FE model",
+          "detail": "Metal, CFRP, adhesive, mesh, contacts, and cohesive parameters represent the joint."
+        },
+        {
+          "label": "Simulation",
+          "detail": "LS-DYNA calculates load transfer and progressive damage under tensile loading."
+        },
+        {
+          "label": "Comparison",
+          "detail": "Python aligns curves and failure modes to evaluate model credibility."
+        }
+      ],
+      "outcomes": [
+        "Completed a thesis-level simulation and validation workflow with excellent academic evaluation.",
+        "Demonstrated understanding of composite/metal joining, nonlinear failure, and model calibration.",
+        "Built reusable Python analysis steps around commercial CAE outputs."
+      ]
+    },
+    "zh": {
+      "title": "複合接頭建模",
+      "summary": "在 LS-DYNA 進行拉伸載荷下的複合膠接件失效建模。",
+      "dates": "2020 年 5 月 - 2021 年 1 月",
+      "status": "碩士論文",
+      "role": "機械模擬研究員",
+      "challenge": "鋁合金與碳纖維複合材料單搭接接頭的失效，涉及膠層、介面與結構機制的交互作用，難以直接從實驗中完整觀察。",
+      "contribution": [
+        "建立並校準複合材料搭接試件的有限元素模型。",
+        "採用內聚區模型描述黏著層起始與漸進式失效。",
+        "自動化結果擷取，並比較模擬與實驗的力位移曲線及失效模式。"
+      ],
+      "technical": [
+        "HyperMesh 定義接頭幾何、網格、接觸與材料及膠層區域。",
+        "LS-DYNA 求解拉伸載荷與漸進式介面損傷。",
+        "Python 後處理將模擬輸出與實驗曲線及失效觀察結果對齊。"
+      ],
+      "architecture": [
+        { "label": "實驗", "detail": "試件幾何、材料、邊界條件與拉伸量測構成參考基準。" },
+        { "label": "有限元素模型", "detail": "金屬、碳纖維複合材料、膠層、網格、接觸與內聚參數共同描述接頭。" },
+        { "label": "模擬", "detail": "LS-DYNA 計算拉伸載荷下的傳力與漸進式損傷。" },
+        { "label": "比較", "detail": "Python 對齊曲線與失效模式，以評估模型可信度。" }
+      ],
+      "outcomes": [
+        "完成論文等級的模擬與驗證流程，並獲得優異學術評價。",
+        "展現對複合材料與金屬接合、非線性失效及模型校準的理解。",
+        "圍繞商用 CAE 輸出建立可重用的 Python 分析步驟。"
+      ]
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "shipping-assistant",
+  "category": "web",
+  "sortStart": "2026-04",
+  "sortEnd": "2026-05",
+  "pillKey": "projects.pills.web",
+  "icon": "ri-qr-scan-2-line",
+  "image": "assets/images/project-shipping-assistant.png",
+  "chips": [
+    "FastAPI",
+    "SQLite",
+    "GS1 UDI",
+    "Excel",
+    "Docker"
+  ],
+  "content": {
+    "en": {
+      "title": "UDI Shipping Assistance System",
+      "summary": "Operational scanning workflow that imports shipment plans, validates GS1 UDI, flags exceptions, and exports auditable completion records.",
+      "dates": "Apr 2026 - May 2026",
+      "status": "Operational system",
+      "role": "Solution architect & full-stack engineer",
+      "challenge": "Daily shipping teams needed a safer way to import shipment plans, scan medical-product UDI codes, catch over-scans or mismatches, and produce an auditable end-of-day result.",
+      "contribution": [
+        "Modeled the shipment workflow from plan import through order selection, scan validation, review, submission, and final export.",
+        "Built GS1 Element String, HRI, and Digital Link parsing with internal-product mapping and explicit exception states.",
+        "Added SQLite persistence, Excel export, database backup, runtime configuration, feature tiers, license handling, Docker packaging, and integration tests."
+      ],
+      "technical": [
+        "FastAPI exposes a versioned operational API and serves a focused single-page scanning interface.",
+        "Browser session state keeps in-progress scans temporary; only confirmed orders are committed to SQLite.",
+        "Service modules separate plan import, UDI mapping, validation, submission, reporting, and launcher behavior."
+      ],
+      "architecture": [
+        {
+          "label": "Input",
+          "detail": "CSV/XLSX shipment plan and scanned GS1 UDI strings enter the operator workspace."
+        },
+        {
+          "label": "Validation",
+          "detail": "UDI parser and mapping data resolve GTIN/UDI-DI, part number, item, and expected quantity."
+        },
+        {
+          "label": "Workflow API",
+          "detail": "FastAPI services manage previews, exception states, submissions, statistics, and session reset."
+        },
+        {
+          "label": "Records",
+          "detail": "Confirmed results persist to SQLite; Excel summaries and a database backup are exported at close."
+        }
+      ],
+      "outcomes": [
+        "Turns scan exceptions into explicit operator decisions instead of silent shipping errors.",
+        "Provides auditable order history, daily statistics, Excel settlement, and backup artifacts.",
+        "Includes route-level unit and real HTTP integration coverage for the operational API."
+      ]
+    },
+    "zh": {
+      "title": "UDI 出貨輔助系統",
+      "summary": "匯入出貨計畫、驗證 GS1 UDI、標示例外，並輸出可稽核完成紀錄的作業系統。",
+      "dates": "2026 年 4 月 - 2026 年 5 月",
+      "status": "作業系統",
+      "role": "解決方案架構師與全端工程師",
+      "challenge": "每日出貨團隊需要更安全的方式匯入出貨計畫、掃描醫療產品 UDI、攔截超量掃描或不符項目，並產生可稽核的日終結果。",
+      "contribution": [
+        "建立從計畫匯入、訂單選擇、掃描驗證、覆核、送出到最終匯出的完整出貨流程模型。",
+        "建置 GS1 Element String、HRI 與 Digital Link 解析，整合內部產品對應及明確例外狀態。",
+        "加入 SQLite 持久化、Excel 匯出、資料庫備份、執行設定、功能分級、授權處理、Docker 封裝與整合測試。"
+      ],
+      "technical": [
+        "FastAPI 提供版本化作業 API，並服務專注於掃描工作的單頁介面。",
+        "瀏覽器工作階段狀態暫存進行中的掃描，只有確認後的訂單才寫入 SQLite。",
+        "服務模組分離計畫匯入、UDI 對應、驗證、送出、報告與啟動器行為。"
+      ],
+      "architecture": [
+        { "label": "輸入", "detail": "CSV／XLSX 出貨計畫與掃描的 GS1 UDI 字串進入操作員工作區。" },
+        { "label": "驗證", "detail": "UDI 解析器與對應資料解析 GTIN／UDI-DI、料號、品項與預期數量。" },
+        { "label": "工作流程 API", "detail": "FastAPI 服務管理預覽、例外狀態、送出、統計與工作階段重設。" },
+        { "label": "紀錄", "detail": "確認結果保存至 SQLite；結束作業時匯出 Excel 摘要與資料庫備份。" }
+      ],
+      "outcomes": [
+        "將掃描例外轉換為明確的操作員決策，避免成為未被發現的出貨錯誤。",
+        "提供可稽核訂單歷程、每日統計、Excel 結算與備份檔案。",
+        "作業 API 具備路由層單元測試與真實 HTTP 整合測試。"
+      ]
+    }
+  }
+}

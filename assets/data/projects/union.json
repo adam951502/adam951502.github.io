@@ -1,0 +1,97 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "union",
+  "category": "web",
+  "sortStart": "2023-02",
+  "sortEnd": "2023-03",
+  "pillKey": "projects.pills.web",
+  "icon": "ri-global-line",
+  "image": "assets/images/project-union-website.png",
+  "architectureImage": "assets/projects/website-union.png",
+  "chips": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "AWS Amplify",
+    "GitHub"
+  ],
+  "links": [
+    {
+      "label": "Live site",
+      "url": "https://www.zhflu.org/",
+      "icon": "ri-external-link-line"
+    }
+  ],
+  "content": {
+    "en": {
+      "title": "ZHFLU-Union Website",
+      "summary": "Union information site with clear navigation and member resources.",
+      "dates": "Feb 2023 - Mar 2023",
+      "status": "Public information site",
+      "role": "Frontend & deployment engineer",
+      "challenge": "A labor union needed an accessible public information hub that members could navigate easily and maintain through a simple deployment workflow.",
+      "contribution": [
+        "Designed and built the responsive information architecture, content pages, and interaction patterns.",
+        "Connected GitHub source control to AWS Amplify deployment and the production domain.",
+        "Structured member resources so important information could be found without a complex CMS."
+      ],
+      "technical": [
+        "Static HTML/CSS/JavaScript keeps the public site fast, portable, and inexpensive to operate.",
+        "GitHub provides versioned content and code; AWS Amplify builds and deploys each approved update.",
+        "Domain routing exposes the published site to members and the public."
+      ],
+      "architecture": [
+        {
+          "label": "Source",
+          "detail": "Website code and content are versioned in GitHub."
+        },
+        {
+          "label": "Build",
+          "detail": "AWS Amplify detects changes and produces the static deployment."
+        },
+        {
+          "label": "Hosting",
+          "detail": "Amplify serves the generated assets through managed web infrastructure."
+        },
+        {
+          "label": "Domain",
+          "detail": "DNS connects the public zhflu.org address to the hosted site."
+        }
+      ],
+      "outcomes": [
+        "Delivered a responsive public resource for union information and member content.",
+        "Established a straightforward source-to-production deployment path.",
+        "Kept operations simple by choosing static delivery for a content-focused requirement."
+      ]
+    },
+    "zh": {
+      "title": "中華職工總工會網站",
+      "summary": "為工會打造清晰導覽與會員資源的資訊網站。",
+      "dates": "2023 年 2 月 - 2023 年 3 月",
+      "status": "公開資訊網站",
+      "role": "前端與部署工程師",
+      "challenge": "工會需要易於瀏覽的公共資訊中心，讓會員能快速找到內容，並透過簡單部署流程維護網站。",
+      "contribution": [
+        "設計並建立響應式資訊架構、內容頁面與互動模式。",
+        "將 GitHub 原始碼控制串接 AWS Amplify 部署與正式網域。",
+        "整理會員資源，讓重要資訊不需複雜 CMS 也能容易被找到。"
+      ],
+      "technical": [
+        "靜態 HTML／CSS／JavaScript 讓公開網站維持快速、可攜且低營運成本。",
+        "GitHub 提供版本化內容與程式碼；AWS Amplify 建置並部署每次核准的更新。",
+        "網域路由將已發布網站提供給會員與一般大眾。"
+      ],
+      "architecture": [
+        { "label": "原始碼", "detail": "網站程式碼與內容在 GitHub 中進行版本控制。" },
+        { "label": "建置", "detail": "AWS Amplify 偵測變更並產生靜態部署。" },
+        { "label": "託管", "detail": "Amplify 透過受管理的網站基礎設施提供產生後的檔案。" },
+        { "label": "網域", "detail": "DNS 將公開的 zhflu.org 網址連接至託管網站。" }
+      ],
+      "outcomes": [
+        "交付響應式公共資源，提供工會資訊與會員內容。",
+        "建立清楚直接的原始碼至正式環境部署路徑。",
+        "針對內容導向需求選擇靜態交付，維持簡單營運。"
+      ]
+    }
+  }
+}

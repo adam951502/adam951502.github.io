@@ -12,122 +12,183 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adam Tang - GenAI Engineer & Data Scientist</title>
+  <meta name="theme-color" content="#f5efe8">
+  <title>Adam Tang - GenAI Engineer &amp; Data Scientist</title>
   <link rel="shortcut icon" href="./assets/images/web-icon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/style.css?v=20260804-professional-grid">
 </head>
 <body>
-  <div class="background-grid" aria-hidden="true"></div>
+  <div class="page-orb orb-a" aria-hidden="true"></div>
+  <div class="page-orb orb-b" aria-hidden="true"></div>
+  <div class="page-grain" aria-hidden="true"></div>
+
   <header class="site-header">
-    <div class="brand">
+    <a class="brand" href="#hero" aria-label="Adam Tang — back to introduction">
       <div class="brand-mark">AT</div>
       <div>
         <p class="brand-name" data-i18n="brand.name">Adam Tang</p>
         <p class="brand-role" data-i18n="brand.role">GenAI Engineer | Data Scientist</p>
       </div>
-    </div>
-    <nav class="site-nav" aria-label="Primary">
-      <a href="#hero" data-i18n="nav.intro">Intro</a>
-      <a href="#focus" data-i18n="nav.focus">Focus</a>
-      <a href="#education" data-i18n="nav.education">Education</a>
-      <a href="#licenses" data-i18n="nav.licenses">Licenses</a>
-      <a href="#experience" data-i18n="nav.experience">Experience</a>
-      <a href="#projects" data-i18n="nav.projects">Projects</a>
-      <a href="#skills" data-i18n="nav.skills">Skills</a>
-      <a href="#contact" data-i18n="nav.contact">Contact</a>
-    </nav>
-    <div class="header-actions">
-      <div class="language-dropdown">
-        <button class="lang-toggle" type="button" aria-haspopup="listbox" aria-expanded="false">
-          <span class="lang-icon-wrap">
-            <img src="assets/images/icon-i18n.png" alt="" class="lang-icon" loading="lazy">
-          </span>
-          <span class="lang-label" data-i18n="language.name.en">English</span>
-          <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+    </a>
+
+    <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="headerPanel">
+      <span data-i18n="nav.menu">Menu</span>
+      <i class="ri-menu-3-line" aria-hidden="true"></i>
+    </button>
+
+    <div class="header-panel" id="headerPanel">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#hero" data-i18n="nav.intro">Intro</a>
+        <a href="#focus" data-i18n="nav.focus">Focus</a>
+        <a href="#education" data-i18n="nav.education">Education</a>
+        <a href="#licenses" data-i18n="nav.licenses">Licenses</a>
+        <a href="#experience" data-i18n="nav.experience">Experience</a>
+        <a href="#projects" data-i18n="nav.projects">Projects</a>
+        <a href="#skills" data-i18n="nav.skills">Skills</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="language-dropdown">
+          <button class="lang-toggle" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="lang-icon-wrap">
+              <img src="assets/images/icon-i18n.png" alt="" class="lang-icon" loading="lazy">
+            </span>
+            <span class="lang-label" data-i18n="language.name.en">EN</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <ul class="lang-menu" role="listbox" hidden>
+            <li><button type="button" class="lang-option" role="option" data-lang="en" data-i18n="language.name.en">EN</button></li>
+            <li><button type="button" class="lang-option" role="option" data-lang="zh" data-i18n="language.name.zh">繁中</button></li>
+          </ul>
+        </div>
+        <a class="btn ghost" href="assets/resume/CV_Adam_US_20260730.pdf" target="_blank" rel="noopener" download data-i18n="actions.resume">Resume</a>
+        <button class="btn ghost theme-toggle" type="button" aria-label="Toggle theme">
+          <i class="ri-sun-line" aria-hidden="true"></i>
+          <span class="theme-toggle-label" data-i18n="theme.light">Light</span>
         </button>
-        <ul class="lang-menu" role="listbox" hidden>
-          <li><button type="button" class="lang-option" role="option" data-lang="en" data-i18n="language.name.en">English</button></li>
-          <li><button type="button" class="lang-option" role="option" data-lang="zh" data-i18n="language.name.zh">中文</button></li>
-          <li><button type="button" class="lang-option" role="option" data-lang="de" data-i18n="language.name.de">Deutsch</button></li>
-        </ul>
       </div>
-      <a class="btn ghost" href="assets/resume/CV_Adam_20250527.pdf" target="_blank" rel="noopener" data-i18n="actions.resume">Resume</a>
-      <a class="btn primary" href="mailto:yushengtang1993@gmail.com" data-i18n="actions.talk">Let's talk</a>
-      <button class="btn ghost theme-toggle" type="button" aria-label="Toggle theme">
-        <i class="ri-sun-line" aria-hidden="true"></i><span class="theme-toggle-label" data-i18n="theme.light">Light</span>
-      </button>
     </div>
   </header>
 
   <main class="page">
-    <section id="hero" class="section hero">
-      <div class="hero-grid">
+    <section id="hero" class="section hero reveal">
+      <div class="hero-shell">
         <div class="hero-copy">
           <p class="eyebrow" data-i18n="hero.tagline">GenAI Engineer | Data Scientist</p>
-          <h1 data-i18n="hero.title">Adam Tang — focused builder across data science, software engineering, and delivery.</h1>
-          <p class="lede" data-i18n="hero.lede">I uncover insights, design resilient systems, and ship user-friendly experiences that keep teams decisive. Multicultural teams know me for pairing pragmatic execution with clear communication.</p>
+          <h1 data-i18n="hero.title">Adam Tang — I turn complex ideas into working products.</h1>
+          <p class="lede" data-i18n="hero.lede">I turn complex requirements into reliable AI, data, and software products—combining engineering depth with clear delivery.</p>
+
+          <div class="proof-strip" aria-label="Selected strengths">
+            <span class="proof-chip" data-i18n="hero.proof.one">Research rigor</span>
+            <span class="proof-chip" data-i18n="hero.proof.two">Product delivery</span>
+            <span class="proof-chip" data-i18n="hero.proof.three">Cross-cultural teams</span>
+          </div>
+
           <div class="hero-actions">
             <a class="btn primary" href="mailto:yushengtang1993@gmail.com" data-i18n="hero.book">Book a call</a>
-            <a class="btn ghost" href="assets/resume/CV_Adam_20250527.pdf" target="_blank" rel="noopener" data-i18n="hero.download">Download resume</a>
+            <a class="btn ghost" href="assets/resume/CV_Adam_US_20260730.pdf" target="_blank" rel="noopener" download data-i18n="hero.download">US resume</a>
+            <a class="btn ghost" href="assets/resume/CV_Adam_EU_20260730.pdf" target="_blank" rel="noopener" download data-i18n="hero.downloadEu">EU CV</a>
           </div>
+
           <div class="meta-bar">
             <div class="meta-item">
-              <span class="label" data-i18n="hero.location.label">Location</span>
+              <span class="label label-with-icon"><i class="ri-map-pin-2-line" aria-hidden="true"></i><span data-i18n="hero.location.label">Location</span></span>
               <span data-i18n="hero.location.value">Taipei, Taiwan</span>
             </div>
             <div class="meta-item">
-              <span class="label" data-i18n="hero.focus.label">Focus</span>
+              <span class="label label-with-icon"><i class="ri-focus-3-line" aria-hidden="true"></i><span data-i18n="hero.focus.label">Focus</span></span>
               <span data-i18n="hero.focus.value">GenAI, Data Engineering, Product Strategy</span>
             </div>
             <div class="meta-item">
-              <span class="label" data-i18n="hero.contact.label">Contact</span>
+              <span class="label label-with-icon"><i class="ri-mail-line" aria-hidden="true"></i><span data-i18n="hero.contact.label">Contact</span></span>
               <span><a href="mailto:yushengtang1993@gmail.com" data-i18n="hero.contact.value">yushengtang1993@gmail.com</a></span>
             </div>
             <div class="meta-item">
-              <span class="label" data-i18n="hero.phone.label">Phone</span>
+              <span class="label label-with-icon"><i class="ri-phone-line" aria-hidden="true"></i><span data-i18n="hero.phone.label">Phone</span></span>
               <span><a href="tel:+886927878287" data-i18n="hero.phone.value">+886927878287</a></span>
             </div>
           </div>
         </div>
-        <div class="hero-card">
-          <div class="avatar-wrap">
-            <img src="assets/images/adam-avatar.png" alt="Portrait of Adam Tang">
-            <div class="glow"></div>
+
+        <aside class="hero-panel">
+          <div class="hero-portrait card-surface">
+            <div class="portrait-frame">
+              <img src="assets/images/adam-avatar.png" alt="Portrait of Adam Tang" loading="lazy">
+            </div>
+            <p class="portrait-caption" data-i18n="hero.portrait.caption">Builder across AI, data, and product delivery.</p>
           </div>
-          <div class="stat-grid">
-            <div class="stat">
-              <p class="stat-value" data-i18n="hero.stats.years.value">8+ yrs</p>
-              <p class="stat-label" data-i18n="hero.stats.years.label">building software & data products</p>
-            </div>
-            <div class="stat">
-              <p class="stat-value" data-i18n="hero.stats.genai.value">GenAI</p>
-              <p class="stat-label" data-i18n="hero.stats.genai.label">LLMs, RAG, Agents, LangChain, LangGraph</p>
-            </div>
-            <div class="stat">
-              <p class="stat-value" data-i18n="hero.stats.engineering.value">Engineering</p>
-              <p class="stat-label" data-i18n="hero.stats.engineering.label">Python, FastAPI, Flask, Docker, CI/CD</p>
-            </div>
-            <div class="stat">
-              <p class="stat-value" data-i18n="hero.stats.leadership.value">Leadership</p>
-              <p class="stat-label" data-i18n="hero.stats.leadership.label">Product ownership, agile delivery, mentoring</p>
-            </div>
+
+          <div class="signal-stack">
+            <article class="signal-card card-surface">
+              <p class="label" data-i18n="hero.availability.label">Availability</p>
+              <p class="signal-value" data-i18n="hero.availability.value">Consulting, fractional leadership, or full-time</p>
+            </article>
+            <article class="signal-card card-surface">
+              <p class="label" data-i18n="hero.clients.label">Best fit</p>
+              <p class="signal-value" data-i18n="hero.clients.value">AI products, internal copilots, and data systems</p>
+            </article>
+            <article class="signal-card card-surface">
+              <p class="label" data-i18n="hero.languages.label">Working style</p>
+              <p class="signal-value" data-i18n="hero.languages.value">Hands-on, multilingual, and outcome-oriented</p>
+            </article>
           </div>
-        </div>
+        </aside>
+      </div>
+
+      <div class="hero-metrics">
+        <article class="metric-card card-surface">
+          <p class="metric-value" data-i18n="hero.stats.years.value">8+ yrs</p>
+          <p class="metric-label" data-i18n="hero.stats.years.label">building software &amp; data products</p>
+        </article>
+        <article class="metric-card card-surface">
+          <p class="metric-value" data-i18n="hero.stats.genai.value">GenAI</p>
+          <p class="metric-label" data-i18n="hero.stats.genai.label">LLMs, RAG, Agents, LangChain, LangGraph</p>
+        </article>
+        <article class="metric-card card-surface">
+          <p class="metric-value" data-i18n="hero.stats.engineering.value">Engineering</p>
+          <p class="metric-label" data-i18n="hero.stats.engineering.label">Python, FastAPI, Flask, Docker, CI/CD</p>
+        </article>
+        <article class="metric-card card-surface">
+          <p class="metric-value" data-i18n="hero.stats.leadership.value">Leadership</p>
+          <p class="metric-label" data-i18n="hero.stats.leadership.label">Product ownership, agile delivery, mentoring</p>
+        </article>
       </div>
     </section>
 
-    <section id="focus" class="section">
-      <div class="section-heading">
-        <p class="eyebrow" data-i18n="focus.eyebrow">What I do</p>
-        <h2 data-i18n="focus.title">High-impact focus areas</h2>
-        <p class="muted" data-i18n="focus.lede">From architecture to delivery, I keep teams aligned on outcomes, safety, and speed.</p>
+    <section class="section signature-strip reveal" aria-label="Selected contexts">
+      <div class="signature-copy">
+        <p class="eyebrow" data-i18n="hero.aside.title">Selected contexts</p>
+        <p class="muted" data-i18n="hero.aside.body">Blending research rigor, production delivery, and business execution.</p>
       </div>
+      <div class="signature-list">
+        <span>Fraunhofer EMI</span>
+        <span>Aurore Collection</span>
+        <span>University of Freiburg</span>
+        <span>NTUST</span>
+        <span>Chang Gung University</span>
+      </div>
+    </section>
+
+    <section id="focus" class="section reveal">
+      <div class="section-heading">
+        <div class="section-title-block">
+          <span class="section-icon" aria-hidden="true"><i class="ri-focus-3-line"></i></span>
+          <div>
+            <p class="eyebrow" data-i18n="focus.eyebrow">What I do</p>
+            <h2 data-i18n="focus.title">High-impact focus areas</h2>
+          </div>
+        </div>
+        <p class="muted section-note" data-i18n="focus.lede">From architecture to delivery, I keep teams aligned on outcomes, safety, and speed.</p>
+      </div>
+
       <div class="card-grid four">
-        <article class="card">
+        <article class="card focus-card">
+          <div class="card-index">01</div>
           <i class="ri-todo-line icon-badge" aria-hidden="true"></i>
           <div class="pill" data-i18n="focus.projectManagement.pill">Project Management</div>
           <h3 data-i18n="focus.projectManagement.title">Agile delivery and requirements</h3>
@@ -141,10 +202,12 @@
             </ul>
           </details>
         </article>
-        <article class="card">
+
+        <article class="card focus-card">
+          <div class="card-index">02</div>
           <i class="ri-leaf-line icon-badge" aria-hidden="true"></i>
           <div class="pill" data-i18n="focus.sustainability.pill">Sustainability</div>
-          <h3 data-i18n="focus.sustainability.title">Resilience & renewable systems</h3>
+          <h3 data-i18n="focus.sustainability.title">Resilience &amp; renewable systems</h3>
           <p class="muted" data-i18n="focus.sustainability.body">Energy, sustainable materials, and resilience engineering.</p>
           <details class="inline-details">
             <summary data-i18n="common.seeTactics">See tactics</summary>
@@ -155,7 +218,9 @@
             </ul>
           </details>
         </article>
-        <article class="card">
+
+        <article class="card focus-card">
+          <div class="card-index">03</div>
           <i class="ri-code-box-line icon-badge" aria-hidden="true"></i>
           <div class="pill" data-i18n="focus.webdev.pill">Web development</div>
           <h3 data-i18n="focus.webdev.title">Full-stack product build</h3>
@@ -169,7 +234,9 @@
             </ul>
           </details>
         </article>
-        <article class="card">
+
+        <article class="card focus-card">
+          <div class="card-index">04</div>
           <i class="ri-mind-map icon-badge" aria-hidden="true"></i>
           <div class="pill" data-i18n="focus.knowledge.pill">Knowledge Engineering</div>
           <h3 data-i18n="focus.knowledge.title">Semantic technologies</h3>
@@ -186,22 +253,28 @@
       </div>
     </section>
 
-    <section id="education" class="section">
+    <section id="education" class="section reveal">
       <div class="section-heading">
-        <p class="eyebrow" data-i18n="education.eyebrow">Education</p>
-        <h2 data-i18n="education.title">Academic foundation</h2>
-        <p class="muted" data-i18n="education.lede">Meta view of where I trained; expand any item for the full context.</p>
+        <div class="section-title-block">
+          <span class="section-icon" aria-hidden="true"><i class="ri-graduation-cap-line"></i></span>
+          <div>
+            <p class="eyebrow" data-i18n="education.eyebrow">Education</p>
+            <h2 data-i18n="education.title">Academic foundation</h2>
+          </div>
+        </div>
+        <p class="muted section-note" data-i18n="education.lede">Meta view of where I trained; expand any item for the full context.</p>
       </div>
+
       <div class="disclosures">
         <details class="timeline-card" open>
           <summary>
             <div class="summary-text">
-              <p class="label" data-i18n="education.freiburg.dates">Oct 2018 - Feb 2021 | Freiburg</p>
+              <p class="label" data-i18n="education.freiburg.dates">Oct 2018 - Feb 2021 | Freiburg, Germany</p>
               <h3 data-i18n="education.freiburg.title">MSc Sustainable Systems Engineering - University of Freiburg</h3>
             </div>
             <div class="summary-icons">
               <span class="pill" data-i18n="education.freiburg.degree">MSc</span>
-              <img class="icon-badge school-logo" src="assets/images/uni.png" alt="University of Freiburg logo">
+              <img class="school-logo" src="assets/images/uni.png" alt="University of Freiburg logo" loading="lazy">
             </div>
           </summary>
           <div class="disclosure-body">
@@ -210,15 +283,16 @@
             <p class="muted" data-i18n="education.freiburg.note">Focused on sustainable systems, materials, and data-driven analysis.</p>
           </div>
         </details>
+
         <details class="timeline-card">
           <summary>
             <div class="summary-text">
-              <p class="label" data-i18n="education.ntust.dates">Feb 2018 - Aug 2018 | Taipei</p>
+              <p class="label" data-i18n="education.ntust.dates">Feb 2018 - Aug 2018 | Taipei, Taiwan</p>
               <h3 data-i18n="education.ntust.title">MSc Graduate Institute of Automation and Control - NTUST</h3>
             </div>
             <div class="summary-icons">
               <span class="pill" data-i18n="education.ntust.degree">MSc</span>
-              <img class="icon-badge school-logo" src="assets/images/NTUST_logo.png" alt="NTUST logo">
+              <img class="school-logo" src="assets/images/NTUST_logo.png" alt="NTUST logo" loading="lazy">
             </div>
           </summary>
           <div class="disclosure-body">
@@ -226,48 +300,56 @@
             <p class="muted" data-i18n="education.ntust.note">Strengthened control systems, automation, and applied research skills; accepted to continue MSc thesis in Freiburg.</p>
           </div>
         </details>
+
         <details class="timeline-card">
           <summary>
             <div class="summary-text">
-              <p class="label" data-i18n="education.cgu.dates">Sep 2012 - Jun 2016 | New Taipei City</p>
+              <p class="label" data-i18n="education.cgu.dates">Sep 2012 - Jun 2016 | New Taipei City, Taiwan</p>
               <h3 data-i18n="education.cgu.title">BSc Mechanical Engineering - Chang Gung University</h3>
             </div>
             <div class="summary-icons">
               <span class="pill" data-i18n="education.cgu.degree">BSc</span>
-              <img class="icon-badge school-logo" src="assets/images/cgu.png" alt="Chang Gung University logo">
+              <img class="school-logo" src="assets/images/cgu.png" alt="Chang Gung University logo" loading="lazy">
             </div>
           </summary>
           <div class="disclosure-body">
-            <p data-i18n="education.cgu.detail">Overall grade: 1.3 (equiv. 3.8/4.0). Dean's List: Feb 2014, Sep 2014, Feb 2015.</p>
+            <p data-i18n="education.cgu.detail">Overall grade: 1.3 (German grade), equiv. 3.8/4.0. Dean's List: Feb 2014, Sep 2014, Feb 2015.</p>
             <p class="muted" data-i18n="education.cgu.note">Foundation in mechanics, materials, and engineering workflows.</p>
           </div>
         </details>
       </div>
     </section>
 
-    <section id="licenses" class="section">
+    <section id="licenses" class="section reveal">
       <div class="section-heading">
-        <p class="eyebrow" data-i18n="licenses.eyebrow">Credentials</p>
-        <h2 data-i18n="licenses.title">Licenses & Certifications</h2>
-        <p class="muted" data-i18n="licenses.lede">Snapshot of current credentials. Filter for what you care about.</p>
-        <div class="filters" role="tablist" aria-label="License category filters">
-          <button class="filter active" data-license-filter="all" data-i18n="licenses.filter.all">All</button>
-          <button class="filter" data-license-filter="genai" data-i18n="licenses.filter.genai">GenAI</button>
-          <button class="filter" data-license-filter="data" data-i18n="licenses.filter.data">Data Science</button>
-          <button class="filter" data-license-filter="management" data-i18n="licenses.filter.management">Management</button>
+        <div class="section-title-block">
+          <span class="section-icon" aria-hidden="true"><i class="ri-award-line"></i></span>
+          <div>
+            <p class="eyebrow" data-i18n="licenses.eyebrow">Credentials</p>
+            <h2 data-i18n="licenses.title">Licenses &amp; Certifications</h2>
+          </div>
         </div>
+        <p class="muted section-note" data-i18n="licenses.lede">Snapshot of current credentials. Filter for what you care about.</p>
       </div>
-      <div class="card-grid three" id="licenseGrid">
+
+      <div class="filters" role="group" aria-label="License category filters" data-i18n-aria-label="licenses.filtersLabel">
+        <button class="filter active" data-license-filter="all" data-i18n="licenses.filter.all">All</button>
+        <button class="filter" data-license-filter="genai" data-i18n="licenses.filter.genai">GenAI</button>
+        <button class="filter" data-license-filter="data" data-i18n="licenses.filter.data">Data Science</button>
+        <button class="filter" data-license-filter="management" data-i18n="licenses.filter.management">Management</button>
+      </div>
+
+      <div class="license-grid" id="licenseGrid">
         <article class="card license" data-license-category="genai">
-          <div class="license-img" style="background-image: url('https://udemy-certificate.s3.amazonaws.com/image/UC-ea6c953c-1ded-43bb-b9cb-9dbc727b59ae.jpg?v=1748267186000');"></div>
+          <div class="license-img" aria-hidden="true" style="background-image: url('https://udemy-certificate.s3.amazonaws.com/image/UC-ea6c953c-1ded-43bb-b9cb-9dbc727b59ae.jpg?v=1748267186000');"></div>
           <div class="license-body">
             <div class="pill" data-i18n="licenses.pills.genai">GenAI</div>
-            <h3>RAG Strategy & Execution</h3>
+            <h3>RAG Strategy &amp; Execution</h3>
             <p class="label"><a href="https://www.udemy.com/certificate/UC-ea6c953c-1ded-43bb-b9cb-9dbc727b59ae/" target="_blank" rel="noopener" data-i18n="licenses.viewCredential">View credential</a></p>
           </div>
         </article>
         <article class="card license" data-license-category="management">
-          <div class="license-img" style="background-image: url('assets/images/fraunhofer_icon.png');"></div>
+          <div class="license-img" aria-hidden="true" style="background-image: url('assets/images/fraunhofer_icon.png');"></div>
           <div class="license-body">
             <div class="pill" data-i18n="licenses.pills.management">Management</div>
             <h3>Project Management Best Practices</h3>
@@ -275,7 +357,7 @@
           </div>
         </article>
         <article class="card license" data-license-category="management">
-          <div class="license-img" style="background-image: url('https://d9jmtjs5r4cgq.cloudfront.net/ComplementaryCourseCertificate/2612206/original/Yu-Sheng_Tang20230519-71-mu6bov.jpg');"></div>
+          <div class="license-img" aria-hidden="true" style="background-image: url('https://d9jmtjs5r4cgq.cloudfront.net/ComplementaryCourseCertificate/2612206/original/Yu-Sheng_Tang20230519-71-mu6bov.jpg');"></div>
           <div class="license-body">
             <div class="pill" data-i18n="licenses.pills.management">Management</div>
             <h3>Jira Project Management</h3>
@@ -283,7 +365,7 @@
           </div>
         </article>
         <article class="card license" data-license-category="data">
-          <div class="license-img" style="background-image: url('assets/images/badge/coursera-ibm-specialization-data-science.png');"></div>
+          <div class="license-img" aria-hidden="true" style="background-image: url('assets/images/badge/coursera-ibm-specialization-data-science.png');"></div>
           <div class="license-body">
             <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Data Science Foundations</h3>
@@ -291,7 +373,7 @@
           </div>
         </article>
         <article class="card license" data-license-category="data">
-          <div class="license-img" style="background-image: url('assets/images/badge/coursera-ibm-databases.png');"></div>
+          <div class="license-img" aria-hidden="true" style="background-image: url('assets/images/badge/coursera-ibm-databases.png');"></div>
           <div class="license-body">
             <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Databases and SQL for Data Science</h3>
@@ -299,7 +381,7 @@
           </div>
         </article>
         <article class="card license" data-license-category="data">
-          <div class="license-img" style="background-image: url('assets/images/badge/coursera-ibm-python-project-data-science.png');"></div>
+          <div class="license-img" aria-hidden="true" style="background-image: url('assets/images/badge/coursera-ibm-python-project-data-science.png');"></div>
           <div class="license-body">
             <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Python Project for Data Science</h3>
@@ -307,7 +389,7 @@
           </div>
         </article>
         <article class="card license" data-license-category="data">
-          <div class="license-img" style="background-image: url('assets/images/badge/coursera-ibm-python-data-science-ai.png');"></div>
+          <div class="license-img" aria-hidden="true" style="background-image: url('assets/images/badge/coursera-ibm-python-data-science-ai.png');"></div>
           <div class="license-body">
             <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Python for Data Science and AI</h3>
@@ -315,7 +397,7 @@
           </div>
         </article>
         <article class="card license" data-license-category="data">
-          <div class="license-img" style="background-image: url('https://images.credly.com/size/680x680/images/46defa53-a922-47bd-94ea-b43488f5cd8a/Data_Science_Methodology_Foundational.png');"></div>
+          <div class="license-img" aria-hidden="true" style="background-image: url('https://images.credly.com/size/680x680/images/46defa53-a922-47bd-94ea-b43488f5cd8a/Data_Science_Methodology_Foundational.png');"></div>
           <div class="license-body">
             <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Data Science Methodology</h3>
@@ -323,7 +405,7 @@
           </div>
         </article>
         <article class="card license" data-license-category="data">
-          <div class="license-img" style="background-image: url('https://images.credly.com/size/680x680/images/60cf69ce-6129-425d-9a42-7732fa07da1e/Tools_for_Data_Science_Foundational.png');"></div>
+          <div class="license-img" aria-hidden="true" style="background-image: url('https://images.credly.com/size/680x680/images/60cf69ce-6129-425d-9a42-7732fa07da1e/Tools_for_Data_Science_Foundational.png');"></div>
           <div class="license-body">
             <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Tools for Data Science</h3>
@@ -331,7 +413,7 @@
           </div>
         </article>
         <article class="card license" data-license-category="data">
-          <div class="license-img" style="background-image: url('https://images.credly.com/size/680x680/images/5fc2d535-e716-46c4-881a-f4822b8da0e5/Cognitive_Class_-_What_is_Data_Science.png');"></div>
+          <div class="license-img" aria-hidden="true" style="background-image: url('https://images.credly.com/size/680x680/images/5fc2d535-e716-46c4-881a-f4822b8da0e5/Cognitive_Class_-_What_is_Data_Science.png');"></div>
           <div class="license-body">
             <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Data Science Orientation</h3>
@@ -339,7 +421,7 @@
           </div>
         </article>
         <article class="card license" data-license-category="data">
-          <div class="license-img" style="background-image: url('assets/images/lic-linkedin.png');"></div>
+          <div class="license-img" aria-hidden="true" style="background-image: url('assets/images/lic-linkedin.png');"></div>
           <div class="license-body">
             <div class="pill" data-i18n="licenses.pills.data">Data Science</div>
             <h3>Learning Data Analytics</h3>
@@ -349,149 +431,293 @@
       </div>
     </section>
 
-    <section id="experience" class="section">
+    <section id="experience" class="section reveal">
       <div class="section-heading">
-        <p class="eyebrow" data-i18n="experience.eyebrow">Experience</p>
-        <h2 data-i18n="experience.title">Recent impact</h2>
-        <p class="muted" data-i18n="experience.lede">Quick meta view; open any role to see responsibilities and outcomes.</p>
+        <div class="section-title-block">
+          <span class="section-icon" aria-hidden="true"><i class="ri-briefcase-4-line"></i></span>
+          <div>
+            <p class="eyebrow" data-i18n="experience.eyebrow">Experience</p>
+            <h2 data-i18n="experience.title">Recent impact</h2>
+          </div>
+        </div>
+        <p class="muted section-note" data-i18n="experience.lede">Quick meta view; open any role to see responsibilities and outcomes.</p>
       </div>
       <div class="timeline" id="experienceList"></div>
     </section>
 
-    <section id="projects" class="section">
+    <section id="projects" class="section reveal">
       <div class="section-heading">
-        <p class="eyebrow" data-i18n="projects.eyebrow">Selected projects</p>
-        <h2 data-i18n="projects.title">Shipping AI and data products</h2>
-        <div class="filters" role="tablist" aria-label="Project category filters">
-          <button class="filter active" data-filter="all" data-i18n="projects.filter.all">All</button>
-          <button class="filter" data-filter="genai" data-i18n="projects.filter.genai">GenAI</button>
-          <button class="filter" data-filter="data" data-i18n="projects.filter.data">Data</button>
-          <button class="filter" data-filter="web" data-i18n="projects.filter.web">Website</button>
-          <button class="filter" data-filter="mechanics" data-i18n="projects.filter.mechanics">Mechanics</button>
+        <div class="section-title-block">
+          <span class="section-icon" aria-hidden="true"><i class="ri-layout-grid-line"></i></span>
+          <div>
+            <p class="eyebrow" data-i18n="projects.eyebrow">Selected projects</p>
+            <h2 data-i18n="projects.title">Shipping AI, data &amp; engineering products</h2>
+          </div>
         </div>
+        <p class="muted section-note" data-i18n="projects.lede">Scan the portfolio, then open any project for ownership, architecture, technical decisions, and outcomes.</p>
       </div>
-      <div class="card-grid three" id="projectGrid"></div>
+
+      <div class="filters" role="group" aria-label="Project category filters" data-i18n-aria-label="projects.filtersLabel">
+        <button class="filter active" data-filter="all" data-i18n="projects.filter.all">All</button>
+        <button class="filter" data-filter="genai" data-i18n="projects.filter.genai">GenAI</button>
+        <button class="filter" data-filter="data" data-i18n="projects.filter.data">Data</button>
+        <button class="filter" data-filter="web" data-i18n="projects.filter.web">Website</button>
+        <button class="filter" data-filter="mechanics" data-i18n="projects.filter.mechanics">Mechanics</button>
+      </div>
+
+      <div class="project-grid" id="projectGrid"></div>
     </section>
 
-    <section id="skills" class="section">
+    <section id="skills" class="section reveal">
       <div class="section-heading">
-        <p class="eyebrow" data-i18n="skills.eyebrow">Skills</p>
-        <h2 data-i18n="skills.title">Toolbox</h2>
-        <p class="muted" data-i18n="skills.lede">Instruments I reach for most when shipping AI and data products.</p>
+        <div class="section-title-block">
+          <span class="section-icon" aria-hidden="true"><i class="ri-tools-line"></i></span>
+          <div>
+            <p class="eyebrow" data-i18n="skills.eyebrow">Skills</p>
+            <h2 data-i18n="skills.title">Skills at a glance</h2>
+          </div>
+        </div>
+        <p class="muted section-note" data-i18n="skills.lede">Four capability areas, from AI systems to product delivery and engineering foundations. Expand any row for the full toolkit.</p>
       </div>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <div class="skill-top">
-            <div class="skill-icon"><i class="ri-robot-2-line" aria-hidden="true"></i></div>
-            <div>
-              <p class="label" data-i18n="skills.ai.label">AI & GenAI</p>
-              <p class="skill-note" data-i18n="skills.ai.note">LLMs, RAG, and agentic tooling.</p>
+
+      <div class="skill-stack">
+          <details class="skill-card skill-row">
+            <summary>
+              <div class="skill-row-heading">
+                <span class="skill-row-index">01</span>
+                <div class="skill-icon"><i class="ri-robot-2-line" aria-hidden="true"></i></div>
+                <div>
+                  <span class="skill-branch-index" data-i18n="skills.ai.kicker">Applied intelligence</span>
+                  <h3 data-i18n="skills.ai.label">AI &amp; Knowledge Systems</h3>
+                  <p class="skill-note" data-i18n="skills.ai.note">Grounded assistants, agent workflows, semantic data, and evaluation.</p>
+                </div>
+              </div>
+              <div class="skill-preview" aria-hidden="true"><span>RAG</span><span>GraphDB</span><span>SPARQL</span></div>
+              <div class="skill-row-action"><span data-i18n="skills.expand">View toolkit</span><i class="ri-arrow-down-s-line" aria-hidden="true"></i></div>
+            </summary>
+            <div class="skill-row-body">
+              <div class="skill-cluster">
+                <p data-i18n="skills.cluster.orchestration">Orchestration</p>
+                <div class="chips">
+                  <span class="chip chip-icon"><img src="assets/images/skill-icons/langchain.svg" alt="LangChain" loading="lazy"><span>LangChain</span></span>
+                  <span class="chip chip-icon"><img src="assets/images/skill-icons/langgraph.svg" alt="LangGraph" loading="lazy"><span>LangGraph</span></span>
+                  <span class="chip chip-icon"><img src="assets/images/skill-icons/llamaindex.png" alt="LlamaIndex" loading="lazy"><span>LlamaIndex</span></span>
+                  <span class="chip chip-icon"><i class="ri-route-line" aria-hidden="true"></i><span data-i18n="skills.item.agentic">Agentic workflows</span></span>
+                </div>
+              </div>
+              <div class="skill-cluster">
+                <p data-i18n="skills.cluster.semantic">Semantic modeling</p>
+                <div class="chips">
+                  <span class="chip chip-icon"><i class="ri-article-line" aria-hidden="true"></i><span>SPARQL</span></span>
+                  <span class="chip chip-icon"><i class="ri-node-tree" aria-hidden="true"></i><span>GraphDB</span></span>
+                  <span class="chip chip-icon"><i class="ri-brain-line" aria-hidden="true"></i><span data-i18n="skills.preview.ontology">Ontology</span></span>
+                  <span class="chip chip-icon"><i class="ri-share-box-line" aria-hidden="true"></i><span data-i18n="skills.preview.graphs">Knowledge Graphs</span></span>
+                </div>
+              </div>
+              <div class="skill-cluster">
+                <p data-i18n="skills.cluster.experience">Experience &amp; quality</p>
+                <div class="chips">
+                  <span class="chip chip-icon"><i class="ri-cpu-line" aria-hidden="true"></i><span>Ollama</span></span>
+                  <span class="chip chip-icon"><i class="ri-node-tree" aria-hidden="true"></i><span>GraphRAG</span></span>
+                  <span class="chip chip-icon"><i class="ri-terminal-line" aria-hidden="true"></i><span>Prompt Ops</span></span>
+                  <span class="chip chip-icon"><i class="ri-checkbox-circle-line" aria-hidden="true"></i><span data-i18n="skills.preview.evaluation">Evaluation</span></span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="skill-meter" aria-hidden="true"><span style="width: 90%"></span></div>
-          <div class="chips">
-            <span class="chip chip-icon"><img src="assets/images/skill-icons/langchain.svg" alt="LangChain" loading="lazy"><span>LangChain</span></span><span class="chip chip-icon"><img src="assets/images/skill-icons/langgraph.svg" alt="LangGraph" loading="lazy"><span>LangGraph</span></span><span class="chip chip-icon"><img src="assets/images/skill-icons/llamaindex.png" alt="LlamaIndex" loading="lazy"><span>LlamaIndex</span></span><span class="chip chip-icon"><i class="ri-robot-3-line" aria-hidden="true"></i><span>Chainlit</span></span><span class="chip chip-icon"><i class="ri-smartphone-line" aria-hidden="true"></i><span>OpenWebUI</span></span><span class="chip chip-icon"><i class="ri-database-2-line" aria-hidden="true"></i><span>RAG</span></span><span class="chip chip-icon"><i class="ri-terminal-line" aria-hidden="true"></i><span>Prompt Ops</span></span><span class="chip chip-icon"><i class="ri-checkbox-circle-line" aria-hidden="true"></i><span>Evaluation</span></span>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-top">
-            <div class="skill-icon"><i class="ri-terminal-window-line" aria-hidden="true"></i></div>
-            <div>
-              <p class="label" data-i18n="skills.languages.label">Languages & Delivery</p>
-              <p class="skill-note" data-i18n="skills.languages.note">Clean code, versioning, and automation.</p>
+          </details>
+
+          <details class="skill-card skill-row">
+            <summary>
+              <div class="skill-row-heading">
+                <span class="skill-row-index">02</span>
+                <div class="skill-icon"><i class="ri-code-box-line" aria-hidden="true"></i></div>
+                <div>
+                  <span class="skill-branch-index" data-i18n="skills.frameworks.kicker">Software systems</span>
+                  <h3 data-i18n="skills.frameworks.label">Software &amp; Data Engineering</h3>
+                  <p class="skill-note" data-i18n="skills.frameworks.note">APIs, data pipelines, tests, and deployable runtimes.</p>
+                </div>
+              </div>
+              <div class="skill-preview" aria-hidden="true"><span>Python</span><span>FastAPI</span><span>Docker</span></div>
+              <div class="skill-row-action"><span data-i18n="skills.expand">View toolkit</span><i class="ri-arrow-down-s-line" aria-hidden="true"></i></div>
+            </summary>
+            <div class="skill-row-body">
+              <div class="skill-cluster">
+                <p data-i18n="skills.cluster.pipeline">Data pipelines &amp; analytics</p>
+                <div class="chips">
+                  <span class="chip chip-icon"><img src="assets/images/skill-icons/python.svg" alt="Python" loading="lazy"><span>Python</span></span>
+                  <span class="chip chip-icon"><i class="ri-database-2-line" aria-hidden="true"></i><span>SQL</span></span>
+                  <span class="chip chip-icon"><i class="ri-database-line" aria-hidden="true"></i><span>Postgres</span></span>
+                  <span class="chip chip-icon"><img src="assets/images/skill-icons/pandas.svg" alt="Pandas" loading="lazy"><span>Pandas</span></span>
+                  <span class="chip chip-icon"><i class="ri-swap-box-line" aria-hidden="true"></i><span>ETL</span></span>
+                </div>
+              </div>
+              <div class="skill-cluster">
+                <p data-i18n="skills.cluster.application">Application layer</p>
+                <div class="chips">
+                  <span class="chip chip-icon"><img src="assets/images/skill-icons/fastapi.svg" alt="FastAPI" loading="lazy"><span>FastAPI</span></span>
+                  <span class="chip chip-icon"><img src="assets/images/skill-icons/flask.svg" alt="Flask" loading="lazy"><span>Flask</span></span>
+                  <span class="chip chip-icon"><i class="ri-links-line" aria-hidden="true"></i><span>REST APIs</span></span>
+                  <span class="chip chip-icon"><i class="ri-javascript-line" aria-hidden="true"></i><span>JavaScript</span></span>
+                  <span class="chip chip-icon"><i class="ri-braces-line" aria-hidden="true"></i><span>HTML/CSS</span></span>
+                </div>
+              </div>
+              <div class="skill-cluster">
+                <p data-i18n="skills.cluster.runtime">Runtime &amp; reliability</p>
+                <div class="chips">
+                  <span class="chip chip-icon"><img src="assets/images/icon-docker.svg" alt="Docker" loading="lazy"><span>Docker</span></span>
+                  <span class="chip chip-icon"><i class="ri-cloud-line" aria-hidden="true"></i><span>Cloudflare</span></span>
+                  <span class="chip chip-icon"><i class="ri-database-line" aria-hidden="true"></i><span>Supabase</span></span>
+                  <span class="chip chip-icon"><i class="ri-database-2-line" aria-hidden="true"></i><span>MySQL</span></span>
+                  <span class="chip chip-icon"><i class="ri-bug-line" aria-hidden="true"></i><span>Pytest</span></span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="skill-meter" aria-hidden="true"><span style="width: 86%"></span></div>
-          <div class="chips">
-            <span class="chip chip-icon"><img src="assets/images/skill-icons/python.svg" alt="" loading="lazy"><span>Python</span></span><span class="chip chip-icon"><i class="ri-braces-line" aria-hidden="true"></i><span>HTML/CSS</span></span><span class="chip chip-icon"><i class="ri-database-2-line" aria-hidden="true"></i><span>MySQL</span></span><span class="chip chip-icon"><i class="ri-terminal-line" aria-hidden="true"></i><span>Shell</span></span><span class="chip chip-icon"><i class="ri-git-branch-line" aria-hidden="true"></i><span>Git/GitLab</span></span><span class="chip chip-icon"><img src="assets/images/skill-github-action.svg" alt="" loading="lazy"><span>GitHub Actions</span></span><span class="chip chip-icon"><i class="ri-tools-line" aria-hidden="true"></i><span>CI/CD</span></span><span class="chip chip-icon"><i class="ri-file-text-line" aria-hidden="true"></i><span>LaTeX</span></span>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-top">
-            <div class="skill-icon"><i class="ri-database-2-line" aria-hidden="true"></i></div>
-            <div>
-              <p class="label" data-i18n="skills.data.label">Data & Semantics</p>
-              <p class="skill-note" data-i18n="skills.data.note">Graphs, ontology, and analytics.</p>
+          </details>
+
+          <details class="skill-card skill-row">
+            <summary>
+              <div class="skill-row-heading">
+                <span class="skill-row-index">03</span>
+                <div class="skill-icon"><i class="ri-compass-3-line" aria-hidden="true"></i></div>
+                <div>
+                  <span class="skill-branch-index" data-i18n="skills.languages.kicker">Product execution</span>
+                  <h3 data-i18n="skills.languages.label">Product &amp; Delivery</h3>
+                  <p class="skill-note" data-i18n="skills.languages.note">From requirements to coordinated, repeatable delivery.</p>
+                </div>
+              </div>
+              <div class="skill-preview" aria-hidden="true"><span data-i18n="skills.item.ownership">Product ownership</span><span data-i18n="skills.item.agile">Agile / Scrum</span><span>CI/CD</span></div>
+              <div class="skill-row-action"><span data-i18n="skills.expand">View toolkit</span><i class="ri-arrow-down-s-line" aria-hidden="true"></i></div>
+            </summary>
+            <div class="skill-row-body">
+              <div class="skill-cluster">
+                <p data-i18n="skills.cluster.lead">Frame &amp; lead</p>
+                <div class="chips">
+                  <span class="chip chip-icon"><i class="ri-user-star-line" aria-hidden="true"></i><span data-i18n="skills.item.ownership">Product ownership</span></span>
+                  <span class="chip chip-icon"><i class="ri-file-list-3-line" aria-hidden="true"></i><span data-i18n="skills.item.requirements">Requirements</span></span>
+                  <span class="chip chip-icon"><i class="ri-loop-left-line" aria-hidden="true"></i><span data-i18n="skills.item.agile">Agile / Scrum</span></span>
+                  <span class="chip chip-icon"><i class="ri-shield-check-line" aria-hidden="true"></i><span data-i18n="skills.item.risk">Risk tracking</span></span>
+                </div>
+              </div>
+              <div class="skill-cluster">
+                <p data-i18n="skills.cluster.delivery">Version &amp; deliver</p>
+                <div class="chips">
+                  <span class="chip chip-icon"><i class="ri-git-branch-line" aria-hidden="true"></i><span>Git / GitLab</span></span>
+                  <span class="chip chip-icon"><img src="assets/images/skill-github-action.svg" alt="GitHub Actions" loading="lazy"><span>GitHub Actions</span></span>
+                  <span class="chip chip-icon"><i class="ri-tools-line" aria-hidden="true"></i><span>CI/CD</span></span>
+                  <span class="chip chip-icon"><i class="ri-task-line" aria-hidden="true"></i><span>Jira / Notion</span></span>
+                  <span class="chip chip-icon"><i class="ri-file-text-line" aria-hidden="true"></i><span>LaTeX</span></span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="skill-meter" aria-hidden="true"><span style="width: 88%"></span></div>
-          <div class="chips">
-            <span class="chip chip-icon"><i class="ri-article-line" aria-hidden="true"></i><span>SPARQL</span></span><span class="chip chip-icon"><i class="ri-node-tree" aria-hidden="true"></i><span>GraphDB</span></span><span class="chip chip-icon"><i class="ri-brain-line" aria-hidden="true"></i><span>Ontology</span></span><span class="chip chip-icon"><i class="ri-share-box-line" aria-hidden="true"></i><span>Knowledge Graphs</span></span><span class="chip chip-icon"><i class="ri-database-2-line" aria-hidden="true"></i><span>SQL</span></span><span class="chip chip-icon"><img src="assets/images/skill-icons/pandas.svg" alt="" loading="lazy"><span>Pandas</span></span><span class="chip chip-icon"><i class="ri-swap-box-line" aria-hidden="true"></i><span>ETL</span></span>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-top">
-            <div class="skill-icon"><i class="ri-compass-3-line" aria-hidden="true"></i></div>
-            <div>
-              <p class="label" data-i18n="skills.frameworks.label">Frameworks & Delivery</p>
-              <p class="skill-note" data-i18n="skills.frameworks.note">APIs, testing, and deployment.</p>
+          </details>
+
+          <details class="skill-card skill-row">
+            <summary>
+              <div class="skill-row-heading">
+                <span class="skill-row-index">04</span>
+                <div class="skill-icon"><i class="ri-tools-line" aria-hidden="true"></i></div>
+                <div>
+                  <span class="skill-branch-index" data-i18n="skills.mechanical.kicker">Engineering foundation</span>
+                  <h3 data-i18n="skills.mechanical.label">Mechanical &amp; Systems</h3>
+                  <p class="skill-note" data-i18n="skills.mechanical.note">Physical modeling, simulation, control, and experimentation.</p>
+                </div>
+              </div>
+              <div class="skill-preview" aria-hidden="true"><span>FEM</span><span data-i18n="skills.preview.simulation">Simulation</span><span data-i18n="skills.item.control">Control systems</span></div>
+              <div class="skill-row-action"><span data-i18n="skills.expand">View toolkit</span><i class="ri-arrow-down-s-line" aria-hidden="true"></i></div>
+            </summary>
+            <div class="skill-row-body">
+              <div class="skill-cluster">
+                <p data-i18n="skills.cluster.modeling">Modeling &amp; simulation</p>
+                <div class="chips">
+                  <span class="chip chip-icon"><i class="ri-box-3-line" aria-hidden="true"></i><span>FEM</span></span>
+                  <span class="chip chip-icon"><img src="assets/images/skill-icons/ls-dyna.png" alt="LS-DYNA" loading="lazy"><span>LS-DYNA</span></span>
+                  <span class="chip chip-icon"><i class="ri-compasses-2-line" aria-hidden="true"></i><span>CAD</span></span>
+                  <span class="chip chip-icon"><i class="ri-3d-cube-line" aria-hidden="true"></i><span data-i18n="skills.preview.simulation">Simulation</span></span>
+                  <span class="chip chip-icon"><i class="ri-shape-2-line" aria-hidden="true"></i><span>Moldex3D</span></span>
+                </div>
+              </div>
+              <div class="skill-cluster">
+                <p data-i18n="skills.cluster.physical">Physical systems</p>
+                <div class="chips">
+                  <span class="chip chip-icon"><i class="ri-cpu-line" aria-hidden="true"></i><span>Arduino</span></span>
+                  <span class="chip chip-icon"><i class="ri-focus-3-line" aria-hidden="true"></i><span data-i18n="skills.item.control">Control systems</span></span>
+                  <span class="chip chip-icon"><i class="ri-flask-line" aria-hidden="true"></i><span data-i18n="skills.item.experimentation">Experimentation</span></span>
+                  <span class="chip chip-icon"><i class="ri-pulse-line" aria-hidden="true"></i><span data-i18n="skills.item.signal">Signal processing</span></span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="skill-meter" aria-hidden="true"><span style="width: 82%"></span></div>
-          <div class="chips">
-            <span class="chip chip-icon"><img src="assets/images/skill-icons/fastapi.svg" alt="" loading="lazy"><span>FastAPI</span></span><span class="chip chip-icon"><img src="assets/images/skill-icons/flask.svg" alt="" loading="lazy"><span>Flask</span></span><span class="chip chip-icon"><img src="assets/images/icon-docker.svg" alt="" loading="lazy"><span>Docker</span></span><span class="chip chip-icon"><i class="ri-links-line" aria-hidden="true"></i><span>REST APIs</span></span><span class="chip chip-icon"><i class="ri-brain-line" aria-hidden="true"></i><span>PyTorch</span></span><span class="chip chip-icon"><i class="ri-bar-chart-line" aria-hidden="true"></i><span>scikit-learn</span></span><span class="chip chip-icon"><i class="ri-bug-line" aria-hidden="true"></i><span>Pytest</span></span><span class="chip chip-icon"><i class="ri-task-line" aria-hidden="true"></i><span>Jira / Notion</span></span>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-top">
-            <div class="skill-icon"><i class="ri-tools-line" aria-hidden="true"></i></div>
-            <div>
-              <p class="label" data-i18n="skills.mechanical.label">Mechanical</p>
-              <p class="skill-note" data-i18n="skills.mechanical.note">Simulation, CAD, and hardware.</p>
-            </div>
-          </div>
-          <div class="skill-meter" aria-hidden="true"><span style="width: 78%"></span></div>
-          <div class="chips">
-            <span class="chip chip-icon"><i class="ri-box-3-line" aria-hidden="true"></i><span>FEM</span></span><span class="chip chip-icon"><img src="assets/images/skill-icons/ls-dyna.png" alt="LS-DYNA" loading="lazy"><span>LS-DYNA</span></span><span class="chip chip-icon"><i class="ri-compasses-2-line" aria-hidden="true"></i><span>CAD</span></span><span class="chip chip-icon"><i class="ri-3d-cube-line" aria-hidden="true"></i><span>Simulation</span></span><span class="chip chip-icon"><i class="ri-cpu-line" aria-hidden="true"></i><span>Arduino</span></span>
-          </div>
-        </div>
+          </details>
       </div>
     </section>
 
-    <button id="backToTop" class="btn ghost to-top" type="button" aria-label="Back to top" hidden>
-      <i class="ri-arrow-up-line" aria-hidden="true"></i>
-    </button>
-    <button class="btn ghost bookmark-toggle" type="button" aria-expanded="false" aria-controls="bookmarkMenu" aria-label="Open section shortcuts">
-      <i class="ri-bookmark-line" aria-hidden="true"></i>
-    </button>
-    <div id="bookmarkMenu" class="bookmark-menu" hidden>
-      <p class="label" data-i18n="bookmark.jump">Jump to</p>
-      <ul>
-        <li><a href="#hero"><span class="bookmark-icon"><i class="ri-user-3-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.intro">Intro</span></a></li>
-        <li><a href="#focus"><span class="bookmark-icon"><i class="ri-compass-3-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.focus">Focus</span></a></li>
-        <li><a href="#education"><span class="bookmark-icon"><i class="ri-graduation-cap-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.education">Education</span></a></li>
-        <li><a href="#licenses"><span class="bookmark-icon"><i class="ri-bear-smile-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.licenses">Licenses</span></a></li>
-        <li><a href="#experience"><span class="bookmark-icon"><i class="ri-briefcase-4-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.experience">Experience</span></a></li>
-        <li><a href="#projects"><span class="bookmark-icon"><i class="ri-stack-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.projects">Projects</span></a></li>
-        <li><a href="#skills"><span class="bookmark-icon"><i class="ri-tools-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.skills">Skills</span></a></li>
-        <li><a href="#contact"><span class="bookmark-icon"><i class="ri-send-plane-2-line" aria-hidden="true"></i></span><span class="bookmark-label" data-i18n="nav.contact">Contact</span></a></li>
-      </ul>
-    </div>
+    <section id="contact" class="section contact reveal">
+      <div class="contact-shell">
+        <div class="contact-copy">
+          <div class="section-heading">
+            <div class="section-title-block">
+              <span class="section-icon" aria-hidden="true"><i class="ri-send-plane-line"></i></span>
+              <div>
+                <p class="eyebrow" data-i18n="contact.eyebrow">Let's collaborate</p>
+                <h2 data-i18n="contact.title">Need a builder for your next AI product?</h2>
+              </div>
+            </div>
+            <p class="muted section-note" data-i18n="contact.lede">I'm open to consulting, fractional leadership, or full-time roles that value pragmatic shipping.</p>
+          </div>
+        </div>
 
-    <section id="contact" class="section contact">
-      <div class="section-heading">
-        <p class="eyebrow" data-i18n="contact.eyebrow">Let's collaborate</p>
-        <h2 data-i18n="contact.title">Need a builder for your next AI product?</h2>
-        <p class="muted" data-i18n="contact.lede">I'm open to consulting, fractional leadership, or full-time roles that value pragmatic shipping.</p>
-      </div>
-      <div class="contact-actions">
-        <a class="btn primary" href="mailto:yushengtang1993@gmail.com" data-i18n="contact.email">Email Adam</a>
-        <a class="btn ghost" href="tel:+886927878287" data-i18n="contact.phone">Call +886927878287</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/yu-sheng-tang/" target="_blank" rel="noopener" data-i18n="contact.linkedin">Connect on LinkedIn</a>
-      </div>
-      <div class="contact-meta">
-        <span class="chip" data-i18n="contact.location">Taipei, Taiwan</span>
-        <span class="chip" data-i18n="contact.remote">Global · Remote-friendly</span>
-        <span class="chip" data-i18n="contact.languages">Mandarin / English / German</span>
+        <div class="contact-panel card-surface">
+          <div class="contact-actions">
+            <a class="btn primary" href="mailto:yushengtang1993@gmail.com" data-i18n="contact.email">Email Adam</a>
+            <a class="btn ghost" href="tel:+886927878287" data-i18n="contact.phone">Call Adam</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/yu-sheng-tang/" target="_blank" rel="noopener" data-i18n="contact.linkedin">Connect on LinkedIn</a>
+          </div>
+          <div class="contact-meta">
+            <span class="chip" data-i18n="contact.location">Taipei, Taiwan</span>
+            <span class="chip" data-i18n="contact.remote">Global · Remote-friendly</span>
+            <span class="chip" data-i18n="contact.languages">Mandarin / English / German</span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
+  <button id="backToTop" class="btn ghost to-top" type="button" aria-label="Back to top" hidden>
+    <i class="ri-arrow-up-line" aria-hidden="true"></i>
+  </button>
   <footer class="footer">
-    <p data-i18n="footer.madeBy" data-i18n-html="true">Made by Adam Tang | <a href="https://github.com/adam951502">@adam951502</a></p>
-    <p data-i18n="footer.rights">All rights reserved.</p>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <span class="footer-mark" aria-hidden="true">AT</span>
+        <div>
+          <p class="footer-name">Adam Tang</p>
+          <p class="footer-tagline" data-i18n="footer.tagline">AI, data, and software products built for real-world use.</p>
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation" data-i18n-aria-label="footer.navLabel">
+        <a href="#hero"><i class="ri-home-4-line" aria-hidden="true"></i><span data-i18n="footer.intro">Intro</span></a>
+        <a href="#projects"><i class="ri-layout-grid-line" aria-hidden="true"></i><span data-i18n="footer.projects">Projects</span></a>
+        <a href="#skills"><i class="ri-tools-line" aria-hidden="true"></i><span data-i18n="footer.skills">Skills</span></a>
+        <a href="#experience"><i class="ri-briefcase-4-line" aria-hidden="true"></i><span data-i18n="footer.experience">Experience</span></a>
+        <a href="#contact"><i class="ri-send-plane-line" aria-hidden="true"></i><span data-i18n="footer.contact">Contact</span></a>
+      </nav>
+
+      <div class="footer-social" aria-label="Professional profiles" data-i18n-aria-label="footer.profilesLabel">
+        <a href="https://github.com/adam951502" target="_blank" rel="noopener" aria-label="GitHub"><i class="ri-github-line" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/in/yu-sheng-tang/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ri-linkedin-box-line" aria-hidden="true"></i></a>
+        <a href="mailto:yushengtang1993@gmail.com" aria-label="Email Adam"><i class="ri-mail-line" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-resumes">
+        <a href="assets/resume/CV_Adam_US_20260730.pdf" target="_blank" rel="noopener" download><i class="ri-download-line" aria-hidden="true"></i><span data-i18n="footer.resumeUs">US resume</span></a>
+        <a href="assets/resume/CV_Adam_EU_20260730.pdf" target="_blank" rel="noopener" download><i class="ri-download-line" aria-hidden="true"></i><span data-i18n="footer.resumeEu">EU CV</span></a>
+      </div>
+      <p><span data-i18n="footer.copyright">© 2026 Adam Tang.</span> <span data-i18n="footer.rights">All rights reserved.</span></p>
+    </div>
   </footer>
 
-  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/script.js?v=20260804-professional-grid"></script>
 </body>
 </html>

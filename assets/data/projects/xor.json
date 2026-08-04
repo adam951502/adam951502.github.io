@@ -1,0 +1,96 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "xor",
+  "category": "data",
+  "sortStart": "2022-04",
+  "sortEnd": "2022-04",
+  "pillKey": "projects.pills.data",
+  "icon": "ri-database-2-line",
+  "image": "assets/images/project-nns.png",
+  "imageFit": "cover",
+  "chips": [
+    "Python",
+    "NumPy",
+    "Neural Networks",
+    "Visualization"
+  ],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/adam951502/Neural-Networks-for-XOR-Logic-Prediction",
+      "icon": "ri-github-line"
+    }
+  ],
+  "content": {
+    "en": {
+      "title": "NNs for XOR-Logic Prediction",
+      "summary": "Small neural net demo for logical gates with lightweight visualization.",
+      "dates": "Apr 2022",
+      "status": "Learning demonstrator",
+      "role": "Machine-learning engineer",
+      "challenge": "XOR is not linearly separable, so it is a compact way to demonstrate why a single perceptron fails and how hidden layers learn nonlinear decision boundaries.",
+      "contribution": [
+        "Implemented and compared simple neural-network structures for logic prediction.",
+        "Visualized training behavior and predictions in a small reproducible demonstration.",
+        "Documented the experiment as a public learning repository."
+      ],
+      "technical": [
+        "NumPy represents inputs, weights, activations, loss, and parameter updates.",
+        "A hidden layer introduces nonlinear features required to separate XOR classes.",
+        "Plots and predictions make training behavior inspectable rather than presenting only final accuracy."
+      ],
+      "architecture": [
+        {
+          "label": "Inputs",
+          "detail": "Binary pairs and expected XOR labels form the training set."
+        },
+        {
+          "label": "Model",
+          "detail": "A multilayer perceptron applies weighted transforms and nonlinear activations."
+        },
+        {
+          "label": "Learning",
+          "detail": "Loss gradients update network parameters over repeated epochs."
+        },
+        {
+          "label": "Evidence",
+          "detail": "Predictions and visualizations show whether the learned boundary solves XOR."
+        }
+      ],
+      "outcomes": [
+        "Demonstrates the practical difference between linear and nonlinear models.",
+        "Provides a concise public artifact for core neural-network understanding.",
+        "Shows the ability to explain model behavior with visual evidence."
+      ]
+    },
+    "zh": {
+      "title": "XOR 邏輯預測神經網路",
+      "summary": "以輕量視覺化展示邏輯閘的神經網路示範。",
+      "dates": "2022 年 4 月",
+      "status": "學習展示",
+      "role": "機器學習工程師",
+      "challenge": "XOR 無法線性分離，因此很適合簡潔展示單層感知器為何失效，以及隱藏層如何學習非線性決策邊界。",
+      "contribution": [
+        "實作並比較用於邏輯預測的簡易神經網路結構。",
+        "在小型且可重現的展示中，視覺化訓練行為與預測結果。",
+        "將實驗記錄為公開的學習儲存庫。"
+      ],
+      "technical": [
+        "NumPy 表達輸入、權重、激活函數、損失與參數更新。",
+        "隱藏層引入分離 XOR 類別所需的非線性特徵。",
+        "圖表與預測讓訓練行為可被檢視，而非只呈現最終準確率。"
+      ],
+      "architecture": [
+        { "label": "輸入", "detail": "二元數值組合與預期 XOR 標籤構成訓練資料集。" },
+        { "label": "模型", "detail": "多層感知器套用加權轉換與非線性激活函數。" },
+        { "label": "學習", "detail": "損失梯度在多個訓練週期中更新網路參數。" },
+        { "label": "證據", "detail": "預測與視覺化呈現學得的邊界是否能解決 XOR。" }
+      ],
+      "outcomes": [
+        "展示線性與非線性模型在實務上的差異。",
+        "提供簡潔的公開成果，呈現對神經網路核心概念的理解。",
+        "展現以視覺證據說明模型行為的能力。"
+      ]
+    }
+  }
+}

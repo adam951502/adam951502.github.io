@@ -1,49 +1,58 @@
 (function () {
-  const availableLangs = ['en', 'zh', 'de'];
-  const fallbackLang = 'en';
-  const langStorageKey = 'site-lang';
-  const i18nBasePath = './assets/i18n';
+  const availableLangs = ["en", "zh"];
+  const fallbackLang = "en";
+  const langStorageKey = "site-lang";
+  const themeStorageKey = "theme";
+  const i18nBasePath = "./assets/i18n";
   const dataPaths = {
-    experience: './assets/data/experience.json',
-    projects: './assets/data/projects.json'
+    experience: "./assets/data/experience.json",
+    projects: "./assets/data/projects.json"
   };
 
   const translationsCache = {};
   const dataCache = {};
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
-  const navLinks = Array.from(document.querySelectorAll('.site-nav a'));
-  const licenseButtons = Array.from(document.querySelectorAll('[data-license-filter]'));
-  const licenseCards = Array.from(document.querySelectorAll('[data-license-category]'));
-  const languageToggle = document.querySelector('.lang-toggle');
-  const languageMenu = document.querySelector('.lang-menu');
-  const languageOptions = Array.from(document.querySelectorAll('.lang-option'));
-  const languageLabel = document.querySelector('.lang-label');
-  const themeToggle = document.querySelector('.theme-toggle');
-  const themeToggleLabel = document.querySelector('.theme-toggle-label');
-  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-  const savedTheme = localStorage.getItem('theme');
-  const initialTheme = savedTheme || (prefersLight ? 'light' : 'dark');
-  const projectToggleButtons = [];
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  let projectCards = [];
-  let currentTheme = initialTheme;
+  const root = document.documentElement;
+  const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
+  const licenseButtons = Array.from(document.querySelectorAll("[data-license-filter]"));
+  const licenseCards = Array.from(document.querySelectorAll("[data-license-category]"));
+  const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
+  const brandLink = document.querySelector(".brand");
+  const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+  const backToTop = document.getElementById("backToTop");
+  const languageToggle = document.querySelector(".lang-toggle");
+  const languageMenu = document.querySelector(".lang-menu");
+  const languageOptions = Array.from(document.querySelectorAll(".lang-option"));
+  const languageLabel = document.querySelector(".lang-label");
+  const themeToggle = document.querySelector(".theme-toggle");
+  const themeToggleLabel = document.querySelector(".theme-toggle-label");
+  const siteHeader = document.querySelector(".site-header");
+  const siteFooter = document.querySelector(".footer");
+  const mobileMenuQuery = window.matchMedia("(max-width: 1180px)");
+
+  const savedTheme = localStorage.getItem(themeStorageKey);
+  const initialTheme = savedTheme || "light";
+
   let currentLang = detectLanguage();
-  let currentTranslate = () => '';
+  let currentTheme = initialTheme;
+  let currentTranslate = (key) => key;
+  let currentProjectFilter = "all";
+  let currentLicenseFilter = "all";
   let experienceData = [];
   let projectsData = [];
-  let hasAnimatedOnce = false;
+  let projectCards = [];
+  let revealObserver = null;
 
   function detectLanguage() {
     const stored = localStorage.getItem(langStorageKey);
-    if (stored && availableLangs.includes(stored)) return stored;
-    return fallbackLang;
+    return stored && availableLangs.includes(stored) ? stored : fallbackLang;
   }
 
-  const loadTranslations = async (lang) => {
+  async function loadTranslations(lang) {
     if (translationsCache[lang]) return translationsCache[lang];
     try {
-      const response = await fetch(`${i18nBasePath}/${lang}.json`, { cache: 'no-cache' });
+      const response = await fetch(`${i18nBasePath}/${lang}.json`, { cache: "no-cache" });
       if (!response.ok) throw new Error(`Failed to load ${lang}`);
       const data = await response.json();
       translationsCache[lang] = data;
@@ -52,491 +61,611 @@
       console.warn(`i18n: unable to load ${lang}`, error);
       return null;
     }
-  };
+  }
 
-  const loadData = async (key) => {
-    const path = dataPaths[key];
-    if (!path) return [];
-    if (dataCache[path]) return dataCache[path];
+  async function loadJson(path) {
+    if (Object.prototype.hasOwnProperty.call(dataCache, path)) return dataCache[path];
     try {
-      const response = await fetch(path, { cache: 'no-cache' });
+      const response = await fetch(path, { cache: "no-cache" });
       if (!response.ok) throw new Error(`Failed to load ${path}`);
       const data = await response.json();
       dataCache[path] = data;
       return data;
     } catch (error) {
-      console.warn('data: unable to load', path, error);
-      return [];
+      console.warn("data: unable to load", path, error);
+      return null;
     }
-  };
+  }
 
-  const setThemeLabel = (theme, translateFn = currentTranslate) => {
-    if (!themeToggleLabel) return;
-    const key = theme === 'light' ? 'theme.light' : 'theme.dark';
-    const label = translateFn(key) || (theme === 'light' ? 'Light' : 'Dark');
-    themeToggleLabel.textContent = label;
-  };
+  async function loadData(key) {
+    const path = dataPaths[key];
+    if (!path) return [];
+    return (await loadJson(path)) || [];
+  }
 
-  const setProjectToggleLabel = (button, expanded, translateFn = currentTranslate) => {
-    const key = expanded ? 'projects.toggle.less' : 'projects.toggle.more';
-    const label = translateFn(key) || (expanded ? 'Less' : 'More');
-    button.textContent = label;
-  };
+  async function loadProjects() {
+    const manifest = await loadData("projects");
+    if (Array.isArray(manifest)) return manifest;
 
-  const refreshProjectToggleLabels = (translateFn = currentTranslate) => {
-    projectToggleButtons.forEach((btn) => {
-      const card = btn.closest('.card.project');
-      const expanded = card?.classList.contains('expanded');
-      setProjectToggleLabel(btn, Boolean(expanded), translateFn);
-    });
-  };
+    const projectFiles = Array.isArray(manifest.projectFiles) ? manifest.projectFiles : [];
+    const manifestUrl = new URL(dataPaths.projects, window.location.href);
+    const projects = await Promise.all(
+      projectFiles.map((projectFile) => loadJson(new URL(projectFile, manifestUrl).href))
+    );
+    return projects.filter(Boolean);
+  }
 
-  const setLanguageLabel = (lang = currentLang, translateFn = currentTranslate) => {
-    if (!languageLabel) return;
-    const key = `language.name.${lang}`;
-    const fallback = lang === 'zh' ? '中文' : lang.toUpperCase();
-    languageLabel.textContent = translateFn(key) || fallback;
-  };
-
-  const updateLanguageOptions = (lang = currentLang, translateFn = currentTranslate) => {
-    languageOptions.forEach((opt) => {
-      const isActive = opt.dataset.lang === lang;
-      opt.classList.toggle('active', isActive);
-      opt.setAttribute('aria-selected', String(isActive));
-      const key = `language.name.${opt.dataset.lang}`;
-      const fallback = opt.dataset.lang === 'zh' ? '中文' : opt.dataset.lang.toUpperCase();
-      opt.textContent = translateFn(key) || fallback;
-    });
-    setLanguageLabel(lang, translateFn);
-  };
-
-  const closeLanguageMenu = () => {
-    if (!languageMenu || !languageToggle) return;
-    languageMenu.classList.remove('is-open');
-    languageMenu.hidden = true;
-    languageToggle.setAttribute('aria-expanded', 'false');
-  };
-
-  const openLanguageMenu = () => {
-    if (!languageMenu || !languageToggle) return;
-    languageMenu.hidden = false;
-    requestAnimationFrame(() => languageMenu.classList.add('is-open'));
-    languageToggle.setAttribute('aria-expanded', 'true');
-  };
-
-  const ensureData = async () => {
+  async function ensureData() {
     if (!experienceData.length) {
-      experienceData = await loadData('experience');
+      experienceData = await loadData("experience");
     }
     if (!projectsData.length) {
-      projectsData = await loadData('projects');
+      projectsData = [...(await loadProjects())].sort((left, right) => {
+        const endDateOrder = String(right.sortEnd || "").localeCompare(String(left.sortEnd || ""));
+        if (endDateOrder !== 0) return endDateOrder;
+        const updatedDateOrder = String(right.sortUpdated || right.sortStart || "").localeCompare(
+          String(left.sortUpdated || left.sortStart || "")
+        );
+        if (updatedDateOrder !== 0) return updatedDateOrder;
+        return String(right.sortStart || "").localeCompare(String(left.sortStart || ""));
+      });
     }
-  };
+  }
 
-  const renderExperience = async (translateFn = currentTranslate) => {
+  function setLanguageLabel(lang = currentLang, translateFn = currentTranslate) {
+    if (!languageLabel) return;
+    const key = `language.name.${lang}`;
+    const fallback = lang === "zh" ? "繁中" : lang.toUpperCase();
+    languageLabel.textContent = translateFn(key) || fallback;
+  }
+
+  function updateLanguageOptions(lang = currentLang, translateFn = currentTranslate) {
+    languageOptions.forEach((option) => {
+      const isActive = option.dataset.lang === lang;
+      option.classList.toggle("active", isActive);
+      option.setAttribute("aria-selected", String(isActive));
+      const key = `language.name.${option.dataset.lang}`;
+      const fallback = option.dataset.lang === "zh" ? "繁中" : option.dataset.lang.toUpperCase();
+      option.textContent = translateFn(key) || fallback;
+    });
+    setLanguageLabel(lang, translateFn);
+  }
+
+  function setThemeLabel(theme = currentTheme, translateFn = currentTranslate) {
+    if (!themeToggle || !themeToggleLabel) return;
+    const key = theme === "light" ? "theme.light" : "theme.dark";
+    const label = translateFn(key) || (theme === "light" ? "Light" : "Dark");
+    themeToggleLabel.textContent = label;
+    themeToggle.setAttribute("aria-label", label);
+
+    const icon = themeToggle.querySelector("i");
+    if (icon) {
+      icon.className = theme === "light" ? "ri-sun-line" : "ri-moon-line";
+    }
+  }
+
+  function applyTheme(theme) {
+    currentTheme = theme;
+    root.dataset.theme = theme;
+    localStorage.setItem(themeStorageKey, theme);
+    setThemeLabel(theme);
+  }
+
+  function closeLanguageMenu() {
+    if (!languageMenu || !languageToggle) return;
+    languageMenu.classList.remove("is-open");
+    languageMenu.hidden = true;
+    languageToggle.setAttribute("aria-expanded", "false");
+  }
+
+  function openLanguageMenu() {
+    if (!languageMenu || !languageToggle) return;
+    languageMenu.hidden = false;
+    requestAnimationFrame(() => languageMenu.classList.add("is-open"));
+    languageToggle.setAttribute("aria-expanded", "true");
+  }
+
+  function closeMobileMenu({ restoreFocus = false } = {}) {
+    if (!mobileMenuToggle || !siteHeader) return;
+    siteHeader.classList.remove("menu-open");
+    mobileMenuToggle.setAttribute("aria-expanded", "false");
+    const icon = mobileMenuToggle.querySelector("i");
+    if (icon) icon.className = "ri-menu-3-line";
+    if (restoreFocus) mobileMenuToggle.focus();
+  }
+
+  function openMobileMenu() {
+    if (!mobileMenuToggle || !siteHeader) return;
+    closeLanguageMenu();
+    siteHeader.classList.add("menu-open");
+    mobileMenuToggle.setAttribute("aria-expanded", "true");
+    const icon = mobileMenuToggle.querySelector("i");
+    if (icon) icon.className = "ri-close-line";
+  }
+
+  function createElement(tag, className, textContent) {
+    const element = document.createElement(tag);
+    if (className) element.className = className;
+    if (typeof textContent === "string") element.textContent = textContent;
+    return element;
+  }
+
+  function formatIndex(index) {
+    return String(index + 1).padStart(2, "0");
+  }
+
+  function getProjectContent(project, lang = currentLang) {
+    const englishContent = project.content?.en || {};
+    const localizedContent = project.content?.[lang] || {};
+    return { ...englishContent, ...localizedContent };
+  }
+
+  function setProjectFilter(category) {
+    currentProjectFilter = category;
+    filterButtons.forEach((button) => {
+      const isActive = button.dataset.filter === category;
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+    projectCards.forEach((card) => {
+      const match = category === "all" || card.dataset.category === category;
+      card.hidden = !match;
+    });
+  }
+
+  function setLicenseFilter(category) {
+    currentLicenseFilter = category;
+    licenseButtons.forEach((button) => {
+      const isActive = button.dataset.licenseFilter === category;
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+    licenseCards.forEach((card) => {
+      const match = category === "all" || card.dataset.licenseCategory === category;
+      card.hidden = !match;
+    });
+  }
+
+  function registerReveal(elements) {
+    const revealTargets = elements
+      ? Array.from(elements)
+      : Array.from(document.querySelectorAll(".reveal, .reveal-target, .card, .timeline-card, .skill-card, .license"));
+
+    if (prefersReducedMotion) {
+      revealTargets.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
+
+    if (!revealObserver) {
+      revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.02, rootMargin: "0px 0px -5% 0px" }
+      );
+    }
+
+    revealTargets.forEach((element) => {
+      if (element.dataset.revealBound === "true" || element.classList.contains("is-visible")) return;
+      element.dataset.revealBound = "true";
+      revealObserver.observe(element);
+    });
+  }
+
+  async function renderExperience(translateFn = currentTranslate) {
     await ensureData();
-    const container = document.getElementById('experienceList');
+    const container = document.getElementById("experienceList");
     if (!container) return;
-    container.innerHTML = '';
-    experienceData.forEach((item) => {
-      const details = document.createElement('details');
-      details.className = 'timeline-card';
-      if (item.open) details.setAttribute('open', '');
 
-      const summary = document.createElement('summary');
-      const summaryText = document.createElement('div');
-      summaryText.className = 'summary-text';
-      const dateEl = document.createElement('p');
-      dateEl.className = 'label';
-      dateEl.textContent = translateFn(item.datesKey) || '';
-      const titleEl = document.createElement('h3');
-      titleEl.textContent = translateFn(item.titleKey) || '';
+    container.innerHTML = "";
+
+    experienceData.forEach((item, index) => {
+      const details = createElement("details", "timeline-card reveal-target");
+      if (item.open) details.open = true;
+
+      const summary = document.createElement("summary");
+
+      const head = createElement("div", "timeline-head");
+      const indexEl = createElement("span", "timeline-index", formatIndex(index));
+
+      const summaryText = createElement("div", "summary-text");
+      const dateEl = createElement("p", "label", translateFn(item.datesKey) || "");
+      const titleEl = createElement("h3", "", translateFn(item.titleKey) || "");
       summaryText.append(dateEl, titleEl);
+      head.append(indexEl, summaryText);
 
-      const summaryIcons = document.createElement('div');
-      summaryIcons.className = 'summary-icons';
+      const summaryIcons = createElement("div", "summary-icons");
       if (item.pillIcon) {
-        const icon = document.createElement('i');
-        icon.className = `${item.pillIcon} icon-badge small`;
-        icon.setAttribute('aria-hidden', 'true');
-        summaryIcons.appendChild(icon);
+        const iconWrap = createElement("span", "icon-badge small");
+        const icon = document.createElement("i");
+        icon.className = item.pillIcon;
+        icon.setAttribute("aria-hidden", "true");
+        iconWrap.appendChild(icon);
+        summaryIcons.appendChild(iconWrap);
       }
-      const pill = document.createElement('span');
-      pill.className = 'pill';
-      pill.textContent = translateFn(item.pillKey) || '';
+      const pill = createElement("span", "pill", translateFn(item.pillKey) || "");
       summaryIcons.appendChild(pill);
 
-      summary.append(summaryText, summaryIcons);
+      summary.append(head, summaryIcons);
 
-      const desc = document.createElement('p');
-      desc.className = 'muted';
-      desc.textContent = translateFn(item.descKey) || '';
+      const body = createElement("div", "disclosure-body");
+      const desc = createElement("p", "muted", translateFn(item.descKey) || "");
 
-      const inline = document.createElement('details');
-      inline.className = 'inline-details';
-      if (item.inlineOpen) inline.setAttribute('open', '');
-      const inlineSummary = document.createElement('summary');
-      inlineSummary.textContent = translateFn('common.keyWork') || 'Key work';
-      const list = document.createElement('ul');
-      list.className = 'mini-list';
+      const inline = createElement("details", "inline-details");
+      if (item.inlineOpen) inline.open = true;
+      const inlineSummary = createElement("summary", "", translateFn("common.keyWork") || "Key work");
+      const list = createElement("ul", "mini-list");
       const listHtml = translateFn(item.listKey);
       if (listHtml) list.innerHTML = listHtml;
       inline.append(inlineSummary, list);
 
-      details.append(summary, desc, inline);
+      body.append(desc, inline);
+      details.append(summary, body);
       container.appendChild(details);
     });
-  };
 
-  const renderProjects = async (translateFn = currentTranslate) => {
+    registerReveal(container.querySelectorAll(".reveal-target"));
+  }
+
+  async function renderProjects(translateFn = currentTranslate) {
     await ensureData();
-    const container = document.getElementById('projectGrid');
+    const container = document.getElementById("projectGrid");
     if (!container) return;
-    container.innerHTML = '';
+
+    container.innerHTML = "";
     projectCards = [];
-    projectToggleButtons.length = 0;
 
-    projectsData.forEach((project) => {
-      const card = document.createElement('article');
-      card.className = 'card project collapsed';
+    projectsData.forEach((project, index) => {
+      const content = getProjectContent(project);
+      const titleText = content.title || project.id;
+      const card = createElement("details", "project card-surface reveal-target");
       card.dataset.category = project.category;
+      card.dataset.projectId = project.id;
 
-      const img = document.createElement('div');
-      img.className = 'project-img';
-      img.style.backgroundImage = `url('${project.image}')`;
+      const summary = createElement("summary", "project-summary");
+      const media = createElement("div", "project-media");
+      const image = document.createElement("img");
+      image.className = "project-img";
+      image.src = project.image;
+      image.alt = `${titleText} — ${translateFn("projects.imageAlt") || "representative project view"}`;
+      if (project.imageFit === "contain") image.classList.add("is-contain");
+      image.loading = index < 2 ? "eager" : "lazy";
+      image.decoding = "async";
+      media.appendChild(image);
 
-      const body = document.createElement('div');
-      body.className = 'project-body';
+      const body = createElement("div", "project-summary-body");
+      const kicker = createElement("div", "project-kicker");
+      const projectIconWrap = createElement("span", "project-card-icon");
+      const projectIcon = createElement("i", project.icon || "ri-layout-grid-line");
+      projectIcon.setAttribute("aria-hidden", "true");
+      projectIconWrap.appendChild(projectIcon);
+      const projectIndex = createElement("span", "project-index", formatIndex(index));
+      const pill = createElement("span", "pill", translateFn(project.pillKey) || "");
+      const status = createElement("span", "project-status", content.status || "");
+      kicker.append(projectIconWrap, projectIndex, pill, status);
 
-      const top = document.createElement('div');
-      top.className = 'project-top';
-      const icon = document.createElement('i');
-      icon.className = `${project.icon || 'ri-robot-2-line'} project-icon`;
-      icon.setAttribute('aria-hidden', 'true');
-      const pill = document.createElement('div');
-      pill.className = 'pill';
-      pill.textContent = translateFn(project.pillKey) || '';
-      top.append(icon, pill);
+      const dates = createElement("p", "label project-dates");
+      const dateIcon = createElement("i", "ri-calendar-line");
+      dateIcon.setAttribute("aria-hidden", "true");
+      dates.append(dateIcon, createElement("span", "", content.dates || ""));
+      const title = createElement("h3", "", titleText);
+      const desc = createElement("p", "project-desc", content.summary || "");
 
-      const title = document.createElement('h3');
-      title.textContent = translateFn(project.titleKey) || '';
-      const desc = document.createElement('p');
-      desc.className = 'project-desc';
-      desc.textContent = translateFn(project.descKey) || '';
-      const label = document.createElement('p');
-      label.className = 'label';
-      label.textContent = translateFn(project.datesKey) || '';
+      const chips = project.chips || [];
+      const chipsWrap = createElement("div", "chips project-chips");
+      chips.forEach((chip, chipIndex) => {
+        const className = chipIndex >= 2 ? "chip project-chip-extra" : "chip";
+        chipsWrap.appendChild(createElement("span", className, chip));
+      });
+      if (chips.length > 2) {
+        chipsWrap.appendChild(createElement("span", "chip project-chip-count", `+${chips.length - 2}`));
+      }
 
-      const chipsWrap = document.createElement('div');
-      chipsWrap.className = 'chips';
-      (project.chips || []).forEach((chip) => {
-        const chipEl = document.createElement('span');
-        chipEl.className = 'chip';
-        chipEl.textContent = chip;
-        chipsWrap.appendChild(chipEl);
+      const summaryAction = createElement("span", "project-summary-action");
+      const summaryActionText = createElement(
+        "span",
+        "project-summary-action-text",
+        translateFn("projects.toggle.open") || "Open case study"
+      );
+      const summaryActionIcon = createElement("i", "ri-arrow-down-s-line");
+      summaryActionIcon.setAttribute("aria-hidden", "true");
+      summaryAction.append(summaryActionText, summaryActionIcon);
+
+      body.append(kicker, dates, title, desc, chipsWrap, summaryAction);
+      summary.append(media, body);
+
+      const caseBody = createElement("div", "project-case-body");
+      const meta = createElement("div", "project-case-meta");
+      const createIconLabel = (labelKey, fallback, iconClass, className = "project-detail-label") => {
+        const label = createElement("p", className);
+        const icon = createElement("i", iconClass);
+        icon.setAttribute("aria-hidden", "true");
+        label.append(icon, createElement("span", "", translateFn(labelKey) || fallback));
+        return label;
+      };
+      const roleBlock = createElement("div", "project-meta-block");
+      roleBlock.append(
+        createIconLabel("projects.detail.role", "Role & ownership", "ri-user-star-line"),
+        createElement("p", "project-meta-value", content.role || "")
+      );
+      const statusBlock = createElement("div", "project-meta-block");
+      statusBlock.append(
+        createIconLabel("projects.detail.status", "Status", "ri-checkbox-circle-line"),
+        createElement("p", "project-meta-value", content.status || "")
+      );
+      meta.append(roleBlock, statusBlock);
+
+      const createList = (items, className = "project-detail-list") => {
+        const list = createElement("ul", className);
+        (items || []).forEach((item) => list.appendChild(createElement("li", "", item)));
+        return list;
+      };
+
+      const createSection = (labelKey, fallback, iconClass, className = "project-detail-card") => {
+        const section = createElement("section", className);
+        const heading = createElement("h4", "project-detail-title");
+        const icon = createElement("i", iconClass);
+        icon.setAttribute("aria-hidden", "true");
+        heading.append(icon, createElement("span", "", translateFn(labelKey) || fallback));
+        section.appendChild(heading);
+        return section;
+      };
+
+      const narrativeGrid = createElement("div", "project-narrative-grid");
+      const challengeSection = createSection("projects.detail.challenge", "Problem to solve", "ri-question-line");
+      challengeSection.appendChild(createElement("p", "", content.challenge || ""));
+      const contributionSection = createSection("projects.detail.contribution", "What I built", "ri-hammer-line");
+      contributionSection.appendChild(createList(content.contribution));
+      const technicalSection = createSection("projects.detail.technical", "Technical implementation", "ri-code-box-line");
+      technicalSection.appendChild(createList(content.technical));
+      narrativeGrid.append(challengeSection, contributionSection, technicalSection);
+
+      const architectureSection = createSection(
+        "projects.detail.architecture",
+        "Architecture path",
+        "ri-node-tree",
+        "project-architecture-section"
+      );
+      if (project.architectureImage) {
+        const architectureFigure = createElement("figure", "project-architecture-figure");
+        const architectureImage = document.createElement("img");
+        architectureImage.src = project.architectureImage;
+        architectureImage.alt = `${titleText} — ${translateFn("projects.detail.architectureImage") || "technical architecture diagram"}`;
+        architectureImage.loading = "lazy";
+        architectureImage.decoding = "async";
+        architectureFigure.appendChild(architectureImage);
+        architectureSection.appendChild(architectureFigure);
+      }
+      const architectureFlow = createElement("ol", "architecture-flow");
+      (content.architecture || []).forEach((step) => {
+        const item = createElement("li", "architecture-step");
+        item.append(
+          createElement("span", "architecture-step-index", formatIndex(architectureFlow.children.length)),
+          createElement("strong", "", step.label || ""),
+          createElement("p", "", step.detail || "")
+        );
+        architectureFlow.appendChild(item);
+      });
+      architectureSection.appendChild(architectureFlow);
+
+      const evidenceGrid = createElement("div", "project-evidence-grid");
+      const outcomesSection = createSection("projects.detail.outcomes", "Outcome & evidence", "ri-line-chart-line");
+      outcomesSection.appendChild(createList(content.outcomes, "project-outcome-list"));
+      evidenceGrid.appendChild(outcomesSection);
+
+      if (project.links && project.links.length) {
+        const linksSection = createSection("projects.detail.links", "Project links", "ri-links-line");
+        const linksWrap = createElement("div", "project-links");
+        project.links.forEach((link) => {
+          const anchor = createElement("a", "project-link");
+          anchor.href = link.url;
+          anchor.target = "_blank";
+          anchor.rel = "noopener";
+          const linkIcon = createElement("i", link.icon || "ri-external-link-line");
+          linkIcon.setAttribute("aria-hidden", "true");
+          anchor.append(linkIcon, createElement("span", "", link.label || "View project"));
+          linksWrap.appendChild(anchor);
+        });
+        linksSection.appendChild(linksWrap);
+        evidenceGrid.appendChild(linksSection);
+      }
+
+      card.addEventListener("toggle", () => {
+        const expanded = card.open;
+        summaryActionText.textContent = expanded
+          ? translateFn("projects.toggle.close") || "Close case study"
+          : translateFn("projects.toggle.open") || "Open case study";
+        summaryActionIcon.className = expanded ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line";
       });
 
-      const toggle = document.createElement('button');
-      toggle.type = 'button';
-      toggle.className = 'toggle-details';
-      projectToggleButtons.push(toggle);
-      setProjectToggleLabel(toggle, false, translateFn);
-      toggle.addEventListener('click', () => {
-        const expanded = card.classList.toggle('expanded');
-        card.classList.toggle('collapsed', !expanded);
-        setProjectToggleLabel(toggle, expanded, translateFn);
-      });
-
-      body.append(top, title, desc, label, chipsWrap, toggle);
-      card.append(img, body);
+      caseBody.append(meta, narrativeGrid, architectureSection, evidenceGrid);
+      card.append(summary, caseBody);
       container.appendChild(card);
       projectCards.push(card);
     });
-  };
 
-  const applyTranslations = async (lang = currentLang) => {
+    setProjectFilter(currentProjectFilter);
+    registerReveal(container.querySelectorAll(".reveal-target"));
+  }
+
+  async function applyTranslations(lang = currentLang) {
     const resolvedLang = availableLangs.includes(lang) ? lang : fallbackLang;
     const primary = (await loadTranslations(resolvedLang)) || {};
     const fallbackDict = resolvedLang === fallbackLang ? primary : (await loadTranslations(fallbackLang)) || {};
+
     currentLang = resolvedLang;
     localStorage.setItem(langStorageKey, currentLang);
-    document.documentElement.lang = currentLang === 'zh' ? 'zh-Hant' : currentLang;
+    document.documentElement.lang = currentLang === "zh" ? "zh-Hant" : currentLang;
 
-    const translateFn = (key) => primary[key] ?? fallbackDict[key] ?? '';
+    const translateFn = (key) => primary[key] ?? fallbackDict[key] ?? "";
     currentTranslate = translateFn;
 
-    const pageTitle = translateFn('page.title');
+    const pageTitle = translateFn("page.title");
     if (pageTitle) document.title = pageTitle;
 
-    document.querySelectorAll('[data-i18n]').forEach((el) => {
-      const key = el.dataset.i18n;
+    document.querySelectorAll("[data-i18n]").forEach((element) => {
+      const key = element.dataset.i18n;
       if (!key) return;
       const value = translateFn(key);
       if (!value) return;
-      if (el.dataset.i18nHtml === 'true') {
-        el.innerHTML = value;
+      if (element.dataset.i18nHtml === "true") {
+        element.innerHTML = value;
       } else {
-        el.textContent = value;
+        element.textContent = value;
       }
     });
 
+    document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+      const key = element.dataset.i18nAriaLabel;
+      const value = key ? translateFn(key) : "";
+      if (value) element.setAttribute("aria-label", value);
+    });
+
     await Promise.all([renderExperience(translateFn), renderProjects(translateFn)]);
-    refreshProjectToggleLabels(translateFn);
     updateLanguageOptions(currentLang, translateFn);
-    setThemeLabel(document.documentElement.dataset.theme || currentTheme, translateFn);
-  };
+    setThemeLabel(currentTheme, translateFn);
+    setLicenseFilter(currentLicenseFilter);
+  }
 
-  const pulseLanguageToggle = () => {
-    if (!languageToggle) return;
-    languageToggle.classList.add('lang-changed');
-    window.setTimeout(() => languageToggle.classList.remove('lang-changed'), 450);
-  };
-
-  const setLanguage = async (lang, animate = true) => {
-    await applyTranslations(lang);
-    if (animate && hasAnimatedOnce) {
-      pulseLanguageToggle();
-    }
-    hasAnimatedOnce = true;
-  };
-
-  const setFilter = (category) => {
-    filterButtons.forEach((btn) => btn.classList.toggle('active', btn.dataset.filter === category));
-    projectCards.forEach((card) => {
-      const match = category === 'all' || card.dataset.category === category;
-      card.hidden = !match;
+  function smoothScrollTo(target) {
+    if (!target) return;
+    target.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "start"
     });
-  };
-
-  filterButtons.forEach((btn) => {
-    btn.addEventListener('click', () => setFilter(btn.dataset.filter));
-  });
-
-  navLinks.forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      const target = document.querySelector(link.getAttribute('href'));
-      if (!target) return;
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
+  }
 
   const navSections = navLinks
     .map((link) => {
-      const target = document.querySelector(link.getAttribute('href'));
+      const selector = link.getAttribute("href");
+      const target = selector ? document.querySelector(selector) : null;
       if (!target) return null;
       return { link, target };
     })
     .filter(Boolean);
 
-  const highlightSection = () => {
-    if (!navSections.length) return;
-    const scrollPos = window.scrollY + 140;
+  function highlightSection() {
+    const scrollPosition = window.scrollY + 180;
     let activeLink = null;
 
     navSections.forEach(({ link, target }) => {
       const top = target.offsetTop;
       const bottom = top + target.offsetHeight;
-      if (scrollPos >= top && scrollPos < bottom) {
+      if (scrollPosition >= top && scrollPosition < bottom) {
         activeLink = link;
       }
     });
 
-    navLinks.forEach((link) => link.classList.toggle('active', link === activeLink));
-  };
-
-  const setLicenseFilter = (category) => {
-    licenseButtons.forEach((btn) => btn.classList.toggle('active', btn.dataset.licenseFilter === category));
-    licenseCards.forEach((card) => {
-      const match = category === 'all' || card.dataset.licenseCategory === category;
-      card.hidden = !match;
+    navLinks.forEach((link) => {
+      link.classList.toggle("active", link === activeLink);
     });
-  };
+  }
 
-  licenseButtons.forEach((btn) => {
-    btn.addEventListener('click', () => setLicenseFilter(btn.dataset.licenseFilter));
+  function handleScroll() {
+    siteHeader?.classList.toggle("scrolled", window.scrollY > 10);
+    highlightSection();
+    if (backToTop) {
+      const footerVisible = siteFooter && siteFooter.getBoundingClientRect().top < window.innerHeight - 12;
+      backToTop.hidden = window.scrollY < 260 || footerVisible;
+    }
+  }
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => setProjectFilter(button.dataset.filter || "all"));
   });
 
-  const applyTheme = (theme) => {
-    currentTheme = theme;
-    document.documentElement.dataset.theme = theme;
-    localStorage.setItem('theme', theme);
-    const isLight = theme === 'light';
-    if (themeToggle) {
-      const icon = themeToggle.querySelector('i');
-      if (icon) {
-        icon.className = isLight ? 'ri-sun-line' : 'ri-moon-line';
-      }
+  licenseButtons.forEach((button) => {
+    button.addEventListener("click", () => setLicenseFilter(button.dataset.licenseFilter || "all"));
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const target = document.querySelector(link.getAttribute("href"));
+      closeMobileMenu();
+      smoothScrollTo(target);
+    });
+  });
+
+  brandLink?.addEventListener("click", (event) => {
+    event.preventDefault();
+    closeMobileMenu();
+    smoothScrollTo(document.querySelector("#hero"));
+  });
+
+  backToTop?.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? "auto" : "smooth"
+    });
+  });
+
+  mobileMenuToggle?.addEventListener("click", () => {
+    const isOpen = mobileMenuToggle.getAttribute("aria-expanded") === "true";
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
     }
-    setThemeLabel(theme);
-  };
+  });
 
-  applyTheme(initialTheme);
-
-  themeToggle?.addEventListener('click', () => {
-    const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+  themeToggle?.addEventListener("click", () => {
+    const nextTheme = currentTheme === "light" ? "dark" : "light";
     applyTheme(nextTheme);
   });
 
-  const heroCard = document.querySelector('.hero-card');
-  const heroGrid = document.querySelector('.hero-grid');
-  const glowLayer = heroCard?.querySelector('.glow');
-
-  if (heroCard && heroGrid && !prefersReducedMotion) {
-    const resetTilt = () => {
-      heroCard.style.transform = 'perspective(1100px) rotateX(0deg) rotateY(0deg) translateZ(0)';
-      if (glowLayer) {
-        glowLayer.style.transform = 'translate3d(0, 0, 0)';
-      }
-    };
-
-    heroGrid.addEventListener('pointermove', (event) => {
-      const rect = heroGrid.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-      const rotateY = x * 12;
-      const rotateX = -y * 10;
-      heroCard.style.transform = `perspective(1100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(8px)`;
-      if (glowLayer) {
-        glowLayer.style.transform = `translate3d(${x * 16}px, ${y * 16}px, 0)`;
-      }
-    });
-
-    heroGrid.addEventListener('pointerleave', resetTilt);
-  }
-
-  const siteHeader = document.querySelector('.site-header');
-  const backToTop = document.getElementById('backToTop');
-  const handleScroll = () => {
-    siteHeader?.classList.toggle('scrolled', window.scrollY > 12);
-    highlightSection();
-    if (backToTop) {
-      backToTop.hidden = window.scrollY < 200;
-    }
-  };
-
-  handleScroll();
-  window.addEventListener('scroll', handleScroll, { passive: true });
-
-  backToTop?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  const bookmarkToggle = document.querySelector('.bookmark-toggle');
-  const bookmarkMenu = document.getElementById('bookmarkMenu');
-  const bookmarkLinks = bookmarkMenu ? Array.from(bookmarkMenu.querySelectorAll('a')) : [];
-  let bookmarkCloseTimer;
-
-  const closeBookmarkMenu = () => {
-    if (!bookmarkMenu || !bookmarkToggle) return;
-    bookmarkMenu.classList.remove('is-visible');
-    bookmarkToggle.setAttribute('aria-expanded', 'false');
-    if (bookmarkCloseTimer) {
-      clearTimeout(bookmarkCloseTimer);
-    }
-    bookmarkCloseTimer = window.setTimeout(() => {
-      bookmarkMenu.hidden = true;
-    }, 250);
-  };
-
-  const openBookmarkMenu = () => {
-    if (!bookmarkMenu || !bookmarkToggle) return;
-    if (bookmarkCloseTimer) {
-      clearTimeout(bookmarkCloseTimer);
-    }
-    bookmarkMenu.hidden = false;
-    requestAnimationFrame(() => {
-      bookmarkMenu.classList.add('is-visible');
-      bookmarkToggle.setAttribute('aria-expanded', 'true');
-    });
-  };
-
-  bookmarkToggle?.addEventListener('click', () => {
-    if (!bookmarkMenu) return;
-    const isOpen = bookmarkToggle.getAttribute('aria-expanded') === 'true';
-    if (isOpen) {
-      closeBookmarkMenu();
-    } else {
-      openBookmarkMenu();
-    }
-  });
-
-  bookmarkLinks.forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      const target = document.querySelector(link.getAttribute('href'));
-      if (!target) return;
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      closeBookmarkMenu();
-    });
-  });
-
-  document.addEventListener('click', (event) => {
-    if (!bookmarkMenu || !bookmarkToggle) return;
-    if (bookmarkMenu.hidden) return;
-    const clickTarget = event.target;
-    if (!bookmarkMenu.contains(clickTarget) && !bookmarkToggle.contains(clickTarget)) {
-      closeBookmarkMenu();
-    }
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closeBookmarkMenu();
-    }
-  });
-
-  const adjustBookmarkPosition = () => {
-    const toTop = document.getElementById('backToTop');
-    if (!bookmarkMenu || !bookmarkToggle || !toTop) return;
-    const toggleRect = bookmarkToggle.getBoundingClientRect();
-    const toTopRect = toTop.getBoundingClientRect();
-    const overlap = toggleRect.bottom > toTopRect.top - 8 && Math.abs(toggleRect.right - toTopRect.right) < 80;
-    if (overlap) {
-      bookmarkToggle.style.bottom = '84px';
-      bookmarkMenu.style.bottom = '138px';
-    }
-  };
-
-  adjustBookmarkPosition();
-  window.addEventListener('resize', adjustBookmarkPosition);
-
-  languageOptions.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      languageOptions.forEach((opt) => opt.classList.remove('lang-anim'));
-      btn.classList.add('lang-anim');
-      window.setTimeout(() => btn.classList.remove('lang-anim'), 450);
-      setLanguage(btn.dataset.lang, true);
-      closeLanguageMenu();
-      languageToggle?.focus({ preventScroll: true });
-    });
-  });
-
-  languageToggle?.addEventListener('click', () => {
-    const isOpen = languageMenu?.classList.contains('is-open');
+  languageToggle?.addEventListener("click", () => {
+    const isOpen = languageToggle.getAttribute("aria-expanded") === "true";
     if (isOpen) {
       closeLanguageMenu();
     } else {
       openLanguageMenu();
-      languageMenu?.querySelector('.lang-option')?.focus({ preventScroll: true });
     }
   });
 
-  document.addEventListener('click', (event) => {
-    if (!languageMenu || !languageToggle) return;
-    if (languageMenu.hidden) return;
+  languageOptions.forEach((button) => {
+    button.addEventListener("click", async () => {
+      await applyTranslations(button.dataset.lang || fallbackLang);
+      closeLanguageMenu();
+    });
+  });
+
+  document.addEventListener("click", (event) => {
     const target = event.target;
-    if (!languageMenu.contains(target) && !languageToggle.contains(target)) {
-      closeLanguageMenu();
+    if (languageMenu && languageToggle && !languageMenu.hidden) {
+      if (!languageMenu.contains(target) && !languageToggle.contains(target)) {
+        closeLanguageMenu();
+      }
+    }
+
+    if (siteHeader?.classList.contains("menu-open") && !siteHeader.contains(target)) {
+      closeMobileMenu();
     }
   });
 
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closeLanguageMenu();
-      languageToggle?.focus({ preventScroll: true });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    closeLanguageMenu();
+    if (siteHeader?.classList.contains("menu-open")) {
+      closeMobileMenu({ restoreFocus: true });
     }
   });
 
-  setLanguage(currentLang, false);
+  mobileMenuQuery.addEventListener("change", (event) => {
+    if (!event.matches) closeMobileMenu();
+  });
+
+  applyTheme(initialTheme);
+  setLicenseFilter(currentLicenseFilter);
+  registerReveal();
+  handleScroll();
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  applyTranslations(currentLang).then(() => {
+    registerReveal();
+    highlightSection();
+  });
 })();

@@ -1,0 +1,91 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "production-copilot",
+  "category": "genai",
+  "sortStart": "2025-11",
+  "sortEnd": "2025-12",
+  "sortUpdated": "2025-12-29",
+  "pillKey": "projects.pills.genai",
+  "icon": "ri-robot-2-line",
+  "image": "assets/images/project-production-copilot-v2.png",
+  "chips": [
+    "FastAPI",
+    "Chainlit",
+    "Postgres",
+    "Neo4j",
+    "Chroma",
+    "Ollama"
+  ],
+  "content": {
+    "en": {
+      "title": "Production Planning Copilot",
+      "summary": "Assistant that transforms product specs into optimized production plans with domain RAG and safety rails.",
+      "dates": "Nov 2025 - Dec 2025",
+      "status": "GenAI demonstrator",
+      "role": "GenAI architect & backend engineer",
+      "challenge": "Production planners need to query schedules, facts, constraints, and operating knowledge in natural language without letting an LLM invent production data.",
+      "contribution": [
+        "Designed an agentic orchestration layer that routes questions to relational, graph, or vector tools.",
+        "Built multilingual question/answer pivots, deterministic fallback behavior, seed data, and startup automation.",
+        "Containerized the complete demonstration stack with isolated API and Chainlit dependencies."
+      ],
+      "technical": [
+        "Postgres stores operational facts and schedules; Neo4j represents semantic metadata and relationships.",
+        "Chroma retrieves planning documents while Ollama provides local embeddings and optional model serving.",
+        "FastAPI orchestrates Graph-to-SQL and Graph-to-Vector tools; Chainlit provides the conversational demo interface."
+      ],
+      "architecture": [
+        {
+          "label": "Interface",
+          "detail": "Chainlit accepts multilingual planning questions and displays grounded responses."
+        },
+        {
+          "label": "Orchestration",
+          "detail": "FastAPI agent classifies intent and routes work to graph, SQL, vector, or translation tools."
+        },
+        {
+          "label": "Knowledge",
+          "detail": "Postgres facts, Neo4j semantics, Chroma documents, and seeded rules provide bounded context."
+        },
+        {
+          "label": "Runtime",
+          "detail": "Docker Compose coordinates API, UI, databases, vector store, and local Ollama services."
+        }
+      ],
+      "outcomes": [
+        "Demonstrates how LLM interaction can be grounded in operational systems rather than free-form generation.",
+        "Keeps the demo functional with deterministic templates when external model credentials are unavailable.",
+        "Separates components and ports so a second stack can run without dependency or service collisions."
+      ]
+    },
+    "zh": {
+      "title": "生產規劃 Copilot",
+      "summary": "以領域 RAG 與防護機制，將產品規格轉成最佳化生產計畫的助理。",
+      "dates": "2025 年 11 月 - 2025 年 12 月",
+      "status": "生成式 AI 展示",
+      "role": "生成式 AI 架構師與後端工程師",
+      "challenge": "生產規劃人員需要用自然語言查詢排程、事實、限制與作業知識，同時避免大型語言模型虛構生產資料。",
+      "contribution": [
+        "設計代理式編排層，依問題將工作路由至關聯式、圖譜或向量工具。",
+        "建置多語問答轉換、確定性備援行為、種子資料與啟動自動化。",
+        "將完整展示技術堆疊容器化，並隔離 API 與 Chainlit 相依套件。"
+      ],
+      "technical": [
+        "Postgres 儲存營運事實與排程，Neo4j 表達語意詮釋資料與關係。",
+        "Chroma 檢索規劃文件，Ollama 提供本地嵌入與選用的模型服務。",
+        "FastAPI 編排 Graph-to-SQL 與 Graph-to-Vector 工具，Chainlit 提供對話式展示介面。"
+      ],
+      "architecture": [
+        { "label": "介面", "detail": "Chainlit 接收多語規劃問題，並顯示具有依據的回覆。" },
+        { "label": "編排", "detail": "FastAPI 代理判斷意圖，並將工作路由至圖譜、SQL、向量或翻譯工具。" },
+        { "label": "知識", "detail": "Postgres 事實、Neo4j 語意、Chroma 文件與預設規則共同提供受限上下文。" },
+        { "label": "執行環境", "detail": "Docker Compose 協調 API、介面、資料庫、向量儲存與本地 Ollama 服務。" }
+      ],
+      "outcomes": [
+        "展示如何將 LLM 互動建立在營運系統的事實上，而非自由生成。",
+        "當外部模型憑證不可用時，仍以確定性範本維持展示功能。",
+        "分離元件與連接埠，使第二套技術堆疊也能執行而不產生相依或服務衝突。"
+      ]
+    }
+  }
+}

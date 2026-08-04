@@ -1,0 +1,89 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "ecommerce",
+  "category": "web",
+  "sortStart": "2023-05",
+  "sortEnd": "2024-05",
+  "pillKey": "projects.pills.web",
+  "icon": "ri-global-line",
+  "image": "assets/images/project-aurore-website.png",
+  "chips": [
+    "E-commerce",
+    "Payments",
+    "Analytics",
+    "SEO",
+    "Growth"
+  ],
+  "content": {
+    "en": {
+      "title": "E-commerce Platform",
+      "summary": "Shop build, payments, and marketing analytics for Aurore Collection.",
+      "dates": "May 2023 - May 2024",
+      "status": "Founder-led product",
+      "role": "Co-founder, product owner & web builder",
+      "challenge": "A new jewelry brand needed a credible online storefront and an operating model that connected discovery, checkout, fulfillment, analytics, and marketing experiments.",
+      "contribution": [
+        "Owned the product from business model and site structure through launch, payments, content, and fulfillment.",
+        "Implemented analytics and conversion tracking to support marketing decisions.",
+        "Coordinated a lean remote team, vendors, and ongoing product operations."
+      ],
+      "technical": [
+        "Responsive storefront and structured product content supported search, browsing, and checkout.",
+        "Payment, fulfillment, and analytics services formed the operational commerce stack.",
+        "Campaign and conversion signals fed iterative content and growth decisions."
+      ],
+      "architecture": [
+        {
+          "label": "Acquisition",
+          "detail": "Social, campaign, and search traffic lands on product and collection content."
+        },
+        {
+          "label": "Storefront",
+          "detail": "Responsive catalog, product detail, cart, and checkout guide purchase decisions."
+        },
+        {
+          "label": "Commerce services",
+          "detail": "Payments, order handling, fulfillment, and customer communication support operations."
+        },
+        {
+          "label": "Learning loop",
+          "detail": "Analytics and conversion tracking inform marketing and product iteration."
+        }
+      ],
+      "outcomes": [
+        "Launched a complete commerce experience rather than only a brand site.",
+        "Demonstrated product ownership across design, implementation, operations, marketing, and team coordination.",
+        "Used evidence from analytics to guide growth experiments and conversion work."
+      ]
+    },
+    "zh": {
+      "title": "Aurore 電商平台",
+      "summary": "為 Aurore Collection 建立商店、金流與成長分析。",
+      "dates": "2023 年 5 月 - 2024 年 5 月",
+      "status": "創辦人主導產品",
+      "role": "共同創辦人、產品負責人與網站開發者",
+      "challenge": "新創珠寶品牌需要可信賴的線上商店，以及串連品牌探索、結帳、履約、分析與行銷實驗的營運模式。",
+      "contribution": [
+        "從商業模式、網站架構到上線、金流、內容與履約，全程負責產品。",
+        "實作分析與轉換追蹤，支援行銷決策。",
+        "協調精實遠端團隊、供應商與日常產品營運。"
+      ],
+      "technical": [
+        "響應式商店與結構化商品內容支援搜尋、瀏覽與結帳流程。",
+        "金流、履約與分析服務構成電商營運技術堆疊。",
+        "活動與轉換訊號回饋至內容迭代與成長決策。"
+      ],
+      "architecture": [
+        { "label": "流量獲取", "detail": "社群、廣告活動與搜尋流量導向商品及系列內容。" },
+        { "label": "商店前台", "detail": "響應式目錄、商品詳情、購物車與結帳流程協助購買決策。" },
+        { "label": "商務服務", "detail": "金流、訂單處理、履約與顧客溝通支援日常營運。" },
+        { "label": "學習迴圈", "detail": "分析與轉換追蹤結果用於行銷及產品迭代。" }
+      ],
+      "outcomes": [
+        "推出完整電商體驗，而不只是品牌形象網站。",
+        "展現橫跨設計、實作、營運、行銷與團隊協調的產品負責能力。",
+        "以分析證據引導成長實驗與轉換優化。"
+      ]
+    }
+  }
+}

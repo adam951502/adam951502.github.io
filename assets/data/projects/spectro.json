@@ -1,0 +1,89 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "spectro",
+  "category": "data",
+  "sortStart": "2018-02",
+  "sortEnd": "2018-09",
+  "pillKey": "projects.pills.data",
+  "icon": "ri-database-2-line",
+  "image": "assets/images/project-ntust.jpg",
+  "imageFit": "cover",
+  "chips": [
+    "MATLAB",
+    "Spectroscopy",
+    "Signal Processing",
+    "Arduino"
+  ],
+  "content": {
+    "en": {
+      "title": "Spectroscopic Data Processing",
+      "summary": "Signal processing pipeline for microalbumin test spectra in MATLAB.",
+      "dates": "Feb 2018 - Sep 2018",
+      "status": "Biomedical signal research",
+      "role": "Research assistant & data analyst",
+      "challenge": "Microalbumin spectroscopy signals contained baseline drift and measurement noise that obscured concentration-related patterns.",
+      "contribution": [
+        "Prepared and inspected spectral datasets from the laboratory measurement workflow.",
+        "Implemented baseline correction and polynomial fitting in MATLAB.",
+        "Supported measurement integration and repeatability with Arduino-connected experimental hardware."
+      ],
+      "technical": [
+        "Spectrometer and experimental electronics generate raw intensity/wavelength records.",
+        "MATLAB performs preprocessing, baseline estimation, correction, fitting, and visualization.",
+        "Processed spectra are compared across samples to expose usable analytical patterns."
+      ],
+      "architecture": [
+        {
+          "label": "Measurement",
+          "detail": "Sample, light source, spectrometer, and Arduino-linked controls produce raw spectra."
+        },
+        {
+          "label": "Preprocessing",
+          "detail": "MATLAB imports, aligns, filters, and inspects the signal."
+        },
+        {
+          "label": "Correction",
+          "detail": "Polynomial baseline modeling separates drift from the analytical spectrum."
+        },
+        {
+          "label": "Interpretation",
+          "detail": "Corrected curves and fitted features support concentration comparison."
+        }
+      ],
+      "outcomes": [
+        "Converted noisy laboratory spectra into interpretable analytical data.",
+        "Built an early bridge between physical experiments, embedded controls, and data processing.",
+        "Demonstrated signal-quality judgment rather than treating preprocessing as a black box."
+      ]
+    },
+    "zh": {
+      "title": "光譜資料處理",
+      "summary": "尿液微白蛋白光譜的訊號處理流程（MATLAB）。",
+      "dates": "2018 年 2 月 - 2018 年 9 月",
+      "status": "生醫訊號研究",
+      "role": "研究助理與資料分析師",
+      "challenge": "尿液微白蛋白光譜訊號包含基線漂移與量測雜訊，掩蓋了與濃度相關的模式。",
+      "contribution": [
+        "整理並檢查實驗室量測流程產生的光譜資料集。",
+        "在 MATLAB 中實作基線校正與多項式擬合。",
+        "透過 Arduino 連接的實驗硬體，支援量測整合與重複性。"
+      ],
+      "technical": [
+        "光譜儀與實驗電子設備產生原始光強度與波長紀錄。",
+        "MATLAB 執行前處理、基線估計、校正、擬合與視覺化。",
+        "跨樣本比較處理後的光譜，以呈現可用的分析模式。"
+      ],
+      "architecture": [
+        { "label": "量測", "detail": "樣本、光源、光譜儀與 Arduino 連接控制共同產生原始光譜。" },
+        { "label": "前處理", "detail": "MATLAB 匯入、對齊、濾波並檢查訊號。" },
+        { "label": "校正", "detail": "以多項式基線模型將漂移與分析光譜分離。" },
+        { "label": "解讀", "detail": "校正曲線與擬合特徵支援濃度比較。" }
+      ],
+      "outcomes": [
+        "將含雜訊的實驗室光譜轉換為可解讀的分析資料。",
+        "建立實體實驗、嵌入式控制與資料處理之間的早期橋梁。",
+        "展現對訊號品質的判斷，而非將前處理視為黑箱。"
+      ]
+    }
+  }
+}

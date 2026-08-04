@@ -1,0 +1,97 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "t93-lab",
+  "category": "web",
+  "sortStart": "2025-07",
+  "sortEnd": "9999-12",
+  "sortUpdated": "2026-07-27",
+  "pillKey": "projects.pills.web",
+  "icon": "ri-stack-line",
+  "image": "assets/images/project-t93-lab.png",
+  "chips": [
+    "Python",
+    "Jinja2",
+    "Notion API",
+    "Supabase",
+    "Cloudflare"
+  ],
+  "links": [
+    {
+      "label": "Live site",
+      "url": "https://t93-lab.pages.dev/",
+      "icon": "ri-external-link-line"
+    }
+  ],
+  "content": {
+    "en": {
+      "title": "T93.Lab Collection & Market Platform",
+      "summary": "Notion-powered collectible vault with valuation analytics, private access, scheduled publishing, market lookup, and commerce prototypes.",
+      "dates": "Jul 2025 - Present",
+      "status": "Active product",
+      "role": "Product owner & full-stack engineer",
+      "challenge": "A private trading-card collection needed to work as a searchable collection, valuation dashboard, wishlist, and member-only market experience while keeping editorial data easy to maintain.",
+      "contribution": [
+        "Built the static-site generation pipeline from Notion data, including cached exchange rates and scheduled publishing.",
+        "Designed collection filters, valuation analytics, wishlists, market lookup, shopping, auction, cart, and grading-service prototypes.",
+        "Added Supabase Google identity, independent authorization, admin review, and protected aggregate market APIs."
+      ],
+      "technical": [
+        "Python/Jinja2 build process converts Notion content into deployable static pages and reusable partials.",
+        "Cloudflare Pages and Functions protect private routes and expose server-side APIs without leaking service credentials.",
+        "Supabase Auth/Postgres provides identity and access boundaries; GitHub Actions rebuilds hourly and refreshes market data on a schedule."
+      ],
+      "architecture": [
+        {
+          "label": "Content source",
+          "detail": "Notion databases hold collection metadata, research notes, prices, and wishlists."
+        },
+        {
+          "label": "Build pipeline",
+          "detail": "Python fetches and normalizes records, caches exchange rates, and renders Jinja2 pages."
+        },
+        {
+          "label": "Delivery",
+          "detail": "GitHub Actions publishes the generated site to Cloudflare Pages on schedule or demand."
+        },
+        {
+          "label": "Private services",
+          "detail": "Cloudflare middleware/Functions and Supabase Auth/Postgres protect users, admin data, and aggregate APIs."
+        }
+      ],
+      "outcomes": [
+        "Created one product surface for collection browsing, value analysis, wishlists, and authenticated market demos.",
+        "Separated editorial collection data from transaction-oriented architecture so commerce features can evolve safely.",
+        "Connected aggregate T93 market value to the stock workspace through a server-only API."
+      ]
+    },
+    "zh": {
+      "title": "T93.Lab 收藏與市場平台",
+      "summary": "以 Notion 驅動的收藏品管理庫，整合估值分析、私人存取、排程發布、市場查詢與商務原型。",
+      "dates": "2025 年 7 月 - 目前",
+      "status": "持續營運",
+      "role": "產品負責人與全端工程師",
+      "challenge": "私人卡牌收藏需要同時成為可搜尋的收藏庫、估值儀表板、願望清單與會員限定市場體驗，並讓編輯資料維持容易管理。",
+      "contribution": [
+        "以 Notion 資料建置靜態網站產生管線，包含匯率快取與排程發布。",
+        "設計收藏篩選、估值分析、願望清單、市場查詢、購物、拍賣、購物車與鑑定服務原型。",
+        "加入 Supabase Google 身分驗證、獨立授權、管理員審核與受保護的市場彙總 API。"
+      ],
+      "technical": [
+        "Python 與 Jinja2 建置流程將 Notion 內容轉換為可部署的靜態頁面及可重用局部模板。",
+        "Cloudflare Pages 與 Functions 保護私人路由，並提供伺服器端 API，避免洩漏服務憑證。",
+        "Supabase Auth 與 Postgres 提供身分及存取邊界；GitHub Actions 每小時重建並排程更新市場資料。"
+      ],
+      "architecture": [
+        { "label": "內容來源", "detail": "Notion 資料庫保存收藏詮釋資料、研究筆記、價格與願望清單。" },
+        { "label": "建置管線", "detail": "Python 擷取並標準化紀錄、快取匯率，再渲染 Jinja2 頁面。" },
+        { "label": "交付", "detail": "GitHub Actions 依排程或需求將產生的網站發布至 Cloudflare Pages。" },
+        { "label": "私人服務", "detail": "Cloudflare 中介軟體與 Functions 搭配 Supabase Auth／Postgres，保護使用者、管理資料及彙總 API。" }
+      ],
+      "outcomes": [
+        "建立單一產品介面，整合收藏瀏覽、價值分析、願望清單與身分驗證市場展示。",
+        "將編輯型收藏資料與交易導向架構分離，使商務功能能安全演進。",
+        "透過僅限伺服器存取的 API，將 T93 市場彙總價值連接至投資工作區。"
+      ]
+    }
+  }
+}

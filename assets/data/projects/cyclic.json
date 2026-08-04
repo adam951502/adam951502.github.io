@@ -1,0 +1,89 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "cyclic",
+  "category": "mechanics",
+  "sortStart": "2019-10",
+  "sortEnd": "2020-02",
+  "pillKey": "projects.pills.mechanics",
+  "icon": "ri-tools-line",
+  "image": "assets/images/project-master-project.gif",
+  "chips": [
+    "Python",
+    "Motor Control",
+    "Fatigue",
+    "LPBF",
+    "Data Analysis"
+  ],
+  "content": {
+    "en": {
+      "title": "Cyclic Stress Loading Test",
+      "summary": "Test rig and analysis for small-scale material fatigue under cyclic stress.",
+      "dates": "Oct 2019 - Feb 2020",
+      "status": "Experimental engineering",
+      "role": "Test & automation engineer",
+      "challenge": "Small additively manufactured specimens needed controlled cyclic loading and repeatable data capture to investigate fatigue behavior.",
+      "contribution": [
+        "Designed the loading concept and integrated motor control, fixtures, sensing, and specimen handling.",
+        "Implemented Python control and data-acquisition logic for repeatable cycles.",
+        "Processed the resulting load/cycle data and documented experimental limitations."
+      ],
+      "technical": [
+        "Command logic controls the actuator and repeated loading profile.",
+        "Sensors record mechanical response while safety and stop conditions protect the setup.",
+        "Python turns raw samples into fatigue plots and comparison data."
+      ],
+      "architecture": [
+        {
+          "label": "Test definition",
+          "detail": "Specimen, load amplitude, cycle profile, and stop conditions define the experiment."
+        },
+        {
+          "label": "Control",
+          "detail": "Python commands the motor/actuator and coordinates acquisition."
+        },
+        {
+          "label": "Measurement",
+          "detail": "Sensors record the mechanical response over repeated cycles."
+        },
+        {
+          "label": "Analysis",
+          "detail": "Processed histories expose fatigue behavior and differences between specimens."
+        }
+      ],
+      "outcomes": [
+        "Built a complete experiment from mechanical concept through control and analysis.",
+        "Combined hardware, software, and materials understanding in one project.",
+        "Created repeatable data rather than relying on manual observations alone."
+      ]
+    },
+    "zh": {
+      "title": "循環應力載入試驗",
+      "summary": "小型材料疲勞的循環載入試驗架設與分析。",
+      "dates": "2019 年 10 月 - 2020 年 2 月",
+      "status": "實驗工程",
+      "role": "試驗與自動化工程師",
+      "challenge": "小型積層製造試件需要受控的循環載入與可重複的資料擷取，才能研究其疲勞行為。",
+      "contribution": [
+        "設計載入概念，並整合馬達控制、夾治具、感測器與試件操作。",
+        "以 Python 實作控制與資料擷取邏輯，確保循環試驗可重複執行。",
+        "處理載荷與循環次數資料，並記錄實驗限制。"
+      ],
+      "technical": [
+        "指令邏輯控制致動器與重複載入曲線。",
+        "感測器記錄機械響應，安全與停止條件則保護試驗設備。",
+        "Python 將原始取樣資料轉換為疲勞曲線與比較資料。"
+      ],
+      "architecture": [
+        { "label": "試驗定義", "detail": "以試件、載荷振幅、循環曲線與停止條件定義實驗。" },
+        { "label": "控制", "detail": "Python 控制馬達或致動器，並協調資料擷取。" },
+        { "label": "量測", "detail": "感測器記錄多次循環下的機械響應。" },
+        { "label": "分析", "detail": "處理後的歷程資料呈現疲勞行為與試件間差異。" }
+      ],
+      "outcomes": [
+        "完成從機械概念、控制到分析的整套實驗。",
+        "在同一專案中整合硬體、軟體與材料知識。",
+        "建立可重複的資料流程，不再只依賴人工觀察。"
+      ]
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "energy",
+  "category": "data",
+  "sortStart": "2019-04",
+  "sortEnd": "2019-07",
+  "pillKey": "projects.pills.data",
+  "icon": "ri-database-2-line",
+  "image": "assets/images/project-energy.png",
+  "imageFit": "cover",
+  "chips": [
+    "Python",
+    "Pandas",
+    "Time Series",
+    "Energy Markets"
+  ],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/adam951502/Renewable-Energy-Market-Value-Analysis",
+      "icon": "ri-github-line"
+    }
+  ],
+  "content": {
+    "en": {
+      "title": "Energy Market Analysis",
+      "summary": "Market value evaluation for wind and solar across electricity markets.",
+      "dates": "Apr 2019 - Jul 2019",
+      "status": "Energy analytics",
+      "role": "Data analyst",
+      "challenge": "Wind and solar generation have different market value because production profiles interact with time-varying electricity prices, not just annual energy totals.",
+      "contribution": [
+        "Prepared generation and electricity-price time series for consistent market-value comparison.",
+        "Implemented capture-price and value-factor calculations for wind and solar scenarios.",
+        "Created plots and documentation that explain the relationship between timing and revenue."
+      ],
+      "technical": [
+        "Pandas aligns hourly or interval generation with market-price data.",
+        "Python calculates weighted capture prices, value factors, and scenario comparisons.",
+        "Visualizations communicate temporal patterns and differences between technologies."
+      ],
+      "architecture": [
+        {
+          "label": "Inputs",
+          "detail": "Renewable generation profiles and electricity market prices provide aligned time series."
+        },
+        {
+          "label": "Preparation",
+          "detail": "Python cleans timestamps, gaps, units, and comparable periods."
+        },
+        {
+          "label": "Valuation",
+          "detail": "Capture price and value-factor calculations quantify market value."
+        },
+        {
+          "label": "Interpretation",
+          "detail": "Plots and scenarios explain why technology value differs by timing and market."
+        }
+      ],
+      "outcomes": [
+        "Translated energy-market theory into a reproducible analytical workflow.",
+        "Demonstrated time-series preparation, quantitative modeling, and clear visualization.",
+        "Published the analysis as a public Python repository."
+      ]
+    },
+    "zh": {
+      "title": "能源市場分析",
+      "summary": "分析風能與太陽能在各電力市場的價值。",
+      "dates": "2019 年 4 月 - 2019 年 7 月",
+      "status": "能源分析",
+      "role": "資料分析師",
+      "challenge": "風能與太陽能的市場價值不只取決於年度發電量，也受到發電曲線與隨時間變動之電價互動的影響。",
+      "contribution": [
+        "整理發電與電價時間序列，建立一致的市場價值比較基礎。",
+        "實作風能與太陽能情境的捕獲價格與價值因子計算。",
+        "製作圖表與文件，說明發電時間與收益之間的關係。"
+      ],
+      "technical": [
+        "Pandas 將每小時或各時段的發電量與市場電價對齊。",
+        "Python 計算加權捕獲價格、價值因子與不同情境的比較結果。",
+        "視覺化呈現時間模式與不同發電技術之間的差異。"
+      ],
+      "architecture": [
+        { "label": "輸入", "detail": "再生能源發電曲線與電力市場價格構成對齊後的時間序列。" },
+        { "label": "資料準備", "detail": "Python 清理時間戳記、缺值、單位與可比較期間。" },
+        { "label": "價值評估", "detail": "透過捕獲價格與價值因子量化市場價值。" },
+        { "label": "結果解讀", "detail": "圖表與情境分析說明不同技術為何會因時間與市場而產生價值差異。" }
+      ],
+      "outcomes": [
+        "將能源市場理論轉換為可重現的分析流程。",
+        "展現時間序列整理、量化建模與清楚視覺化能力。",
+        "以公開 Python 儲存庫發布分析成果。"
+      ]
+    }
+  }
+}

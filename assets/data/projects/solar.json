@@ -1,0 +1,90 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "solar",
+  "category": "data",
+  "sortStart": "2019-04",
+  "sortEnd": "2019-07",
+  "pillKey": "projects.pills.data",
+  "icon": "ri-database-2-line",
+  "image": "assets/images/project-pv.png",
+  "imageFit": "cover",
+  "chips": [
+    "PV",
+    "I-V Curves",
+    "Python",
+    "Laboratory",
+    "LaTeX"
+  ],
+  "content": {
+    "en": {
+      "title": "Solar Cells Comparison",
+      "summary": "Lab study comparing PV cell performance with structured reporting.",
+      "dates": "Apr 2019 - Jul 2019",
+      "status": "Laboratory analysis",
+      "role": "Renewable-energy analyst",
+      "challenge": "Photovoltaic cells and module configurations respond differently to irradiance, mismatch, and bypass behavior, requiring controlled measurement and comparable analysis.",
+      "contribution": [
+        "Planned and performed photovoltaic I-V measurement comparisons.",
+        "Analyzed cell/module behavior and bypass-diode effects with Python.",
+        "Produced a structured technical report with figures and experimental interpretation."
+      ],
+      "technical": [
+        "The laboratory setup captures voltage/current pairs under controlled conditions.",
+        "Python calculates key PV indicators and overlays comparable I-V curves.",
+        "LaTeX integrates methods, results, plots, and discussion into a reproducible report."
+      ],
+      "architecture": [
+        {
+          "label": "Experiment",
+          "detail": "PV device, illumination, load sweep, sensors, and bypass configuration define each run."
+        },
+        {
+          "label": "Acquisition",
+          "detail": "Voltage/current samples record the device response across the operating range."
+        },
+        {
+          "label": "Analysis",
+          "detail": "Python derives characteristic points and compares I-V curve behavior."
+        },
+        {
+          "label": "Report",
+          "detail": "LaTeX combines method, evidence, limitations, and engineering conclusions."
+        }
+      ],
+      "outcomes": [
+        "Connected renewable-energy theory with controlled physical measurement.",
+        "Created comparable visual evidence for cell, module, and bypass behavior.",
+        "Demonstrated laboratory practice, scripting, and technical communication."
+      ]
+    },
+    "zh": {
+      "title": "太陽能電池比較",
+      "summary": "比較太陽能電池效能的實驗與報告。",
+      "dates": "2019 年 4 月 - 2019 年 7 月",
+      "status": "實驗室分析",
+      "role": "再生能源分析師",
+      "challenge": "光電池與模組配置對照度、不匹配及旁路行為的反應不同，因此需要受控量測與可比較分析。",
+      "contribution": [
+        "規劃並執行太陽光電 I-V 量測比較。",
+        "使用 Python 分析電池與模組行為及旁路二極體效應。",
+        "製作包含圖表與實驗解讀的結構化技術報告。"
+      ],
+      "technical": [
+        "實驗設備在受控條件下擷取電壓與電流資料點。",
+        "Python 計算關鍵光電指標，並疊加可比較的 I-V 曲線。",
+        "LaTeX 將方法、結果、圖表與討論整合成可重現報告。"
+      ],
+      "architecture": [
+        { "label": "實驗", "detail": "光電元件、光源、負載掃描、感測器與旁路配置定義每次測試。" },
+        { "label": "資料擷取", "detail": "電壓與電流取樣記錄元件在完整操作範圍內的響應。" },
+        { "label": "分析", "detail": "Python 推導特徵點，並比較 I-V 曲線行為。" },
+        { "label": "報告", "detail": "LaTeX 整合方法、證據、限制與工程結論。" }
+      ],
+      "outcomes": [
+        "將再生能源理論與受控實體量測連結。",
+        "為電池、模組與旁路行為建立可比較的視覺證據。",
+        "展現實驗室操作、程式分析與技術溝通能力。"
+      ]
+    }
+  }
+}

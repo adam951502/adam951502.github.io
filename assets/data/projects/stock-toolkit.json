@@ -1,0 +1,90 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "stock-toolkit",
+  "category": "data",
+  "sortStart": "2026-06",
+  "sortEnd": "9999-12",
+  "sortUpdated": "2026-07-28",
+  "pillKey": "projects.pills.data",
+  "icon": "ri-line-chart-line",
+  "image": "assets/images/project-stock-toolkit.png",
+  "chips": [
+    "Cloudflare Pages",
+    "Supabase",
+    "JavaScript",
+    "Postgres",
+    "OAuth"
+  ],
+  "content": {
+    "en": {
+      "title": "T93.Lab Portfolio Analytics Workspace",
+      "summary": "Private Taiwan/US portfolio workspace for net worth, positions, DCA, risk, journals, and cloud-synced market data.",
+      "dates": "Jun 2026 - Present",
+      "status": "Active build",
+      "role": "Product owner & full-stack engineer",
+      "challenge": "Personal investment data was fragmented across devices, spreadsheets, market-data sources, and separate Taiwan/US workflows. The product needed a single private workspace without exposing credentials or portfolio data in the browser.",
+      "contribution": [
+        "Designed the product model for net worth, positions, lots, DCA, realized and unrealized P&L, transfers, and trading journals.",
+        "Built Google OAuth access control, cross-device cloud synchronization, admin approval, and local-to-cloud migration.",
+        "Implemented edge APIs for quotes, symbol search, position selling, and incrementally cached portfolio history."
+      ],
+      "technical": [
+        "Native HTML/CSS/JavaScript frontend deployed on Cloudflare Pages with Pages Functions as the backend-for-frontend.",
+        "Supabase Auth, Postgres, PostgREST, row-level access patterns, and transactional RPC for position sales.",
+        "Market-data adapters for Nasdaq, Alpha Vantage, Finnhub, TWSE, TPEx, and USD/TWD exchange rates, with fallback logic and route tests."
+      ],
+      "architecture": [
+        {
+          "label": "Experience",
+          "detail": "Responsive workspace, net-worth view, position manager, risk calculators, and journal."
+        },
+        {
+          "label": "Identity & sync",
+          "detail": "Supabase Google OAuth, allowlist approval, cloud-sync layer, and localStorage migration."
+        },
+        {
+          "label": "Edge services",
+          "detail": "Cloudflare Pages Functions validate sessions and orchestrate market, sell, and history APIs."
+        },
+        {
+          "label": "Data & jobs",
+          "detail": "Supabase Postgres/RPC plus scheduled incremental history updates and provider fallbacks."
+        }
+      ],
+      "outcomes": [
+        "Unified Taiwan and US holdings, liabilities, cash flow, P&L, and asset curves in one cross-device workspace.",
+        "Supports both transaction lots and average-cost DCA while preserving a common sell and reporting workflow.",
+        "Keeps market-provider secrets and T93 collection-value integration on the server side."
+      ]
+    },
+    "zh": {
+      "title": "T93.Lab 投資組合分析工作區",
+      "summary": "私人台美投資組合工作區，整合淨資產、持倉、定期定額、風險、投資日誌與雲端同步市場資料。",
+      "dates": "2026 年 6 月 - 目前",
+      "status": "持續開發",
+      "role": "產品負責人與全端工程師",
+      "challenge": "個人投資資料散落在不同裝置、試算表、市場資料來源及分開的台股與美股流程中。產品需要提供單一私有工作區，同時避免在瀏覽器暴露憑證或投資組合資料。",
+      "contribution": [
+        "設計淨資產、持倉、交易批次、定期定額、已實現與未實現損益、轉帳及交易日誌的產品模型。",
+        "建置 Google OAuth 存取控制、跨裝置雲端同步、管理員核准及本地資料遷移至雲端的流程。",
+        "實作報價、商品搜尋、持倉賣出與增量快取投資組合歷史的邊緣 API。"
+      ],
+      "technical": [
+        "原生 HTML／CSS／JavaScript 前端部署於 Cloudflare Pages，並以 Pages Functions 作為前後端中介層。",
+        "使用 Supabase Auth、Postgres、PostgREST、資料列層級存取模式，以及處理持倉賣出的交易式 RPC。",
+        "整合 Nasdaq、Alpha Vantage、Finnhub、證交所、櫃買中心與美元兌新台幣匯率的市場資料介面，並提供備援邏輯與路由測試。"
+      ],
+      "architecture": [
+        { "label": "使用體驗", "detail": "響應式工作區包含淨資產檢視、持倉管理、風險計算器與投資日誌。" },
+        { "label": "身分與同步", "detail": "Supabase Google OAuth、允許名單核准、雲端同步層與 localStorage 遷移。" },
+        { "label": "邊緣服務", "detail": "Cloudflare Pages Functions 驗證工作階段，並編排市場、賣出及歷史資料 API。" },
+        { "label": "資料與排程", "detail": "Supabase Postgres／RPC 搭配排程式增量歷史更新與資料供應商備援。" }
+      ],
+      "outcomes": [
+        "在單一跨裝置工作區中整合台股與美股持倉、負債、現金流、損益及資產曲線。",
+        "同時支援逐筆交易批次與平均成本定期定額，並共用一致的賣出與報告流程。",
+        "將市場資料供應商密鑰與 T93 收藏價值整合保留在伺服器端。"
+      ]
+    }
+  }
+}

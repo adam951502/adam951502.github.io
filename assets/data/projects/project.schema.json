@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "project.schema.json",
+  "title": "Portfolio project",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "category", "sortStart", "pillKey", "image", "chips", "content"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "category": { "enum": ["genai", "data", "web", "mechanics"] },
+    "sortStart": { "$ref": "#/$defs/sortDate" },
+    "sortEnd": { "$ref": "#/$defs/sortDate" },
+    "sortUpdated": { "$ref": "#/$defs/sortDate" },
+    "pillKey": { "type": "string", "pattern": "^projects\\.pills\\." },
+    "icon": { "type": "string" },
+    "image": { "type": "string", "minLength": 1 },
+    "imageFit": { "enum": ["cover", "contain"] },
+    "architectureImage": { "type": "string", "minLength": 1 },
+    "chips": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "url"],
+        "properties": {
+          "label": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "minLength": 1 },
+          "icon": { "type": "string" }
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["en", "zh"],
+      "properties": {
+        "en": {
+          "$ref": "#/$defs/completeContent"
+        },
+        "zh": {
+          "$ref": "#/$defs/completeContent"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sortDate": {
+      "type": "string",
+      "pattern": "^(9999-12|[0-9]{4}-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)$"
+    },
+    "architectureStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "detail"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "detail": { "type": "string", "minLength": 1 }
+      }
+    },
+    "localizedContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "summary": { "type": "string", "minLength": 1 },
+        "dates": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 },
+        "challenge": { "type": "string", "minLength": 1 },
+        "contribution": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "technical": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "architecture": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/architectureStep" }
+        },
+        "outcomes": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "completeContent": {
+      "allOf": [
+        { "$ref": "#/$defs/localizedContent" },
+        {
+          "required": [
+            "title",
+            "summary",
+            "dates",
+            "status",
+            "role",
+            "challenge",
+            "contribution",
+            "technical",
+            "architecture",
+            "outcomes"
+          ]
+        }
+      ]
+    }
+  }
+}

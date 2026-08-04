@@ -1,0 +1,90 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "udi-decoder",
+  "category": "data",
+  "sortStart": "2026-03",
+  "sortEnd": "2026-04",
+  "pillKey": "projects.pills.data",
+  "icon": "ri-qr-scan-2-line",
+  "image": "assets/images/project-udi-decoder.png",
+  "imageFit": "cover",
+  "chips": [
+    "Python",
+    "ZXing",
+    "pylibdmtx",
+    "GS1",
+    "Benchmarking"
+  ],
+  "content": {
+    "en": {
+      "title": "Multi-box UDI Data Matrix Decoder",
+      "summary": "Benchmark-driven computer-vision POC for decoding dense carton images into GS1 business fields with safe PASS/REVIEW handling.",
+      "dates": "Mar 2026 - Apr 2026",
+      "status": "Validated POC",
+      "role": "Computer-vision & data engineer",
+      "challenge": "Dense shipping photos can contain many small Data Matrix codes with perspective, occlusion, and repeated cartons. Missing a code must lead to review rather than an unsafe automatic pass.",
+      "contribution": [
+        "Developed a multi-box detection and local-ROI search pipeline tuned for lower-band Data Matrix placement on cartons.",
+        "Combined multiple decoder engines, GS1 parsing, product mapping, density-aware rescue budgets, and annotated artifact export.",
+        "Created benchmark histories and PASS/REVIEW gates based on expected counts and decoded completeness."
+      ],
+      "technical": [
+        "Candidate boxes are ranked toward complete carton hypotheses, then local regions are searched with scale and scene-density aware budgets.",
+        "Decoded content is normalized from GS1 element strings or Digital Links into business fields and mapped to internal products.",
+        "Every run can emit JSON, CSV, candidate data, attempt summaries, benchmark snapshots, and annotated review images."
+      ],
+      "architecture": [
+        {
+          "label": "Image",
+          "detail": "Whole shipping image enters product-box proposal and ranking."
+        },
+        {
+          "label": "ROI search",
+          "detail": "Per-box lower-band and rescue strategies generate Data Matrix candidates."
+        },
+        {
+          "label": "Decode & parse",
+          "detail": "ZXing/pylibdmtx decode symbols; GS1 parsing extracts DI, dates, lot, and serial fields."
+        },
+        {
+          "label": "Business output",
+          "detail": "Mapping enrichment, expected-count gate, JSON/CSV artifacts, and annotated review support PASS or REVIEW."
+        }
+      ],
+      "outcomes": [
+        "Passed the documented fixed five-image suite at 5/5, 5/5, 7/7, 8/8, and 12/12 decoded symbols.",
+        "Established a stronger dense-scene baseline with 47 decoded symbols on the recorded reference image.",
+        "Communicates POC limitations and routes incomplete recognition to review rather than claiming universal recall."
+      ]
+    },
+    "zh": {
+      "title": "多箱 UDI Data Matrix 解碼器",
+      "summary": "以基準測試驅動的電腦視覺概念驗證，將高密度紙箱影像解碼為 GS1 業務欄位，並以 PASS／REVIEW 安全分流。",
+      "dates": "2026 年 3 月 - 2026 年 4 月",
+      "status": "已驗證概念",
+      "role": "電腦視覺與資料工程師",
+      "challenge": "高密度出貨照片可能包含大量尺寸很小、具有透視變形、遮擋及重複紙箱的 Data Matrix。若漏讀任何代碼，系統必須轉交人工覆核，而不能不安全地自動通過。",
+      "contribution": [
+        "開發多紙箱偵測與局部感興趣區域搜尋管線，針對紙箱下方區域的 Data Matrix 位置進行調校。",
+        "整合多種解碼引擎、GS1 解析、產品對應、依密度調整的補救預算與標註檔案匯出。",
+        "建立基準測試歷程，並依預期數量與解碼完整度設定 PASS／REVIEW 閘門。"
+      ],
+      "technical": [
+        "候選紙箱依完整紙箱假設排序，再以縮放比例與場景密度感知的預算搜尋局部區域。",
+        "將 GS1 元素字串或 Digital Link 解碼內容標準化為業務欄位，並對應內部產品。",
+        "每次執行可輸出 JSON、CSV、候選資料、嘗試摘要、基準快照與供覆核使用的標註影像。"
+      ],
+      "architecture": [
+        { "label": "影像", "detail": "完整出貨影像進入產品紙箱候選產生與排序流程。" },
+        { "label": "區域搜尋", "detail": "針對每個紙箱的下方區域與補救策略產生 Data Matrix 候選。" },
+        { "label": "解碼與解析", "detail": "ZXing 與 pylibdmtx 解碼符號；GS1 解析器擷取 DI、日期、批號與序號。" },
+        { "label": "業務輸出", "detail": "產品對應補充、預期數量閘門、JSON／CSV 檔案與標註覆核共同支援 PASS 或 REVIEW。" }
+      ],
+      "outcomes": [
+        "在記錄的固定五張影像測試集中，分別達成 5／5、5／5、7／7、8／8 與 12／12 個符號解碼。",
+        "在記錄的參考影像上解碼 47 個符號，建立更強的高密度場景基準。",
+        "清楚傳達概念驗證限制，並將不完整辨識轉交覆核，而非宣稱能涵蓋所有情況。"
+      ]
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "impact",
+  "category": "mechanics",
+  "sortStart": "2021-03",
+  "sortEnd": "2021-09",
+  "pillKey": "projects.pills.mechanics",
+  "icon": "ri-tools-line",
+  "image": "assets/images/project-impact.gif",
+  "chips": [
+    "LS-DYNA",
+    "HyperMesh",
+    "FEM",
+    "Python",
+    "ASTM D7136"
+  ],
+  "content": {
+    "en": {
+      "title": "Composite Impact Modeling",
+      "summary": "Delamination modeling and visualization for high-speed helicopter components.",
+      "dates": "Mar 2021 - Sep 2021",
+      "status": "Research simulation",
+      "role": "Mechanical simulation engineer",
+      "challenge": "Composite helicopter components can sustain internal delamination after impact even when surface damage is limited; simulation needs to reproduce the loading and failure behavior credibly.",
+      "contribution": [
+        "Prepared composite geometry, mesh, material definitions, contacts, and impact boundary conditions.",
+        "Ran LS-DYNA impact analyses aligned with ASTM D7136 test principles.",
+        "Used Python to post-process force, energy, displacement, and delamination results."
+      ],
+      "technical": [
+        "HyperMesh builds and checks the layered finite-element model.",
+        "LS-DYNA solves the transient impact response with composite failure and contact behavior.",
+        "Python extracts and compares key histories and spatial damage indicators."
+      ],
+      "architecture": [
+        {
+          "label": "Model",
+          "detail": "Composite layup, geometry, mesh, materials, contacts, and impactor define the simulation."
+        },
+        {
+          "label": "Solve",
+          "detail": "LS-DYNA calculates transient stress, deformation, energy, and damage evolution."
+        },
+        {
+          "label": "Post-process",
+          "detail": "Python parses solver outputs into comparable engineering indicators."
+        },
+        {
+          "label": "Validate",
+          "detail": "Results are reviewed against test setup, physical expectations, and delamination patterns."
+        }
+      ],
+      "outcomes": [
+        "Produced an interpretable impact and delamination model for composite structures.",
+        "Combined CAE setup, explicit dynamics, standards awareness, and scripted analysis.",
+        "Turned large solver outputs into evidence suitable for engineering decisions."
+      ]
+    },
+    "zh": {
+      "title": "複合材料衝擊建模",
+      "summary": "高速直升機部件的分層模擬與視覺化。",
+      "dates": "2021 年 3 月 - 2021 年 9 月",
+      "status": "研究模擬",
+      "role": "機械模擬工程師",
+      "challenge": "複合材料直升機部件受到衝擊後，即使表面損傷有限，內部仍可能產生分層；模擬必須可信地重現載入與失效行為。",
+      "contribution": [
+        "準備複合材料幾何、網格、材料定義、接觸與衝擊邊界條件。",
+        "依循 ASTM D7136 試驗原則執行 LS-DYNA 衝擊分析。",
+        "以 Python 後處理力、能量、位移與分層結果。"
+      ],
+      "technical": [
+        "HyperMesh 建立並檢查分層有限元素模型。",
+        "LS-DYNA 以複合材料失效與接觸行為求解暫態衝擊響應。",
+        "Python 擷取並比較關鍵歷程與空間損傷指標。"
+      ],
+      "architecture": [
+        { "label": "模型", "detail": "複合材料疊層、幾何、網格、材料、接觸與衝擊器共同定義模擬。" },
+        { "label": "求解", "detail": "LS-DYNA 計算暫態應力、變形、能量與損傷演化。" },
+        { "label": "後處理", "detail": "Python 將求解器輸出解析為可比較的工程指標。" },
+        { "label": "驗證", "detail": "依據試驗配置、物理預期與分層模式檢視結果。" }
+      ],
+      "outcomes": [
+        "建立可解讀的複合材料衝擊與分層模型。",
+        "整合 CAE 建模、顯式動力學、標準規範與程式化分析能力。",
+        "將大量求解器輸出轉換為可支援工程決策的證據。"
+      ]
+    }
+  }
+}

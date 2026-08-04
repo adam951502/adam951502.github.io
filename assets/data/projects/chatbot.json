@@ -1,0 +1,90 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "chatbot",
+  "category": "genai",
+  "sortStart": "2024-10",
+  "sortEnd": "2025-10",
+  "pillKey": "projects.pills.genai",
+  "icon": "ri-robot-2-line",
+  "image": "assets/projects/project-chatbot-archi.png",
+  "imageFit": "cover",
+  "chips": [
+    "RAG",
+    "GraphRAG",
+    "Chainlit",
+    "Ollama",
+    "Docker"
+  ],
+  "content": {
+    "en": {
+      "title": "Automotive R&D Assistant Chatbot",
+      "summary": "Recommender system with retrieval, grounding, and policy-aware responses for automotive R&D.",
+      "dates": "Oct 2024 - Oct 2025",
+      "status": "Enterprise R&D assistant",
+      "role": "GenAI & knowledge engineer",
+      "challenge": "Automotive R&D users needed a private assistant that could retrieve engineering evidence, preserve internal knowledge boundaries, and provide useful answers without sending sensitive content to a public model service.",
+      "contribution": [
+        "Designed local-first RAG and GraphRAG retrieval over domain documents and structured knowledge.",
+        "Built the Chainlit conversational experience, retrieval pipeline, prompt controls, and Docker runtime.",
+        "Connected LLM, graph, vector, and document services behind a modular Python application."
+      ],
+      "technical": [
+        "Ollama provides local model execution; vector retrieval and graph relationships contribute evidence.",
+        "Python orchestration combines query understanding, retrieval, context assembly, and response generation.",
+        "Chainlit delivers the chat UI while Docker keeps the full environment reproducible on-premises."
+      ],
+      "architecture": [
+        {
+          "label": "Conversation",
+          "detail": "Chainlit captures engineering questions and displays sources and answers."
+        },
+        {
+          "label": "Retrieval",
+          "detail": "RAG and GraphRAG search documents, metadata, and knowledge relationships."
+        },
+        {
+          "label": "Generation",
+          "detail": "A local Ollama model receives bounded evidence and domain prompt instructions."
+        },
+        {
+          "label": "Deployment",
+          "detail": "Docker services keep data, application, and model execution inside the controlled environment."
+        }
+      ],
+      "outcomes": [
+        "Demonstrated private, grounded GenAI assistance for engineering work rather than a generic chatbot.",
+        "Combined document retrieval and graph relationships to improve traceability and context.",
+        "Created an on-premises-friendly architecture aligned with sensitive R&D constraints."
+      ]
+    },
+    "zh": {
+      "title": "汽車研發助理聊天機器人",
+      "summary": "為汽車研發打造具檢索、溯源與政策約束的推薦助理。",
+      "dates": "2024 年 10 月 - 2025 年 10 月",
+      "status": "企業研發助理",
+      "role": "生成式 AI 與知識工程師",
+      "challenge": "汽車研發人員需要一套私有助理，既能檢索工程證據、維持內部知識邊界，又不必將敏感內容傳送至公有模型服務。",
+      "contribution": [
+        "針對領域文件與結構化知識，設計以本地運作為優先的 RAG 與 GraphRAG 檢索流程。",
+        "建置 Chainlit 對話體驗、檢索管線、提示詞控制與 Docker 執行環境。",
+        "以模組化 Python 應用程式串接大型語言模型、圖譜、向量與文件服務。"
+      ],
+      "technical": [
+        "Ollama 負責本地模型推論，並由向量檢索與圖譜關係共同提供證據。",
+        "Python 編排層整合查詢理解、檢索、上下文組裝與回覆生成。",
+        "Chainlit 提供聊天介面，Docker 則確保完整環境可在內部部署並重現。"
+      ],
+      "architecture": [
+        { "label": "對話", "detail": "Chainlit 接收工程問題，並呈現來源與回答。" },
+        { "label": "檢索", "detail": "RAG 與 GraphRAG 搜尋文件、詮釋資料及知識關係。" },
+        { "label": "生成", "detail": "本地 Ollama 模型只接收受限證據與領域提示詞指令。" },
+        { "label": "部署", "detail": "Docker 服務讓資料、應用程式與模型推論都留在受控環境內。" }
+      ],
+      "outcomes": [
+        "展示適用於工程工作的私有且具依據之生成式 AI 助理，而非一般聊天機器人。",
+        "結合文件檢索與圖譜關係，提升可追溯性與上下文品質。",
+        "建立符合敏感研發限制、適合內部部署的系統架構。"
+      ]
+    }
+  }
+}

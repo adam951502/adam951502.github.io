@@ -1,0 +1,88 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "injection",
+  "category": "mechanics",
+  "sortStart": "2015-09",
+  "sortEnd": "2016-01",
+  "pillKey": "projects.pills.mechanics",
+  "icon": "ri-tools-line",
+  "image": "assets/images/project-injection.png",
+  "chips": [
+    "SolidWorks",
+    "Moldex3D",
+    "CNC",
+    "Injection Molding"
+  ],
+  "content": {
+    "en": {
+      "title": "Injection Molding Manufacturing",
+      "summary": "Process follow-up and testing for switchboard parts manufacturing.",
+      "dates": "Sep 2015 - Jan 2016",
+      "status": "Manufacturing project",
+      "role": "Mechanical design & manufacturing engineer",
+      "challenge": "An injection-molded component required coordinated product geometry, mold design, process simulation, machining, molding, and quality follow-up.",
+      "contribution": [
+        "Created product and tooling geometry in SolidWorks.",
+        "Used Moldex3D to review fill behavior and process risks before manufacturing.",
+        "Supported CNC/tooling work, molding trials, inspection, and corrective iteration."
+      ],
+      "technical": [
+        "CAD defines the part, mold, and manufacturing interfaces.",
+        "Moldex3D simulates filling and highlights likely process or design issues.",
+        "CNC tooling, injection trials, and inspection close the loop with physical evidence."
+      ],
+      "architecture": [
+        {
+          "label": "Design",
+          "detail": "Requirements become part geometry and mold/tooling concepts."
+        },
+        {
+          "label": "Simulation",
+          "detail": "Mold-flow analysis evaluates filling, pressure, cooling, and defect risk."
+        },
+        {
+          "label": "Manufacture",
+          "detail": "CNC and tooling preparation enable injection-molding trials."
+        },
+        {
+          "label": "Quality loop",
+          "detail": "Inspection and test results drive revisions to design or process settings."
+        }
+      ],
+      "outcomes": [
+        "Worked across the complete design-to-manufacturing lifecycle.",
+        "Used simulation to inform physical process decisions before and during trials.",
+        "Developed practical experience coordinating CAD, tooling, production, and quality."
+      ]
+    },
+    "zh": {
+      "title": "射出成型製造",
+      "summary": "跟進配電盤零件的射出成型流程與測試。",
+      "dates": "2015 年 9 月 - 2016 年 1 月",
+      "status": "製造專案",
+      "role": "機械設計與製造工程師",
+      "challenge": "射出成型零件需要協調產品幾何、模具設計、製程模擬、加工、成型與品質追蹤。",
+      "contribution": [
+        "使用 SolidWorks 建立產品與模具幾何。",
+        "在製造前使用 Moldex3D 檢視充填行為與製程風險。",
+        "支援 CNC 與模具作業、射出試模、檢驗及修正迭代。"
+      ],
+      "technical": [
+        "CAD 定義零件、模具與製造介面。",
+        "Moldex3D 模擬充填，並指出潛在製程或設計問題。",
+        "CNC 模具加工、射出試模與檢驗以實體證據完成閉環驗證。"
+      ],
+      "architecture": [
+        { "label": "設計", "detail": "將需求轉換為零件幾何與模具概念。" },
+        { "label": "模擬", "detail": "模流分析評估充填、壓力、冷卻與缺陷風險。" },
+        { "label": "製造", "detail": "CNC 與模具準備支援射出成型試模。" },
+        { "label": "品質迴圈", "detail": "檢驗與測試結果回饋至設計或製程參數修正。" }
+      ],
+      "outcomes": [
+        "參與完整的設計至製造生命週期。",
+        "在試模前與試模期間，以模擬支援實際製程決策。",
+        "累積協調 CAD、模具、量產與品質工作的實務經驗。"
+      ]
+    }
+  }
+}
