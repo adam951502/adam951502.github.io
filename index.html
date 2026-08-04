@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
-  <link rel="stylesheet" href="./assets/css/style.css?v=20260804-professional-grid">
+  <link rel="stylesheet" href="./assets/css/style.css?v=20260805-consistent-card-sizing-4">
 </head>
 <body>
   <div class="page-orb orb-a" aria-hidden="true"></div>
@@ -193,7 +193,7 @@
           <div class="pill" data-i18n="focus.projectManagement.pill">Project Management</div>
           <h3 data-i18n="focus.projectManagement.title">Agile delivery and requirements</h3>
           <p class="muted" data-i18n="focus.projectManagement.body">Scrum, Kanban, and clear scope control.</p>
-          <details class="inline-details" open>
+          <details class="inline-details">
             <summary data-i18n="common.seeTactics">See tactics</summary>
             <ul class="mini-list" data-i18n="focus.projectManagement.list" data-i18n-html="true">
               <li>Agile management and requirements refinement</li>
@@ -262,62 +262,83 @@
             <h2 data-i18n="education.title">Academic foundation</h2>
           </div>
         </div>
-        <p class="muted section-note" data-i18n="education.lede">Meta view of where I trained; expand any item for the full context.</p>
+        <p class="muted section-note" data-i18n="education.lede">A chronological path from mechanical engineering to sustainable systems; expand each milestone for details.</p>
       </div>
 
-      <div class="disclosures">
-        <details class="timeline-card" open>
-          <summary>
-            <div class="summary-text">
-              <p class="label" data-i18n="education.freiburg.dates">Oct 2018 - Feb 2021 | Freiburg, Germany</p>
-              <h3 data-i18n="education.freiburg.title">MSc Sustainable Systems Engineering - University of Freiburg</h3>
-            </div>
-            <div class="summary-icons">
-              <span class="pill" data-i18n="education.freiburg.degree">MSc</span>
-              <img class="school-logo" src="assets/images/uni.png" alt="University of Freiburg logo" loading="lazy">
-            </div>
-          </summary>
-          <div class="disclosure-body">
-            <p data-i18n="education.freiburg.thesis">Master Thesis: 1.0 (German grade), equiv. 100/100, 4.0/4.0.</p>
-            <p data-i18n="education.freiburg.grade">Overall Grade: 1.7 (German grade), equiv. 91/100, 3.6/4.0.</p>
-            <p class="muted" data-i18n="education.freiburg.note">Focused on sustainable systems, materials, and data-driven analysis.</p>
+      <ol class="education-timeline" aria-label="Education timeline" data-i18n-aria-label="education.timelineLabel">
+        <li class="education-step">
+          <div class="education-marker" aria-hidden="true">
+            <span class="education-dot"></span>
+            <span class="education-period">2012–2016</span>
           </div>
-        </details>
+          <details class="timeline-card education-card">
+            <summary>
+              <div class="summary-icons">
+                <img class="school-logo" src="assets/images/cgu.png" alt="Chang Gung University logo" loading="lazy">
+                <span class="pill" data-i18n="education.cgu.degree">BSc</span>
+              </div>
+              <div class="summary-text">
+                <p class="label" data-i18n="education.cgu.dates">Sep 2012 - Jun 2016 | New Taipei City, Taiwan</p>
+                <h3 data-i18n="education.cgu.title">BSc Mechanical Engineering - Chang Gung University</h3>
+              </div>
+              <span class="education-expand" aria-hidden="true"><i class="ri-add-line"></i></span>
+            </summary>
+            <div class="disclosure-body">
+              <p data-i18n="education.cgu.detail">Overall grade: 1.3 (German grade), equiv. 3.8/4.0. Dean's List: Feb 2014, Sep 2014, Feb 2015.</p>
+              <p class="muted" data-i18n="education.cgu.note">Foundation in mechanics, materials, and engineering workflows.</p>
+            </div>
+          </details>
+        </li>
 
-        <details class="timeline-card">
-          <summary>
-            <div class="summary-text">
-              <p class="label" data-i18n="education.ntust.dates">Feb 2018 - Aug 2018 | Taipei, Taiwan</p>
-              <h3 data-i18n="education.ntust.title">MSc Graduate Institute of Automation and Control - NTUST</h3>
-            </div>
-            <div class="summary-icons">
-              <span class="pill" data-i18n="education.ntust.degree">MSc</span>
-              <img class="school-logo" src="assets/images/NTUST_logo.png" alt="NTUST logo" loading="lazy">
-            </div>
-          </summary>
-          <div class="disclosure-body">
-            <p data-i18n="education.ntust.detail">Completed all required courses; received admission to Freiburg to continue thesis and degree.</p>
-            <p class="muted" data-i18n="education.ntust.note">Strengthened control systems, automation, and applied research skills; accepted to continue MSc thesis in Freiburg.</p>
+        <li class="education-step">
+          <div class="education-marker" aria-hidden="true">
+            <span class="education-dot"></span>
+            <span class="education-period">2018</span>
           </div>
-        </details>
+          <details class="timeline-card education-card">
+            <summary>
+              <div class="summary-icons">
+                <img class="school-logo" src="assets/images/NTUST_logo.png" alt="NTUST logo" loading="lazy">
+                <span class="pill" data-i18n="education.ntust.degree">MSc</span>
+              </div>
+              <div class="summary-text">
+                <p class="label" data-i18n="education.ntust.dates">Feb 2018 - Aug 2018 | Taipei, Taiwan</p>
+                <h3 data-i18n="education.ntust.title">MSc Graduate Institute of Automation and Control - NTUST</h3>
+              </div>
+              <span class="education-expand" aria-hidden="true"><i class="ri-add-line"></i></span>
+            </summary>
+            <div class="disclosure-body">
+              <p data-i18n="education.ntust.detail">Completed all required courses; received admission to Freiburg to continue thesis and degree.</p>
+              <p class="muted" data-i18n="education.ntust.note">Strengthened control systems, automation, and applied research skills; accepted to continue MSc thesis in Freiburg.</p>
+            </div>
+          </details>
+        </li>
 
-        <details class="timeline-card">
-          <summary>
-            <div class="summary-text">
-              <p class="label" data-i18n="education.cgu.dates">Sep 2012 - Jun 2016 | New Taipei City, Taiwan</p>
-              <h3 data-i18n="education.cgu.title">BSc Mechanical Engineering - Chang Gung University</h3>
-            </div>
-            <div class="summary-icons">
-              <span class="pill" data-i18n="education.cgu.degree">BSc</span>
-              <img class="school-logo" src="assets/images/cgu.png" alt="Chang Gung University logo" loading="lazy">
-            </div>
-          </summary>
-          <div class="disclosure-body">
-            <p data-i18n="education.cgu.detail">Overall grade: 1.3 (German grade), equiv. 3.8/4.0. Dean's List: Feb 2014, Sep 2014, Feb 2015.</p>
-            <p class="muted" data-i18n="education.cgu.note">Foundation in mechanics, materials, and engineering workflows.</p>
+        <li class="education-step education-step-latest">
+          <div class="education-marker" aria-hidden="true">
+            <span class="education-dot"></span>
+            <span class="education-period">2018–2021</span>
           </div>
-        </details>
-      </div>
+          <details class="timeline-card education-card">
+            <summary>
+              <div class="summary-icons">
+                <img class="school-logo" src="assets/images/uni.png" alt="University of Freiburg logo" loading="lazy">
+                <span class="pill" data-i18n="education.freiburg.degree">MSc</span>
+              </div>
+              <div class="summary-text">
+                <p class="label" data-i18n="education.freiburg.dates">Oct 2018 - Feb 2021 | Freiburg, Germany</p>
+                <h3 data-i18n="education.freiburg.title">MSc Sustainable Systems Engineering - University of Freiburg</h3>
+              </div>
+              <span class="education-expand" aria-hidden="true"><i class="ri-add-line"></i></span>
+            </summary>
+            <div class="disclosure-body">
+              <p data-i18n="education.freiburg.thesis">Master Thesis: 1.0 (German grade), equiv. 100/100, 4.0/4.0.</p>
+              <p data-i18n="education.freiburg.grade">Overall Grade: 1.7 (German grade), equiv. 91/100, 3.6/4.0.</p>
+              <p class="muted" data-i18n="education.freiburg.note">Focused on sustainable systems, materials, and data-driven analysis.</p>
+            </div>
+          </details>
+        </li>
+      </ol>
     </section>
 
     <section id="licenses" class="section reveal">
@@ -332,14 +353,26 @@
         <p class="muted section-note" data-i18n="licenses.lede">Snapshot of current credentials. Filter for what you care about.</p>
       </div>
 
-      <div class="filters" role="group" aria-label="License category filters" data-i18n-aria-label="licenses.filtersLabel">
-        <button class="filter active" data-license-filter="all" data-i18n="licenses.filter.all">All</button>
-        <button class="filter" data-license-filter="genai" data-i18n="licenses.filter.genai">GenAI</button>
-        <button class="filter" data-license-filter="data" data-i18n="licenses.filter.data">Data Science</button>
-        <button class="filter" data-license-filter="management" data-i18n="licenses.filter.management">Management</button>
+      <div class="license-toolbar">
+        <div class="filters" role="group" aria-label="License category filters" data-i18n-aria-label="licenses.filtersLabel">
+          <button type="button" class="filter active" data-license-filter="all" data-i18n="licenses.filter.all">All</button>
+          <button type="button" class="filter" data-license-filter="genai" data-i18n="licenses.filter.genai">GenAI</button>
+          <button type="button" class="filter" data-license-filter="data" data-i18n="licenses.filter.data">Data Science</button>
+          <button type="button" class="filter" data-license-filter="management" data-i18n="licenses.filter.management">Management</button>
+        </div>
+        <button type="button" class="btn ghost license-view-toggle" data-license-toggle aria-expanded="false" aria-controls="licenseGrid">
+          <i class="ri-grid-line" aria-hidden="true"></i>
+          <span data-license-toggle-text data-i18n="licenses.expandAll">View all certifications</span>
+        </button>
       </div>
 
-      <div class="license-grid" id="licenseGrid">
+      <div class="license-carousel" id="licenseCarousel">
+        <div class="license-stage">
+          <button type="button" class="license-control license-control-prev" data-license-prev aria-label="Previous certification" data-i18n-aria-label="licenses.previous">
+            <i class="ri-arrow-left-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="license-viewport" tabindex="0" role="region" aria-label="Certification carousel" data-i18n-aria-label="licenses.carouselLabel">
+            <div class="license-grid" id="licenseGrid">
         <article class="card license" data-license-category="genai">
           <div class="license-img" aria-hidden="true" style="background-image: url('https://udemy-certificate.s3.amazonaws.com/image/UC-ea6c953c-1ded-43bb-b9cb-9dbc727b59ae.jpg?v=1748267186000');"></div>
           <div class="license-body">
@@ -428,6 +461,15 @@
             <p class="label"><a href="https://www.linkedin.com/learning/certificates/0b952ad6a4dfc36df9b4c1ac29c9d7fa871000c37d44249fe4255ce3d42665e9" target="_blank" rel="noopener" data-i18n="licenses.viewCertificate">View certificate</a></p>
           </div>
         </article>
+            </div>
+          </div>
+          <button type="button" class="license-control license-control-next" data-license-next aria-label="Next certification" data-i18n-aria-label="licenses.next">
+            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="license-carousel-meta">
+          <div class="license-dots" data-license-dots role="group" aria-label="Certification carousel positions" data-i18n-aria-label="licenses.dotsLabel"></div>
+        </div>
       </div>
     </section>
 
@@ -718,6 +760,6 @@
     </div>
   </footer>
 
-  <script src="./assets/js/script.js?v=20260804-professional-grid"></script>
+  <script src="./assets/js/script.js?v=20260805-certification-continuous-loop-2"></script>
 </body>
 </html>
