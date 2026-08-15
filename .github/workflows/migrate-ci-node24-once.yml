@@ -26,44 +26,24 @@ jobs:
       - name: Generate lockfile
         run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
 
-      - name: Modernize validation workflow and docs
+      - name: Update validation docs
         run: |
           python3 - <<'PY'
           from pathlib import Path
 
-          def replace_once(path, old, new):
-              text = path.read_text()
-              count = text.count(old)
-              if count != 1:
-                  raise SystemExit(f"Expected one match in {path}: {old!r}; got {count}")
-              path.write_text(text.replace(old, new, 1))
-
-          workflow = Path('.github/workflows/validate.yml')
-          replace_once(workflow, 'uses: actions/checkout@v4', 'uses: actions/checkout@v6')
-          replace_once(workflow, 'uses: actions/setup-node@v4', 'uses: actions/setup-node@v6')
-          replace_once(
-              workflow,
-              '          node-version: 20\n',
-              '          node-version: 24\n          cache: npm\n          cache-dependency-path: package-lock.json\n',
-          )
-          replace_once(
-              workflow,
-              'run: npm install --ignore-scripts --no-audit --no-fund',
-              'run: npm ci --ignore-scripts --no-audit --no-fund',
-          )
-
-          readme = Path('README.md')
-          replace_once(
-              readme,
-              'Install the validation dependency and run the complete validation suite with:\n\n```bash\nnpm install\nnpm run validate\n```',
-              'Install the exact committed validation dependency graph and run the complete validation suite with:\n\n```bash\nnpm ci --ignore-scripts\nnpm run validate\n```\n\n`package-lock.json` is committed so local and CI validation resolve the same transitive dependency versions.',
-          )
+          path = Path('README.md')
+          text = path.read_text()
+          old = 'Install the validation dependency and run the complete validation suite with:\n\n```bash\nnpm install\nnpm run validate\n```'
+          new = 'Install the exact committed validation dependency graph and run the complete validation suite with:\n\n```bash\nnpm ci --ignore-scripts\nnpm run validate\n```\n\n`package-lock.json` is committed so local and CI validation resolve the same transitive dependency versions.'
+          if text.count(old) != 1:
+              raise SystemExit(f'Expected one README install block, got {text.count(old)}')
+          path.write_text(text.replace(old, new, 1))
           PY
 
       - name: Verify reproducible install
         run: npm ci --ignore-scripts --no-audit --no-fund
 
-      - name: Run full validation
+      - name: Run full validation on Node 24
         run: |
           npm run validate
           find assets/js -name '*.js' -print0 | sort -z | xargs -0 -n1 node --check
@@ -71,10 +51,10 @@ jobs:
           test ! -f CNAME
           ! grep -R "adam-tang.com" index.html robots.txt sitemap.xml scripts assets/data assets/js
 
-      - name: Commit migration
+      - name: Commit lockfile and docs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package-lock.json .github/workflows/validate.yml README.md
-          git commit -m "ci: migrate validation to Node 24 and npm ci"
+          git add package-lock.json README.md
+          git commit -m "build: lock validation dependencies"
           git push
