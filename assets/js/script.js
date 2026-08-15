@@ -6,7 +6,7 @@
   const i18nBasePath = "./assets/i18n";
   const dataPaths = {
     experience: "./assets/data/experience.json",
-    projects: "./assets/data/projects.json"
+    projects: "./assets/data/projects.bundle.json"
   };
 
   const translationsCache = {};
