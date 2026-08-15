@@ -40,8 +40,8 @@ replaceExact(
       ? translatedTargetLabel
       : targetTheme === "light" ? "Light" : "Dark";
     const actionLabel = currentLang === "zh"
-      ? `切換至${targetLabel}模式`
-      : `Switch to ${targetLabel.toLowerCase()} theme`;
+      ? "切換至" + targetLabel + "模式"
+      : "Switch to " + targetLabel.toLowerCase() + " theme";
     themeToggle.setAttribute("aria-label", actionLabel);
 
     const icon = themeToggle.querySelector("i");
