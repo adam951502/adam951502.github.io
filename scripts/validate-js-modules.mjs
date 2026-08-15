@@ -4,10 +4,12 @@ import path from "node:path";
 const jsRoot = path.join("assets", "js");
 const expectedModules = [
   "app.js",
+  "blog.js",
   "carousel.js",
   "data.js",
   "experience.js",
   "i18n.js",
+  "mobile-menu.js",
   "navigation.js",
   "projects.js",
   "script.js",
@@ -54,13 +56,25 @@ for (const modulePath of requiredAppImports) {
   }
 }
 
+const requiredBlogImports = ["./i18n.js", "./mobile-menu.js", "./theme.js"];
+for (const modulePath of requiredBlogImports) {
+  if (!(sources["blog.js"] || "").includes(modulePath)) {
+    errors.push(`assets/js/blog.js must explicitly import ${modulePath}`);
+  }
+}
+if (!(sources["navigation.js"] || "").includes('./mobile-menu.js')) {
+  errors.push("assets/js/navigation.js must reuse ./mobile-menu.js");
+}
+
 const responsibilityChecks = {
   "data.js": ["createDataStore", "ensureData", "loadJson"],
-  "i18n.js": ["createI18nController", "applyTranslations", "languageToggle"],
+  "i18n.js": ["createI18nController", "applyTranslations", "languageToggle", "i18nBasePath", "pageTitleKey"],
   "projects.js": ["createProjectsController", "render", "setFilter"],
   "experience.js": ["renderExperience"],
   "carousel.js": ["createCarouselController", "licenseViewport", "setFilter"],
   "navigation.js": ["createNavigationController", "highlightSection", "closeMobileMenu"],
+  "mobile-menu.js": ["createMobileMenuController", "restoreFocus", "event.key === \"Escape\""],
+  "blog.js": ["createI18nController", "createMobileMenuController", "createThemeController", "../assets/i18n"],
   "theme.js": ["createThemeController", "themeStorageKey", "aria-label"],
   "shared.js": ["setSafeTranslatedMarkup", "createRevealController", "createElement"]
 };
@@ -84,4 +98,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Runtime module validation passed: ${files.length} focused JS files with explicit app imports and a small bootstrap entry.`);
+console.log(`Runtime module validation passed: ${files.length} focused JS files with explicit portfolio/Blog imports and a small bootstrap entry.`);
