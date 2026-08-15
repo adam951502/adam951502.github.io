@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.adam-tang.com/sitemap.xml
+Sitemap: https://adam951502.github.io/sitemap.xml
