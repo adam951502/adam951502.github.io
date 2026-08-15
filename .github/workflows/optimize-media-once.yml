@@ -1,0 +1,110 @@
+name: One-time project media optimization
+
+on:
+  push:
+    branches:
+      - agent/issue-9-media-optimization
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/issue-9-media-optimization
+
+      - name: Install media encoders
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick webp
+
+      - name: Convert oversized project media
+        shell: bash
+        run: |
+          set -euxo pipefail
+
+          convert assets/images/project-master-project.gif -coalesce -resize '960x960>' -layers Optimize /tmp/project-master-project.gif
+          gif2webp -quiet -q 70 -m 6 -mixed /tmp/project-master-project.gif -o assets/images/project-master-project.webp
+
+          convert assets/images/project-impact.gif -coalesce -resize '960x960>' -layers Optimize /tmp/project-impact.gif
+          gif2webp -quiet -q 70 -m 6 -mixed /tmp/project-impact.gif -o assets/images/project-impact.webp
+
+          for name in \
+            project-udi-decoder \
+            project-x-downloader \
+            project-aurore-website \
+            project-mcp-graphdb-v2 \
+            project-ollama-docker-v2
+          do
+            convert "assets/images/${name}.png" -resize '1280x1280>' -strip -quality 82 "assets/images/${name}.webp"
+          done
+
+          webpmux -info assets/images/project-master-project.webp | grep -qi animation
+          webpmux -info assets/images/project-impact.webp | grep -qi animation
+
+      - name: Update project image references
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          replacements = {
+              'assets/images/project-master-project.gif': 'assets/images/project-master-project.webp',
+              'assets/images/project-impact.gif': 'assets/images/project-impact.webp',
+              'assets/images/project-udi-decoder.png': 'assets/images/project-udi-decoder.webp',
+              'assets/images/project-x-downloader.png': 'assets/images/project-x-downloader.webp',
+              'assets/images/project-aurore-website.png': 'assets/images/project-aurore-website.webp',
+              'assets/images/project-mcp-graphdb-v2.png': 'assets/images/project-mcp-graphdb-v2.webp',
+              'assets/images/project-ollama-docker-v2.png': 'assets/images/project-ollama-docker-v2.webp',
+          }
+
+          for path in Path('assets/data/projects').glob('*.json'):
+              text = path.read_text()
+              updated = text
+              for old, new in replacements.items():
+                  updated = updated.replace(old, new)
+              if updated != text:
+                  path.write_text(updated)
+          PY
+
+      - name: Remove superseded oversized media
+        run: |
+          rm assets/images/project-master-project.gif
+          rm assets/images/project-impact.gif
+          rm assets/images/project-udi-decoder.png
+          rm assets/images/project-x-downloader.png
+          rm assets/images/project-aurore-website.png
+          rm assets/images/project-mcp-graphdb-v2.png
+          rm assets/images/project-ollama-docker-v2.png
+
+      - name: Rebuild generated portfolio content
+        run: node scripts/build-content.mjs
+
+      - name: Install validation dependencies
+        run: npm install --ignore-scripts --no-audit --no-fund
+
+      - name: Validate optimized branch
+        run: npm run validate
+
+      - name: Report optimized media sizes
+        run: |
+          ls -lh \
+            assets/images/project-master-project.webp \
+            assets/images/project-impact.webp \
+            assets/images/project-udi-decoder.webp \
+            assets/images/project-x-downloader.webp \
+            assets/images/project-aurore-website.webp \
+            assets/images/project-mcp-graphdb-v2.webp \
+            assets/images/project-ollama-docker-v2.webp
+
+      - name: Commit optimized assets and generated content
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/images assets/data/projects assets/data/projects.bundle.json index.html
+          git commit -m "perf: optimize project media assets"
+          git push
