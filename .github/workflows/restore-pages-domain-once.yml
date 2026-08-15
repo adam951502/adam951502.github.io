@@ -1,0 +1,72 @@
+name: One-time GitHub Pages domain rollback
+
+on:
+  push:
+    branches:
+      - agent/issue-25-restore-github-pages-domain
+
+permissions:
+  contents: write
+
+jobs:
+  rollback-domain:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/issue-25-restore-github-pages-domain
+
+      - name: Restore default GitHub Pages URLs
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          old = 'https://www.adam-tang.com'
+          new = 'https://adam951502.github.io'
+          targets = [
+              Path('index.html'),
+              Path('robots.txt'),
+              Path('sitemap.xml'),
+              Path('scripts/validate-seo.mjs'),
+          ]
+          for path in targets:
+              text = path.read_text()
+              if old not in text:
+                  raise SystemExit(f'Expected old domain not found in {path}')
+              path.write_text(text.replace(old, new))
+
+          workflow = Path('.github/workflows/validate.yml')
+          text = workflow.read_text()
+          old_block = '''      - name: Verify GitHub Pages custom domain file\n        run: |\n          test -f CNAME\n          test "$(cat CNAME)" = "www.adam-tang.com"\n'''
+          new_block = '''      - name: Verify default GitHub Pages domain\n        run: |\n          test ! -f CNAME\n          ! grep -R "adam-tang.com" index.html robots.txt sitemap.xml scripts assets/data assets/js\n'''
+          if text.count(old_block) != 1:
+              raise SystemExit('Expected custom-domain validation block exactly once')
+          workflow.write_text(text.replace(old_block, new_block))
+          PY
+
+      - name: Remove custom-domain file
+        run: rm CNAME
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts --no-audit --no-fund
+
+      - name: Validate rollback
+        run: |
+          npm run validate
+          find assets/js -name '*.js' -print0 | sort -z | xargs -0 -n1 node --check
+          npm run smoke:runtime
+          test ! -f CNAME
+          ! grep -R "adam-tang.com" index.html robots.txt sitemap.xml scripts assets/data assets/js
+          grep -q 'https://adam951502.github.io/' index.html
+          grep -q 'https://adam951502.github.io/sitemap.xml' robots.txt
+          grep -q '<loc>https://adam951502.github.io/</loc>' sitemap.xml
+
+      - name: Commit rollback
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A CNAME index.html robots.txt sitemap.xml scripts/validate-seo.mjs .github/workflows/validate.yml
+          git commit -m "fix: restore default GitHub Pages domain"
+          git push
