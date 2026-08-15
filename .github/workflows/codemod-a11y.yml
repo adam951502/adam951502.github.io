@@ -1,0 +1,37 @@
+name: One-time accessibility codemod
+
+on:
+  push:
+    branches:
+      - agent/issue-15-a11y-i18n
+
+permissions:
+  contents: write
+
+jobs:
+  codemod:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/issue-15-a11y-i18n
+
+      - name: Apply guarded runtime codemod
+        run: node scripts/codemod-a11y.mjs
+
+      - name: Check JavaScript syntax
+        run: node --check assets/js/script.js
+
+      - name: Commit generated runtime change
+        run: |
+          if git diff --quiet -- assets/js/script.js; then
+            echo "No runtime change required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/js/script.js
+          git commit -m "fix: harden i18n and keyboard accessibility"
+          git push
