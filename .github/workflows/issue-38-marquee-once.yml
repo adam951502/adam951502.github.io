@@ -29,65 +29,87 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
+          import json
+          import re
 
           index_path = Path("index.html")
           index = index_path.read_text()
-          old_contexts = '''      <div class="signature-list">
-                <span>Fraunhofer EMI</span>
-                <span>Aurore Collection</span>
-                <span>University of Freiburg</span>
-                <span>NTUST</span>
-                <span>Chang Gung University</span>
-              </div>'''
-          new_contexts = '''      <div class="affiliation-marquee" aria-label="Professional and research contexts">
-                <div class="affiliation-marquee__track">
-                  <div class="affiliation-marquee__group" role="list">
-                    <div class="affiliation-item" role="listitem" title="Fraunhofer Institute for High-Speed Dynamics, Ernst-Mach-Institut">
-                      <img src="assets/images/emi-color.svg" alt="Fraunhofer EMI" loading="lazy">
-                    </div>
-                    <div class="affiliation-item affiliation-item--relationship" role="listitem" title="cytena Bioprocess Solutions, now Leadgene Biosolutions">
-                      <img src="assets/images/cropped-Logotype_RGB_Cytena_Color.webp" alt="cytena Bioprocess Solutions" loading="lazy">
-                      <span class="affiliation-note">now Leadgene Biosolutions</span>
-                    </div>
-                    <div class="affiliation-item" role="listitem" title="National Taiwan University of Science and Technology (Taiwan Tech)">
-                      <img src="assets/images/NTUST_logo.png" alt="Taiwan Tech" loading="lazy">
-                    </div>
-                    <div class="affiliation-item" role="listitem" title="Institute for Sustainable Systems Engineering (INATECH)">
-                      <img src="assets/images/inatech_long.png" alt="INATECH" loading="lazy">
-                    </div>
-                    <div class="affiliation-item" role="listitem" title="HERAKLION research project">
-                      <span class="affiliation-wordmark" aria-label="HERAKLION">HERAKLION</span>
-                    </div>
-                    <div class="affiliation-item" role="listitem" title="Aurore Collection">
-                      <img src="assets/images/aurore_co.png" alt="Aurore Collection" loading="lazy">
-                    </div>
-                  </div>
-                  <div class="affiliation-marquee__group" aria-hidden="true">
-                    <div class="affiliation-item">
-                      <img src="assets/images/emi-color.svg" alt="" loading="lazy">
-                    </div>
-                    <div class="affiliation-item affiliation-item--relationship">
-                      <img src="assets/images/cropped-Logotype_RGB_Cytena_Color.webp" alt="" loading="lazy">
-                      <span class="affiliation-note">now Leadgene Biosolutions</span>
-                    </div>
-                    <div class="affiliation-item">
-                      <img src="assets/images/NTUST_logo.png" alt="" loading="lazy">
-                    </div>
-                    <div class="affiliation-item">
-                      <img src="assets/images/inatech_long.png" alt="" loading="lazy">
-                    </div>
-                    <div class="affiliation-item">
-                      <span class="affiliation-wordmark">HERAKLION</span>
-                    </div>
-                    <div class="affiliation-item">
-                      <img src="assets/images/aurore_co.png" alt="" loading="lazy">
-                    </div>
-                  </div>
-                </div>
-              </div>'''
-          if old_contexts not in index:
+
+          pattern = re.compile(
+              r'(?P<indent>\s*)<div class="signature-list">\s*'
+              r'<span>Fraunhofer EMI</span>\s*'
+              r'<span>Aurore Collection</span>\s*'
+              r'<span>University of Freiburg</span>\s*'
+              r'<span>NTUST</span>\s*'
+              r'<span>Chang Gung University</span>\s*'
+              r'</div>'
+          )
+          match = pattern.search(index)
+          if not match:
               raise SystemExit("Static Selected contexts block not found")
-          index_path.write_text(index.replace(old_contexts, new_contexts, 1))
+
+          indent = match.group("indent")
+          child = indent + "  "
+          grandchild = child + "  "
+          great = grandchild + "  "
+          deepest = great + "  "
+          new_contexts = f'''{indent}<div class="affiliation-marquee" aria-label="Professional and research contexts">
+          {child}<div class="affiliation-marquee__track">
+          {grandchild}<div class="affiliation-marquee__group" role="list">
+          {great}<div class="affiliation-item" role="listitem" title="Fraunhofer Institute for High-Speed Dynamics, Ernst-Mach-Institut">
+          {deepest}<img src="assets/images/emi-color.svg" alt="Fraunhofer EMI" loading="lazy">
+          {great}</div>
+          {great}<div class="affiliation-item affiliation-item--relationship" role="listitem" title="cytena Bioprocess Solutions, now Leadgene Biosolutions">
+          {deepest}<img src="assets/images/cropped-Logotype_RGB_Cytena_Color.webp" alt="cytena Bioprocess Solutions" loading="lazy">
+          {deepest}<span class="affiliation-note">now Leadgene Biosolutions</span>
+          {great}</div>
+          {great}<div class="affiliation-item" role="listitem" title="National Taiwan University of Science and Technology (Taiwan Tech)">
+          {deepest}<img src="assets/images/NTUST_logo.png" alt="Taiwan Tech" loading="lazy">
+          {great}</div>
+          {great}<div class="affiliation-item" role="listitem" title="Institute for Sustainable Systems Engineering (INATECH)">
+          {deepest}<img src="assets/images/inatech_long.png" alt="INATECH" loading="lazy">
+          {great}</div>
+          {great}<div class="affiliation-item" role="listitem" title="HERAKLION research project">
+          {deepest}<span class="affiliation-wordmark" aria-label="HERAKLION">HERAKLION</span>
+          {great}</div>
+          {great}<div class="affiliation-item" role="listitem" title="Aurore Collection">
+          {deepest}<img src="assets/images/aurore_co.png" alt="Aurore Collection" loading="lazy">
+          {great}</div>
+          {grandchild}</div>
+          {grandchild}<div class="affiliation-marquee__group" aria-hidden="true">
+          {great}<div class="affiliation-item"><img src="assets/images/emi-color.svg" alt="" loading="lazy"></div>
+          {great}<div class="affiliation-item affiliation-item--relationship">
+          {deepest}<img src="assets/images/cropped-Logotype_RGB_Cytena_Color.webp" alt="" loading="lazy">
+          {deepest}<span class="affiliation-note">now Leadgene Biosolutions</span>
+          {great}</div>
+          {great}<div class="affiliation-item"><img src="assets/images/NTUST_logo.png" alt="" loading="lazy"></div>
+          {great}<div class="affiliation-item"><img src="assets/images/inatech_long.png" alt="" loading="lazy"></div>
+          {great}<div class="affiliation-item"><span class="affiliation-wordmark">HERAKLION</span></div>
+          {great}<div class="affiliation-item"><img src="assets/images/aurore_co.png" alt="" loading="lazy"></div>
+          {grandchild}</div>
+          {child}</div>
+          {indent}</div>'''
+          index = pattern.sub(lambda _: new_contexts, index, count=1)
+          index = index.replace('aria-label="Selected contexts"', 'aria-label="Experience across research and industry"', 1)
+          index = index.replace('>Selected contexts</p>', '>Experience across research &amp; industry</p>', 1)
+          index = index.replace('>Blending research rigor, production delivery, and business execution.</p>', '>Organizations and research ecosystems from my professional journey.</p>', 1)
+          index_path.write_text(index)
+
+          translations = {
+              "assets/i18n/en.json": {
+                  "hero.aside.title": "Experience across research & industry",
+                  "hero.aside.body": "Organizations and research ecosystems from my professional journey."
+              },
+              "assets/i18n/zh.json": {
+                  "hero.aside.title": "跨研究與產業經歷",
+                  "hero.aside.body": "來自職涯、研究與產品實作歷程中的機構與產業生態系。"
+              }
+          }
+          for filename, updates in translations.items():
+              path = Path(filename)
+              payload = json.loads(path.read_text())
+              payload.update(updates)
+              path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
 
           css_path = Path("assets/css/style.css")
           css = css_path.read_text()
@@ -185,12 +207,8 @@ jobs:
           }
 
           @keyframes affiliation-marquee-right {
-            from {
-              transform: translateX(-50%);
-            }
-            to {
-              transform: translateX(0);
-            }
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
           }
 
           @media (max-width: 640px) {
@@ -199,9 +217,7 @@ jobs:
               mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
             }
 
-            .affiliation-marquee__track {
-              animation-duration: 32s;
-            }
+            .affiliation-marquee__track { animation-duration: 32s; }
 
             .affiliation-marquee__group {
               gap: 28px;
@@ -218,9 +234,7 @@ jobs:
               max-height: 32px;
             }
 
-            .affiliation-item--relationship {
-              min-width: 224px;
-            }
+            .affiliation-item--relationship { min-width: 224px; }
           }
 
           @media (prefers-reduced-motion: reduce) {
@@ -243,9 +257,7 @@ jobs:
               padding-right: 0;
             }
 
-            .affiliation-marquee__group[aria-hidden="true"] {
-              display: none;
-            }
+            .affiliation-marquee__group[aria-hidden="true"] { display: none; }
           }
           '''
           css_path.write_text(css.rstrip() + css_addition + "\n")
@@ -315,6 +327,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html assets/css/style.css scripts/smoke-runtime.mjs
+          git add index.html assets/css/style.css assets/i18n/en.json assets/i18n/zh.json scripts/smoke-runtime.mjs
           git commit -m "feat: add affiliation logo marquee"
           git push origin HEAD:agent/issue-38-affiliation-marquee
