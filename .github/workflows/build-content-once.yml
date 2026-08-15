@@ -1,0 +1,40 @@
+name: One-time content build
+
+on:
+  push:
+    branches:
+      - agent/issues-10-11-build-content
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/issues-10-11-build-content
+
+      - name: Build generated portfolio content
+        run: node scripts/build-content.mjs
+
+      - name: Verify generated content is current
+        run: node scripts/build-content.mjs --check
+
+      - name: Check JavaScript syntax
+        run: node --check assets/js/script.js
+
+      - name: Commit generated artifacts
+        run: |
+          if git diff --quiet -- index.html assets/js/script.js assets/data/projects.bundle.json; then
+            echo "No generated changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets/js/script.js assets/data/projects.bundle.json
+          git commit -m "build: generate static portfolio content"
+          git push
