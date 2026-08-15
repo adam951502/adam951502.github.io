@@ -34,7 +34,7 @@ jobs:
       - name: Smoke test browser runtime
         run: npm run smoke:runtime
 
-      - name: Verify GitHub Pages custom domain file
+      - name: Verify default GitHub Pages domain
         run: |
-          test -f CNAME
-          test "$(cat CNAME)" = "www.adam-tang.com"
+          test ! -f CNAME
+          ! grep -R "adam-tang.com" index.html robots.txt sitemap.xml scripts assets/data assets/js
