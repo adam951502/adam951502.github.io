@@ -21,7 +21,11 @@ const mimeTypes = {
 
 const server = http.createServer((request, response) => {
   const requestPath = decodeURIComponent(new URL(request.url, `http://127.0.0.1:${port}`).pathname);
-  const relativePath = requestPath === "/" ? "index.html" : requestPath.replace(/^\//, "");
+  const relativePath = requestPath === "/"
+    ? "index.html"
+    : requestPath.endsWith("/")
+      ? `${requestPath.replace(/^\//, "")}index.html`
+      : requestPath.replace(/^\//, "");
   const absolutePath = path.resolve(repoRoot, relativePath);
 
   if (!absolutePath.startsWith(repoRoot + path.sep) && absolutePath !== path.join(repoRoot, "index.html")) {
@@ -137,6 +141,9 @@ try {
   if (initial.lang !== "en") throw new Error(`Expected initial lang=en, got ${initial.lang}`);
   if (initial.theme !== "light") throw new Error(`Expected initial theme=light, got ${initial.theme}`);
 
+  const blogNavHref = await page.locator('.site-nav a[href="./blog/"]').getAttribute("href");
+  if (blogNavHref !== "./blog/") throw new Error("Main navigation is missing the Blog route");
+
   await assertSkillIconsContained("desktop");
 
   const firstProject = page.locator("#projectGrid [data-project-id]").first();
@@ -194,11 +201,28 @@ try {
   await page.waitForTimeout(100);
   await assertSkillIconsContained("mobile");
 
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto(`http://127.0.0.1:${port}/blog/`, { waitUntil: "networkidle" });
+  const blogState = await page.evaluate(() => ({
+    title: document.querySelector("h1")?.textContent?.trim(),
+    canonical: document.querySelector('link[rel="canonical"]')?.href,
+    emptyState: document.querySelector("[data-blog-empty]")?.textContent?.trim(),
+    theme: document.documentElement.dataset.theme,
+    portfolioHref: document.querySelector('.site-nav a[href="../"]')?.getAttribute("href")
+  }));
+  if (blogState.title !== "Blog / Notes") throw new Error(`Unexpected blog heading: ${blogState.title}`);
+  if (blogState.canonical !== "https://adam951502.github.io/blog/") throw new Error(`Unexpected blog canonical: ${blogState.canonical}`);
+  if (!blogState.emptyState?.includes("No posts published yet")) throw new Error("Blog empty state is missing or misleading");
+  if (blogState.theme !== "dark") throw new Error(`Expected persisted dark theme on Blog, got ${blogState.theme}`);
+  if (blogState.portfolioHref !== "../") throw new Error("Blog page is missing its Portfolio navigation link");
+  await page.click(".theme-toggle");
+  await page.waitForFunction(() => document.documentElement.dataset.theme === "light");
+
   if (pageErrors.length) throw new Error(`Browser page errors:\n${pageErrors.join("\n")}`);
   if (consoleErrors.length) throw new Error(`Browser console errors:\n${consoleErrors.join("\n")}`);
 
   console.log(
-    `Runtime smoke passed: ${initial.projects} projects, ${initial.experiences} experience entries, skill icons contained at desktop/mobile, expanded project clear of sticky navbar, theme toggle, zh-Hant translation, no browser errors.`
+    `Runtime smoke passed: ${initial.projects} projects, ${initial.experiences} experience entries, skill icons contained at desktop/mobile, expanded project clear of sticky navbar, Blog route/SEO/theme, theme toggle, zh-Hant translation, no browser errors.`
   );
 } finally {
   await browser.close();
