@@ -6,7 +6,7 @@
   "sortEnd": "2026-04",
   "pillKey": "projects.pills.data",
   "icon": "ri-qr-scan-2-line",
-  "image": "assets/images/project-udi-decoder.png",
+  "image": "assets/images/project-udi-decoder.webp",
   "imageFit": "cover",
   "chips": [
     "Python",

@@ -6,7 +6,7 @@
   "sortEnd": "2021-09",
   "pillKey": "projects.pills.mechanics",
   "icon": "ri-tools-line",
-  "image": "assets/images/project-impact.gif",
+  "image": "assets/images/project-impact.webp",
   "chips": [
     "LS-DYNA",
     "HyperMesh",

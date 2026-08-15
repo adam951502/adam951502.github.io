@@ -6,7 +6,7 @@
   "sortEnd": "2025-03",
   "pillKey": "projects.pills.genai",
   "icon": "ri-server-line",
-  "image": "assets/images/project-ollama-docker-v2.png",
+  "image": "assets/images/project-ollama-docker-v2.webp",
   "chips": [
     "Ollama",
     "Docker Compose",

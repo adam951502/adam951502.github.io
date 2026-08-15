@@ -6,7 +6,7 @@
   "sortEnd": "2020-02",
   "pillKey": "projects.pills.mechanics",
   "icon": "ri-tools-line",
-  "image": "assets/images/project-master-project.gif",
+  "image": "assets/images/project-master-project.webp",
   "chips": [
     "Python",
     "Motor Control",

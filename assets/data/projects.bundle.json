@@ -422,7 +422,7 @@
     "sortEnd": "2026-04",
     "pillKey": "projects.pills.data",
     "icon": "ri-qr-scan-2-line",
-    "image": "assets/images/project-udi-decoder.png",
+    "image": "assets/images/project-udi-decoder.webp",
     "imageFit": "cover",
     "chips": [
       "Python",
@@ -625,7 +625,7 @@
     "sortEnd": "2025-12",
     "pillKey": "projects.pills.data",
     "icon": "ri-download-cloud-2-line",
-    "image": "assets/images/project-x-downloader.png",
+    "image": "assets/images/project-x-downloader.webp",
     "chips": [
       "Python",
       "X API v2",
@@ -829,7 +829,7 @@
     "sortEnd": "2025-06",
     "pillKey": "projects.pills.genai",
     "icon": "ri-node-tree",
-    "image": "assets/images/project-mcp-graphdb-v2.png",
+    "image": "assets/images/project-mcp-graphdb-v2.webp",
     "chips": [
       "MCP",
       "GraphDB",
@@ -937,7 +937,7 @@
     "sortEnd": "2025-03",
     "pillKey": "projects.pills.genai",
     "icon": "ri-server-line",
-    "image": "assets/images/project-ollama-docker-v2.png",
+    "image": "assets/images/project-ollama-docker-v2.webp",
     "chips": [
       "Ollama",
       "Docker Compose",
@@ -1266,7 +1266,7 @@
     "sortEnd": "2024-05",
     "pillKey": "projects.pills.web",
     "icon": "ri-global-line",
-    "image": "assets/images/project-aurore-website.png",
+    "image": "assets/images/project-aurore-website.webp",
     "chips": [
       "E-commerce",
       "Payments",
@@ -1686,7 +1686,7 @@
     "sortEnd": "2021-09",
     "pillKey": "projects.pills.mechanics",
     "icon": "ri-tools-line",
-    "image": "assets/images/project-impact.gif",
+    "image": "assets/images/project-impact.webp",
     "chips": [
       "LS-DYNA",
       "HyperMesh",
@@ -1997,7 +1997,7 @@
     "sortEnd": "2020-02",
     "pillKey": "projects.pills.mechanics",
     "icon": "ri-tools-line",
-    "image": "assets/images/project-master-project.gif",
+    "image": "assets/images/project-master-project.webp",
     "chips": [
       "Python",
       "Motor Control",
