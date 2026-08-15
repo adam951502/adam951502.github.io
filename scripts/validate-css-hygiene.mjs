@@ -4,6 +4,11 @@ const css = fs.readFileSync("assets/css/style.css", "utf8");
 const indexHtml = fs.readFileSync("index.html", "utf8");
 const errors = [];
 
+const htmlClasses = new Set();
+for (const match of indexHtml.matchAll(/class=["']([^"']*)["']/gi)) {
+  match[1].split(/\s+/).filter(Boolean).forEach((className) => htmlClasses.add(className));
+}
+
 const forbiddenClasses = [
   "skill-tree",
   "skill-tree-root",
@@ -29,12 +34,11 @@ for (const className of forbiddenClasses) {
   const escaped = className.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const selectorPattern = new RegExp(`\\.${escaped}(?![A-Za-z0-9_-])`);
   if (selectorPattern.test(css)) errors.push(`Legacy CSS selector returned: .${className}`);
-  const classPattern = new RegExp(`class=["'][^"']*\\b${escaped}\\b`);
-  if (classPattern.test(indexHtml)) errors.push(`Legacy skill class unexpectedly appears in HTML: ${className}`);
+  if (htmlClasses.has(className)) errors.push(`Legacy skill class unexpectedly appears in HTML: ${className}`);
 }
 
 for (const required of ["skill-stack", "skill-row", "skill-branch-index", "skill-cluster"]) {
-  if (!indexHtml.includes(required)) errors.push(`Current skill markup is missing: ${required}`);
+  if (!htmlClasses.has(required)) errors.push(`Current skill markup is missing: ${required}`);
   if (!css.includes(`.${required}`)) errors.push(`Current skill CSS is missing: .${required}`);
 }
 
