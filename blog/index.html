@@ -29,13 +29,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
   <link rel="stylesheet" href="../assets/css/style.css?v=20260805-consistent-card-sizing-4">
-  <script>
-    try {
-      document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
-    } catch (_) {
-      document.documentElement.dataset.theme = "light";
-    }
-  </script>
 </head>
 <body>
   <div class="page-orb orb-a" aria-hidden="true"></div>
@@ -46,26 +39,39 @@
     <a class="brand" href="../" aria-label="Adam Tang — portfolio home">
       <div class="brand-mark">AT</div>
       <div>
-        <p class="brand-name">Adam Tang</p>
-        <p class="brand-role">GenAI Engineer | Data Scientist</p>
+        <p class="brand-name" data-i18n="brand.name">Adam Tang</p>
+        <p class="brand-role" data-i18n="brand.role">GenAI Engineer | Data Scientist</p>
       </div>
     </a>
 
     <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="headerPanel">
-      <span>Menu</span>
+      <span data-i18n="nav.menu">Menu</span>
       <i class="ri-menu-3-line" aria-hidden="true"></i>
     </button>
 
     <div class="header-panel" id="headerPanel">
       <nav class="site-nav" aria-label="Primary">
-        <a href="../">Portfolio</a>
-        <a href="./" class="active" aria-current="page">Blog</a>
+        <a href="../" data-i18n="blog.nav.portfolio">Portfolio</a>
+        <a href="./" class="active" aria-current="page" data-i18n="blog.nav.blog">Blog</a>
       </nav>
       <div class="header-actions">
-        <a class="btn ghost" href="https://github.com/adam951502" target="_blank" rel="noopener">GitHub</a>
-        <button class="btn ghost theme-toggle" type="button" aria-label="Switch theme">
+        <div class="language-dropdown">
+          <button class="lang-toggle" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="lang-icon-wrap">
+              <img src="../assets/images/icon-i18n.png" alt="" class="lang-icon" loading="lazy">
+            </span>
+            <span class="lang-label" data-i18n="language.name.en">EN</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <ul class="lang-menu" role="listbox" hidden>
+            <li><button type="button" class="lang-option" role="option" data-lang="en" data-i18n="language.name.en">EN</button></li>
+            <li><button type="button" class="lang-option" role="option" data-lang="zh" data-i18n="language.name.zh">繁中</button></li>
+          </ul>
+        </div>
+        <a class="btn ghost" href="https://github.com/adam951502" target="_blank" rel="noopener" data-i18n="blog.github">GitHub</a>
+        <button class="btn ghost theme-toggle" type="button" aria-label="Toggle theme">
           <i class="ri-sun-line" aria-hidden="true"></i>
-          <span class="theme-toggle-label">Light</span>
+          <span class="theme-toggle-label" data-i18n="theme.light">Light</span>
         </button>
       </div>
     </div>
@@ -75,31 +81,31 @@
     <section class="section hero" id="blog-top">
       <div class="hero-shell">
         <div class="hero-copy">
-          <p class="eyebrow">Engineering notes</p>
-          <h1>Blog / Notes</h1>
-          <p class="lede">A home for practical write-ups on GenAI, data systems, software engineering, project delivery, and lessons from building real products.</p>
+          <p class="eyebrow" data-i18n="blog.eyebrow">Engineering notes</p>
+          <h1 data-i18n="blog.title">Blog / Notes</h1>
+          <p class="lede" data-i18n="blog.lede">A home for practical write-ups on GenAI, data systems, software engineering, project delivery, and lessons from building real products.</p>
 
-          <div class="proof-strip" aria-label="Planned writing areas">
-            <span class="proof-chip">GenAI</span>
-            <span class="proof-chip">Data &amp; Knowledge</span>
-            <span class="proof-chip">Engineering</span>
-            <span class="proof-chip">Product Delivery</span>
+          <div class="proof-strip" aria-label="Planned writing areas" data-i18n-aria-label="blog.areasLabel">
+            <span class="proof-chip" data-i18n="blog.area.genai">GenAI</span>
+            <span class="proof-chip" data-i18n="blog.area.data">Data &amp; Knowledge</span>
+            <span class="proof-chip" data-i18n="blog.area.engineering">Engineering</span>
+            <span class="proof-chip" data-i18n="blog.area.product">Product Delivery</span>
           </div>
 
           <div class="hero-actions">
-            <a class="btn primary" href="../">Back to portfolio</a>
-            <a class="btn ghost" href="https://github.com/adam951502" target="_blank" rel="noopener">View GitHub</a>
+            <a class="btn primary" href="../" data-i18n="blog.back">Back to portfolio</a>
+            <a class="btn ghost" href="https://github.com/adam951502" target="_blank" rel="noopener" data-i18n="blog.viewGithub">View GitHub</a>
           </div>
         </div>
 
         <aside class="hero-panel">
           <article class="signal-card card-surface">
-            <p class="label">Publishing status</p>
-            <p class="signal-value">Landing page live</p>
+            <p class="label" data-i18n="blog.status.label">Publishing status</p>
+            <p class="signal-value" data-i18n="blog.status.value">Landing page live</p>
           </article>
           <article class="signal-card card-surface">
-            <p class="label">Content policy</p>
-            <p class="signal-value">Only finished, authored notes appear here—no placeholder articles.</p>
+            <p class="label" data-i18n="blog.policy.label">Content policy</p>
+            <p class="signal-value" data-i18n="blog.policy.value">Only finished, authored notes appear here—no placeholder articles.</p>
           </article>
         </aside>
       </div>
@@ -110,69 +116,29 @@
         <div class="section-title-block">
           <span class="section-icon" aria-hidden="true"><i class="ri-quill-pen-line"></i></span>
           <div>
-            <p class="eyebrow">Latest notes</p>
-            <h2 id="latestNotesTitle">Writing starts with real content</h2>
+            <p class="eyebrow" data-i18n="blog.latest.eyebrow">Latest notes</p>
+            <h2 id="latestNotesTitle" data-i18n="blog.latest.title">Writing starts with real content</h2>
           </div>
         </div>
-        <p class="muted section-note">The route, navigation, SEO, theme, and responsive shell are ready for the first published article.</p>
+        <p class="muted section-note" data-i18n="blog.latest.note">The route, navigation, SEO, theme, and responsive shell are ready for the first published article.</p>
       </div>
 
       <article class="card card-surface" data-blog-empty>
-        <div class="pill">Empty state</div>
-        <h3>No posts published yet</h3>
-        <p class="muted">No article titles, dates, or summaries are being fabricated from old template assets. Real posts can be added here when their content is ready.</p>
+        <div class="pill" data-i18n="blog.empty.pill">Empty state</div>
+        <h3 data-i18n="blog.empty.title">No posts published yet</h3>
+        <p class="muted" data-i18n="blog.empty.body">No article titles, dates, or summaries are being fabricated from old template assets. Real posts can be added here when their content is ready.</p>
         <div class="hero-actions">
-          <a class="btn ghost" href="../#projects">Explore projects instead</a>
+          <a class="btn ghost" href="../#projects" data-i18n="blog.empty.action">Explore projects instead</a>
         </div>
       </article>
     </section>
   </main>
 
   <footer class="footer">
-    <p>Adam Tang · Blog / Notes</p>
-    <a href="../">Portfolio</a>
+    <p data-i18n="blog.footer">Adam Tang · Blog / Notes</p>
+    <a href="../" data-i18n="blog.nav.portfolio">Portfolio</a>
   </footer>
 
-  <script>
-    (() => {
-      const root = document.documentElement;
-      const header = document.querySelector(".site-header");
-      const menuToggle = document.querySelector(".mobile-menu-toggle");
-      const themeToggle = document.querySelector(".theme-toggle");
-      const themeLabel = document.querySelector(".theme-toggle-label");
-
-      function applyTheme(theme) {
-        root.dataset.theme = theme;
-        try { localStorage.setItem("theme", theme); } catch (_) {}
-        const isLight = theme === "light";
-        themeLabel.textContent = isLight ? "Light" : "Dark";
-        themeToggle.setAttribute("aria-label", isLight ? "Switch to dark theme" : "Switch to light theme");
-        const icon = themeToggle.querySelector("i");
-        if (icon) icon.className = isLight ? "ri-sun-line" : "ri-moon-line";
-      }
-
-      applyTheme(root.dataset.theme || "light");
-      themeToggle?.addEventListener("click", () => {
-        applyTheme(root.dataset.theme === "light" ? "dark" : "light");
-      });
-
-      menuToggle?.addEventListener("click", () => {
-        const open = menuToggle.getAttribute("aria-expanded") === "true";
-        header?.classList.toggle("menu-open", !open);
-        menuToggle.setAttribute("aria-expanded", String(!open));
-        const icon = menuToggle.querySelector("i");
-        if (icon) icon.className = open ? "ri-menu-3-line" : "ri-close-line";
-      });
-
-      document.addEventListener("click", (event) => {
-        if (header?.classList.contains("menu-open") && !header.contains(event.target)) {
-          header.classList.remove("menu-open");
-          menuToggle?.setAttribute("aria-expanded", "false");
-          const icon = menuToggle?.querySelector("i");
-          if (icon) icon.className = "ri-menu-3-line";
-        }
-      });
-    })();
-  </script>
+  <script type="module" src="../assets/js/blog.js"></script>
 </body>
 </html>
