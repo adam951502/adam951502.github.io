@@ -625,7 +625,10 @@
       image.className = "project-img";
       image.src = project.image;
       image.alt = `${titleText} — ${translateFn("projects.imageAlt") || "representative project view"}`;
-      if (project.imageFit === "contain") image.classList.add("is-contain");
+      if (project.imageFit === "contain") {
+        image.classList.add("is-contain");
+        image.style.objectFit = "contain";
+      }
       image.loading = index < 2 ? "eager" : "lazy";
       image.decoding = "async";
       media.appendChild(image);
@@ -818,6 +821,7 @@
       if (value) element.setAttribute("aria-label", value);
     });
 
+    await ensureData();
     await Promise.all([renderExperience(translateFn), renderProjects(translateFn)]);
     updateLanguageOptions(currentLang, translateFn);
     setThemeLabel(currentTheme, translateFn);

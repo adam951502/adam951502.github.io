@@ -1,0 +1,33 @@
+name: Validate portfolio
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate project content
+        run: node scripts/validate-projects.mjs
+
+      - name: Check JavaScript syntax
+        run: node --check assets/js/script.js
+
+      - name: Verify GitHub Pages custom domain file
+        run: |
+          test -f CNAME
+          test "$(cat CNAME)" = "www.adam-tang.com"
