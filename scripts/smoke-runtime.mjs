@@ -68,6 +68,59 @@ page.on("console", (message) => {
   if (message.type() === "error") consoleErrors.push(message.text());
 });
 
+async function assertSkillIconsContained(label) {
+  const rows = await page.evaluate(() =>
+    Array.from(document.querySelectorAll(".skill-row")).map((row, index) => {
+      const icon = row.querySelector(".skill-icon");
+      if (!icon) return { index, valid: false };
+
+      const rowRect = row.getBoundingClientRect();
+      const iconRect = icon.getBoundingClientRect();
+      const style = getComputedStyle(icon);
+      return {
+        index,
+        valid: true,
+        display: style.display,
+        visibility: style.visibility,
+        rowLeft: rowRect.left,
+        rowRight: rowRect.right,
+        rowTop: rowRect.top,
+        rowBottom: rowRect.bottom,
+        iconLeft: iconRect.left,
+        iconRight: iconRect.right,
+        iconTop: iconRect.top,
+        iconBottom: iconRect.bottom,
+        iconWidth: iconRect.width,
+        iconHeight: iconRect.height
+      };
+    })
+  );
+
+  if (rows.length !== 4) throw new Error(`Expected 4 skill rows at ${label} viewport, got ${rows.length}`);
+
+  for (const row of rows) {
+    if (!row.valid) throw new Error(`Skill row ${row.index + 1} is missing its icon at ${label} viewport`);
+    if (row.display === "none" || row.visibility === "hidden" || row.iconWidth <= 0 || row.iconHeight <= 0) {
+      throw new Error(`Skill row ${row.index + 1} icon is not visibly laid out at ${label} viewport`);
+    }
+
+    const tolerance = 0.5;
+    const contained =
+      row.iconLeft >= row.rowLeft - tolerance &&
+      row.iconRight <= row.rowRight + tolerance &&
+      row.iconTop >= row.rowTop - tolerance &&
+      row.iconBottom <= row.rowBottom + tolerance;
+
+    if (!contained) {
+      throw new Error(
+        `Skill row ${row.index + 1} icon escapes its card at ${label} viewport: ` +
+          `icon=(${row.iconLeft},${row.iconTop})-(${row.iconRight},${row.iconBottom}), ` +
+          `row=(${row.rowLeft},${row.rowTop})-(${row.rowRight},${row.rowBottom})`
+      );
+    }
+  }
+}
+
 try {
   await page.goto(`http://127.0.0.1:${port}/`, { waitUntil: "networkidle" });
   await page.waitForFunction(() => document.querySelectorAll("#projectGrid .reveal-target").length === 25);
@@ -83,6 +136,8 @@ try {
   if (initial.experiences !== 10) throw new Error(`Expected 10 experience entries, got ${initial.experiences}`);
   if (initial.lang !== "en") throw new Error(`Expected initial lang=en, got ${initial.lang}`);
   if (initial.theme !== "light") throw new Error(`Expected initial theme=light, got ${initial.theme}`);
+
+  await assertSkillIconsContained("desktop");
 
   const firstProject = page.locator("#projectGrid [data-project-id]").first();
   await firstProject.evaluate((element) => element.scrollIntoView({ block: "start", inline: "nearest" }));
@@ -135,11 +190,15 @@ try {
   const translatedTitle = await page.locator("#projectGrid [data-project-id] h3").first().textContent();
   if (!translatedTitle?.trim()) throw new Error("Translated project title is empty after switching to zh");
 
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.waitForTimeout(100);
+  await assertSkillIconsContained("mobile");
+
   if (pageErrors.length) throw new Error(`Browser page errors:\n${pageErrors.join("\n")}`);
   if (consoleErrors.length) throw new Error(`Browser console errors:\n${consoleErrors.join("\n")}`);
 
   console.log(
-    `Runtime smoke passed: ${initial.projects} projects, ${initial.experiences} experience entries, expanded project clear of sticky navbar, theme toggle, zh-Hant translation, no browser errors.`
+    `Runtime smoke passed: ${initial.projects} projects, ${initial.experiences} experience entries, skill icons contained at desktop/mobile, expanded project clear of sticky navbar, theme toggle, zh-Hant translation, no browser errors.`
   );
 } finally {
   await browser.close();
