@@ -1,0 +1,2605 @@
+[
+  {
+    "$schema": "./project.schema.json",
+    "id": "stock-toolkit",
+    "category": "data",
+    "sortStart": "2026-06",
+    "sortEnd": "9999-12",
+    "sortUpdated": "2026-07-28",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-line-chart-line",
+    "image": "assets/images/project-stock-toolkit.png",
+    "chips": [
+      "Cloudflare Pages",
+      "Supabase",
+      "JavaScript",
+      "Postgres",
+      "OAuth"
+    ],
+    "content": {
+      "en": {
+        "title": "T93.Lab Portfolio Analytics Workspace",
+        "summary": "Private Taiwan/US portfolio workspace for net worth, positions, DCA, risk, journals, and cloud-synced market data.",
+        "dates": "Jun 2026 - Present",
+        "status": "Active build",
+        "role": "Product owner & full-stack engineer",
+        "challenge": "Personal investment data was fragmented across devices, spreadsheets, market-data sources, and separate Taiwan/US workflows. The product needed a single private workspace without exposing credentials or portfolio data in the browser.",
+        "contribution": [
+          "Designed the product model for net worth, positions, lots, DCA, realized and unrealized P&L, transfers, and trading journals.",
+          "Built Google OAuth access control, cross-device cloud synchronization, admin approval, and local-to-cloud migration.",
+          "Implemented edge APIs for quotes, symbol search, position selling, and incrementally cached portfolio history."
+        ],
+        "technical": [
+          "Native HTML/CSS/JavaScript frontend deployed on Cloudflare Pages with Pages Functions as the backend-for-frontend.",
+          "Supabase Auth, Postgres, PostgREST, row-level access patterns, and transactional RPC for position sales.",
+          "Market-data adapters for Nasdaq, Alpha Vantage, Finnhub, TWSE, TPEx, and USD/TWD exchange rates, with fallback logic and route tests."
+        ],
+        "architecture": [
+          {
+            "label": "Experience",
+            "detail": "Responsive workspace, net-worth view, position manager, risk calculators, and journal."
+          },
+          {
+            "label": "Identity & sync",
+            "detail": "Supabase Google OAuth, allowlist approval, cloud-sync layer, and localStorage migration."
+          },
+          {
+            "label": "Edge services",
+            "detail": "Cloudflare Pages Functions validate sessions and orchestrate market, sell, and history APIs."
+          },
+          {
+            "label": "Data & jobs",
+            "detail": "Supabase Postgres/RPC plus scheduled incremental history updates and provider fallbacks."
+          }
+        ],
+        "outcomes": [
+          "Unified Taiwan and US holdings, liabilities, cash flow, P&L, and asset curves in one cross-device workspace.",
+          "Supports both transaction lots and average-cost DCA while preserving a common sell and reporting workflow.",
+          "Keeps market-provider secrets and T93 collection-value integration on the server side."
+        ]
+      },
+      "zh": {
+        "title": "T93.Lab 投資組合分析工作區",
+        "summary": "私人台美投資組合工作區，整合淨資產、持倉、定期定額、風險、投資日誌與雲端同步市場資料。",
+        "dates": "2026 年 6 月 - 目前",
+        "status": "持續開發",
+        "role": "產品負責人與全端工程師",
+        "challenge": "個人投資資料散落在不同裝置、試算表、市場資料來源及分開的台股與美股流程中。產品需要提供單一私有工作區，同時避免在瀏覽器暴露憑證或投資組合資料。",
+        "contribution": [
+          "設計淨資產、持倉、交易批次、定期定額、已實現與未實現損益、轉帳及交易日誌的產品模型。",
+          "建置 Google OAuth 存取控制、跨裝置雲端同步、管理員核准及本地資料遷移至雲端的流程。",
+          "實作報價、商品搜尋、持倉賣出與增量快取投資組合歷史的邊緣 API。"
+        ],
+        "technical": [
+          "原生 HTML／CSS／JavaScript 前端部署於 Cloudflare Pages，並以 Pages Functions 作為前後端中介層。",
+          "使用 Supabase Auth、Postgres、PostgREST、資料列層級存取模式，以及處理持倉賣出的交易式 RPC。",
+          "整合 Nasdaq、Alpha Vantage、Finnhub、證交所、櫃買中心與美元兌新台幣匯率的市場資料介面，並提供備援邏輯與路由測試。"
+        ],
+        "architecture": [
+          {
+            "label": "使用體驗",
+            "detail": "響應式工作區包含淨資產檢視、持倉管理、風險計算器與投資日誌。"
+          },
+          {
+            "label": "身分與同步",
+            "detail": "Supabase Google OAuth、允許名單核准、雲端同步層與 localStorage 遷移。"
+          },
+          {
+            "label": "邊緣服務",
+            "detail": "Cloudflare Pages Functions 驗證工作階段，並編排市場、賣出及歷史資料 API。"
+          },
+          {
+            "label": "資料與排程",
+            "detail": "Supabase Postgres／RPC 搭配排程式增量歷史更新與資料供應商備援。"
+          }
+        ],
+        "outcomes": [
+          "在單一跨裝置工作區中整合台股與美股持倉、負債、現金流、損益及資產曲線。",
+          "同時支援逐筆交易批次與平均成本定期定額，並共用一致的賣出與報告流程。",
+          "將市場資料供應商密鑰與 T93 收藏價值整合保留在伺服器端。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "t93-lab",
+    "category": "web",
+    "sortStart": "2025-07",
+    "sortEnd": "9999-12",
+    "sortUpdated": "2026-07-27",
+    "pillKey": "projects.pills.web",
+    "icon": "ri-stack-line",
+    "image": "assets/images/project-t93-lab.png",
+    "chips": [
+      "Python",
+      "Jinja2",
+      "Notion API",
+      "Supabase",
+      "Cloudflare"
+    ],
+    "links": [
+      {
+        "label": "Live site",
+        "url": "https://t93-lab.pages.dev/",
+        "icon": "ri-external-link-line"
+      }
+    ],
+    "content": {
+      "en": {
+        "title": "T93.Lab Collection & Market Platform",
+        "summary": "Notion-powered collectible vault with valuation analytics, private access, scheduled publishing, market lookup, and commerce prototypes.",
+        "dates": "Jul 2025 - Present",
+        "status": "Active product",
+        "role": "Product owner & full-stack engineer",
+        "challenge": "A private trading-card collection needed to work as a searchable collection, valuation dashboard, wishlist, and member-only market experience while keeping editorial data easy to maintain.",
+        "contribution": [
+          "Built the static-site generation pipeline from Notion data, including cached exchange rates and scheduled publishing.",
+          "Designed collection filters, valuation analytics, wishlists, market lookup, shopping, auction, cart, and grading-service prototypes.",
+          "Added Supabase Google identity, independent authorization, admin review, and protected aggregate market APIs."
+        ],
+        "technical": [
+          "Python/Jinja2 build process converts Notion content into deployable static pages and reusable partials.",
+          "Cloudflare Pages and Functions protect private routes and expose server-side APIs without leaking service credentials.",
+          "Supabase Auth/Postgres provides identity and access boundaries; GitHub Actions rebuilds hourly and refreshes market data on a schedule."
+        ],
+        "architecture": [
+          {
+            "label": "Content source",
+            "detail": "Notion databases hold collection metadata, research notes, prices, and wishlists."
+          },
+          {
+            "label": "Build pipeline",
+            "detail": "Python fetches and normalizes records, caches exchange rates, and renders Jinja2 pages."
+          },
+          {
+            "label": "Delivery",
+            "detail": "GitHub Actions publishes the generated site to Cloudflare Pages on schedule or demand."
+          },
+          {
+            "label": "Private services",
+            "detail": "Cloudflare middleware/Functions and Supabase Auth/Postgres protect users, admin data, and aggregate APIs."
+          }
+        ],
+        "outcomes": [
+          "Created one product surface for collection browsing, value analysis, wishlists, and authenticated market demos.",
+          "Separated editorial collection data from transaction-oriented architecture so commerce features can evolve safely.",
+          "Connected aggregate T93 market value to the stock workspace through a server-only API."
+        ]
+      },
+      "zh": {
+        "title": "T93.Lab 收藏與市場平台",
+        "summary": "以 Notion 驅動的收藏品管理庫，整合估值分析、私人存取、排程發布、市場查詢與商務原型。",
+        "dates": "2025 年 7 月 - 目前",
+        "status": "持續營運",
+        "role": "產品負責人與全端工程師",
+        "challenge": "私人卡牌收藏需要同時成為可搜尋的收藏庫、估值儀表板、願望清單與會員限定市場體驗，並讓編輯資料維持容易管理。",
+        "contribution": [
+          "以 Notion 資料建置靜態網站產生管線，包含匯率快取與排程發布。",
+          "設計收藏篩選、估值分析、願望清單、市場查詢、購物、拍賣、購物車與鑑定服務原型。",
+          "加入 Supabase Google 身分驗證、獨立授權、管理員審核與受保護的市場彙總 API。"
+        ],
+        "technical": [
+          "Python 與 Jinja2 建置流程將 Notion 內容轉換為可部署的靜態頁面及可重用局部模板。",
+          "Cloudflare Pages 與 Functions 保護私人路由，並提供伺服器端 API，避免洩漏服務憑證。",
+          "Supabase Auth 與 Postgres 提供身分及存取邊界；GitHub Actions 每小時重建並排程更新市場資料。"
+        ],
+        "architecture": [
+          {
+            "label": "內容來源",
+            "detail": "Notion 資料庫保存收藏詮釋資料、研究筆記、價格與願望清單。"
+          },
+          {
+            "label": "建置管線",
+            "detail": "Python 擷取並標準化紀錄、快取匯率，再渲染 Jinja2 頁面。"
+          },
+          {
+            "label": "交付",
+            "detail": "GitHub Actions 依排程或需求將產生的網站發布至 Cloudflare Pages。"
+          },
+          {
+            "label": "私人服務",
+            "detail": "Cloudflare 中介軟體與 Functions 搭配 Supabase Auth／Postgres，保護使用者、管理資料及彙總 API。"
+          }
+        ],
+        "outcomes": [
+          "建立單一產品介面，整合收藏瀏覽、價值分析、願望清單與身分驗證市場展示。",
+          "將編輯型收藏資料與交易導向架構分離，使商務功能能安全演進。",
+          "透過僅限伺服器存取的 API，將 T93 市場彙總價值連接至投資工作區。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "quan",
+    "category": "data",
+    "sortStart": "2026-07",
+    "sortEnd": "9999-12",
+    "sortUpdated": "2026-07-22",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-line-chart-line",
+    "image": "assets/images/project-quan.svg",
+    "imageFit": "cover",
+    "chips": [
+      "Python",
+      "Backtrader",
+      "Shioaji",
+      "Pandas",
+      "Pytest"
+    ],
+    "content": {
+      "en": {
+        "title": "quan — Taiwan Quant Research Toolkit",
+        "summary": "Python research-to-paper-trading framework with Taiwan market data, cost-aware backtests, walk-forward validation, and Shioaji adapters.",
+        "dates": "Jul 2026 - Present",
+        "status": "Research framework",
+        "role": "Quant research & platform engineer",
+        "challenge": "Taiwan-market research needs consistent data, realistic costs, repeatable backtests, strong validation, and a safe path from strategy output to paper execution before any live deployment.",
+        "contribution": [
+          "Designed a layered Python package and CLI for data preparation, strategy research, reporting, and broker-neutral execution.",
+          "Implemented Taiwan futures cost models, continuous-contract helpers, strategy comparison, parameter sweeps, and walk-forward validation.",
+          "Integrated paper execution and Shioaji adapters with market-hours, expiry, order-size, kill-switch, rate-limit, and reconciliation guards."
+        ],
+        "technical": [
+          "Canonical OHLCV pipeline with Yahoo Finance, FinMind, TAIFEX, local CSV, and Shioaji real-time adapters.",
+          "Backtrader event-driven research with eleven strategy templates, external strategy loading, metrics, CSV/JSON reports, and SVG charts.",
+          "Target-position runtime separates strategy decisions from broker orders so the same logic can move from dry-run to simulation safely."
+        ],
+        "architecture": [
+          {
+            "label": "Market data",
+            "detail": "Downloaders and adapters normalize OHLCV, futures contracts, calendars, and live ticks."
+          },
+          {
+            "label": "Research",
+            "detail": "Strategies run through Backtrader with Taiwan-market costs, benchmarks, optimization, and walk-forward validation."
+          },
+          {
+            "label": "Decision",
+            "detail": "Validated strategy output is converted into target positions rather than direct orders."
+          },
+          {
+            "label": "Execution",
+            "detail": "Runtime guards, paper/Shioaji adapters, callbacks, reconciliation, and reports control downstream execution."
+          }
+        ],
+        "outcomes": [
+          "Delivered a repeatable research-to-paper-trading foundation with automated tests and explicit safety boundaries.",
+          "Made strategies extensible without modifying the core package through scaffolding, config files, and external loading.",
+          "Documents limitations clearly: the framework is research infrastructure, not a claim of profitable or unattended live trading."
+        ]
+      },
+      "zh": {
+        "title": "quan — 台灣量化研究工具組",
+        "summary": "從研究到模擬交易的 Python 框架，整合台灣市場資料、交易成本回測、滾動前推驗證與 Shioaji 介面。",
+        "dates": "2026 年 7 月 - 目前",
+        "status": "研究框架",
+        "role": "量化研究與平台工程師",
+        "challenge": "台灣市場研究需要一致資料、合理交易成本、可重複回測、嚴謹驗證，以及在正式上線前從策略輸出安全銜接至模擬交易的路徑。",
+        "contribution": [
+          "設計分層 Python 套件與命令列介面，涵蓋資料準備、策略研究、報告與券商中立的執行層。",
+          "實作台灣期貨成本模型、連續合約工具、策略比較、參數掃描與滾動前推驗證。",
+          "整合模擬執行與 Shioaji 介面，加入交易時段、到期日、下單量、緊急停止、速率限制與對帳防護。"
+        ],
+        "technical": [
+          "標準 OHLCV 管線整合 Yahoo Finance、FinMind、TAIFEX、本地 CSV 與 Shioaji 即時資料介面。",
+          "以 Backtrader 進行事件驅動研究，提供十一種策略範本、外部策略載入、指標、CSV／JSON 報告與 SVG 圖表。",
+          "目標部位執行環境將策略決策與券商訂單分離，使同一邏輯能安全地從試跑移至模擬交易。"
+        ],
+        "architecture": [
+          {
+            "label": "市場資料",
+            "detail": "下載器與介面標準化 OHLCV、期貨合約、交易日曆與即時報價。"
+          },
+          {
+            "label": "研究",
+            "detail": "策略透過 Backtrader 執行，納入台灣市場成本、基準、最佳化與滾動前推驗證。"
+          },
+          {
+            "label": "決策",
+            "detail": "通過驗證的策略輸出會轉換為目標部位，而非直接產生訂單。"
+          },
+          {
+            "label": "執行",
+            "detail": "執行防護、模擬與 Shioaji 介面、回呼、對帳及報告共同控制後續交易。"
+          }
+        ],
+        "outcomes": [
+          "交付可重複的研究至模擬交易基礎，包含自動化測試與明確安全邊界。",
+          "透過腳手架、設定檔與外部載入機制，使策略可擴充而不必修改核心套件。",
+          "清楚說明限制：此框架是研究基礎設施，不代表獲利保證或可無人監督進行實盤交易。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "shipping-assistant",
+    "category": "web",
+    "sortStart": "2026-04",
+    "sortEnd": "2026-05",
+    "pillKey": "projects.pills.web",
+    "icon": "ri-qr-scan-2-line",
+    "image": "assets/images/project-shipping-assistant.png",
+    "chips": [
+      "FastAPI",
+      "SQLite",
+      "GS1 UDI",
+      "Excel",
+      "Docker"
+    ],
+    "content": {
+      "en": {
+        "title": "UDI Shipping Assistance System",
+        "summary": "Operational scanning workflow that imports shipment plans, validates GS1 UDI, flags exceptions, and exports auditable completion records.",
+        "dates": "Apr 2026 - May 2026",
+        "status": "Operational system",
+        "role": "Solution architect & full-stack engineer",
+        "challenge": "Daily shipping teams needed a safer way to import shipment plans, scan medical-product UDI codes, catch over-scans or mismatches, and produce an auditable end-of-day result.",
+        "contribution": [
+          "Modeled the shipment workflow from plan import through order selection, scan validation, review, submission, and final export.",
+          "Built GS1 Element String, HRI, and Digital Link parsing with internal-product mapping and explicit exception states.",
+          "Added SQLite persistence, Excel export, database backup, runtime configuration, feature tiers, license handling, Docker packaging, and integration tests."
+        ],
+        "technical": [
+          "FastAPI exposes a versioned operational API and serves a focused single-page scanning interface.",
+          "Browser session state keeps in-progress scans temporary; only confirmed orders are committed to SQLite.",
+          "Service modules separate plan import, UDI mapping, validation, submission, reporting, and launcher behavior."
+        ],
+        "architecture": [
+          {
+            "label": "Input",
+            "detail": "CSV/XLSX shipment plan and scanned GS1 UDI strings enter the operator workspace."
+          },
+          {
+            "label": "Validation",
+            "detail": "UDI parser and mapping data resolve GTIN/UDI-DI, part number, item, and expected quantity."
+          },
+          {
+            "label": "Workflow API",
+            "detail": "FastAPI services manage previews, exception states, submissions, statistics, and session reset."
+          },
+          {
+            "label": "Records",
+            "detail": "Confirmed results persist to SQLite; Excel summaries and a database backup are exported at close."
+          }
+        ],
+        "outcomes": [
+          "Turns scan exceptions into explicit operator decisions instead of silent shipping errors.",
+          "Provides auditable order history, daily statistics, Excel settlement, and backup artifacts.",
+          "Includes route-level unit and real HTTP integration coverage for the operational API."
+        ]
+      },
+      "zh": {
+        "title": "UDI 出貨輔助系統",
+        "summary": "匯入出貨計畫、驗證 GS1 UDI、標示例外，並輸出可稽核完成紀錄的作業系統。",
+        "dates": "2026 年 4 月 - 2026 年 5 月",
+        "status": "作業系統",
+        "role": "解決方案架構師與全端工程師",
+        "challenge": "每日出貨團隊需要更安全的方式匯入出貨計畫、掃描醫療產品 UDI、攔截超量掃描或不符項目，並產生可稽核的日終結果。",
+        "contribution": [
+          "建立從計畫匯入、訂單選擇、掃描驗證、覆核、送出到最終匯出的完整出貨流程模型。",
+          "建置 GS1 Element String、HRI 與 Digital Link 解析，整合內部產品對應及明確例外狀態。",
+          "加入 SQLite 持久化、Excel 匯出、資料庫備份、執行設定、功能分級、授權處理、Docker 封裝與整合測試。"
+        ],
+        "technical": [
+          "FastAPI 提供版本化作業 API，並服務專注於掃描工作的單頁介面。",
+          "瀏覽器工作階段狀態暫存進行中的掃描，只有確認後的訂單才寫入 SQLite。",
+          "服務模組分離計畫匯入、UDI 對應、驗證、送出、報告與啟動器行為。"
+        ],
+        "architecture": [
+          {
+            "label": "輸入",
+            "detail": "CSV／XLSX 出貨計畫與掃描的 GS1 UDI 字串進入操作員工作區。"
+          },
+          {
+            "label": "驗證",
+            "detail": "UDI 解析器與對應資料解析 GTIN／UDI-DI、料號、品項與預期數量。"
+          },
+          {
+            "label": "工作流程 API",
+            "detail": "FastAPI 服務管理預覽、例外狀態、送出、統計與工作階段重設。"
+          },
+          {
+            "label": "紀錄",
+            "detail": "確認結果保存至 SQLite；結束作業時匯出 Excel 摘要與資料庫備份。"
+          }
+        ],
+        "outcomes": [
+          "將掃描例外轉換為明確的操作員決策，避免成為未被發現的出貨錯誤。",
+          "提供可稽核訂單歷程、每日統計、Excel 結算與備份檔案。",
+          "作業 API 具備路由層單元測試與真實 HTTP 整合測試。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "udi-decoder",
+    "category": "data",
+    "sortStart": "2026-03",
+    "sortEnd": "2026-04",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-qr-scan-2-line",
+    "image": "assets/images/project-udi-decoder.png",
+    "imageFit": "cover",
+    "chips": [
+      "Python",
+      "ZXing",
+      "pylibdmtx",
+      "GS1",
+      "Benchmarking"
+    ],
+    "content": {
+      "en": {
+        "title": "Multi-box UDI Data Matrix Decoder",
+        "summary": "Benchmark-driven computer-vision POC for decoding dense carton images into GS1 business fields with safe PASS/REVIEW handling.",
+        "dates": "Mar 2026 - Apr 2026",
+        "status": "Validated POC",
+        "role": "Computer-vision & data engineer",
+        "challenge": "Dense shipping photos can contain many small Data Matrix codes with perspective, occlusion, and repeated cartons. Missing a code must lead to review rather than an unsafe automatic pass.",
+        "contribution": [
+          "Developed a multi-box detection and local-ROI search pipeline tuned for lower-band Data Matrix placement on cartons.",
+          "Combined multiple decoder engines, GS1 parsing, product mapping, density-aware rescue budgets, and annotated artifact export.",
+          "Created benchmark histories and PASS/REVIEW gates based on expected counts and decoded completeness."
+        ],
+        "technical": [
+          "Candidate boxes are ranked toward complete carton hypotheses, then local regions are searched with scale and scene-density aware budgets.",
+          "Decoded content is normalized from GS1 element strings or Digital Links into business fields and mapped to internal products.",
+          "Every run can emit JSON, CSV, candidate data, attempt summaries, benchmark snapshots, and annotated review images."
+        ],
+        "architecture": [
+          {
+            "label": "Image",
+            "detail": "Whole shipping image enters product-box proposal and ranking."
+          },
+          {
+            "label": "ROI search",
+            "detail": "Per-box lower-band and rescue strategies generate Data Matrix candidates."
+          },
+          {
+            "label": "Decode & parse",
+            "detail": "ZXing/pylibdmtx decode symbols; GS1 parsing extracts DI, dates, lot, and serial fields."
+          },
+          {
+            "label": "Business output",
+            "detail": "Mapping enrichment, expected-count gate, JSON/CSV artifacts, and annotated review support PASS or REVIEW."
+          }
+        ],
+        "outcomes": [
+          "Passed the documented fixed five-image suite at 5/5, 5/5, 7/7, 8/8, and 12/12 decoded symbols.",
+          "Established a stronger dense-scene baseline with 47 decoded symbols on the recorded reference image.",
+          "Communicates POC limitations and routes incomplete recognition to review rather than claiming universal recall."
+        ]
+      },
+      "zh": {
+        "title": "多箱 UDI Data Matrix 解碼器",
+        "summary": "以基準測試驅動的電腦視覺概念驗證，將高密度紙箱影像解碼為 GS1 業務欄位，並以 PASS／REVIEW 安全分流。",
+        "dates": "2026 年 3 月 - 2026 年 4 月",
+        "status": "已驗證概念",
+        "role": "電腦視覺與資料工程師",
+        "challenge": "高密度出貨照片可能包含大量尺寸很小、具有透視變形、遮擋及重複紙箱的 Data Matrix。若漏讀任何代碼，系統必須轉交人工覆核，而不能不安全地自動通過。",
+        "contribution": [
+          "開發多紙箱偵測與局部感興趣區域搜尋管線，針對紙箱下方區域的 Data Matrix 位置進行調校。",
+          "整合多種解碼引擎、GS1 解析、產品對應、依密度調整的補救預算與標註檔案匯出。",
+          "建立基準測試歷程，並依預期數量與解碼完整度設定 PASS／REVIEW 閘門。"
+        ],
+        "technical": [
+          "候選紙箱依完整紙箱假設排序，再以縮放比例與場景密度感知的預算搜尋局部區域。",
+          "將 GS1 元素字串或 Digital Link 解碼內容標準化為業務欄位，並對應內部產品。",
+          "每次執行可輸出 JSON、CSV、候選資料、嘗試摘要、基準快照與供覆核使用的標註影像。"
+        ],
+        "architecture": [
+          {
+            "label": "影像",
+            "detail": "完整出貨影像進入產品紙箱候選產生與排序流程。"
+          },
+          {
+            "label": "區域搜尋",
+            "detail": "針對每個紙箱的下方區域與補救策略產生 Data Matrix 候選。"
+          },
+          {
+            "label": "解碼與解析",
+            "detail": "ZXing 與 pylibdmtx 解碼符號；GS1 解析器擷取 DI、日期、批號與序號。"
+          },
+          {
+            "label": "業務輸出",
+            "detail": "產品對應補充、預期數量閘門、JSON／CSV 檔案與標註覆核共同支援 PASS 或 REVIEW。"
+          }
+        ],
+        "outcomes": [
+          "在記錄的固定五張影像測試集中，分別達成 5／5、5／5、7／7、8／8 與 12／12 個符號解碼。",
+          "在記錄的參考影像上解碼 47 個符號，建立更強的高密度場景基準。",
+          "清楚傳達概念驗證限制，並將不完整辨識轉交覆核，而非宣稱能涵蓋所有情況。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "market-888",
+    "category": "web",
+    "sortStart": "2026-02",
+    "sortEnd": "2026-03",
+    "pillKey": "projects.pills.web",
+    "icon": "ri-store-2-line",
+    "image": "assets/images/project-888-market.png",
+    "chips": [
+      "Vue 3",
+      "Express",
+      "MySQL",
+      "Docker",
+      "PDFKit"
+    ],
+    "content": {
+      "en": {
+        "title": "888 Card Market Platform",
+        "summary": "Full-stack vendor reservation and administration system with booth availability, rental inventory, and generated contracts.",
+        "dates": "Feb 2026 - Mar 2026",
+        "status": "Full-stack demo",
+        "role": "Solution architect & full-stack engineer",
+        "challenge": "A physical card market needed one system for brand presentation, vendor onboarding, booth availability, reservations, rental extras, contract generation, and staff administration.",
+        "contribution": [
+          "Designed the vendor journey from registration and login through date/booth selection, equipment rental, reservation, and contract creation.",
+          "Built role-protected admin operations for users, bookings, contracts, open dates, rental inventory, and CSV exchange.",
+          "Containerized the Vue client, Node API, and MySQL database with an optional Cloudflare tunnel for demonstrations."
+        ],
+        "technical": [
+          "Vue 3/Vite single-page frontend with Pinia and route-based Home, Reserve, and Admin experiences.",
+          "Express/Sequelize API handles JWT auth, availability, reservations, staff roles, uploads, and management endpoints.",
+          "PDFKit generates Chinese reservation contracts; Docker volumes preserve contracts and MySQL data."
+        ],
+        "architecture": [
+          {
+            "label": "Client",
+            "detail": "Vue SPA presents the brand site, vendor reservation flow, and role-aware administration."
+          },
+          {
+            "label": "API",
+            "detail": "Express validates identity and coordinates booth, date, rental, reservation, and admin services."
+          },
+          {
+            "label": "Domain data",
+            "detail": "Sequelize persists members, availability, reservations, and configuration in MySQL."
+          },
+          {
+            "label": "Documents & delivery",
+            "detail": "PDFKit creates contracts in persistent storage; Docker Compose runs client, API, database, and optional tunnel."
+          }
+        ],
+        "outcomes": [
+          "Delivered an end-to-end demonstrator rather than a disconnected marketing page and admin mockup.",
+          "Automated reservation contracts and centralized the operational settings staff need to run open market dates.",
+          "Defined a clear extension path for payments, e-signature, audit logs, object storage, and commerce modules."
+        ]
+      },
+      "zh": {
+        "title": "888 卡牌市集平台",
+        "summary": "全端攤商預約與管理系統，整合攤位可用性、租賃庫存與合約產生。",
+        "dates": "2026 年 2 月 - 2026 年 3 月",
+        "status": "全端展示",
+        "role": "解決方案架構師與全端工程師",
+        "challenge": "實體卡牌市集需要一套系統，統一處理品牌展示、攤商加入、攤位可用性、預約、加租設備、合約產生與員工管理。",
+        "contribution": [
+          "設計從註冊登入、日期與攤位選擇、設備租借，到預約及合約建立的完整攤商流程。",
+          "建置角色權限保護的後台作業，管理使用者、預約、合約、開放日期、租賃庫存與 CSV 交換。",
+          "將 Vue 用戶端、Node API 與 MySQL 資料庫容器化，並提供選用的 Cloudflare Tunnel 進行展示。"
+        ],
+        "technical": [
+          "以 Vue 3、Vite 與 Pinia 建立單頁前端，並透過路由區分首頁、預約與管理體驗。",
+          "Express 與 Sequelize API 處理 JWT 驗證、可用性、預約、員工角色、上傳及管理端點。",
+          "PDFKit 產生中文預約合約，Docker Volume 保存合約與 MySQL 資料。"
+        ],
+        "architecture": [
+          {
+            "label": "用戶端",
+            "detail": "Vue 單頁應用呈現品牌網站、攤商預約流程與依角色顯示的管理介面。"
+          },
+          {
+            "label": "API",
+            "detail": "Express 驗證身分，並協調攤位、日期、租賃、預約與後台服務。"
+          },
+          {
+            "label": "領域資料",
+            "detail": "Sequelize 將會員、可用性、預約與設定資料保存至 MySQL。"
+          },
+          {
+            "label": "文件與交付",
+            "detail": "PDFKit 將合約存入持久化儲存空間；Docker Compose 啟動用戶端、API、資料庫與選用通道。"
+          }
+        ],
+        "outcomes": [
+          "交付端到端展示系統，而非彼此分離的行銷頁面與後台模型。",
+          "自動產生預約合約，並集中管理營運市集開放日期所需的設定。",
+          "為金流、電子簽章、稽核紀錄、物件儲存與商務模組定義清楚的擴充路徑。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "x-media-downloader",
+    "category": "data",
+    "sortStart": "2025-12",
+    "sortEnd": "2025-12",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-download-cloud-2-line",
+    "image": "assets/images/project-x-downloader.png",
+    "chips": [
+      "Python",
+      "X API v2",
+      "Requests",
+      "CLI",
+      "dotenv"
+    ],
+    "content": {
+      "en": {
+        "title": "X Media Downloader",
+        "summary": "Configurable Python utility for retrieving recent account media through X API v2 with filters, pagination, rate limits, and CDN fallbacks.",
+        "dates": "Dec 2025",
+        "status": "Automation utility",
+        "role": "Python engineer",
+        "challenge": "A repeatable collection workflow needed to retrieve only recent media from a selected X account while handling API limits, media variants, and unreliable image URLs.",
+        "contribution": [
+          "Built a configurable CLI with environment defaults and command-line overrides for account, lookback window, output, and media types.",
+          "Implemented pagination, keyword filters, best-video selection, rate-limit waiting, and photo-size fallbacks.",
+          "Separated API retrieval, media normalization, and file download into testable utility functions and data objects."
+        ],
+        "technical": [
+          "X API v2 resolves accounts and recent posts; expansions return attached media metadata.",
+          "The downloader selects original/large/medium/small fallbacks and browser-compatible headers for CDN reliability.",
+          "dotenv configuration keeps bearer tokens out of source while CLI flags support scheduled or ad-hoc runs."
+        ],
+        "architecture": [
+          {
+            "label": "Configuration",
+            "detail": "Environment variables and CLI options define account, time range, filters, and output policy."
+          },
+          {
+            "label": "X API",
+            "detail": "Authenticated requests resolve the user, page through recent posts, and expand media metadata."
+          },
+          {
+            "label": "Selection",
+            "detail": "Keyword/media filters, variant ranking, URL normalization, and duplicate control select artifacts."
+          },
+          {
+            "label": "Download",
+            "detail": "Resilient HTTP retrieval writes timestamped media files and reports rate-limit or content failures."
+          }
+        ],
+        "outcomes": [
+          "Reduced a manual monitoring task to a repeatable, configurable Python workflow.",
+          "Handles common operational failure modes instead of assuming one media URL or an unlimited API.",
+          "Supports photo-first use while allowing videos, replies, and reposts when explicitly enabled."
+        ]
+      },
+      "zh": {
+        "title": "X 媒體下載工具",
+        "summary": "可設定的 Python 工具，透過 X API v2 擷取近期帳號媒體，並處理篩選、分頁、速率限制與 CDN 備援。",
+        "dates": "2025 年 12 月",
+        "status": "自動化工具",
+        "role": "Python 工程師",
+        "challenge": "可重複的蒐集流程需要只擷取指定 X 帳號的近期媒體，同時處理 API 限制、媒體版本與不穩定的圖片網址。",
+        "contribution": [
+          "建立可設定的命令列工具，以環境變數作為預設值，並支援帳號、回溯期間、輸出與媒體類型參數覆寫。",
+          "實作分頁、關鍵字篩選、最佳影片版本選擇、速率限制等待與圖片尺寸備援。",
+          "將 API 擷取、媒體標準化與檔案下載拆分為可測試的工具函式與資料物件。"
+        ],
+        "technical": [
+          "X API v2 解析帳號與近期貼文，並透過 expansions 回傳附件媒體的詮釋資料。",
+          "下載器選擇原始、大、中、小尺寸備援，並使用瀏覽器相容標頭提升 CDN 可靠度。",
+          "dotenv 設定避免將 Bearer Token 寫入原始碼，CLI 旗標則支援排程或臨時執行。"
+        ],
+        "architecture": [
+          {
+            "label": "設定",
+            "detail": "環境變數與 CLI 選項定義帳號、時間範圍、篩選及輸出政策。"
+          },
+          {
+            "label": "X API",
+            "detail": "通過驗證的請求解析使用者、分頁取得近期貼文，並展開媒體詮釋資料。"
+          },
+          {
+            "label": "選取",
+            "detail": "關鍵字與媒體篩選、版本排序、網址標準化及重複控制共同選出檔案。"
+          },
+          {
+            "label": "下載",
+            "detail": "具備復原能力的 HTTP 擷取會寫入含時間戳記的媒體檔，並回報速率限制或內容錯誤。"
+          }
+        ],
+        "outcomes": [
+          "將人工監控工作縮減為可重複、可設定的 Python 流程。",
+          "處理常見營運失敗情境，而非假設只有單一媒體網址或無限制 API。",
+          "預設支援圖片優先使用，也可在明確啟用後處理影片、回覆與轉發。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "production-copilot",
+    "category": "genai",
+    "sortStart": "2025-11",
+    "sortEnd": "2025-12",
+    "sortUpdated": "2025-12-29",
+    "pillKey": "projects.pills.genai",
+    "icon": "ri-robot-2-line",
+    "image": "assets/images/project-production-copilot-v2.png",
+    "chips": [
+      "FastAPI",
+      "Chainlit",
+      "Postgres",
+      "Neo4j",
+      "Chroma",
+      "Ollama"
+    ],
+    "content": {
+      "en": {
+        "title": "Production Planning Copilot",
+        "summary": "Assistant that transforms product specs into optimized production plans with domain RAG and safety rails.",
+        "dates": "Nov 2025 - Dec 2025",
+        "status": "GenAI demonstrator",
+        "role": "GenAI architect & backend engineer",
+        "challenge": "Production planners need to query schedules, facts, constraints, and operating knowledge in natural language without letting an LLM invent production data.",
+        "contribution": [
+          "Designed an agentic orchestration layer that routes questions to relational, graph, or vector tools.",
+          "Built multilingual question/answer pivots, deterministic fallback behavior, seed data, and startup automation.",
+          "Containerized the complete demonstration stack with isolated API and Chainlit dependencies."
+        ],
+        "technical": [
+          "Postgres stores operational facts and schedules; Neo4j represents semantic metadata and relationships.",
+          "Chroma retrieves planning documents while Ollama provides local embeddings and optional model serving.",
+          "FastAPI orchestrates Graph-to-SQL and Graph-to-Vector tools; Chainlit provides the conversational demo interface."
+        ],
+        "architecture": [
+          {
+            "label": "Interface",
+            "detail": "Chainlit accepts multilingual planning questions and displays grounded responses."
+          },
+          {
+            "label": "Orchestration",
+            "detail": "FastAPI agent classifies intent and routes work to graph, SQL, vector, or translation tools."
+          },
+          {
+            "label": "Knowledge",
+            "detail": "Postgres facts, Neo4j semantics, Chroma documents, and seeded rules provide bounded context."
+          },
+          {
+            "label": "Runtime",
+            "detail": "Docker Compose coordinates API, UI, databases, vector store, and local Ollama services."
+          }
+        ],
+        "outcomes": [
+          "Demonstrates how LLM interaction can be grounded in operational systems rather than free-form generation.",
+          "Keeps the demo functional with deterministic templates when external model credentials are unavailable.",
+          "Separates components and ports so a second stack can run without dependency or service collisions."
+        ]
+      },
+      "zh": {
+        "title": "生產規劃 Copilot",
+        "summary": "以領域 RAG 與防護機制，將產品規格轉成最佳化生產計畫的助理。",
+        "dates": "2025 年 11 月 - 2025 年 12 月",
+        "status": "生成式 AI 展示",
+        "role": "生成式 AI 架構師與後端工程師",
+        "challenge": "生產規劃人員需要用自然語言查詢排程、事實、限制與作業知識，同時避免大型語言模型虛構生產資料。",
+        "contribution": [
+          "設計代理式編排層，依問題將工作路由至關聯式、圖譜或向量工具。",
+          "建置多語問答轉換、確定性備援行為、種子資料與啟動自動化。",
+          "將完整展示技術堆疊容器化，並隔離 API 與 Chainlit 相依套件。"
+        ],
+        "technical": [
+          "Postgres 儲存營運事實與排程，Neo4j 表達語意詮釋資料與關係。",
+          "Chroma 檢索規劃文件，Ollama 提供本地嵌入與選用的模型服務。",
+          "FastAPI 編排 Graph-to-SQL 與 Graph-to-Vector 工具，Chainlit 提供對話式展示介面。"
+        ],
+        "architecture": [
+          {
+            "label": "介面",
+            "detail": "Chainlit 接收多語規劃問題，並顯示具有依據的回覆。"
+          },
+          {
+            "label": "編排",
+            "detail": "FastAPI 代理判斷意圖，並將工作路由至圖譜、SQL、向量或翻譯工具。"
+          },
+          {
+            "label": "知識",
+            "detail": "Postgres 事實、Neo4j 語意、Chroma 文件與預設規則共同提供受限上下文。"
+          },
+          {
+            "label": "執行環境",
+            "detail": "Docker Compose 協調 API、介面、資料庫、向量儲存與本地 Ollama 服務。"
+          }
+        ],
+        "outcomes": [
+          "展示如何將 LLM 互動建立在營運系統的事實上，而非自由生成。",
+          "當外部模型憑證不可用時，仍以確定性範本維持展示功能。",
+          "分離元件與連接埠，使第二套技術堆疊也能執行而不產生相依或服務衝突。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "mcp-graphdb",
+    "category": "genai",
+    "sortStart": "2025-05",
+    "sortEnd": "2025-06",
+    "pillKey": "projects.pills.genai",
+    "icon": "ri-node-tree",
+    "image": "assets/images/project-mcp-graphdb-v2.png",
+    "chips": [
+      "MCP",
+      "GraphDB",
+      "SPARQL",
+      "JavaScript",
+      "LLM tools"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/adam951502/mcp-graphdb",
+        "icon": "ri-github-line"
+      }
+    ],
+    "content": {
+      "en": {
+        "title": "GraphDB MCP Server",
+        "summary": "Open-source Model Context Protocol connector that gives LLM clients controlled, read-only access to GraphDB repositories and SPARQL.",
+        "dates": "May 2025 - Jun 2025",
+        "status": "Open-source connector",
+        "role": "Protocol & knowledge-graph engineer",
+        "challenge": "LLM clients needed a narrow, read-only way to inspect approved knowledge graphs and execute SPARQL without receiving broad database credentials or write access.",
+        "contribution": [
+          "Implemented an MCP server that exposes GraphDB repository discovery and read-only SPARQL operations as model tools.",
+          "Defined the protocol boundary between conversational clients and the semantic database.",
+          "Published the connector and its usage documentation as an open-source repository."
+        ],
+        "technical": [
+          "JavaScript MCP server accepts structured tool requests from compatible LLM clients.",
+          "GraphDB HTTP endpoints execute repository discovery and read-only SPARQL queries.",
+          "Responses are normalized for conversational use while the server preserves a constrained access surface."
+        ],
+        "architecture": [
+          {
+            "label": "LLM client",
+            "detail": "An MCP-compatible assistant requests graph discovery or a bounded query."
+          },
+          {
+            "label": "MCP server",
+            "detail": "Tool schemas validate requests and enforce the read-only connector boundary."
+          },
+          {
+            "label": "GraphDB",
+            "detail": "Repository APIs and SPARQL endpoints evaluate approved semantic queries."
+          },
+          {
+            "label": "Grounded result",
+            "detail": "Normalized graph results return to the model for explanation or downstream reasoning."
+          }
+        ],
+        "outcomes": [
+          "Shows practical integration of the Model Context Protocol with enterprise semantic infrastructure.",
+          "Reduces the privilege surface by focusing the public connector on read-only graph access.",
+          "Reuses knowledge-graph experience from sustainability and R&D systems in a portable developer tool."
+        ]
+      },
+      "zh": {
+        "title": "GraphDB MCP 伺服器",
+        "summary": "開源 Model Context Protocol 連接器，讓 LLM 用戶端能以受控唯讀方式存取 GraphDB 儲存庫與 SPARQL。",
+        "dates": "2025 年 5 月 - 2025 年 6 月",
+        "status": "開源連接器",
+        "role": "協定與知識圖譜工程師",
+        "challenge": "LLM 用戶端需要一種範圍明確且唯讀的方式，檢視經核准的知識圖譜並執行 SPARQL，同時避免取得廣泛資料庫憑證或寫入權限。",
+        "contribution": [
+          "實作 MCP 伺服器，將 GraphDB 儲存庫探索與唯讀 SPARQL 操作公開為模型工具。",
+          "定義對話式用戶端與語意資料庫之間的協定邊界。",
+          "將連接器與使用文件發布為開源儲存庫。"
+        ],
+        "technical": [
+          "JavaScript MCP 伺服器接收相容 LLM 用戶端傳入的結構化工具請求。",
+          "GraphDB HTTP 端點執行儲存庫探索與唯讀 SPARQL 查詢。",
+          "回傳結果經標準化以供對話使用，同時維持受限的伺服器存取範圍。"
+        ],
+        "architecture": [
+          {
+            "label": "LLM 用戶端",
+            "detail": "相容 MCP 的助理要求探索圖譜或執行範圍受限的查詢。"
+          },
+          {
+            "label": "MCP 伺服器",
+            "detail": "工具結構驗證請求，並強制執行唯讀連接器邊界。"
+          },
+          {
+            "label": "GraphDB",
+            "detail": "儲存庫 API 與 SPARQL 端點執行經核准的語意查詢。"
+          },
+          {
+            "label": "具依據的結果",
+            "detail": "標準化圖譜結果回傳模型，用於說明或後續推理。"
+          }
+        ],
+        "outcomes": [
+          "展示 Model Context Protocol 與企業語意基礎設施的實際整合。",
+          "將公開連接器聚焦於唯讀圖譜存取，降低權限暴露範圍。",
+          "把永續與研發系統的知識圖譜經驗轉化為可攜式開發工具。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "ollama-docker",
+    "category": "genai",
+    "sortStart": "2024-04",
+    "sortEnd": "2025-03",
+    "pillKey": "projects.pills.genai",
+    "icon": "ri-server-line",
+    "image": "assets/images/project-ollama-docker-v2.png",
+    "chips": [
+      "Ollama",
+      "Docker Compose",
+      "Python",
+      "Azure",
+      "REST"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/adam951502/ollama-docker",
+        "icon": "ri-github-line"
+      },
+      {
+        "label": "Demo",
+        "url": "https://ollama-docker.azurewebsites.net/",
+        "icon": "ri-external-link-line"
+      }
+    ],
+    "content": {
+      "en": {
+        "title": "Ollama Docker Deployment",
+        "summary": "Reproducible container setup for local LLM serving, persistence, service integration, and hosted demonstrations.",
+        "dates": "Apr 2024 - Mar 2025",
+        "status": "Open-source deployment",
+        "role": "Backend & DevOps engineer",
+        "challenge": "Local LLM experimentation becomes difficult to reproduce when model serving, dependencies, persistence, and network settings are installed manually on each machine.",
+        "contribution": [
+          "Packaged Ollama and its supporting service configuration into a repeatable Docker Compose workflow.",
+          "Documented model startup, persistence, environment settings, and deployment paths.",
+          "Published a public repository and hosted demonstration endpoint for easier evaluation."
+        ],
+        "technical": [
+          "Docker Compose defines the model runtime, service networking, volumes, and application dependencies.",
+          "Python service code exposes health and model-facing integration points for local or hosted use.",
+          "Environment-based configuration keeps development and cloud deployment paths aligned."
+        ],
+        "architecture": [
+          {
+            "label": "Client",
+            "detail": "Local applications or API users send prompts or health requests."
+          },
+          {
+            "label": "Application service",
+            "detail": "Python integration layer validates and forwards model operations."
+          },
+          {
+            "label": "Model runtime",
+            "detail": "Ollama serves configured models inside an isolated container with persistent storage."
+          },
+          {
+            "label": "Delivery",
+            "detail": "Docker Compose runs locally; the same configuration can be adapted for hosted demonstrations."
+          }
+        ],
+        "outcomes": [
+          "Makes a multi-service local LLM environment reproducible with one documented startup path.",
+          "Provides a reusable base for later RAG, chatbot, and copilot prototypes.",
+          "Demonstrates container, API, and model-runtime integration beyond notebook experimentation."
+        ]
+      },
+      "zh": {
+        "title": "Ollama Docker 部署",
+        "summary": "可重現的本機 LLM 容器化設定，涵蓋持久化、服務整合與線上展示。",
+        "dates": "2024 年 4 月 - 2025 年 3 月",
+        "status": "開源部署",
+        "role": "後端與 DevOps 工程師",
+        "challenge": "若在每台電腦上手動安裝模型服務、相依套件、持久化與網路設定，本地 LLM 實驗將難以重現。",
+        "contribution": [
+          "將 Ollama 與其支援服務設定封裝為可重複使用的 Docker Compose 工作流程。",
+          "記錄模型啟動、持久化、環境設定與部署路徑。",
+          "發布公開儲存庫與線上展示端點，降低評估門檻。"
+        ],
+        "technical": [
+          "Docker Compose 定義模型執行環境、服務網路、Volume 與應用程式相依項目。",
+          "Python 服務程式碼提供健康檢查及面向模型的整合端點，支援本地或託管使用。",
+          "以環境變數為基礎的設定，讓開發與雲端部署路徑保持一致。"
+        ],
+        "architecture": [
+          {
+            "label": "用戶端",
+            "detail": "本地應用程式或 API 使用者送出提示詞或健康檢查請求。"
+          },
+          {
+            "label": "應用服務",
+            "detail": "Python 整合層驗證並轉送模型操作。"
+          },
+          {
+            "label": "模型執行環境",
+            "detail": "Ollama 在具持久化儲存的隔離容器內提供指定模型。"
+          },
+          {
+            "label": "交付",
+            "detail": "Docker Compose 可在本地啟動，同一設定也能調整為線上展示。"
+          }
+        ],
+        "outcomes": [
+          "透過一條文件化的啟動路徑，讓多服務本地 LLM 環境可重現。",
+          "為後續 RAG、聊天機器人與 Copilot 原型提供可重用基礎。",
+          "展現超越 Notebook 實驗的容器、API 與模型執行環境整合能力。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "chatbot",
+    "category": "genai",
+    "sortStart": "2024-10",
+    "sortEnd": "2025-10",
+    "pillKey": "projects.pills.genai",
+    "icon": "ri-robot-2-line",
+    "image": "assets/projects/project-chatbot-archi.png",
+    "imageFit": "cover",
+    "chips": [
+      "RAG",
+      "GraphRAG",
+      "Chainlit",
+      "Ollama",
+      "Docker"
+    ],
+    "content": {
+      "en": {
+        "title": "Automotive R&D Assistant Chatbot",
+        "summary": "Recommender system with retrieval, grounding, and policy-aware responses for automotive R&D.",
+        "dates": "Oct 2024 - Oct 2025",
+        "status": "Enterprise R&D assistant",
+        "role": "GenAI & knowledge engineer",
+        "challenge": "Automotive R&D users needed a private assistant that could retrieve engineering evidence, preserve internal knowledge boundaries, and provide useful answers without sending sensitive content to a public model service.",
+        "contribution": [
+          "Designed local-first RAG and GraphRAG retrieval over domain documents and structured knowledge.",
+          "Built the Chainlit conversational experience, retrieval pipeline, prompt controls, and Docker runtime.",
+          "Connected LLM, graph, vector, and document services behind a modular Python application."
+        ],
+        "technical": [
+          "Ollama provides local model execution; vector retrieval and graph relationships contribute evidence.",
+          "Python orchestration combines query understanding, retrieval, context assembly, and response generation.",
+          "Chainlit delivers the chat UI while Docker keeps the full environment reproducible on-premises."
+        ],
+        "architecture": [
+          {
+            "label": "Conversation",
+            "detail": "Chainlit captures engineering questions and displays sources and answers."
+          },
+          {
+            "label": "Retrieval",
+            "detail": "RAG and GraphRAG search documents, metadata, and knowledge relationships."
+          },
+          {
+            "label": "Generation",
+            "detail": "A local Ollama model receives bounded evidence and domain prompt instructions."
+          },
+          {
+            "label": "Deployment",
+            "detail": "Docker services keep data, application, and model execution inside the controlled environment."
+          }
+        ],
+        "outcomes": [
+          "Demonstrated private, grounded GenAI assistance for engineering work rather than a generic chatbot.",
+          "Combined document retrieval and graph relationships to improve traceability and context.",
+          "Created an on-premises-friendly architecture aligned with sensitive R&D constraints."
+        ]
+      },
+      "zh": {
+        "title": "汽車研發助理聊天機器人",
+        "summary": "為汽車研發打造具檢索、溯源與政策約束的推薦助理。",
+        "dates": "2024 年 10 月 - 2025 年 10 月",
+        "status": "企業研發助理",
+        "role": "生成式 AI 與知識工程師",
+        "challenge": "汽車研發人員需要一套私有助理，既能檢索工程證據、維持內部知識邊界，又不必將敏感內容傳送至公有模型服務。",
+        "contribution": [
+          "針對領域文件與結構化知識，設計以本地運作為優先的 RAG 與 GraphRAG 檢索流程。",
+          "建置 Chainlit 對話體驗、檢索管線、提示詞控制與 Docker 執行環境。",
+          "以模組化 Python 應用程式串接大型語言模型、圖譜、向量與文件服務。"
+        ],
+        "technical": [
+          "Ollama 負責本地模型推論，並由向量檢索與圖譜關係共同提供證據。",
+          "Python 編排層整合查詢理解、檢索、上下文組裝與回覆生成。",
+          "Chainlit 提供聊天介面，Docker 則確保完整環境可在內部部署並重現。"
+        ],
+        "architecture": [
+          {
+            "label": "對話",
+            "detail": "Chainlit 接收工程問題，並呈現來源與回答。"
+          },
+          {
+            "label": "檢索",
+            "detail": "RAG 與 GraphRAG 搜尋文件、詮釋資料及知識關係。"
+          },
+          {
+            "label": "生成",
+            "detail": "本地 Ollama 模型只接收受限證據與領域提示詞指令。"
+          },
+          {
+            "label": "部署",
+            "detail": "Docker 服務讓資料、應用程式與模型推論都留在受控環境內。"
+          }
+        ],
+        "outcomes": [
+          "展示適用於工程工作的私有且具依據之生成式 AI 助理，而非一般聊天機器人。",
+          "結合文件檢索與圖譜關係，提升可追溯性與上下文品質。",
+          "建立符合敏感研發限制、適合內部部署的系統架構。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "heraklion",
+    "category": "data",
+    "sortStart": "2022-03",
+    "sortEnd": "2025-10",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-heraklion-4-3.jpg",
+    "imageFit": "cover",
+    "chips": [
+      "Python",
+      "Knowledge Graph",
+      "SPARQL",
+      "ETL",
+      "CI/CD"
+    ],
+    "links": [
+      {
+        "label": "Project site",
+        "url": "https://www.heraklion-projekt.de/",
+        "icon": "ri-external-link-line"
+      },
+      {
+        "label": "Video",
+        "url": "https://www.youtube.com/watch?v=2JG96MAhk3w",
+        "icon": "ri-youtube-line"
+      }
+    ],
+    "content": {
+      "en": {
+        "title": "HERAKLION",
+        "summary": "Material lifecycle knowledge graph with SPARQL analytics powering sustainability reporting.",
+        "dates": "Mar 2022 - Oct 2025",
+        "status": "Research data space",
+        "role": "Backend, data & knowledge engineer",
+        "challenge": "Crisis and resilience stakeholders needed to exchange heterogeneous data with shared meaning, provenance, and reusable analytics across organizational boundaries.",
+        "contribution": [
+          "Developed Python data-provider and metadata-extraction components for the resilience data space.",
+          "Modeled semantic concepts with ontologies and knowledge graphs, then queried them through SPARQL workflows.",
+          "Contributed requirements, API delivery, CI/CD, documentation, and agile coordination across the project."
+        ],
+        "technical": [
+          "Python ETL and APIs normalize source data and publish interoperable metadata.",
+          "Ontology and graph layers provide shared semantics and queryable relationships.",
+          "Containerized services and CI/CD support repeatable integration across project partners."
+        ],
+        "architecture": [
+          {
+            "label": "Providers",
+            "detail": "Partner systems publish domain data and descriptive metadata."
+          },
+          {
+            "label": "Interoperability",
+            "detail": "Python pipelines normalize payloads and align them to shared semantic models."
+          },
+          {
+            "label": "Data space",
+            "detail": "Connector and governance services exchange data while retaining provenance and control."
+          },
+          {
+            "label": "Knowledge & apps",
+            "detail": "Ontologies, graphs, SPARQL analytics, and resilience applications consume the integrated data."
+          }
+        ],
+        "outcomes": [
+          "Delivered reusable data and semantic components in a multi-partner research setting.",
+          "Connected backend engineering with ontology, graph, requirements, and delivery responsibilities.",
+          "Supported data-driven resilience analysis while preserving the architecture of a distributed data space."
+        ]
+      },
+      "zh": {
+        "title": "HERAKLION",
+        "summary": "以 SPARQL 分析支持永續報告的材料生命週期知識圖譜。",
+        "dates": "2022 年 3 月 - 2025 年 10 月",
+        "status": "研究資料空間",
+        "role": "後端、資料與知識工程師",
+        "challenge": "危機管理與韌性領域的利害關係人需要跨組織交換異質資料，同時維持共同語意、資料來源與可重用分析能力。",
+        "contribution": [
+          "為韌性資料空間開發 Python 資料提供者與詮釋資料擷取元件。",
+          "以本體與知識圖譜建模語意概念，並透過 SPARQL 工作流程查詢。",
+          "參與需求分析、API 交付、CI/CD、文件撰寫與跨團隊敏捷協作。"
+        ],
+        "technical": [
+          "Python ETL 與 API 將來源資料標準化，並發布可互通的詮釋資料。",
+          "本體與圖譜層提供共同語意與可查詢的關係。",
+          "容器化服務與 CI/CD 支援專案夥伴之間可重複的系統整合。"
+        ],
+        "architecture": [
+          {
+            "label": "資料提供者",
+            "detail": "合作夥伴系統發布領域資料與描述性詮釋資料。"
+          },
+          {
+            "label": "互通層",
+            "detail": "Python 管線標準化資料內容，並對齊共同語意模型。"
+          },
+          {
+            "label": "資料空間",
+            "detail": "連接器與治理服務交換資料，同時保留來源與控制權。"
+          },
+          {
+            "label": "知識與應用",
+            "detail": "本體、圖譜、SPARQL 分析與韌性應用程式使用整合後的資料。"
+          }
+        ],
+        "outcomes": [
+          "在多夥伴研究環境中交付可重用的資料與語意元件。",
+          "將後端工程與本體、圖譜、需求及交付責任整合。",
+          "在維持分散式資料空間架構的同時，支援資料驅動的韌性分析。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "ecommerce",
+    "category": "web",
+    "sortStart": "2023-05",
+    "sortEnd": "2024-05",
+    "pillKey": "projects.pills.web",
+    "icon": "ri-global-line",
+    "image": "assets/images/project-aurore-website.png",
+    "chips": [
+      "E-commerce",
+      "Payments",
+      "Analytics",
+      "SEO",
+      "Growth"
+    ],
+    "content": {
+      "en": {
+        "title": "E-commerce Platform",
+        "summary": "Shop build, payments, and marketing analytics for Aurore Collection.",
+        "dates": "May 2023 - May 2024",
+        "status": "Founder-led product",
+        "role": "Co-founder, product owner & web builder",
+        "challenge": "A new jewelry brand needed a credible online storefront and an operating model that connected discovery, checkout, fulfillment, analytics, and marketing experiments.",
+        "contribution": [
+          "Owned the product from business model and site structure through launch, payments, content, and fulfillment.",
+          "Implemented analytics and conversion tracking to support marketing decisions.",
+          "Coordinated a lean remote team, vendors, and ongoing product operations."
+        ],
+        "technical": [
+          "Responsive storefront and structured product content supported search, browsing, and checkout.",
+          "Payment, fulfillment, and analytics services formed the operational commerce stack.",
+          "Campaign and conversion signals fed iterative content and growth decisions."
+        ],
+        "architecture": [
+          {
+            "label": "Acquisition",
+            "detail": "Social, campaign, and search traffic lands on product and collection content."
+          },
+          {
+            "label": "Storefront",
+            "detail": "Responsive catalog, product detail, cart, and checkout guide purchase decisions."
+          },
+          {
+            "label": "Commerce services",
+            "detail": "Payments, order handling, fulfillment, and customer communication support operations."
+          },
+          {
+            "label": "Learning loop",
+            "detail": "Analytics and conversion tracking inform marketing and product iteration."
+          }
+        ],
+        "outcomes": [
+          "Launched a complete commerce experience rather than only a brand site.",
+          "Demonstrated product ownership across design, implementation, operations, marketing, and team coordination.",
+          "Used evidence from analytics to guide growth experiments and conversion work."
+        ]
+      },
+      "zh": {
+        "title": "Aurore 電商平台",
+        "summary": "為 Aurore Collection 建立商店、金流與成長分析。",
+        "dates": "2023 年 5 月 - 2024 年 5 月",
+        "status": "創辦人主導產品",
+        "role": "共同創辦人、產品負責人與網站開發者",
+        "challenge": "新創珠寶品牌需要可信賴的線上商店，以及串連品牌探索、結帳、履約、分析與行銷實驗的營運模式。",
+        "contribution": [
+          "從商業模式、網站架構到上線、金流、內容與履約，全程負責產品。",
+          "實作分析與轉換追蹤，支援行銷決策。",
+          "協調精實遠端團隊、供應商與日常產品營運。"
+        ],
+        "technical": [
+          "響應式商店與結構化商品內容支援搜尋、瀏覽與結帳流程。",
+          "金流、履約與分析服務構成電商營運技術堆疊。",
+          "活動與轉換訊號回饋至內容迭代與成長決策。"
+        ],
+        "architecture": [
+          {
+            "label": "流量獲取",
+            "detail": "社群、廣告活動與搜尋流量導向商品及系列內容。"
+          },
+          {
+            "label": "商店前台",
+            "detail": "響應式目錄、商品詳情、購物車與結帳流程協助購買決策。"
+          },
+          {
+            "label": "商務服務",
+            "detail": "金流、訂單處理、履約與顧客溝通支援日常營運。"
+          },
+          {
+            "label": "學習迴圈",
+            "detail": "分析與轉換追蹤結果用於行銷及產品迭代。"
+          }
+        ],
+        "outcomes": [
+          "推出完整電商體驗，而不只是品牌形象網站。",
+          "展現橫跨設計、實作、營運、行銷與團隊協調的產品負責能力。",
+          "以分析證據引導成長實驗與轉換優化。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "union",
+    "category": "web",
+    "sortStart": "2023-02",
+    "sortEnd": "2023-03",
+    "pillKey": "projects.pills.web",
+    "icon": "ri-global-line",
+    "image": "assets/images/project-union-website.png",
+    "architectureImage": "assets/projects/website-union.png",
+    "chips": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "AWS Amplify",
+      "GitHub"
+    ],
+    "links": [
+      {
+        "label": "Live site",
+        "url": "https://www.zhflu.org/",
+        "icon": "ri-external-link-line"
+      }
+    ],
+    "content": {
+      "en": {
+        "title": "ZHFLU-Union Website",
+        "summary": "Union information site with clear navigation and member resources.",
+        "dates": "Feb 2023 - Mar 2023",
+        "status": "Public information site",
+        "role": "Frontend & deployment engineer",
+        "challenge": "A labor union needed an accessible public information hub that members could navigate easily and maintain through a simple deployment workflow.",
+        "contribution": [
+          "Designed and built the responsive information architecture, content pages, and interaction patterns.",
+          "Connected GitHub source control to AWS Amplify deployment and the production domain.",
+          "Structured member resources so important information could be found without a complex CMS."
+        ],
+        "technical": [
+          "Static HTML/CSS/JavaScript keeps the public site fast, portable, and inexpensive to operate.",
+          "GitHub provides versioned content and code; AWS Amplify builds and deploys each approved update.",
+          "Domain routing exposes the published site to members and the public."
+        ],
+        "architecture": [
+          {
+            "label": "Source",
+            "detail": "Website code and content are versioned in GitHub."
+          },
+          {
+            "label": "Build",
+            "detail": "AWS Amplify detects changes and produces the static deployment."
+          },
+          {
+            "label": "Hosting",
+            "detail": "Amplify serves the generated assets through managed web infrastructure."
+          },
+          {
+            "label": "Domain",
+            "detail": "DNS connects the public zhflu.org address to the hosted site."
+          }
+        ],
+        "outcomes": [
+          "Delivered a responsive public resource for union information and member content.",
+          "Established a straightforward source-to-production deployment path.",
+          "Kept operations simple by choosing static delivery for a content-focused requirement."
+        ]
+      },
+      "zh": {
+        "title": "中華職工總工會網站",
+        "summary": "為工會打造清晰導覽與會員資源的資訊網站。",
+        "dates": "2023 年 2 月 - 2023 年 3 月",
+        "status": "公開資訊網站",
+        "role": "前端與部署工程師",
+        "challenge": "工會需要易於瀏覽的公共資訊中心，讓會員能快速找到內容，並透過簡單部署流程維護網站。",
+        "contribution": [
+          "設計並建立響應式資訊架構、內容頁面與互動模式。",
+          "將 GitHub 原始碼控制串接 AWS Amplify 部署與正式網域。",
+          "整理會員資源，讓重要資訊不需複雜 CMS 也能容易被找到。"
+        ],
+        "technical": [
+          "靜態 HTML／CSS／JavaScript 讓公開網站維持快速、可攜且低營運成本。",
+          "GitHub 提供版本化內容與程式碼；AWS Amplify 建置並部署每次核准的更新。",
+          "網域路由將已發布網站提供給會員與一般大眾。"
+        ],
+        "architecture": [
+          {
+            "label": "原始碼",
+            "detail": "網站程式碼與內容在 GitHub 中進行版本控制。"
+          },
+          {
+            "label": "建置",
+            "detail": "AWS Amplify 偵測變更並產生靜態部署。"
+          },
+          {
+            "label": "託管",
+            "detail": "Amplify 透過受管理的網站基礎設施提供產生後的檔案。"
+          },
+          {
+            "label": "網域",
+            "detail": "DNS 將公開的 zhflu.org 網址連接至託管網站。"
+          }
+        ],
+        "outcomes": [
+          "交付響應式公共資源，提供工會資訊與會員內容。",
+          "建立清楚直接的原始碼至正式環境部署路徑。",
+          "針對內容導向需求選擇靜態交付，維持簡單營運。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "xor",
+    "category": "data",
+    "sortStart": "2022-04",
+    "sortEnd": "2022-04",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-nns.png",
+    "imageFit": "cover",
+    "chips": [
+      "Python",
+      "NumPy",
+      "Neural Networks",
+      "Visualization"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/adam951502/Neural-Networks-for-XOR-Logic-Prediction",
+        "icon": "ri-github-line"
+      }
+    ],
+    "content": {
+      "en": {
+        "title": "NNs for XOR-Logic Prediction",
+        "summary": "Small neural net demo for logical gates with lightweight visualization.",
+        "dates": "Apr 2022",
+        "status": "Learning demonstrator",
+        "role": "Machine-learning engineer",
+        "challenge": "XOR is not linearly separable, so it is a compact way to demonstrate why a single perceptron fails and how hidden layers learn nonlinear decision boundaries.",
+        "contribution": [
+          "Implemented and compared simple neural-network structures for logic prediction.",
+          "Visualized training behavior and predictions in a small reproducible demonstration.",
+          "Documented the experiment as a public learning repository."
+        ],
+        "technical": [
+          "NumPy represents inputs, weights, activations, loss, and parameter updates.",
+          "A hidden layer introduces nonlinear features required to separate XOR classes.",
+          "Plots and predictions make training behavior inspectable rather than presenting only final accuracy."
+        ],
+        "architecture": [
+          {
+            "label": "Inputs",
+            "detail": "Binary pairs and expected XOR labels form the training set."
+          },
+          {
+            "label": "Model",
+            "detail": "A multilayer perceptron applies weighted transforms and nonlinear activations."
+          },
+          {
+            "label": "Learning",
+            "detail": "Loss gradients update network parameters over repeated epochs."
+          },
+          {
+            "label": "Evidence",
+            "detail": "Predictions and visualizations show whether the learned boundary solves XOR."
+          }
+        ],
+        "outcomes": [
+          "Demonstrates the practical difference between linear and nonlinear models.",
+          "Provides a concise public artifact for core neural-network understanding.",
+          "Shows the ability to explain model behavior with visual evidence."
+        ]
+      },
+      "zh": {
+        "title": "XOR 邏輯預測神經網路",
+        "summary": "以輕量視覺化展示邏輯閘的神經網路示範。",
+        "dates": "2022 年 4 月",
+        "status": "學習展示",
+        "role": "機器學習工程師",
+        "challenge": "XOR 無法線性分離，因此很適合簡潔展示單層感知器為何失效，以及隱藏層如何學習非線性決策邊界。",
+        "contribution": [
+          "實作並比較用於邏輯預測的簡易神經網路結構。",
+          "在小型且可重現的展示中，視覺化訓練行為與預測結果。",
+          "將實驗記錄為公開的學習儲存庫。"
+        ],
+        "technical": [
+          "NumPy 表達輸入、權重、激活函數、損失與參數更新。",
+          "隱藏層引入分離 XOR 類別所需的非線性特徵。",
+          "圖表與預測讓訓練行為可被檢視，而非只呈現最終準確率。"
+        ],
+        "architecture": [
+          {
+            "label": "輸入",
+            "detail": "二元數值組合與預期 XOR 標籤構成訓練資料集。"
+          },
+          {
+            "label": "模型",
+            "detail": "多層感知器套用加權轉換與非線性激活函數。"
+          },
+          {
+            "label": "學習",
+            "detail": "損失梯度在多個訓練週期中更新網路參數。"
+          },
+          {
+            "label": "證據",
+            "detail": "預測與視覺化呈現學得的邊界是否能解決 XOR。"
+          }
+        ],
+        "outcomes": [
+          "展示線性與非線性模型在實務上的差異。",
+          "提供簡潔的公開成果，呈現對神經網路核心概念的理解。",
+          "展現以視覺證據說明模型行為的能力。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "sustrace",
+    "category": "data",
+    "sortStart": "2021-10",
+    "sortEnd": "2022-02",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-sustrace.png",
+    "imageFit": "cover",
+    "chips": [
+      "Python",
+      "LCA",
+      "Ontology",
+      "Knowledge Graph",
+      "Visualization"
+    ],
+    "content": {
+      "en": {
+        "title": "ADAM-SusTrace",
+        "summary": "Data pipeline and visualization for sustainability scoring across additive manufacturing processes.",
+        "dates": "Oct 2021 - Feb 2022",
+        "status": "Sustainability data prototype",
+        "role": "Data & knowledge engineer",
+        "challenge": "Additive-manufacturing sustainability data spans materials, process steps, energy, and lifecycle impacts, making consistent traceability and comparison difficult.",
+        "contribution": [
+          "Modeled manufacturing and lifecycle concepts as an ontology and knowledge graph.",
+          "Built Python data-processing steps for lifecycle and sustainability indicators.",
+          "Created a traceable prototype that connects source data, semantic context, and visual analysis."
+        ],
+        "technical": [
+          "Process and material records are cleaned and aligned to lifecycle-assessment concepts.",
+          "Ontology and graph structures preserve relationships and provenance across manufacturing stages.",
+          "Python analytics derive indicators that can be presented in dashboards or reports."
+        ],
+        "architecture": [
+          {
+            "label": "Sources",
+            "detail": "Material, machine, energy, and process records provide lifecycle evidence."
+          },
+          {
+            "label": "Data pipeline",
+            "detail": "Python validates, transforms, and aligns heterogeneous records."
+          },
+          {
+            "label": "Semantic layer",
+            "detail": "Ontology and knowledge graph connect products, steps, resources, and impacts."
+          },
+          {
+            "label": "Analysis",
+            "detail": "Queries and visualizations expose traceability and sustainability indicators."
+          }
+        ],
+        "outcomes": [
+          "Established a graph-first foundation for digital traceability in additive manufacturing.",
+          "Connected lifecycle assessment with practical data engineering and semantic modeling.",
+          "Prepared reusable patterns later applied in larger research and data-space projects."
+        ]
+      },
+      "zh": {
+        "title": "ADAM-SusTrace",
+        "summary": "為積層製程的永續評分建立資料管線與視覺化。",
+        "dates": "2021 年 10 月 - 2022 年 2 月",
+        "status": "永續資料原型",
+        "role": "資料與知識工程師",
+        "challenge": "積層製造的永續資料橫跨材料、製程步驟、能源與生命週期衝擊，使一致的可追溯性與比較變得困難。",
+        "contribution": [
+          "將製造與生命週期概念建模為本體及知識圖譜。",
+          "建立 Python 資料處理步驟，計算生命週期與永續指標。",
+          "打造可追溯原型，連結來源資料、語意脈絡與視覺分析。"
+        ],
+        "technical": [
+          "清理製程與材料紀錄，並對齊生命週期評估概念。",
+          "本體與圖譜結構保存跨製造階段的關係與資料來源。",
+          "Python 分析產生可呈現在儀表板或報告中的指標。"
+        ],
+        "architecture": [
+          {
+            "label": "資料來源",
+            "detail": "材料、機台、能源與製程紀錄提供生命週期證據。"
+          },
+          {
+            "label": "資料管線",
+            "detail": "Python 驗證、轉換並對齊異質紀錄。"
+          },
+          {
+            "label": "語意層",
+            "detail": "本體與知識圖譜連結產品、步驟、資源與衝擊。"
+          },
+          {
+            "label": "分析",
+            "detail": "查詢與視覺化呈現可追溯性及永續指標。"
+          }
+        ],
+        "outcomes": [
+          "為積層製造的數位可追溯性建立以圖譜為核心的基礎。",
+          "將生命週期評估與實務資料工程及語意建模連結。",
+          "建立可重用模式，並於後續更大型的研究與資料空間專案中延伸應用。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "impact",
+    "category": "mechanics",
+    "sortStart": "2021-03",
+    "sortEnd": "2021-09",
+    "pillKey": "projects.pills.mechanics",
+    "icon": "ri-tools-line",
+    "image": "assets/images/project-impact.gif",
+    "chips": [
+      "LS-DYNA",
+      "HyperMesh",
+      "FEM",
+      "Python",
+      "ASTM D7136"
+    ],
+    "content": {
+      "en": {
+        "title": "Composite Impact Modeling",
+        "summary": "Delamination modeling and visualization for high-speed helicopter components.",
+        "dates": "Mar 2021 - Sep 2021",
+        "status": "Research simulation",
+        "role": "Mechanical simulation engineer",
+        "challenge": "Composite helicopter components can sustain internal delamination after impact even when surface damage is limited; simulation needs to reproduce the loading and failure behavior credibly.",
+        "contribution": [
+          "Prepared composite geometry, mesh, material definitions, contacts, and impact boundary conditions.",
+          "Ran LS-DYNA impact analyses aligned with ASTM D7136 test principles.",
+          "Used Python to post-process force, energy, displacement, and delamination results."
+        ],
+        "technical": [
+          "HyperMesh builds and checks the layered finite-element model.",
+          "LS-DYNA solves the transient impact response with composite failure and contact behavior.",
+          "Python extracts and compares key histories and spatial damage indicators."
+        ],
+        "architecture": [
+          {
+            "label": "Model",
+            "detail": "Composite layup, geometry, mesh, materials, contacts, and impactor define the simulation."
+          },
+          {
+            "label": "Solve",
+            "detail": "LS-DYNA calculates transient stress, deformation, energy, and damage evolution."
+          },
+          {
+            "label": "Post-process",
+            "detail": "Python parses solver outputs into comparable engineering indicators."
+          },
+          {
+            "label": "Validate",
+            "detail": "Results are reviewed against test setup, physical expectations, and delamination patterns."
+          }
+        ],
+        "outcomes": [
+          "Produced an interpretable impact and delamination model for composite structures.",
+          "Combined CAE setup, explicit dynamics, standards awareness, and scripted analysis.",
+          "Turned large solver outputs into evidence suitable for engineering decisions."
+        ]
+      },
+      "zh": {
+        "title": "複合材料衝擊建模",
+        "summary": "高速直升機部件的分層模擬與視覺化。",
+        "dates": "2021 年 3 月 - 2021 年 9 月",
+        "status": "研究模擬",
+        "role": "機械模擬工程師",
+        "challenge": "複合材料直升機部件受到衝擊後，即使表面損傷有限，內部仍可能產生分層；模擬必須可信地重現載入與失效行為。",
+        "contribution": [
+          "準備複合材料幾何、網格、材料定義、接觸與衝擊邊界條件。",
+          "依循 ASTM D7136 試驗原則執行 LS-DYNA 衝擊分析。",
+          "以 Python 後處理力、能量、位移與分層結果。"
+        ],
+        "technical": [
+          "HyperMesh 建立並檢查分層有限元素模型。",
+          "LS-DYNA 以複合材料失效與接觸行為求解暫態衝擊響應。",
+          "Python 擷取並比較關鍵歷程與空間損傷指標。"
+        ],
+        "architecture": [
+          {
+            "label": "模型",
+            "detail": "複合材料疊層、幾何、網格、材料、接觸與衝擊器共同定義模擬。"
+          },
+          {
+            "label": "求解",
+            "detail": "LS-DYNA 計算暫態應力、變形、能量與損傷演化。"
+          },
+          {
+            "label": "後處理",
+            "detail": "Python 將求解器輸出解析為可比較的工程指標。"
+          },
+          {
+            "label": "驗證",
+            "detail": "依據試驗配置、物理預期與分層模式檢視結果。"
+          }
+        ],
+        "outcomes": [
+          "建立可解讀的複合材料衝擊與分層模型。",
+          "整合 CAE 建模、顯式動力學、標準規範與程式化分析能力。",
+          "將大量求解器輸出轉換為可支援工程決策的證據。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "hybrid-joint",
+    "category": "mechanics",
+    "sortStart": "2020-05",
+    "sortEnd": "2021-01",
+    "pillKey": "projects.pills.mechanics",
+    "icon": "ri-tools-line",
+    "image": "assets/images/project-master-thesis.png",
+    "imageFit": "cover",
+    "chips": [
+      "LS-DYNA",
+      "HyperMesh",
+      "Cohesive Zone",
+      "Python"
+    ],
+    "content": {
+      "en": {
+        "title": "Hybrid Joint Modeling",
+        "summary": "Failure modeling for hybrid lap joints under tensile loading in LS-DYNA.",
+        "dates": "May 2020 - Jan 2021",
+        "status": "Master's thesis",
+        "role": "Mechanical simulation researcher",
+        "challenge": "Single-lap aluminum–CFRP hybrid joints fail through interacting adhesive, interface, and structural mechanisms that are difficult to observe directly in tests.",
+        "contribution": [
+          "Built and calibrated finite-element models for the hybrid lap-joint specimens.",
+          "Applied cohesive-zone behavior to represent adhesive initiation and progressive failure.",
+          "Automated result extraction and compared simulated force/displacement and failure patterns with experiments."
+        ],
+        "technical": [
+          "HyperMesh defines joint geometry, mesh, contacts, and material/adhesive regions.",
+          "LS-DYNA solves tensile loading and progressive interface damage.",
+          "Python post-processing aligns simulation outputs with experimental curves and failure observations."
+        ],
+        "architecture": [
+          {
+            "label": "Experiment",
+            "detail": "Specimen geometry, materials, boundary conditions, and tensile measurements define the reference."
+          },
+          {
+            "label": "FE model",
+            "detail": "Metal, CFRP, adhesive, mesh, contacts, and cohesive parameters represent the joint."
+          },
+          {
+            "label": "Simulation",
+            "detail": "LS-DYNA calculates load transfer and progressive damage under tensile loading."
+          },
+          {
+            "label": "Comparison",
+            "detail": "Python aligns curves and failure modes to evaluate model credibility."
+          }
+        ],
+        "outcomes": [
+          "Completed a thesis-level simulation and validation workflow with excellent academic evaluation.",
+          "Demonstrated understanding of composite/metal joining, nonlinear failure, and model calibration.",
+          "Built reusable Python analysis steps around commercial CAE outputs."
+        ]
+      },
+      "zh": {
+        "title": "複合接頭建模",
+        "summary": "在 LS-DYNA 進行拉伸載荷下的複合膠接件失效建模。",
+        "dates": "2020 年 5 月 - 2021 年 1 月",
+        "status": "碩士論文",
+        "role": "機械模擬研究員",
+        "challenge": "鋁合金與碳纖維複合材料單搭接接頭的失效，涉及膠層、介面與結構機制的交互作用，難以直接從實驗中完整觀察。",
+        "contribution": [
+          "建立並校準複合材料搭接試件的有限元素模型。",
+          "採用內聚區模型描述黏著層起始與漸進式失效。",
+          "自動化結果擷取，並比較模擬與實驗的力位移曲線及失效模式。"
+        ],
+        "technical": [
+          "HyperMesh 定義接頭幾何、網格、接觸與材料及膠層區域。",
+          "LS-DYNA 求解拉伸載荷與漸進式介面損傷。",
+          "Python 後處理將模擬輸出與實驗曲線及失效觀察結果對齊。"
+        ],
+        "architecture": [
+          {
+            "label": "實驗",
+            "detail": "試件幾何、材料、邊界條件與拉伸量測構成參考基準。"
+          },
+          {
+            "label": "有限元素模型",
+            "detail": "金屬、碳纖維複合材料、膠層、網格、接觸與內聚參數共同描述接頭。"
+          },
+          {
+            "label": "模擬",
+            "detail": "LS-DYNA 計算拉伸載荷下的傳力與漸進式損傷。"
+          },
+          {
+            "label": "比較",
+            "detail": "Python 對齊曲線與失效模式，以評估模型可信度。"
+          }
+        ],
+        "outcomes": [
+          "完成論文等級的模擬與驗證流程，並獲得優異學術評價。",
+          "展現對複合材料與金屬接合、非線性失效及模型校準的理解。",
+          "圍繞商用 CAE 輸出建立可重用的 Python 分析步驟。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "sustainability",
+    "category": "data",
+    "sortStart": "2019-10",
+    "sortEnd": "2020-02",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-AHP-Tree.jpg",
+    "imageFit": "cover",
+    "chips": [
+      "Python",
+      "AHP",
+      "WSM",
+      "TOPSIS",
+      "Excel"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/adam951502/AHP-Operations-Research",
+        "icon": "ri-github-line"
+      }
+    ],
+    "content": {
+      "en": {
+        "title": "Sustainability Assessment",
+        "summary": "AHP model to rank sustainability criteria across materials and processes.",
+        "dates": "Oct 2019 - Feb 2020",
+        "status": "Decision-analysis project",
+        "role": "Data analyst",
+        "challenge": "Sustainability choices combine environmental, economic, and social criteria with different units and stakeholder priorities, so a transparent ranking method was required.",
+        "contribution": [
+          "Structured the decision hierarchy and pairwise-comparison inputs for Analytic Hierarchy Process weighting.",
+          "Implemented AHP consistency checks and alternative rankings with weighted-sum and TOPSIS methods.",
+          "Built Python/Excel data flows and visualizations to make assumptions and sensitivity visible."
+        ],
+        "technical": [
+          "Excel inputs capture criteria, alternatives, and stakeholder judgments.",
+          "Python/NumPy calculates normalized matrices, priority vectors, and consistency ratios.",
+          "WSM and TOPSIS compare alternatives and provide cross-method validation."
+        ],
+        "architecture": [
+          {
+            "label": "Decision model",
+            "detail": "Goal, criteria, subcriteria, alternatives, and pairwise judgments define the hierarchy."
+          },
+          {
+            "label": "Weighting",
+            "detail": "AHP derives criteria priorities and checks judgment consistency."
+          },
+          {
+            "label": "Ranking",
+            "detail": "WSM and TOPSIS score alternatives under the selected weights."
+          },
+          {
+            "label": "Review",
+            "detail": "Tables and plots expose ranking, sensitivity, and disagreements between methods."
+          }
+        ],
+        "outcomes": [
+          "Produced an auditable sustainability decision model instead of an opaque single score.",
+          "Demonstrated operations research, data preparation, numerical implementation, and stakeholder framing.",
+          "Published the implementation as a reusable public repository."
+        ]
+      },
+      "zh": {
+        "title": "永續性評估",
+        "summary": "以 AHP 評估材料與製程的永續性優先順序。",
+        "dates": "2019 年 10 月 - 2020 年 2 月",
+        "status": "決策分析專案",
+        "role": "資料分析師",
+        "challenge": "永續決策同時包含單位不同的環境、經濟與社會準則，以及各異的利害關係人優先順序，因此需要透明的排序方法。",
+        "contribution": [
+          "建立決策階層與成對比較輸入，用於層級分析法的權重計算。",
+          "實作 AHP 一致性檢查，並以加權總和法與 TOPSIS 進行替代方案排序。",
+          "建立 Python 與 Excel 資料流程及視覺化，使假設與敏感度清楚可見。"
+        ],
+        "technical": [
+          "Excel 輸入記錄準則、替代方案與利害關係人判斷。",
+          "Python 與 NumPy 計算正規化矩陣、優先向量及一致性比率。",
+          "WSM 與 TOPSIS 比較替代方案，並提供跨方法驗證。"
+        ],
+        "architecture": [
+          {
+            "label": "決策模型",
+            "detail": "目標、準則、次準則、替代方案與成對判斷共同定義階層。"
+          },
+          {
+            "label": "權重計算",
+            "detail": "AHP 推導準則優先順序，並檢查判斷的一致性。"
+          },
+          {
+            "label": "排序",
+            "detail": "WSM 與 TOPSIS 依選定權重計算替代方案分數。"
+          },
+          {
+            "label": "檢視",
+            "detail": "表格與圖表呈現排序、敏感度及不同方法之間的差異。"
+          }
+        ],
+        "outcomes": [
+          "建立可稽核的永續決策模型，而非不透明的單一分數。",
+          "展現作業研究、資料準備、數值實作與利害關係人問題框架能力。",
+          "將實作發布為可重用的公開儲存庫。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "cyclic",
+    "category": "mechanics",
+    "sortStart": "2019-10",
+    "sortEnd": "2020-02",
+    "pillKey": "projects.pills.mechanics",
+    "icon": "ri-tools-line",
+    "image": "assets/images/project-master-project.gif",
+    "chips": [
+      "Python",
+      "Motor Control",
+      "Fatigue",
+      "LPBF",
+      "Data Analysis"
+    ],
+    "content": {
+      "en": {
+        "title": "Cyclic Stress Loading Test",
+        "summary": "Test rig and analysis for small-scale material fatigue under cyclic stress.",
+        "dates": "Oct 2019 - Feb 2020",
+        "status": "Experimental engineering",
+        "role": "Test & automation engineer",
+        "challenge": "Small additively manufactured specimens needed controlled cyclic loading and repeatable data capture to investigate fatigue behavior.",
+        "contribution": [
+          "Designed the loading concept and integrated motor control, fixtures, sensing, and specimen handling.",
+          "Implemented Python control and data-acquisition logic for repeatable cycles.",
+          "Processed the resulting load/cycle data and documented experimental limitations."
+        ],
+        "technical": [
+          "Command logic controls the actuator and repeated loading profile.",
+          "Sensors record mechanical response while safety and stop conditions protect the setup.",
+          "Python turns raw samples into fatigue plots and comparison data."
+        ],
+        "architecture": [
+          {
+            "label": "Test definition",
+            "detail": "Specimen, load amplitude, cycle profile, and stop conditions define the experiment."
+          },
+          {
+            "label": "Control",
+            "detail": "Python commands the motor/actuator and coordinates acquisition."
+          },
+          {
+            "label": "Measurement",
+            "detail": "Sensors record the mechanical response over repeated cycles."
+          },
+          {
+            "label": "Analysis",
+            "detail": "Processed histories expose fatigue behavior and differences between specimens."
+          }
+        ],
+        "outcomes": [
+          "Built a complete experiment from mechanical concept through control and analysis.",
+          "Combined hardware, software, and materials understanding in one project.",
+          "Created repeatable data rather than relying on manual observations alone."
+        ]
+      },
+      "zh": {
+        "title": "循環應力載入試驗",
+        "summary": "小型材料疲勞的循環載入試驗架設與分析。",
+        "dates": "2019 年 10 月 - 2020 年 2 月",
+        "status": "實驗工程",
+        "role": "試驗與自動化工程師",
+        "challenge": "小型積層製造試件需要受控的循環載入與可重複的資料擷取，才能研究其疲勞行為。",
+        "contribution": [
+          "設計載入概念，並整合馬達控制、夾治具、感測器與試件操作。",
+          "以 Python 實作控制與資料擷取邏輯，確保循環試驗可重複執行。",
+          "處理載荷與循環次數資料，並記錄實驗限制。"
+        ],
+        "technical": [
+          "指令邏輯控制致動器與重複載入曲線。",
+          "感測器記錄機械響應，安全與停止條件則保護試驗設備。",
+          "Python 將原始取樣資料轉換為疲勞曲線與比較資料。"
+        ],
+        "architecture": [
+          {
+            "label": "試驗定義",
+            "detail": "以試件、載荷振幅、循環曲線與停止條件定義實驗。"
+          },
+          {
+            "label": "控制",
+            "detail": "Python 控制馬達或致動器，並協調資料擷取。"
+          },
+          {
+            "label": "量測",
+            "detail": "感測器記錄多次循環下的機械響應。"
+          },
+          {
+            "label": "分析",
+            "detail": "處理後的歷程資料呈現疲勞行為與試件間差異。"
+          }
+        ],
+        "outcomes": [
+          "完成從機械概念、控制到分析的整套實驗。",
+          "在同一專案中整合硬體、軟體與材料知識。",
+          "建立可重複的資料流程，不再只依賴人工觀察。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "energy",
+    "category": "data",
+    "sortStart": "2019-04",
+    "sortEnd": "2019-07",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-energy.png",
+    "imageFit": "cover",
+    "chips": [
+      "Python",
+      "Pandas",
+      "Time Series",
+      "Energy Markets"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/adam951502/Renewable-Energy-Market-Value-Analysis",
+        "icon": "ri-github-line"
+      }
+    ],
+    "content": {
+      "en": {
+        "title": "Energy Market Analysis",
+        "summary": "Market value evaluation for wind and solar across electricity markets.",
+        "dates": "Apr 2019 - Jul 2019",
+        "status": "Energy analytics",
+        "role": "Data analyst",
+        "challenge": "Wind and solar generation have different market value because production profiles interact with time-varying electricity prices, not just annual energy totals.",
+        "contribution": [
+          "Prepared generation and electricity-price time series for consistent market-value comparison.",
+          "Implemented capture-price and value-factor calculations for wind and solar scenarios.",
+          "Created plots and documentation that explain the relationship between timing and revenue."
+        ],
+        "technical": [
+          "Pandas aligns hourly or interval generation with market-price data.",
+          "Python calculates weighted capture prices, value factors, and scenario comparisons.",
+          "Visualizations communicate temporal patterns and differences between technologies."
+        ],
+        "architecture": [
+          {
+            "label": "Inputs",
+            "detail": "Renewable generation profiles and electricity market prices provide aligned time series."
+          },
+          {
+            "label": "Preparation",
+            "detail": "Python cleans timestamps, gaps, units, and comparable periods."
+          },
+          {
+            "label": "Valuation",
+            "detail": "Capture price and value-factor calculations quantify market value."
+          },
+          {
+            "label": "Interpretation",
+            "detail": "Plots and scenarios explain why technology value differs by timing and market."
+          }
+        ],
+        "outcomes": [
+          "Translated energy-market theory into a reproducible analytical workflow.",
+          "Demonstrated time-series preparation, quantitative modeling, and clear visualization.",
+          "Published the analysis as a public Python repository."
+        ]
+      },
+      "zh": {
+        "title": "能源市場分析",
+        "summary": "分析風能與太陽能在各電力市場的價值。",
+        "dates": "2019 年 4 月 - 2019 年 7 月",
+        "status": "能源分析",
+        "role": "資料分析師",
+        "challenge": "風能與太陽能的市場價值不只取決於年度發電量，也受到發電曲線與隨時間變動之電價互動的影響。",
+        "contribution": [
+          "整理發電與電價時間序列，建立一致的市場價值比較基礎。",
+          "實作風能與太陽能情境的捕獲價格與價值因子計算。",
+          "製作圖表與文件，說明發電時間與收益之間的關係。"
+        ],
+        "technical": [
+          "Pandas 將每小時或各時段的發電量與市場電價對齊。",
+          "Python 計算加權捕獲價格、價值因子與不同情境的比較結果。",
+          "視覺化呈現時間模式與不同發電技術之間的差異。"
+        ],
+        "architecture": [
+          {
+            "label": "輸入",
+            "detail": "再生能源發電曲線與電力市場價格構成對齊後的時間序列。"
+          },
+          {
+            "label": "資料準備",
+            "detail": "Python 清理時間戳記、缺值、單位與可比較期間。"
+          },
+          {
+            "label": "價值評估",
+            "detail": "透過捕獲價格與價值因子量化市場價值。"
+          },
+          {
+            "label": "結果解讀",
+            "detail": "圖表與情境分析說明不同技術為何會因時間與市場而產生價值差異。"
+          }
+        ],
+        "outcomes": [
+          "將能源市場理論轉換為可重現的分析流程。",
+          "展現時間序列整理、量化建模與清楚視覺化能力。",
+          "以公開 Python 儲存庫發布分析成果。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "solar",
+    "category": "data",
+    "sortStart": "2019-04",
+    "sortEnd": "2019-07",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-pv.png",
+    "imageFit": "cover",
+    "chips": [
+      "PV",
+      "I-V Curves",
+      "Python",
+      "Laboratory",
+      "LaTeX"
+    ],
+    "content": {
+      "en": {
+        "title": "Solar Cells Comparison",
+        "summary": "Lab study comparing PV cell performance with structured reporting.",
+        "dates": "Apr 2019 - Jul 2019",
+        "status": "Laboratory analysis",
+        "role": "Renewable-energy analyst",
+        "challenge": "Photovoltaic cells and module configurations respond differently to irradiance, mismatch, and bypass behavior, requiring controlled measurement and comparable analysis.",
+        "contribution": [
+          "Planned and performed photovoltaic I-V measurement comparisons.",
+          "Analyzed cell/module behavior and bypass-diode effects with Python.",
+          "Produced a structured technical report with figures and experimental interpretation."
+        ],
+        "technical": [
+          "The laboratory setup captures voltage/current pairs under controlled conditions.",
+          "Python calculates key PV indicators and overlays comparable I-V curves.",
+          "LaTeX integrates methods, results, plots, and discussion into a reproducible report."
+        ],
+        "architecture": [
+          {
+            "label": "Experiment",
+            "detail": "PV device, illumination, load sweep, sensors, and bypass configuration define each run."
+          },
+          {
+            "label": "Acquisition",
+            "detail": "Voltage/current samples record the device response across the operating range."
+          },
+          {
+            "label": "Analysis",
+            "detail": "Python derives characteristic points and compares I-V curve behavior."
+          },
+          {
+            "label": "Report",
+            "detail": "LaTeX combines method, evidence, limitations, and engineering conclusions."
+          }
+        ],
+        "outcomes": [
+          "Connected renewable-energy theory with controlled physical measurement.",
+          "Created comparable visual evidence for cell, module, and bypass behavior.",
+          "Demonstrated laboratory practice, scripting, and technical communication."
+        ]
+      },
+      "zh": {
+        "title": "太陽能電池比較",
+        "summary": "比較太陽能電池效能的實驗與報告。",
+        "dates": "2019 年 4 月 - 2019 年 7 月",
+        "status": "實驗室分析",
+        "role": "再生能源分析師",
+        "challenge": "光電池與模組配置對照度、不匹配及旁路行為的反應不同，因此需要受控量測與可比較分析。",
+        "contribution": [
+          "規劃並執行太陽光電 I-V 量測比較。",
+          "使用 Python 分析電池與模組行為及旁路二極體效應。",
+          "製作包含圖表與實驗解讀的結構化技術報告。"
+        ],
+        "technical": [
+          "實驗設備在受控條件下擷取電壓與電流資料點。",
+          "Python 計算關鍵光電指標，並疊加可比較的 I-V 曲線。",
+          "LaTeX 將方法、結果、圖表與討論整合成可重現報告。"
+        ],
+        "architecture": [
+          {
+            "label": "實驗",
+            "detail": "光電元件、光源、負載掃描、感測器與旁路配置定義每次測試。"
+          },
+          {
+            "label": "資料擷取",
+            "detail": "電壓與電流取樣記錄元件在完整操作範圍內的響應。"
+          },
+          {
+            "label": "分析",
+            "detail": "Python 推導特徵點，並比較 I-V 曲線行為。"
+          },
+          {
+            "label": "報告",
+            "detail": "LaTeX 整合方法、證據、限制與工程結論。"
+          }
+        ],
+        "outcomes": [
+          "將再生能源理論與受控實體量測連結。",
+          "為電池、模組與旁路行為建立可比較的視覺證據。",
+          "展現實驗室操作、程式分析與技術溝通能力。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "spectro",
+    "category": "data",
+    "sortStart": "2018-02",
+    "sortEnd": "2018-09",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-database-2-line",
+    "image": "assets/images/project-ntust.jpg",
+    "imageFit": "cover",
+    "chips": [
+      "MATLAB",
+      "Spectroscopy",
+      "Signal Processing",
+      "Arduino"
+    ],
+    "content": {
+      "en": {
+        "title": "Spectroscopic Data Processing",
+        "summary": "Signal processing pipeline for microalbumin test spectra in MATLAB.",
+        "dates": "Feb 2018 - Sep 2018",
+        "status": "Biomedical signal research",
+        "role": "Research assistant & data analyst",
+        "challenge": "Microalbumin spectroscopy signals contained baseline drift and measurement noise that obscured concentration-related patterns.",
+        "contribution": [
+          "Prepared and inspected spectral datasets from the laboratory measurement workflow.",
+          "Implemented baseline correction and polynomial fitting in MATLAB.",
+          "Supported measurement integration and repeatability with Arduino-connected experimental hardware."
+        ],
+        "technical": [
+          "Spectrometer and experimental electronics generate raw intensity/wavelength records.",
+          "MATLAB performs preprocessing, baseline estimation, correction, fitting, and visualization.",
+          "Processed spectra are compared across samples to expose usable analytical patterns."
+        ],
+        "architecture": [
+          {
+            "label": "Measurement",
+            "detail": "Sample, light source, spectrometer, and Arduino-linked controls produce raw spectra."
+          },
+          {
+            "label": "Preprocessing",
+            "detail": "MATLAB imports, aligns, filters, and inspects the signal."
+          },
+          {
+            "label": "Correction",
+            "detail": "Polynomial baseline modeling separates drift from the analytical spectrum."
+          },
+          {
+            "label": "Interpretation",
+            "detail": "Corrected curves and fitted features support concentration comparison."
+          }
+        ],
+        "outcomes": [
+          "Converted noisy laboratory spectra into interpretable analytical data.",
+          "Built an early bridge between physical experiments, embedded controls, and data processing.",
+          "Demonstrated signal-quality judgment rather than treating preprocessing as a black box."
+        ]
+      },
+      "zh": {
+        "title": "光譜資料處理",
+        "summary": "尿液微白蛋白光譜的訊號處理流程（MATLAB）。",
+        "dates": "2018 年 2 月 - 2018 年 9 月",
+        "status": "生醫訊號研究",
+        "role": "研究助理與資料分析師",
+        "challenge": "尿液微白蛋白光譜訊號包含基線漂移與量測雜訊，掩蓋了與濃度相關的模式。",
+        "contribution": [
+          "整理並檢查實驗室量測流程產生的光譜資料集。",
+          "在 MATLAB 中實作基線校正與多項式擬合。",
+          "透過 Arduino 連接的實驗硬體，支援量測整合與重複性。"
+        ],
+        "technical": [
+          "光譜儀與實驗電子設備產生原始光強度與波長紀錄。",
+          "MATLAB 執行前處理、基線估計、校正、擬合與視覺化。",
+          "跨樣本比較處理後的光譜，以呈現可用的分析模式。"
+        ],
+        "architecture": [
+          {
+            "label": "量測",
+            "detail": "樣本、光源、光譜儀與 Arduino 連接控制共同產生原始光譜。"
+          },
+          {
+            "label": "前處理",
+            "detail": "MATLAB 匯入、對齊、濾波並檢查訊號。"
+          },
+          {
+            "label": "校正",
+            "detail": "以多項式基線模型將漂移與分析光譜分離。"
+          },
+          {
+            "label": "解讀",
+            "detail": "校正曲線與擬合特徵支援濃度比較。"
+          }
+        ],
+        "outcomes": [
+          "將含雜訊的實驗室光譜轉換為可解讀的分析資料。",
+          "建立實體實驗、嵌入式控制與資料處理之間的早期橋梁。",
+          "展現對訊號品質的判斷，而非將前處理視為黑箱。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "injection",
+    "category": "mechanics",
+    "sortStart": "2015-09",
+    "sortEnd": "2016-01",
+    "pillKey": "projects.pills.mechanics",
+    "icon": "ri-tools-line",
+    "image": "assets/images/project-injection.png",
+    "chips": [
+      "SolidWorks",
+      "Moldex3D",
+      "CNC",
+      "Injection Molding"
+    ],
+    "content": {
+      "en": {
+        "title": "Injection Molding Manufacturing",
+        "summary": "Process follow-up and testing for switchboard parts manufacturing.",
+        "dates": "Sep 2015 - Jan 2016",
+        "status": "Manufacturing project",
+        "role": "Mechanical design & manufacturing engineer",
+        "challenge": "An injection-molded component required coordinated product geometry, mold design, process simulation, machining, molding, and quality follow-up.",
+        "contribution": [
+          "Created product and tooling geometry in SolidWorks.",
+          "Used Moldex3D to review fill behavior and process risks before manufacturing.",
+          "Supported CNC/tooling work, molding trials, inspection, and corrective iteration."
+        ],
+        "technical": [
+          "CAD defines the part, mold, and manufacturing interfaces.",
+          "Moldex3D simulates filling and highlights likely process or design issues.",
+          "CNC tooling, injection trials, and inspection close the loop with physical evidence."
+        ],
+        "architecture": [
+          {
+            "label": "Design",
+            "detail": "Requirements become part geometry and mold/tooling concepts."
+          },
+          {
+            "label": "Simulation",
+            "detail": "Mold-flow analysis evaluates filling, pressure, cooling, and defect risk."
+          },
+          {
+            "label": "Manufacture",
+            "detail": "CNC and tooling preparation enable injection-molding trials."
+          },
+          {
+            "label": "Quality loop",
+            "detail": "Inspection and test results drive revisions to design or process settings."
+          }
+        ],
+        "outcomes": [
+          "Worked across the complete design-to-manufacturing lifecycle.",
+          "Used simulation to inform physical process decisions before and during trials.",
+          "Developed practical experience coordinating CAD, tooling, production, and quality."
+        ]
+      },
+      "zh": {
+        "title": "射出成型製造",
+        "summary": "跟進配電盤零件的射出成型流程與測試。",
+        "dates": "2015 年 9 月 - 2016 年 1 月",
+        "status": "製造專案",
+        "role": "機械設計與製造工程師",
+        "challenge": "射出成型零件需要協調產品幾何、模具設計、製程模擬、加工、成型與品質追蹤。",
+        "contribution": [
+          "使用 SolidWorks 建立產品與模具幾何。",
+          "在製造前使用 Moldex3D 檢視充填行為與製程風險。",
+          "支援 CNC 與模具作業、射出試模、檢驗及修正迭代。"
+        ],
+        "technical": [
+          "CAD 定義零件、模具與製造介面。",
+          "Moldex3D 模擬充填，並指出潛在製程或設計問題。",
+          "CNC 模具加工、射出試模與檢驗以實體證據完成閉環驗證。"
+        ],
+        "architecture": [
+          {
+            "label": "設計",
+            "detail": "將需求轉換為零件幾何與模具概念。"
+          },
+          {
+            "label": "模擬",
+            "detail": "模流分析評估充填、壓力、冷卻與缺陷風險。"
+          },
+          {
+            "label": "製造",
+            "detail": "CNC 與模具準備支援射出成型試模。"
+          },
+          {
+            "label": "品質迴圈",
+            "detail": "檢驗與測試結果回饋至設計或製程參數修正。"
+          }
+        ],
+        "outcomes": [
+          "參與完整的設計至製造生命週期。",
+          "在試模前與試模期間，以模擬支援實際製程決策。",
+          "累積協調 CAD、模具、量產與品質工作的實務經驗。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
+    "id": "flight",
+    "category": "mechanics",
+    "sortStart": "2015-03",
+    "sortEnd": "2015-06",
+    "pillKey": "projects.pills.mechanics",
+    "icon": "ri-tools-line",
+    "image": "assets/images/project-quadcopter.jpg",
+    "chips": [
+      "Arduino",
+      "C++",
+      "PID",
+      "IMU",
+      "Motor Control"
+    ],
+    "content": {
+      "en": {
+        "title": "Automatic Flight Control",
+        "summary": "Quadcopter flight control design and testing with sensor feedback.",
+        "dates": "Mar 2015 - Jun 2015",
+        "status": "Embedded control project",
+        "role": "Control & embedded engineer",
+        "challenge": "A quadcopter must estimate attitude and continuously correct four motor outputs fast enough to remain stable despite sensor noise and disturbances.",
+        "contribution": [
+          "Integrated the frame, motors, ESCs, sensors, power system, and microcontroller.",
+          "Implemented sensor reading, attitude estimation, PID control, and motor mixing in embedded code.",
+          "Tuned and tested the controller iteratively with safety-conscious ground and flight checks."
+        ],
+        "technical": [
+          "IMU measurements are filtered into roll, pitch, and yaw estimates.",
+          "PID loops compare desired and measured attitude and calculate corrective control signals.",
+          "Motor mixing converts control outputs into four ESC commands for the airframe."
+        ],
+        "architecture": [
+          {
+            "label": "Sensing",
+            "detail": "IMU measurements capture angular rate and acceleration."
+          },
+          {
+            "label": "Estimation",
+            "detail": "Embedded filtering produces a stable attitude estimate."
+          },
+          {
+            "label": "Control",
+            "detail": "PID loops calculate roll, pitch, yaw, and throttle corrections."
+          },
+          {
+            "label": "Actuation",
+            "detail": "Motor mixing and ESC signals adjust four propellers; motion feeds back to the sensors."
+          }
+        ],
+        "outcomes": [
+          "Built an end-to-end real-time feedback system across hardware and software.",
+          "Developed practical understanding of noisy sensors, controller tuning, and actuator limits.",
+          "Established an early foundation for later automation, data, and systems engineering work."
+        ]
+      },
+      "zh": {
+        "title": "自動飛行控制",
+        "summary": "四軸飛行器的控制設計與感測回饋測試。",
+        "dates": "2015 年 3 月 - 2015 年 6 月",
+        "status": "嵌入式控制專案",
+        "role": "控制與嵌入式工程師",
+        "challenge": "四軸飛行器必須估測姿態，並持續快速修正四顆馬達輸出，才能在感測雜訊與外部擾動下保持穩定。",
+        "contribution": [
+          "整合機架、馬達、電子變速器、感測器、電源系統與微控制器。",
+          "在嵌入式程式中實作感測讀取、姿態估測、PID 控制與馬達混控。",
+          "透過重視安全的地面與飛行檢查，反覆調校並測試控制器。"
+        ],
+        "technical": [
+          "將 IMU 量測值濾波為滾轉、俯仰與偏航姿態估計。",
+          "PID 迴路比較目標與量測姿態，計算修正控制訊號。",
+          "馬達混控將控制輸出轉換為四組電子變速器指令。"
+        ],
+        "architecture": [
+          {
+            "label": "感測",
+            "detail": "IMU 量測角速度與加速度。"
+          },
+          {
+            "label": "估測",
+            "detail": "嵌入式濾波產生穩定的姿態估計。"
+          },
+          {
+            "label": "控制",
+            "detail": "PID 迴路計算滾轉、俯仰、偏航與油門修正量。"
+          },
+          {
+            "label": "致動",
+            "detail": "馬達混控與電子變速器訊號調整四個螺旋槳，運動結果再回饋至感測器。"
+          }
+        ],
+        "outcomes": [
+          "完成橫跨硬體與軟體的端到端即時回授系統。",
+          "累積處理感測雜訊、控制器調校與致動器限制的實務經驗。",
+          "奠定後續自動化、資料與系統工程工作的早期基礎。"
+        ]
+      }
+    }
+  }
+]
