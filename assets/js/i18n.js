@@ -1,10 +1,9 @@
 import { setSafeTranslatedMarkup } from "./shared.js";
 
-export function createI18nController({ onApply }) {
+export function createI18nController({ onApply = async () => {}, i18nBasePath = "./assets/i18n", pageTitleKey = "page.title" } = {}) {
   const availableLangs = ["en", "zh"];
   const fallbackLang = "en";
   const langStorageKey = "site-lang";
-  const i18nBasePath = "./assets/i18n";
   const translationsCache = {};
 
   const languageToggle = document.querySelector(".lang-toggle");
@@ -92,7 +91,7 @@ export function createI18nController({ onApply }) {
     const translateFn = (key) => primary[key] ?? fallbackDict[key] ?? "";
     currentTranslate = translateFn;
 
-    const pageTitle = translateFn("page.title");
+    const pageTitle = translateFn(pageTitleKey);
     if (pageTitle) document.title = pageTitle;
 
     document.querySelectorAll("[data-i18n]").forEach((element) => {
