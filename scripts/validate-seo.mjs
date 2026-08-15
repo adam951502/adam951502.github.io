@@ -32,7 +32,7 @@ const requiredBlogFragments = [
   `<meta property="og:image" content="${socialImage}">`,
   `<meta name="twitter:image" content="${socialImage}">`,
   `<meta name="description" content=`,
-  `<h1>Blog / Notes</h1>`
+  `data-i18n="blog.title">Blog / Notes</h1>`
 ];
 for (const fragment of requiredBlogFragments) {
   if (!blogHtml.includes(fragment)) errors.push(`Missing blog SEO/content fragment: ${fragment}`);
