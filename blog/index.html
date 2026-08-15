@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5efe8">
+  <meta name="description" content="Engineering notes and project retrospectives from Adam Tang on GenAI, data systems, software engineering, and product delivery.">
+  <link rel="canonical" href="https://adam951502.github.io/blog/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Blog / Notes — Adam Tang">
+  <meta property="og:description" content="Engineering notes and practical write-ups on GenAI, data systems, software engineering, and product delivery.">
+  <meta property="og:url" content="https://adam951502.github.io/blog/">
+  <meta property="og:image" content="https://adam951502.github.io/assets/images/adam-avatar.png">
+  <meta property="og:image:alt" content="Portrait of Adam Tang">
+  <meta property="og:site_name" content="Adam Tang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Blog / Notes — Adam Tang">
+  <meta name="twitter:description" content="Engineering notes and practical write-ups on GenAI, data systems, software engineering, and product delivery.">
+  <meta name="twitter:image" content="https://adam951502.github.io/assets/images/adam-avatar.png">
+  <meta name="twitter:image:alt" content="Portrait of Adam Tang">
+
+  <title>Blog / Notes — Adam Tang</title>
+  <link rel="shortcut icon" href="../assets/images/web-icon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20260805-consistent-card-sizing-4">
+  <script>
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    } catch (_) {
+      document.documentElement.dataset.theme = "light";
+    }
+  </script>
+</head>
+<body>
+  <div class="page-orb orb-a" aria-hidden="true"></div>
+  <div class="page-orb orb-b" aria-hidden="true"></div>
+  <div class="page-grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="../" aria-label="Adam Tang — portfolio home">
+      <div class="brand-mark">AT</div>
+      <div>
+        <p class="brand-name">Adam Tang</p>
+        <p class="brand-role">GenAI Engineer | Data Scientist</p>
+      </div>
+    </a>
+
+    <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="headerPanel">
+      <span>Menu</span>
+      <i class="ri-menu-3-line" aria-hidden="true"></i>
+    </button>
+
+    <div class="header-panel" id="headerPanel">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../">Portfolio</a>
+        <a href="./" class="active" aria-current="page">Blog</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn ghost" href="https://github.com/adam951502" target="_blank" rel="noopener">GitHub</a>
+        <button class="btn ghost theme-toggle" type="button" aria-label="Switch theme">
+          <i class="ri-sun-line" aria-hidden="true"></i>
+          <span class="theme-toggle-label">Light</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="section hero" id="blog-top">
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <p class="eyebrow">Engineering notes</p>
+          <h1>Blog / Notes</h1>
+          <p class="lede">A home for practical write-ups on GenAI, data systems, software engineering, project delivery, and lessons from building real products.</p>
+
+          <div class="proof-strip" aria-label="Planned writing areas">
+            <span class="proof-chip">GenAI</span>
+            <span class="proof-chip">Data &amp; Knowledge</span>
+            <span class="proof-chip">Engineering</span>
+            <span class="proof-chip">Product Delivery</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="../">Back to portfolio</a>
+            <a class="btn ghost" href="https://github.com/adam951502" target="_blank" rel="noopener">View GitHub</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <article class="signal-card card-surface">
+            <p class="label">Publishing status</p>
+            <p class="signal-value">Landing page live</p>
+          </article>
+          <article class="signal-card card-surface">
+            <p class="label">Content policy</p>
+            <p class="signal-value">Only finished, authored notes appear here—no placeholder articles.</p>
+          </article>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="latestNotesTitle">
+      <div class="section-heading">
+        <div class="section-title-block">
+          <span class="section-icon" aria-hidden="true"><i class="ri-quill-pen-line"></i></span>
+          <div>
+            <p class="eyebrow">Latest notes</p>
+            <h2 id="latestNotesTitle">Writing starts with real content</h2>
+          </div>
+        </div>
+        <p class="muted section-note">The route, navigation, SEO, theme, and responsive shell are ready for the first published article.</p>
+      </div>
+
+      <article class="card card-surface" data-blog-empty>
+        <div class="pill">Empty state</div>
+        <h3>No posts published yet</h3>
+        <p class="muted">No article titles, dates, or summaries are being fabricated from old template assets. Real posts can be added here when their content is ready.</p>
+        <div class="hero-actions">
+          <a class="btn ghost" href="../#projects">Explore projects instead</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Adam Tang · Blog / Notes</p>
+    <a href="../">Portfolio</a>
+  </footer>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const header = document.querySelector(".site-header");
+      const menuToggle = document.querySelector(".mobile-menu-toggle");
+      const themeToggle = document.querySelector(".theme-toggle");
+      const themeLabel = document.querySelector(".theme-toggle-label");
+
+      function applyTheme(theme) {
+        root.dataset.theme = theme;
+        try { localStorage.setItem("theme", theme); } catch (_) {}
+        const isLight = theme === "light";
+        themeLabel.textContent = isLight ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-label", isLight ? "Switch to dark theme" : "Switch to light theme");
+        const icon = themeToggle.querySelector("i");
+        if (icon) icon.className = isLight ? "ri-sun-line" : "ri-moon-line";
+      }
+
+      applyTheme(root.dataset.theme || "light");
+      themeToggle?.addEventListener("click", () => {
+        applyTheme(root.dataset.theme === "light" ? "dark" : "light");
+      });
+
+      menuToggle?.addEventListener("click", () => {
+        const open = menuToggle.getAttribute("aria-expanded") === "true";
+        header?.classList.toggle("menu-open", !open);
+        menuToggle.setAttribute("aria-expanded", String(!open));
+        const icon = menuToggle.querySelector("i");
+        if (icon) icon.className = open ? "ri-menu-3-line" : "ri-close-line";
+      });
+
+      document.addEventListener("click", (event) => {
+        if (header?.classList.contains("menu-open") && !header.contains(event.target)) {
+          header.classList.remove("menu-open");
+          menuToggle?.setAttribute("aria-expanded", "false");
+          const icon = menuToggle?.querySelector("i");
+          if (icon) icon.className = "ri-menu-3-line";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

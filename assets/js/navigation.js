@@ -10,7 +10,8 @@ export function createNavigationController({ prefersReducedMotion, closeLanguage
   const navSections = navLinks
     .map((link) => {
       const selector = link.getAttribute("href");
-      const target = selector ? document.querySelector(selector) : null;
+      if (!selector?.startsWith("#")) return null;
+      const target = document.querySelector(selector);
       if (!target) return null;
       return { link, target };
     })
@@ -69,8 +70,14 @@ export function createNavigationController({ prefersReducedMotion, closeLanguage
   function bind() {
     navLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
+        const href = link.getAttribute("href") || "";
+        if (!href.startsWith("#")) {
+          closeMobileMenu();
+          return;
+        }
+
         event.preventDefault();
-        const target = document.querySelector(link.getAttribute("href"));
+        const target = document.querySelector(href);
         closeMobileMenu();
         smoothScrollTo(target);
       });

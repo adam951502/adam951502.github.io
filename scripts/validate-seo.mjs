@@ -1,9 +1,11 @@
 import fs from "node:fs";
 
 const indexHtml = fs.readFileSync("index.html", "utf8");
+const blogHtml = fs.readFileSync("blog/index.html", "utf8");
 const robots = fs.readFileSync("robots.txt", "utf8");
 const sitemap = fs.readFileSync("sitemap.xml", "utf8");
 const canonicalUrl = "https://adam951502.github.io/";
+const blogCanonicalUrl = "https://adam951502.github.io/blog/";
 const socialImage = "https://adam951502.github.io/assets/images/adam-avatar.png";
 
 const requiredIndexFragments = [
@@ -22,6 +24,18 @@ const requiredIndexFragments = [
 const errors = [];
 for (const fragment of requiredIndexFragments) {
   if (!indexHtml.includes(fragment)) errors.push(`Missing index SEO fragment: ${fragment}`);
+}
+
+const requiredBlogFragments = [
+  `<link rel="canonical" href="${blogCanonicalUrl}">`,
+  `<meta property="og:url" content="${blogCanonicalUrl}">`,
+  `<meta property="og:image" content="${socialImage}">`,
+  `<meta name="twitter:image" content="${socialImage}">`,
+  `<meta name="description" content=`,
+  `<h1>Blog / Notes</h1>`
+];
+for (const fragment of requiredBlogFragments) {
+  if (!blogHtml.includes(fragment)) errors.push(`Missing blog SEO/content fragment: ${fragment}`);
 }
 
 const jsonLdMatch = indexHtml.match(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/);
@@ -45,6 +59,9 @@ if (!robots.includes(`Sitemap: ${canonicalUrl}sitemap.xml`)) {
 if (!sitemap.includes(`<loc>${canonicalUrl}</loc>`)) {
   errors.push("sitemap.xml must contain the canonical portfolio URL");
 }
+if (!sitemap.includes(`<loc>${blogCanonicalUrl}</loc>`)) {
+  errors.push("sitemap.xml must contain the canonical blog URL");
+}
 if (!fs.existsSync("assets/images/adam-avatar.png")) {
   errors.push("Social preview image asset is missing");
 }
@@ -54,4 +71,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("SEO validation passed: canonical, social metadata, JSON-LD, robots, sitemap, and preview image are present.");
+console.log("SEO validation passed: portfolio/blog canonicals, social metadata, JSON-LD, robots, sitemap, and preview image are present.");
