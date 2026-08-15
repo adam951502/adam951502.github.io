@@ -3,8 +3,8 @@ import fs from "node:fs";
 const indexHtml = fs.readFileSync("index.html", "utf8");
 const robots = fs.readFileSync("robots.txt", "utf8");
 const sitemap = fs.readFileSync("sitemap.xml", "utf8");
-const canonicalUrl = "https://www.adam-tang.com/";
-const socialImage = "https://www.adam-tang.com/assets/images/adam-avatar.png";
+const canonicalUrl = "https://adam951502.github.io/";
+const socialImage = "https://adam951502.github.io/assets/images/adam-avatar.png";
 
 const requiredIndexFragments = [
   '<meta name="description" content=',
