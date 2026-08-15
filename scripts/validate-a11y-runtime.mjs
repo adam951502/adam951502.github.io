@@ -1,6 +1,12 @@
 import fs from "node:fs";
+import path from "node:path";
 
-const runtime = fs.readFileSync("assets/js/script.js", "utf8");
+const runtimeRoot = path.join("assets", "js");
+const runtime = fs.readdirSync(runtimeRoot)
+  .filter((file) => file.endsWith(".js"))
+  .sort()
+  .map((file) => fs.readFileSync(path.join(runtimeRoot, file), "utf8"))
+  .join("\n");
 const indexHtml = fs.readFileSync("index.html", "utf8");
 const errors = [];
 
@@ -45,4 +51,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Accessibility/runtime validation passed: safe translated markup, action-oriented theme label, keyboard language navigation, ${translatedMarkupElements.length} translated list containers.`);
+console.log(`Accessibility/runtime validation passed across modules: safe translated markup, action-oriented theme label, keyboard language navigation, ${translatedMarkupElements.length} translated list containers.`);
