@@ -1,0 +1,49 @@
+name: Apply affiliation marquee once
+
+on:
+  push:
+    branches:
+      - agent/issue-38-affiliation-marquee
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v6
+        with:
+          ref: agent/issue-38-affiliation-marquee
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Apply marquee changes
+        run: python3 scripts/issue38-apply-marquee.py
+
+      - name: Install validation dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Run complete validation
+        run: npm run validate
+
+      - name: Check JavaScript syntax
+        run: find assets/js -name '*.js' -print0 | sort -z | xargs -0 -n1 node --check
+
+      - name: Run Chromium smoke
+        run: npm run smoke:runtime
+
+      - name: Commit implementation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets/css/style.css assets/i18n/en.json assets/i18n/zh.json
+          git commit -m "feat: add affiliation logo marquee"
+          git push origin HEAD:agent/issue-38-affiliation-marquee
