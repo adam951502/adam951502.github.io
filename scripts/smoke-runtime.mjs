@@ -84,6 +84,46 @@ try {
   if (initial.lang !== "en") throw new Error(`Expected initial lang=en, got ${initial.lang}`);
   if (initial.theme !== "light") throw new Error(`Expected initial theme=light, got ${initial.theme}`);
 
+  const firstProject = page.locator("#projectGrid [data-project-id]").first();
+  await firstProject.evaluate((element) => element.scrollIntoView({ block: "start", inline: "nearest" }));
+  await page.waitForTimeout(100);
+  await firstProject.locator("summary").click();
+  await page.waitForFunction(() => document.querySelector("#projectGrid [data-project-id]")?.open === true);
+
+  const expandedProject = await firstProject.evaluate((element) => {
+    const caseBody = element.querySelector(".project-case-body");
+    const header = document.querySelector(".site-header");
+    if (!caseBody || !header) return { valid: false };
+
+    const caseRect = caseBody.getBoundingClientRect();
+    const headerRect = header.getBoundingClientRect();
+    const style = getComputedStyle(caseBody);
+    return {
+      valid: true,
+      open: element.open,
+      caseTop: caseRect.top,
+      caseWidth: caseRect.width,
+      caseHeight: caseRect.height,
+      headerBottom: headerRect.bottom,
+      display: style.display,
+      visibility: style.visibility
+    };
+  });
+
+  if (!expandedProject.valid) throw new Error("Project case-study or sticky header element is missing");
+  if (!expandedProject.open) throw new Error("First project did not enter the open state");
+  if (expandedProject.display === "none" || expandedProject.visibility === "hidden") {
+    throw new Error("Expanded project case-study is not visible");
+  }
+  if (expandedProject.caseWidth <= 0 || expandedProject.caseHeight <= 0) {
+    throw new Error("Expanded project case-study has no visible layout box");
+  }
+  if (expandedProject.caseTop < expandedProject.headerBottom) {
+    throw new Error(
+      `Sticky navbar overlaps expanded project content: caseTop=${expandedProject.caseTop}, headerBottom=${expandedProject.headerBottom}`
+    );
+  }
+
   await page.click(".theme-toggle");
   await page.waitForFunction(() => document.documentElement.dataset.theme === "dark");
 
@@ -98,7 +138,9 @@ try {
   if (pageErrors.length) throw new Error(`Browser page errors:\n${pageErrors.join("\n")}`);
   if (consoleErrors.length) throw new Error(`Browser console errors:\n${consoleErrors.join("\n")}`);
 
-  console.log(`Runtime smoke passed: ${initial.projects} projects, ${initial.experiences} experience entries, theme toggle, zh-Hant translation, no browser errors.`);
+  console.log(
+    `Runtime smoke passed: ${initial.projects} projects, ${initial.experiences} experience entries, expanded project clear of sticky navbar, theme toggle, zh-Hant translation, no browser errors.`
+  );
 } finally {
   await browser.close();
   await new Promise((resolve) => server.close(resolve));
