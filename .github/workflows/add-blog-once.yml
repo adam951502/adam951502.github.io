@@ -1,0 +1,323 @@
+name: One-time blog landing page build
+
+on:
+  push:
+    branches:
+      - agent/issue-5-blog-landing-page
+
+permissions:
+  contents: write
+
+jobs:
+  build-blog:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/issue-5-blog-landing-page
+
+      - name: Add blog route and navigation
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path, old, new):
+              text = path.read_text()
+              if text.count(old) != 1:
+                  raise SystemExit(f"Expected exactly one match in {path}: {old!r}; got {text.count(old)}")
+              path.write_text(text.replace(old, new, 1))
+
+          index = Path("index.html")
+          replace_once(
+              index,
+              '        <a href="#skills" data-i18n="nav.skills">Skills</a>\n        <a href="#contact" data-i18n="nav.contact">Contact</a>',
+              '        <a href="#skills" data-i18n="nav.skills">Skills</a>\n        <a href="./blog/" data-i18n="nav.blog">Blog</a>\n        <a href="#contact" data-i18n="nav.contact">Contact</a>',
+          )
+
+          replace_once(
+              Path("assets/i18n/en.json"),
+              '  "nav.skills": "Skills",\n  "nav.contact": "Contact",',
+              '  "nav.skills": "Skills",\n  "nav.blog": "Blog",\n  "nav.contact": "Contact",',
+          )
+          replace_once(
+              Path("assets/i18n/zh.json"),
+              '  "nav.skills": "技能",\n  "nav.contact": "聯絡",',
+              '  "nav.skills": "技能",\n  "nav.blog": "部落格",\n  "nav.contact": "聯絡",',
+          )
+
+          navigation = Path("assets/js/navigation.js")
+          replace_once(
+              navigation,
+              '      const selector = link.getAttribute("href");\n      const target = selector ? document.querySelector(selector) : null;\n      if (!target) return null;',
+              '      const selector = link.getAttribute("href");\n      if (!selector?.startsWith("#")) return null;\n      const target = document.querySelector(selector);\n      if (!target) return null;',
+          )
+          replace_once(
+              navigation,
+              '      link.addEventListener("click", (event) => {\n        event.preventDefault();\n        const target = document.querySelector(link.getAttribute("href"));\n        closeMobileMenu();\n        smoothScrollTo(target);\n      });',
+              '      link.addEventListener("click", (event) => {\n        const href = link.getAttribute("href") || "";\n        if (!href.startsWith("#")) {\n          closeMobileMenu();\n          return;\n        }\n\n        event.preventDefault();\n        const target = document.querySelector(href);\n        closeMobileMenu();\n        smoothScrollTo(target);\n      });',
+          )
+
+          sitemap = Path("sitemap.xml")
+          replace_once(
+              sitemap,
+              '  <url>\n    <loc>https://adam951502.github.io/</loc>\n  </url>\n</urlset>',
+              '  <url>\n    <loc>https://adam951502.github.io/</loc>\n  </url>\n  <url>\n    <loc>https://adam951502.github.io/blog/</loc>\n  </url>\n</urlset>',
+          )
+
+          seo = Path("scripts/validate-seo.mjs")
+          replace_once(
+              seo,
+              'const indexHtml = fs.readFileSync("index.html", "utf8");\nconst robots = fs.readFileSync("robots.txt", "utf8");',
+              'const indexHtml = fs.readFileSync("index.html", "utf8");\nconst blogHtml = fs.readFileSync("blog/index.html", "utf8");\nconst robots = fs.readFileSync("robots.txt", "utf8");',
+          )
+          replace_once(
+              seo,
+              'const canonicalUrl = "https://adam951502.github.io/";\nconst socialImage = "https://adam951502.github.io/assets/images/adam-avatar.png";',
+              'const canonicalUrl = "https://adam951502.github.io/";\nconst blogCanonicalUrl = "https://adam951502.github.io/blog/";\nconst socialImage = "https://adam951502.github.io/assets/images/adam-avatar.png";',
+          )
+          replace_once(
+              seo,
+              'for (const fragment of requiredIndexFragments) {\n  if (!indexHtml.includes(fragment)) errors.push(`Missing index SEO fragment: ${fragment}`);\n}\n',
+              'for (const fragment of requiredIndexFragments) {\n  if (!indexHtml.includes(fragment)) errors.push(`Missing index SEO fragment: ${fragment}`);\n}\n\nconst requiredBlogFragments = [\n  `<link rel="canonical" href="${blogCanonicalUrl}">`,\n  `<meta property="og:url" content="${blogCanonicalUrl}">`,\n  `<meta property="og:image" content="${socialImage}">`,\n  `<meta name="twitter:image" content="${socialImage}">`,\n  `<meta name="description" content=`,\n  `<h1>Blog / Notes</h1>`\n];\nfor (const fragment of requiredBlogFragments) {\n  if (!blogHtml.includes(fragment)) errors.push(`Missing blog SEO/content fragment: ${fragment}`);\n}\n',
+          )
+          replace_once(
+              seo,
+              'if (!sitemap.includes(`<loc>${canonicalUrl}</loc>`)) {\n  errors.push("sitemap.xml must contain the canonical portfolio URL");\n}\n',
+              'if (!sitemap.includes(`<loc>${canonicalUrl}</loc>`)) {\n  errors.push("sitemap.xml must contain the canonical portfolio URL");\n}\nif (!sitemap.includes(`<loc>${blogCanonicalUrl}</loc>`)) {\n  errors.push("sitemap.xml must contain the canonical blog URL");\n}\n',
+          )
+          replace_once(
+              seo,
+              'console.log("SEO validation passed: canonical, social metadata, JSON-LD, robots, sitemap, and preview image are present.");',
+              'console.log("SEO validation passed: portfolio/blog canonicals, social metadata, JSON-LD, robots, sitemap, and preview image are present.");',
+          )
+
+          smoke = Path("scripts/smoke-runtime.mjs")
+          replace_once(
+              smoke,
+              '  const relativePath = requestPath === "/" ? "index.html" : requestPath.replace(/^\\//, "");',
+              '  const relativePath = requestPath === "/"\n    ? "index.html"\n    : requestPath.endsWith("/")\n      ? `${requestPath.replace(/^\\//, "")}index.html`\n      : requestPath.replace(/^\\//, "");',
+          )
+          replace_once(
+              smoke,
+              '  if (initial.theme !== "light") throw new Error(`Expected initial theme=light, got ${initial.theme}`);\n\n  await assertSkillIconsContained("desktop");',
+              '  if (initial.theme !== "light") throw new Error(`Expected initial theme=light, got ${initial.theme}`);\n\n  const blogNavHref = await page.locator(\'.site-nav a[href="./blog/"]\').getAttribute("href");\n  if (blogNavHref !== "./blog/") throw new Error("Main navigation is missing the Blog route");\n\n  await assertSkillIconsContained("desktop");',
+          )
+          replace_once(
+              smoke,
+              '  await page.setViewportSize({ width: 390, height: 844 });\n  await page.waitForTimeout(100);\n  await assertSkillIconsContained("mobile");\n\n  if (pageErrors.length) throw new Error(`Browser page errors:\\n${pageErrors.join("\\n")}`);',
+              '  await page.setViewportSize({ width: 390, height: 844 });\n  await page.waitForTimeout(100);\n  await assertSkillIconsContained("mobile");\n\n  await page.setViewportSize({ width: 1440, height: 1000 });\n  await page.goto(`http://127.0.0.1:${port}/blog/`, { waitUntil: "networkidle" });\n  const blogState = await page.evaluate(() => ({\n    title: document.querySelector("h1")?.textContent?.trim(),\n    canonical: document.querySelector(\'link[rel="canonical"]\')?.href,\n    emptyState: document.querySelector("[data-blog-empty]")?.textContent?.trim(),\n    theme: document.documentElement.dataset.theme,\n    portfolioHref: document.querySelector(\'.site-nav a[href="../"]\')?.getAttribute("href")\n  }));\n  if (blogState.title !== "Blog / Notes") throw new Error(`Unexpected blog heading: ${blogState.title}`);\n  if (blogState.canonical !== "https://adam951502.github.io/blog/") throw new Error(`Unexpected blog canonical: ${blogState.canonical}`);\n  if (!blogState.emptyState?.includes("No posts published yet")) throw new Error("Blog empty state is missing or misleading");\n  if (blogState.theme !== "dark") throw new Error(`Expected persisted dark theme on Blog, got ${blogState.theme}`);\n  if (blogState.portfolioHref !== "../") throw new Error("Blog page is missing its Portfolio navigation link");\n  await page.click(".theme-toggle");\n  await page.waitForFunction(() => document.documentElement.dataset.theme === "light");\n\n  if (pageErrors.length) throw new Error(`Browser page errors:\\n${pageErrors.join("\\n")}`);',
+          )
+          replace_once(
+              smoke,
+              '    `Runtime smoke passed: ${initial.projects} projects, ${initial.experiences} experience entries, skill icons contained at desktop/mobile, expanded project clear of sticky navbar, theme toggle, zh-Hant translation, no browser errors.`',
+              '    `Runtime smoke passed: ${initial.projects} projects, ${initial.experiences} experience entries, skill icons contained at desktop/mobile, expanded project clear of sticky navbar, Blog route/SEO/theme, theme toggle, zh-Hant translation, no browser errors.`',
+          )
+          PY
+
+      - name: Create Blog landing page
+        run: |
+          mkdir -p blog
+          cat > blog/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="theme-color" content="#f5efe8">
+            <meta name="description" content="Engineering notes and project retrospectives from Adam Tang on GenAI, data systems, software engineering, and product delivery.">
+            <link rel="canonical" href="https://adam951502.github.io/blog/">
+
+            <meta property="og:type" content="website">
+            <meta property="og:title" content="Blog / Notes — Adam Tang">
+            <meta property="og:description" content="Engineering notes and practical write-ups on GenAI, data systems, software engineering, and product delivery.">
+            <meta property="og:url" content="https://adam951502.github.io/blog/">
+            <meta property="og:image" content="https://adam951502.github.io/assets/images/adam-avatar.png">
+            <meta property="og:image:alt" content="Portrait of Adam Tang">
+            <meta property="og:site_name" content="Adam Tang">
+
+            <meta name="twitter:card" content="summary">
+            <meta name="twitter:title" content="Blog / Notes — Adam Tang">
+            <meta name="twitter:description" content="Engineering notes and practical write-ups on GenAI, data systems, software engineering, and product delivery.">
+            <meta name="twitter:image" content="https://adam951502.github.io/assets/images/adam-avatar.png">
+            <meta name="twitter:image:alt" content="Portrait of Adam Tang">
+
+            <title>Blog / Notes — Adam Tang</title>
+            <link rel="shortcut icon" href="../assets/images/web-icon.ico" type="image/x-icon">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+            <link rel="stylesheet" href="../assets/css/style.css?v=20260805-consistent-card-sizing-4">
+            <script>
+              try {
+                document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+              } catch (_) {
+                document.documentElement.dataset.theme = "light";
+              }
+            </script>
+          </head>
+          <body>
+            <div class="page-orb orb-a" aria-hidden="true"></div>
+            <div class="page-orb orb-b" aria-hidden="true"></div>
+            <div class="page-grain" aria-hidden="true"></div>
+
+            <header class="site-header">
+              <a class="brand" href="../" aria-label="Adam Tang — portfolio home">
+                <div class="brand-mark">AT</div>
+                <div>
+                  <p class="brand-name">Adam Tang</p>
+                  <p class="brand-role">GenAI Engineer | Data Scientist</p>
+                </div>
+              </a>
+
+              <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="headerPanel">
+                <span>Menu</span>
+                <i class="ri-menu-3-line" aria-hidden="true"></i>
+              </button>
+
+              <div class="header-panel" id="headerPanel">
+                <nav class="site-nav" aria-label="Primary">
+                  <a href="../">Portfolio</a>
+                  <a href="./" class="active" aria-current="page">Blog</a>
+                </nav>
+                <div class="header-actions">
+                  <a class="btn ghost" href="https://github.com/adam951502" target="_blank" rel="noopener">GitHub</a>
+                  <button class="btn ghost theme-toggle" type="button" aria-label="Switch theme">
+                    <i class="ri-sun-line" aria-hidden="true"></i>
+                    <span class="theme-toggle-label">Light</span>
+                  </button>
+                </div>
+              </div>
+            </header>
+
+            <main class="page">
+              <section class="section hero" id="blog-top">
+                <div class="hero-shell">
+                  <div class="hero-copy">
+                    <p class="eyebrow">Engineering notes</p>
+                    <h1>Blog / Notes</h1>
+                    <p class="lede">A home for practical write-ups on GenAI, data systems, software engineering, project delivery, and lessons from building real products.</p>
+
+                    <div class="proof-strip" aria-label="Planned writing areas">
+                      <span class="proof-chip">GenAI</span>
+                      <span class="proof-chip">Data &amp; Knowledge</span>
+                      <span class="proof-chip">Engineering</span>
+                      <span class="proof-chip">Product Delivery</span>
+                    </div>
+
+                    <div class="hero-actions">
+                      <a class="btn primary" href="../">Back to portfolio</a>
+                      <a class="btn ghost" href="https://github.com/adam951502" target="_blank" rel="noopener">View GitHub</a>
+                    </div>
+                  </div>
+
+                  <aside class="hero-panel">
+                    <article class="signal-card card-surface">
+                      <p class="label">Publishing status</p>
+                      <p class="signal-value">Landing page live</p>
+                    </article>
+                    <article class="signal-card card-surface">
+                      <p class="label">Content policy</p>
+                      <p class="signal-value">Only finished, authored notes appear here—no placeholder articles.</p>
+                    </article>
+                  </aside>
+                </div>
+              </section>
+
+              <section class="section" aria-labelledby="latestNotesTitle">
+                <div class="section-heading">
+                  <div class="section-title-block">
+                    <span class="section-icon" aria-hidden="true"><i class="ri-quill-pen-line"></i></span>
+                    <div>
+                      <p class="eyebrow">Latest notes</p>
+                      <h2 id="latestNotesTitle">Writing starts with real content</h2>
+                    </div>
+                  </div>
+                  <p class="muted section-note">The route, navigation, SEO, theme, and responsive shell are ready for the first published article.</p>
+                </div>
+
+                <article class="card card-surface" data-blog-empty>
+                  <div class="pill">Empty state</div>
+                  <h3>No posts published yet</h3>
+                  <p class="muted">No article titles, dates, or summaries are being fabricated from old template assets. Real posts can be added here when their content is ready.</p>
+                  <div class="hero-actions">
+                    <a class="btn ghost" href="../#projects">Explore projects instead</a>
+                  </div>
+                </article>
+              </section>
+            </main>
+
+            <footer class="footer">
+              <p>Adam Tang · Blog / Notes</p>
+              <a href="../">Portfolio</a>
+            </footer>
+
+            <script>
+              (() => {
+                const root = document.documentElement;
+                const header = document.querySelector(".site-header");
+                const menuToggle = document.querySelector(".mobile-menu-toggle");
+                const themeToggle = document.querySelector(".theme-toggle");
+                const themeLabel = document.querySelector(".theme-toggle-label");
+
+                function applyTheme(theme) {
+                  root.dataset.theme = theme;
+                  try { localStorage.setItem("theme", theme); } catch (_) {}
+                  const isLight = theme === "light";
+                  themeLabel.textContent = isLight ? "Light" : "Dark";
+                  themeToggle.setAttribute("aria-label", isLight ? "Switch to dark theme" : "Switch to light theme");
+                  const icon = themeToggle.querySelector("i");
+                  if (icon) icon.className = isLight ? "ri-sun-line" : "ri-moon-line";
+                }
+
+                applyTheme(root.dataset.theme || "light");
+                themeToggle?.addEventListener("click", () => {
+                  applyTheme(root.dataset.theme === "light" ? "dark" : "light");
+                });
+
+                menuToggle?.addEventListener("click", () => {
+                  const open = menuToggle.getAttribute("aria-expanded") === "true";
+                  header?.classList.toggle("menu-open", !open);
+                  menuToggle.setAttribute("aria-expanded", String(!open));
+                  const icon = menuToggle.querySelector("i");
+                  if (icon) icon.className = open ? "ri-menu-3-line" : "ri-close-line";
+                });
+
+                document.addEventListener("click", (event) => {
+                  if (header?.classList.contains("menu-open") && !header.contains(event.target)) {
+                    header.classList.remove("menu-open");
+                    menuToggle?.setAttribute("aria-expanded", "false");
+                    const icon = menuToggle?.querySelector("i");
+                    if (icon) icon.className = "ri-menu-3-line";
+                  }
+                });
+              })();
+            </script>
+          </body>
+          </html>
+          HTML
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts --no-audit --no-fund
+
+      - name: Validate Blog integration
+        run: |
+          npm run validate
+          find assets/js -name '*.js' -print0 | sort -z | xargs -0 -n1 node --check
+          npm run smoke:runtime
+          grep -q 'href="./blog/"' index.html
+          grep -q '<loc>https://adam951502.github.io/blog/</loc>' sitemap.xml
+          grep -q '<link rel="canonical" href="https://adam951502.github.io/blog/">' blog/index.html
+          test ! -f CNAME
+          ! grep -R "adam-tang.com" index.html blog robots.txt sitemap.xml scripts assets/data assets/js
+
+      - name: Commit Blog implementation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html blog/index.html assets/i18n/en.json assets/i18n/zh.json assets/js/navigation.js sitemap.xml scripts/validate-seo.mjs scripts/smoke-runtime.mjs
+          git commit -m "feat: add first-class blog landing page"
+          git push
