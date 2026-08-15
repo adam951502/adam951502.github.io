@@ -6,7 +6,7 @@
   "sortEnd": "2025-12",
   "pillKey": "projects.pills.data",
   "icon": "ri-download-cloud-2-line",
-  "image": "assets/images/project-x-downloader.png",
+  "image": "assets/images/project-x-downloader.webp",
   "chips": [
     "Python",
     "X API v2",

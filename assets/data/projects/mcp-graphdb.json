@@ -6,7 +6,7 @@
   "sortEnd": "2025-06",
   "pillKey": "projects.pills.genai",
   "icon": "ri-node-tree",
-  "image": "assets/images/project-mcp-graphdb-v2.png",
+  "image": "assets/images/project-mcp-graphdb-v2.webp",
   "chips": [
     "MCP",
     "GraphDB",
