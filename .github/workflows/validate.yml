@@ -24,11 +24,12 @@ jobs:
       - name: Install validation dependencies
         run: npm install --ignore-scripts --no-audit --no-fund
 
-      - name: Validate structured content
+      - name: Validate structured content and runtime architecture
         run: npm run validate
 
-      - name: Check JavaScript syntax
-        run: node --check assets/js/script.js
+      - name: Check JavaScript module syntax
+        run: |
+          find assets/js -name '*.js' -print0 | sort -z | xargs -0 -n1 node --check
 
       - name: Verify GitHub Pages custom domain file
         run: |
