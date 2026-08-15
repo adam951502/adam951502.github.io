@@ -18,7 +18,7 @@ const mobileMenuController = createMobileMenuController({
 });
 
 i18nController = createI18nController({
-  i18nBasePath: "../assets/i18n",
+  i18nBasePath: "../assets/i18n/blog",
   pageTitleKey: "blog.page.title",
   onApply: async ({ translate }) => {
     themeController.setLabel(translate);
