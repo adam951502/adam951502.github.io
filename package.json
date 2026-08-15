@@ -1,0 +1,11 @@
+{
+  "name": "adam-tang-portfolio",
+  "private": true,
+  "scripts": {
+    "validate": "node scripts/validate-schemas.mjs && node scripts/validate-projects.mjs",
+    "validate:schema": "node scripts/validate-schemas.mjs"
+  },
+  "devDependencies": {
+    "ajv": "8.17.1"
+  }
+}

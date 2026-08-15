@@ -40,12 +40,8 @@
       "additionalProperties": false,
       "required": ["en", "zh"],
       "properties": {
-        "en": {
-          "$ref": "#/$defs/completeContent"
-        },
-        "zh": {
-          "$ref": "#/$defs/completeContent"
-        }
+        "en": { "$ref": "#/$defs/localizedContent" },
+        "zh": { "$ref": "#/$defs/localizedContent" }
       }
     }
   },
@@ -66,6 +62,18 @@
     "localizedContent": {
       "type": "object",
       "additionalProperties": false,
+      "required": [
+        "title",
+        "summary",
+        "dates",
+        "status",
+        "role",
+        "challenge",
+        "contribution",
+        "technical",
+        "architecture",
+        "outcomes"
+      ],
       "properties": {
         "title": { "type": "string", "minLength": 1 },
         "summary": { "type": "string", "minLength": 1 },
@@ -95,25 +103,6 @@
           "items": { "type": "string", "minLength": 1 }
         }
       }
-    },
-    "completeContent": {
-      "allOf": [
-        { "$ref": "#/$defs/localizedContent" },
-        {
-          "required": [
-            "title",
-            "summary",
-            "dates",
-            "status",
-            "role",
-            "challenge",
-            "contribution",
-            "technical",
-            "architecture",
-            "outcomes"
-          ]
-        }
-      ]
     }
   }
 }

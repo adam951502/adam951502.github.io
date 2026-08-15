@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "experience.schema.json",
+  "title": "Portfolio experience entries",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "datesKey",
+      "titleKey",
+      "pillKey",
+      "pillIcon",
+      "descKey",
+      "listKey",
+      "open",
+      "inlineOpen"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
+      },
+      "datesKey": {
+        "type": "string",
+        "pattern": "^experience\\.[A-Za-z0-9]+\\.dates$"
+      },
+      "titleKey": {
+        "type": "string",
+        "pattern": "^experience\\.[A-Za-z0-9]+\\.title$"
+      },
+      "pillKey": {
+        "type": "string",
+        "pattern": "^experience\\.pills\\.[A-Za-z0-9]+$"
+      },
+      "pillIcon": {
+        "type": "string",
+        "minLength": 1
+      },
+      "descKey": {
+        "type": "string",
+        "pattern": "^experience\\.[A-Za-z0-9]+\\.desc$"
+      },
+      "listKey": {
+        "type": "string",
+        "pattern": "^experience\\.[A-Za-z0-9]+\\.list$"
+      },
+      "open": {
+        "type": "boolean"
+      },
+      "inlineOpen": {
+        "type": "boolean"
+      }
+    }
+  }
+}
