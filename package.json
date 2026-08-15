@@ -5,6 +5,7 @@
   "scripts": {
     "build:content": "node scripts/build-content.mjs",
     "check:content": "node scripts/build-content.mjs --check",
+    "smoke:runtime": "node scripts/smoke-runtime.mjs",
     "validate": "node scripts/validate-schemas.mjs && node scripts/validate-projects.mjs && node scripts/build-content.mjs --check && node scripts/validate-assets.mjs && node scripts/validate-repo-hygiene.mjs && node scripts/validate-seo.mjs && node scripts/validate-js-modules.mjs && node scripts/validate-a11y-runtime.mjs",
     "validate:schema": "node scripts/validate-schemas.mjs",
     "validate:assets": "node scripts/validate-assets.mjs",
@@ -14,6 +15,7 @@
     "validate:a11y": "node scripts/validate-a11y-runtime.mjs"
   },
   "devDependencies": {
-    "ajv": "8.17.1"
+    "ajv": "8.17.1",
+    "playwright-core": "1.50.1"
   }
 }
