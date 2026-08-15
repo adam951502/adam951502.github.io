@@ -21,12 +21,14 @@ The portfolio treats JSON Schema as the structural contract for its content:
 - `scripts/validate-schemas.mjs` runs schema validation and checks EN/ZH experience translation keys.
 - `scripts/validate-projects.mjs` keeps semantic checks such as file existence, unique project IDs/images, manifest membership, and localized architecture requirements.
 
-Install the validation dependency and run the complete validation suite with:
+Install the exact committed validation dependency graph and run the complete validation suite with:
 
 ```bash
-npm install
+npm ci --ignore-scripts
 npm run validate
 ```
+
+`package-lock.json` is committed so local and CI validation resolve the same transitive dependency versions.
 
 GitHub Actions runs the same validation automatically for pull requests and pushes to `main`.
 
