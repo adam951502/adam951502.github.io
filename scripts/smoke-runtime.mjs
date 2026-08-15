@@ -203,26 +203,44 @@ try {
 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`http://127.0.0.1:${port}/blog/`, { waitUntil: "networkidle" });
+  await page.waitForFunction(() => document.documentElement.lang === "zh-Hant");
   const blogState = await page.evaluate(() => ({
     title: document.querySelector("h1")?.textContent?.trim(),
     canonical: document.querySelector('link[rel="canonical"]')?.href,
     emptyState: document.querySelector("[data-blog-empty]")?.textContent?.trim(),
     theme: document.documentElement.dataset.theme,
+    lang: document.documentElement.lang,
     portfolioHref: document.querySelector('.site-nav a[href="../"]')?.getAttribute("href")
   }));
-  if (blogState.title !== "Blog / Notes") throw new Error(`Unexpected blog heading: ${blogState.title}`);
+  if (blogState.title !== "部落格 / 筆記") throw new Error(`Unexpected translated Blog heading: ${blogState.title}`);
+  if (blogState.lang !== "zh-Hant") throw new Error(`Expected persisted Blog lang=zh-Hant, got ${blogState.lang}`);
   if (blogState.canonical !== "https://adam951502.github.io/blog/") throw new Error(`Unexpected blog canonical: ${blogState.canonical}`);
-  if (!blogState.emptyState?.includes("No posts published yet")) throw new Error("Blog empty state is missing or misleading");
+  if (!blogState.emptyState?.includes("尚未發布文章")) throw new Error("Translated Blog empty state is missing or misleading");
   if (blogState.theme !== "dark") throw new Error(`Expected persisted dark theme on Blog, got ${blogState.theme}`);
   if (blogState.portfolioHref !== "../") throw new Error("Blog page is missing its Portfolio navigation link");
+
+  await page.click(".lang-toggle");
+  await page.click('.lang-option[data-lang="en"]');
+  await page.waitForFunction(() => document.documentElement.lang === "en");
+  const englishBlogTitle = await page.locator("h1").textContent();
+  if (englishBlogTitle?.trim() !== "Blog / Notes") throw new Error(`Blog did not switch back to English: ${englishBlogTitle}`);
+
   await page.click(".theme-toggle");
   await page.waitForFunction(() => document.documentElement.dataset.theme === "light");
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.click(".mobile-menu-toggle");
+  await page.waitForFunction(() => document.querySelector(".mobile-menu-toggle")?.getAttribute("aria-expanded") === "true");
+  await page.keyboard.press("Escape");
+  await page.waitForFunction(() => document.querySelector(".mobile-menu-toggle")?.getAttribute("aria-expanded") === "false");
+  const menuFocusRestored = await page.evaluate(() => document.activeElement === document.querySelector(".mobile-menu-toggle"));
+  if (!menuFocusRestored) throw new Error("Blog mobile menu did not restore focus after Escape");
 
   if (pageErrors.length) throw new Error(`Browser page errors:\n${pageErrors.join("\n")}`);
   if (consoleErrors.length) throw new Error(`Browser console errors:\n${consoleErrors.join("\n")}`);
 
   console.log(
-    `Runtime smoke passed: ${initial.projects} projects, ${initial.experiences} experience entries, skill icons contained at desktop/mobile, expanded project clear of sticky navbar, Blog route/SEO/theme, theme toggle, zh-Hant translation, no browser errors.`
+    `Runtime smoke passed: ${initial.projects} projects, ${initial.experiences} experience entries, skill icons contained at desktop/mobile, expanded project clear of sticky navbar, Blog shared runtime/i18n/mobile-menu/SEO/theme, theme toggle, zh-Hant translation, no browser errors.`
   );
 } finally {
   await browser.close();
