@@ -36,7 +36,13 @@ for (const expectedFile of allowedResumeFiles) {
 
 const forbiddenPaths = [
   "assets/i18n/de.json",
-  "assets/images/web_icon.ico"
+  "assets/images/web_icon.ico",
+  "assets/images/blog-1.jpg",
+  "assets/images/blog-2.jpg",
+  "assets/images/blog-3.jpg",
+  "assets/images/blog-4.jpg",
+  "assets/images/blog-5.jpg",
+  "assets/images/blog-6.jpg"
 ];
 
 for (const relativePath of forbiddenPaths) {
@@ -56,4 +62,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Repository hygiene passed: ${resumeFiles.length} current resume source/output files and no stale MHTML/DE/duplicate favicon artifacts.`);
+console.log(`Repository hygiene passed: ${resumeFiles.length} current resume source/output files and no stale MHTML/DE/duplicate favicon/legacy Blog template artifacts.`);
