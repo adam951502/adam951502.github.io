@@ -144,6 +144,37 @@ try {
   const blogNavHref = await page.locator('.site-nav a[href="./blog/"]').getAttribute("href");
   if (blogNavHref !== "./blog/") throw new Error("Main navigation is missing the Blog route");
 
+  const marqueeStructure = await page.evaluate(() => ({
+    primaryItems: document.querySelectorAll('.affiliation-marquee__group:not([aria-hidden="true"]) .affiliation-item').length,
+    duplicateItems: document.querySelectorAll('.affiliation-marquee__group[aria-hidden="true"] .affiliation-item').length,
+    duplicateHidden: document.querySelector('.affiliation-marquee__group[aria-hidden="true"]')?.getAttribute("aria-hidden"),
+    animationName: document.querySelector('.affiliation-marquee__track')
+      ? getComputedStyle(document.querySelector('.affiliation-marquee__track')).animationName
+      : null
+  }));
+  if (marqueeStructure.primaryItems !== 6) throw new Error(`Expected 6 primary affiliation items, got ${marqueeStructure.primaryItems}`);
+  if (marqueeStructure.duplicateItems !== 6) throw new Error(`Expected 6 duplicate affiliation items, got ${marqueeStructure.duplicateItems}`);
+  if (marqueeStructure.duplicateHidden !== "true") throw new Error("Duplicate affiliation group is not aria-hidden");
+  if (marqueeStructure.animationName !== "affiliation-marquee-right") {
+    throw new Error(`Unexpected affiliation marquee animation: ${marqueeStructure.animationName}`);
+  }
+
+  const marqueeXBefore = await page.locator('.affiliation-marquee__track').evaluate((element) => element.getBoundingClientRect().x);
+  await page.waitForTimeout(300);
+  const marqueeXAfter = await page.locator('.affiliation-marquee__track').evaluate((element) => element.getBoundingClientRect().x);
+  if (marqueeXAfter <= marqueeXBefore) {
+    throw new Error(`Affiliation marquee is not moving right: before=${marqueeXBefore}, after=${marqueeXAfter}`);
+  }
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const reducedMotion = await page.evaluate(() => ({
+    animationName: getComputedStyle(document.querySelector('.affiliation-marquee__track')).animationName,
+    duplicateDisplay: getComputedStyle(document.querySelector('.affiliation-marquee__group[aria-hidden="true"]')).display
+  }));
+  if (reducedMotion.animationName !== "none") throw new Error("Affiliation marquee does not stop for reduced-motion users");
+  if (reducedMotion.duplicateDisplay !== "none") throw new Error("Reduced-motion mode still renders the duplicate marquee group");
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+
   await assertSkillIconsContained("desktop");
 
   const firstProject = page.locator("#projectGrid [data-project-id]").first();
@@ -197,6 +228,11 @@ try {
   const translatedTitle = await page.locator("#projectGrid [data-project-id] h3").first().textContent();
   if (!translatedTitle?.trim()) throw new Error("Translated project title is empty after switching to zh");
 
+  const translatedAffiliationTitle = await page.locator('.signature-copy [data-i18n="hero.aside.title"]').textContent();
+  if (translatedAffiliationTitle?.trim() !== "跨研究與產業經歷") {
+    throw new Error(`Unexpected translated affiliation heading: ${translatedAffiliationTitle}`);
+  }
+
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(100);
   await assertSkillIconsContained("mobile");
@@ -240,7 +276,7 @@ try {
   if (consoleErrors.length) throw new Error(`Browser console errors:\n${consoleErrors.join("\n")}`);
 
   console.log(
-    `Runtime smoke passed: ${initial.projects} projects, ${initial.experiences} experience entries, skill icons contained at desktop/mobile, expanded project clear of sticky navbar, Blog shared runtime/i18n/mobile-menu/SEO/theme, theme toggle, zh-Hant translation, no browser errors.`
+    `Runtime smoke passed: ${initial.projects} projects, ${initial.experiences} experience entries, affiliation marquee rightward/reduced-motion-safe, skill icons contained at desktop/mobile, expanded project clear of sticky navbar, Blog shared runtime/i18n/mobile-menu/SEO/theme, theme toggle, zh-Hant translation, no browser errors.`
   );
 } finally {
   await browser.close();
