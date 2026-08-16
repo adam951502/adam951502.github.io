@@ -39,9 +39,9 @@ jobs:
         run: find assets/js -name '*.js' -print0 | sort -z | xargs -0 -n1 node --check
       - name: Smoke test browser runtime
         run: npm run smoke:runtime
-      - name: Verify X Media Downloader is fully retired
+      - name: Verify X Media Downloader is fully retired from production content
         run: |
-          ! grep -R "x-media-downloader\|X Media Downloader\|projects.xDownloader" index.html assets/data assets/i18n scripts --exclude='issue-53-apply.py'
+          ! grep -R "x-media-downloader\|X Media Downloader\|projects.xDownloader" index.html assets/data assets/i18n
       - name: Commit implementation
         run: |
           git config user.name "github-actions[bot]"
