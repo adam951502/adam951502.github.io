@@ -155,6 +155,15 @@ try {
   if (marqueeStructure.primaryItems !== 6) throw new Error(`Expected 6 primary affiliation items, got ${marqueeStructure.primaryItems}`);
   if (marqueeStructure.duplicateItems !== 6) throw new Error(`Expected 6 duplicate affiliation items, got ${marqueeStructure.duplicateItems}`);
   if (marqueeStructure.duplicateHidden !== "true") throw new Error("Duplicate affiliation group is not aria-hidden");
+  const heraklionLogo = page.locator('.affiliation-marquee__group:not([aria-hidden="true"]) img[alt="HERAKLION"]');
+  if (await heraklionLogo.count() !== 1) throw new Error("Official HERAKLION logo is missing from the primary affiliation group");
+  const heraklionSrc = await heraklionLogo.getAttribute("src");
+  if (heraklionSrc !== "assets/images/logo-heraklion.gif") throw new Error(`Unexpected HERAKLION logo source: ${heraklionSrc}`);
+
+  const emiLogo = page.locator('.affiliation-marquee__group:not([aria-hidden="true"]) img[alt="Fraunhofer EMI"]');
+  if (await emiLogo.count() !== 1) throw new Error("Official Fraunhofer EMI logo is missing from the primary affiliation group");
+  const emiSrc = await emiLogo.getAttribute("src");
+  if (emiSrc !== "assets/images/logo-emi.png") throw new Error(`Unexpected Fraunhofer EMI logo source: ${emiSrc}`);
   if (marqueeStructure.animationName !== "affiliation-marquee-right") {
     throw new Error(`Unexpected affiliation marquee animation: ${marqueeStructure.animationName}`);
   }
