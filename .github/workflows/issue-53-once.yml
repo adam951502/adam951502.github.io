@@ -25,7 +25,9 @@ jobs:
           cache: npm
           cache-dependency-path: package-lock.json
       - name: Apply portfolio changes
-        run: python3 scripts/issue-53-apply.py
+        run: |
+          python3 scripts/issue-53-apply.py
+          python3 scripts/issue-53-fix-image.py
       - name: Build generated content
         run: npm run build:content
       - name: Install validation dependencies
@@ -54,6 +56,7 @@ jobs:
             assets/data/projects/t93-lab.json \
             assets/data/projects/snkr-psa-automation.json \
             assets/data/projects/x-media-downloader.json \
+            assets/images/project-snkr-psa.svg \
             assets/images/project-x-downloader.webp \
             assets/i18n/en.json \
             assets/i18n/zh.json \
