@@ -159,6 +159,11 @@ try {
   if (await heraklionLogo.count() !== 1) throw new Error("Official HERAKLION logo is missing from the primary affiliation group");
   const heraklionSrc = await heraklionLogo.getAttribute("src");
   if (heraklionSrc !== "assets/images/logo-heraklion.gif") throw new Error(`Unexpected HERAKLION logo source: ${heraklionSrc}`);
+
+  const emiLogo = page.locator('.affiliation-marquee__group:not([aria-hidden="true"]) img[alt="Fraunhofer EMI"]');
+  if (await emiLogo.count() !== 1) throw new Error("Official Fraunhofer EMI logo is missing from the primary affiliation group");
+  const emiSrc = await emiLogo.getAttribute("src");
+  if (emiSrc !== "assets/images/logo-emi.png") throw new Error(`Unexpected Fraunhofer EMI logo source: ${emiSrc}`);
   if (marqueeStructure.animationName !== "affiliation-marquee-right") {
     throw new Error(`Unexpected affiliation marquee animation: ${marqueeStructure.animationName}`);
   }
