@@ -1,0 +1,43 @@
+name: Apply issue 55 career span fix once
+
+on:
+  push:
+    branches:
+      - agent/current-career-span
+
+permissions:
+  contents: write
+
+jobs:
+  implement:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/current-career-span
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Apply span fix
+        run: python3 scripts/issue-55-apply.py
+      - name: Build content
+        run: npm run build:content
+      - name: Install validation dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate
+        run: npm run validate
+      - name: Check JavaScript
+        run: find assets/js -name '*.js' -print0 | sort -z | xargs -0 -n1 node --check
+      - name: Chromium smoke
+        run: npm run smoke:runtime
+      - name: Commit fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/js/experience.js scripts/build-content.mjs scripts/smoke-runtime.mjs index.html
+          git commit -m "fix: show Present in current career span"
+          git push origin HEAD:agent/current-career-span
