@@ -28,6 +28,7 @@ jobs:
         run: |
           python3 scripts/issue-53-apply.py
           python3 scripts/issue-53-fix-image.py
+          python3 scripts/issue-53-fix-smoke.py
       - name: Build generated content
         run: npm run build:content
       - name: Install validation dependencies
