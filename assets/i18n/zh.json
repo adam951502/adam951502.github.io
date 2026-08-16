@@ -351,7 +351,6 @@
   "footer.copyright": "© 2026 Adam Tang。",
   "footer.madeBy": "由 Adam Tang 製作｜<a href=\"https://github.com/adam951502\">@adam951502</a>",
   "footer.rights": "版權所有。",
-  "experience.overview.title": "職涯總覽",
-  "experience.overview.hint": "選擇里程碑，快速前往對應經歷。",
-  "experience.overview.jump": "前往此經歷"
+  "experience.span.label": "職涯跨度",
+  "experience.span.roles": "段經歷"
 }
