@@ -115,6 +115,12 @@
     </div>
   </header>
 
+  <div class="mobile-lang-pill" role="group" aria-label="Language quick switch">
+    <button class="lang-quick-option active" type="button" data-lang="en" aria-pressed="true">EN</button>
+    <span aria-hidden="true">/</span>
+    <button class="lang-quick-option" type="button" data-lang="zh" aria-pressed="false">繁中</button>
+  </div>
+
   <main class="page">
     <section id="hero" class="section hero reveal">
       <div class="hero-shell">
@@ -197,6 +203,73 @@
           <p class="metric-value" data-i18n="hero.stats.leadership.value">Leadership</p>
           <p class="metric-label" data-i18n="hero.stats.leadership.label">Product ownership, agile delivery, mentoring</p>
         </article>
+      </div>
+    </section>
+
+    <section class="section recruiter-overview reveal" aria-label="Professional overview">
+      <div class="trust-strip" role="list" aria-label="Professional trust signals">
+        <article class="trust-item" role="listitem">
+          <i class="ri-time-line" aria-hidden="true"></i>
+          <div><strong data-i18n="trust.years.title">5+ years</strong><span data-i18n="trust.years.body">industry engineering experience</span></div>
+        </article>
+        <article class="trust-item" role="listitem">
+          <i class="ri-building-4-line" aria-hidden="true"></i>
+          <div><strong data-i18n="trust.fraunhofer.title">Fraunhofer EMI</strong><span data-i18n="trust.fraunhofer.body">applied research in Europe's Fraunhofer network</span></div>
+        </article>
+        <article class="trust-item" role="listitem">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+          <div><strong data-i18n="trust.freelance.title">Freelance AI &amp; Software Engineer</strong><span data-i18n="trust.freelance.body">client systems + independent products</span></div>
+        </article>
+        <article class="trust-item" role="listitem">
+          <i class="ri-global-line" aria-hidden="true"></i>
+          <div><strong data-i18n="trust.global.title">Taiwan / Europe</strong><span data-i18n="trust.global.body">cross-cultural, global engineering experience</span></div>
+        </article>
+        <article class="trust-item trust-item--accent" role="listitem">
+          <i class="ri-shake-hands-line" aria-hidden="true"></i>
+          <div><strong data-i18n="trust.available.title">Available to collaborate</strong><span data-i18n="trust.available.body">projects, product builds &amp; tech advising</span></div>
+        </article>
+      </div>
+
+      <div class="journey-shell card-surface">
+        <div class="journey-heading">
+          <div>
+            <p class="eyebrow" data-i18n="journey.eyebrow">My journey</p>
+            <h2 data-i18n="journey.title">From engineering fundamentals to applied AI products.</h2>
+          </div>
+          <p class="muted" data-i18n="journey.body">A quick map first. Open the sections below only when you want the details.</p>
+        </div>
+        <ol class="journey-track">
+          <li class="journey-step">
+            <span class="journey-icon"><i class="ri-tools-line" aria-hidden="true"></i></span>
+            <span class="journey-year">01</span>
+            <strong data-i18n="journey.step1.title">Mechanical Engineering</strong>
+            <span data-i18n="journey.step1.body">systems, controls &amp; numerical thinking</span>
+          </li>
+          <li class="journey-step">
+            <span class="journey-icon"><i class="ri-leaf-line" aria-hidden="true"></i></span>
+            <span class="journey-year">02</span>
+            <strong data-i18n="journey.step2.title">Sustainable Systems</strong>
+            <span data-i18n="journey.step2.body">research, modeling &amp; data analysis</span>
+          </li>
+          <li class="journey-step">
+            <span class="journey-icon"><i class="ri-building-line" aria-hidden="true"></i></span>
+            <span class="journey-year">03</span>
+            <strong data-i18n="journey.step3.title">Fraunhofer EMI</strong>
+            <span data-i18n="journey.step3.body">applied software, data &amp; AI engineering</span>
+          </li>
+          <li class="journey-step">
+            <span class="journey-icon"><i class="ri-node-tree" aria-hidden="true"></i></span>
+            <span class="journey-year">04</span>
+            <strong data-i18n="journey.step4.title">Graphs → RAG → Agents</strong>
+            <span data-i18n="journey.step4.body">knowledge systems evolved into GenAI workflows</span>
+          </li>
+          <li class="journey-step journey-step--current">
+            <span class="journey-icon"><i class="ri-rocket-2-line" aria-hidden="true"></i></span>
+            <span class="journey-year">05</span>
+            <strong data-i18n="journey.step5.title">Taiwan · Build &amp; Advise</strong>
+            <span data-i18n="journey.step5.body">freelance delivery, products &amp; applied R&amp;D</span>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -568,7 +641,7 @@
           <span class="experience-dot"></span>
           <span class="experience-period">Nov 2025 - Present</span>
         </div>
-        <details class="timeline-card experience-card" open>
+        <details class="timeline-card experience-card">
           <summary>
             <div class="timeline-head">
               <span class="timeline-index">01</span>
@@ -584,7 +657,7 @@
           </summary>
           <div class="disclosure-body">
             <p class="muted">Taiwan-based freelance and independent engineering practice delivering client-requested AI/software systems while building products and R&amp;D tools across GenAI, computer vision, full-stack platforms, quantitative research, and data automation.</p>
-            <details class="inline-details" open>
+            <details class="inline-details">
               <summary>Key work</summary>
               <ul class="mini-list">
                 <li>Client-requested systems: Production Planning Copilot; 888 Card Market Platform; Multi-box UDI Data Matrix Decoder; UDI Shipping Assistance System; and the ongoing T93.Lab Collection &amp; Market Platform.</li>
@@ -601,7 +674,7 @@
           <span class="experience-dot"></span>
           <span class="experience-period">Oct 2021 - Oct 2025</span>
         </div>
-        <details class="timeline-card experience-card" open>
+        <details class="timeline-card experience-card">
           <summary>
             <div class="timeline-head">
               <span class="timeline-index">02</span>
@@ -617,7 +690,7 @@
           </summary>
           <div class="disclosure-body">
             <p class="muted">Building GenAI assistants, knowledge graphs, and data pipelines for material life-cycle analysis and production planning.</p>
-            <details class="inline-details" open>
+            <details class="inline-details">
               <summary>Key work</summary>
               <ul class="mini-list">
                 <li>Built RDF/OWL ontologies and knowledge graphs for additive manufacturing LCA</li>
@@ -634,7 +707,7 @@
           <span class="experience-dot"></span>
           <span class="experience-period">Mar 2023 - Jul 2024</span>
         </div>
-        <details class="timeline-card experience-card" open>
+        <details class="timeline-card experience-card">
           <summary>
             <div class="timeline-head">
               <span class="timeline-index">03</span>
@@ -650,7 +723,7 @@
           </summary>
           <div class="disclosure-body">
             <p class="muted">Managed an e-commerce company end-to-end: management, site build, marketing, and business model.</p>
-            <details class="inline-details" open>
+            <details class="inline-details">
               <summary>Key work</summary>
               <ul class="mini-list">
                 <li>Launched the site, payments, fulfillment, and analytics stack</li>
@@ -682,7 +755,7 @@
           </summary>
           <div class="disclosure-body">
             <p class="muted">Impact and delamination modeling for CFRP configurations with end-to-end simulation workflow.</p>
-            <details class="inline-details" open>
+            <details class="inline-details">
               <summary>Key work</summary>
               <ul class="mini-list">
                 <li>Built LS-DYNA models, meshing, and parameter tuning</li>
@@ -714,7 +787,7 @@
           </summary>
           <div class="disclosure-body">
             <p class="muted">Failure modeling for hybrid lap joints under tensile loading.</p>
-            <details class="inline-details" open>
+            <details class="inline-details">
               <summary>Key work</summary>
               <ul class="mini-list">
                 <li>Designed and meshed components for LS-DYNA studies</li>
@@ -746,7 +819,7 @@
           </summary>
           <div class="disclosure-body">
             <p class="muted">Supported bioprocess hardware assembly and electronics for microbioreactors.</p>
-            <details class="inline-details" open>
+            <details class="inline-details">
               <summary>Key work</summary>
               <ul class="mini-list">
                 <li>Tuned and assembled microbioreactors and docking stations</li>
@@ -777,7 +850,7 @@
           </summary>
           <div class="disclosure-body">
             <p class="muted">Simulation and experimental support for torsion and fatigue studies.</p>
-            <details class="inline-details" open>
+            <details class="inline-details">
               <summary>Key work</summary>
               <ul class="mini-list">
                 <li>Built LS-DYNA models for torsion tests and analyzed results in Python</li>
@@ -809,7 +882,7 @@
           </summary>
           <div class="disclosure-body">
             <p class="muted">Spectrum data processing for microalbumin urine tests.</p>
-            <details class="inline-details" open>
+            <details class="inline-details">
               <summary>Key work</summary>
               <ul class="mini-list">
                 <li>Built baseline correction and signal-processing routines in MATLAB</li>
@@ -840,7 +913,7 @@
           </summary>
           <div class="disclosure-body">
             <p class="muted">Tutored math, physics, and chemistry while supporting students’ applications.</p>
-            <details class="inline-details" open>
+            <details class="inline-details">
               <summary>Key work</summary>
               <ul class="mini-list">
                 <li>Taught STEM subjects and edited curricula for junior high and high school</li>
@@ -872,7 +945,7 @@
           </summary>
           <div class="disclosure-body">
             <p class="muted">Supported lab operations and PDMS sensor fabrication research.</p>
-            <details class="inline-details" open>
+            <details class="inline-details">
               <summary>Key work</summary>
               <ul class="mini-list">
                 <li>Handled documentation and equipment maintenance</li>
@@ -903,7 +976,7 @@
           </summary>
           <div class="disclosure-body">
             <p class="muted">Shop-floor support for switchboard parts manufacturing.</p>
-            <details class="inline-details" open>
+            <details class="inline-details">
               <summary>Key work</summary>
               <ul class="mini-list">
                 <li>Coordinated client requests across drilling, stamping, plating, and welding steps</li>

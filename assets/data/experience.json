@@ -7,8 +7,8 @@
     "pillIcon": "ri-code-s-slash-line",
     "descKey": "experience.freelanceTaiwan.desc",
     "listKey": "experience.freelanceTaiwan.list",
-    "open": true,
-    "inlineOpen": true
+    "open": false,
+    "inlineOpen": false
   },
   {
     "id": "fraunhofer-2021",
@@ -18,8 +18,8 @@
     "pillIcon": "ri-brain-line",
     "descKey": "experience.fraunhofer2021.desc",
     "listKey": "experience.fraunhofer2021.list",
-    "open": true,
-    "inlineOpen": true
+    "open": false,
+    "inlineOpen": false
   },
   {
     "id": "aurore",
@@ -29,8 +29,8 @@
     "pillIcon": "ri-store-2-line",
     "descKey": "experience.aurore.desc",
     "listKey": "experience.aurore.list",
-    "open": true,
-    "inlineOpen": true
+    "open": false,
+    "inlineOpen": false
   },
   {
     "id": "fraunhofer-2021spring",
@@ -41,7 +41,7 @@
     "descKey": "experience.fraunhofer2021spring.desc",
     "listKey": "experience.fraunhofer2021spring.list",
     "open": false,
-    "inlineOpen": true
+    "inlineOpen": false
   },
   {
     "id": "fraunhofer-2020",
@@ -52,7 +52,7 @@
     "descKey": "experience.fraunhofer2020.desc",
     "listKey": "experience.fraunhofer2020.list",
     "open": false,
-    "inlineOpen": true
+    "inlineOpen": false
   },
   {
     "id": "cytena",
@@ -63,7 +63,7 @@
     "descKey": "experience.cytena.desc",
     "listKey": "experience.cytena.list",
     "open": false,
-    "inlineOpen": true
+    "inlineOpen": false
   },
   {
     "id": "inatech",
@@ -74,7 +74,7 @@
     "descKey": "experience.inatech.desc",
     "listKey": "experience.inatech.list",
     "open": false,
-    "inlineOpen": true
+    "inlineOpen": false
   },
   {
     "id": "taiwan-tech",
@@ -85,7 +85,7 @@
     "descKey": "experience.taiwanTech.desc",
     "listKey": "experience.taiwanTech.list",
     "open": false,
-    "inlineOpen": true
+    "inlineOpen": false
   },
   {
     "id": "tutor",
@@ -96,7 +96,7 @@
     "descKey": "experience.tutor.desc",
     "listKey": "experience.tutor.list",
     "open": false,
-    "inlineOpen": true
+    "inlineOpen": false
   },
   {
     "id": "cgu-2015",
@@ -107,7 +107,7 @@
     "descKey": "experience.cgu2015.desc",
     "listKey": "experience.cgu2015.list",
     "open": false,
-    "inlineOpen": true
+    "inlineOpen": false
   },
   {
     "id": "yiming",
@@ -118,6 +118,6 @@
     "descKey": "experience.yiming.desc",
     "listKey": "experience.yiming.list",
     "open": false,
-    "inlineOpen": true
+    "inlineOpen": false
   }
 ]

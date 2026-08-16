@@ -9,6 +9,7 @@ export function createI18nController({ onApply = async () => {}, i18nBasePath = 
   const languageToggle = document.querySelector(".lang-toggle");
   const languageMenu = document.querySelector(".lang-menu");
   const languageOptions = Array.from(document.querySelectorAll(".lang-option"));
+  const quickLanguageOptions = Array.from(document.querySelectorAll(".lang-quick-option"));
   const languageLabel = document.querySelector(".lang-label");
 
   let currentLang = detectLanguage();
@@ -48,6 +49,11 @@ export function createI18nController({ onApply = async () => {}, i18nBasePath = 
       const key = `language.name.${option.dataset.lang}`;
       const fallback = option.dataset.lang === "zh" ? "繁中" : option.dataset.lang.toUpperCase();
       option.textContent = translateFn(key) || fallback;
+    });
+    quickLanguageOptions.forEach((option) => {
+      const isActive = option.dataset.lang === lang;
+      option.classList.toggle("active", isActive);
+      option.setAttribute("aria-pressed", String(isActive));
     });
     setLanguageLabel(lang, translateFn);
   }
@@ -153,6 +159,13 @@ export function createI18nController({ onApply = async () => {}, i18nBasePath = 
     });
 
     languageOptions.forEach((button) => {
+      button.addEventListener("click", async () => {
+        await applyTranslations(button.dataset.lang || fallbackLang);
+        closeMenu();
+      });
+    });
+
+    quickLanguageOptions.forEach((button) => {
       button.addEventListener("click", async () => {
         await applyTranslations(button.dataset.lang || fallbackLang);
         closeMenu();
