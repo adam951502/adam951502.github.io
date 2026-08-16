@@ -1,0 +1,42 @@
+name: Implement affiliation scale control once
+
+on:
+  push:
+    branches:
+      - agent/affiliation-scale-control
+
+permissions:
+  contents: write
+
+jobs:
+  implement:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v6
+        with:
+          ref: agent/affiliation-scale-control
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Apply feature
+        run: python3 scripts/tmp-affiliation-scale-apply.py
+      - name: Install dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate
+        run: npm run validate
+      - name: Check JavaScript syntax
+        run: find assets/js -name '*.js' -print0 | sort -z | xargs -0 -n1 node --check
+      - name: Chromium smoke
+        run: npm run smoke:runtime
+      - name: Commit feature
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/css/style.css assets/js/app.js assets/js/affiliation-scale.js assets/i18n/en.json assets/i18n/zh.json index.html scripts/smoke-runtime.mjs scripts/validate-js-modules.mjs
+          git commit -m "feat: persist affiliation marquee scale control"
+          git push origin HEAD:agent/affiliation-scale-control
