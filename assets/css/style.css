@@ -691,7 +691,7 @@ h3 {
 
 .signature-strip {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 0.68fr) minmax(0, 1.32fr);
   gap: 20px;
   align-items: center;
 }
@@ -2770,7 +2770,7 @@ h3 {
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: affiliation-marquee-right 36s linear infinite;
+  animation: affiliation-marquee-right 42s linear infinite;
 }
 
 .affiliation-marquee:hover .affiliation-marquee__track {
@@ -2785,8 +2785,8 @@ h3 {
 }
 
 .affiliation-item {
-  min-width: 154px;
-  height: 72px;
+  min-width: 184px;
+  height: 88px;
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -2799,22 +2799,22 @@ h3 {
 
 .affiliation-item img {
   width: auto;
-  max-width: 178px;
-  max-height: 38px;
+  max-width: 215px;
+  max-height: 48px;
   object-fit: contain;
   filter: grayscale(1) saturate(0.25);
   transition: filter 0.24s ease, opacity 0.24s ease;
 }
 
 .affiliation-item--relationship {
-  min-width: 250px;
+  min-width: 292px;
 }
 
 .affiliation-note {
   max-width: 104px;
   color: var(--muted-soft);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.66rem;
   line-height: 1.25;
   letter-spacing: 0.04em;
 }
@@ -2822,7 +2822,7 @@ h3 {
 .affiliation-wordmark {
   color: var(--text);
   font-family: var(--font-mono);
-  font-size: 1rem;
+  font-size: 1.12rem;
   font-weight: 700;
   letter-spacing: 0.18em;
 }
@@ -2856,7 +2856,7 @@ h3 {
   }
 
   .affiliation-marquee__track {
-    animation-duration: 32s;
+    animation-duration: 38s;
   }
 
   .affiliation-marquee__group {
@@ -2865,17 +2865,17 @@ h3 {
   }
 
   .affiliation-item {
-    min-width: 136px;
-    height: 62px;
+    min-width: 154px;
+    height: 72px;
   }
 
   .affiliation-item img {
-    max-width: 150px;
-    max-height: 32px;
+    max-width: 176px;
+    max-height: 38px;
   }
 
   .affiliation-item--relationship {
-    min-width: 224px;
+    min-width: 252px;
   }
 }
 
