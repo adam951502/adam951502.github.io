@@ -1,3 +1,4 @@
+import { createAffiliationScaleController } from "./affiliation-scale.js";
 import { createCarouselController } from "./carousel.js";
 import { createDataStore } from "./data.js";
 import { renderExperience } from "./experience.js";
@@ -27,8 +28,18 @@ const licenseViewToggleText = document.querySelector("[data-license-toggle-text]
 const licenseDots = document.querySelector("[data-license-dots]");
 const themeToggle = document.querySelector(".theme-toggle");
 const themeToggleLabel = document.querySelector(".theme-toggle-label");
+const affiliationScaleRoot = document.querySelector(".signature-strip");
+const affiliationScaleInput = document.querySelector("[data-affiliation-scale]");
+const affiliationScaleOutput = document.getElementById("affiliationScaleValue");
+const affiliationScaleReset = document.querySelector("[data-affiliation-scale-reset]");
 
 const dataStore = createDataStore(dataPaths);
+const affiliationScaleController = createAffiliationScaleController({
+  root: affiliationScaleRoot,
+  input: affiliationScaleInput,
+  output: affiliationScaleOutput,
+  resetButton: affiliationScaleReset
+});
 const revealController = createRevealController({ prefersReducedMotion });
 let i18nController;
 
@@ -81,12 +92,14 @@ i18nController = createI18nController({
   }
 });
 
+affiliationScaleController.bind();
 projectsController.bind();
 carouselController.bind();
 navigationController.bind();
 themeController.bind();
 i18nController.bind();
 
+affiliationScaleController.applyInitial();
 themeController.applyInitial();
 carouselController.setFilter("all");
 revealController.register();

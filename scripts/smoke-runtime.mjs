@@ -184,6 +184,43 @@ try {
   if (reducedMotion.duplicateDisplay !== "none") throw new Error("Reduced-motion mode still renders the duplicate marquee group");
   await page.emulateMedia({ reducedMotion: "no-preference" });
 
+  const affiliationScaleInput = page.locator("[data-affiliation-scale]");
+  if (await affiliationScaleInput.count() !== 1) throw new Error("Affiliation scale slider is missing");
+  if (await affiliationScaleInput.inputValue() !== "100") throw new Error("Affiliation scale slider does not start at 100%");
+
+  const logoHeightAt100 = await heraklionLogo.evaluate((element) => element.getBoundingClientRect().height);
+  await affiliationScaleInput.evaluate((element) => {
+    element.value = "130";
+    element.dispatchEvent(new Event("input", { bubbles: true }));
+  });
+  await page.waitForFunction(() => localStorage.getItem("portfolio.affiliationScale") === "130");
+  const logoHeightAt130 = await heraklionLogo.evaluate((element) => element.getBoundingClientRect().height);
+  if (logoHeightAt130 <= logoHeightAt100) throw new Error(`Affiliation scale did not enlarge the logo: 100%=${logoHeightAt100}, 130%=${logoHeightAt130}`);
+
+  const desktopItemHeightVar = await page.locator(".signature-strip").evaluate((element) =>
+    Number.parseFloat(element.style.getPropertyValue("--affiliation-item-height"))
+  );
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.waitForFunction(() => window.matchMedia("(max-width: 720px)").matches);
+  const mobileItemHeightVar = await page.locator(".signature-strip").evaluate((element) =>
+    Number.parseFloat(element.style.getPropertyValue("--affiliation-item-height"))
+  );
+  if (!(mobileItemHeightVar > 0 && mobileItemHeightVar < desktopItemHeightVar)) {
+    throw new Error(`Affiliation scale did not recalculate for mobile: desktop=${desktopItemHeightVar}, mobile=${mobileItemHeightVar}`);
+  }
+
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.reload({ waitUntil: "networkidle" });
+  await page.waitForFunction(() => document.querySelectorAll("#projectGrid .reveal-target").length === 25);
+  if (await page.locator("[data-affiliation-scale]").inputValue() !== "130") throw new Error("Affiliation scale did not persist after reload");
+  const storedScaleAfterReload = await page.evaluate(() => localStorage.getItem("portfolio.affiliationScale"));
+  if (storedScaleAfterReload !== "130") throw new Error(`Unexpected stored affiliation scale after reload: ${storedScaleAfterReload}`);
+
+  await page.locator("[data-affiliation-scale-reset]").click();
+  if (await page.locator("[data-affiliation-scale]").inputValue() !== "100") throw new Error("Affiliation scale reset did not restore 100%");
+  const storedScaleAfterReset = await page.evaluate(() => localStorage.getItem("portfolio.affiliationScale"));
+  if (storedScaleAfterReset !== null) throw new Error("Affiliation scale reset did not clear localStorage");
+
   await assertSkillIconsContained("desktop");
 
   const firstProject = page.locator("#projectGrid [data-project-id]").first();
