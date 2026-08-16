@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d2538" />
+  <meta name="description" content="2026/09/26–09/29 台灣出發四天三夜旅行規劃：福岡主方案，釜山、香港、沖繩備選。兩人同行、每人約 NT$30,000。" />
+  <title>2026 秋日小旅行｜4天3夜旅行規劃</title>
+  <style>
+    :root{
+      --ink:#12212b; --muted:#61717d; --paper:#f5f2eb; --card:#fffdf8;
+      --navy:#0d2538; --sea:#3a7485; --sand:#d8b782; --line:#dcd8cf;
+      --good:#1f6f55; --warm:#9a5d24; --soft:#eef4f4; --shadow:0 16px 50px rgba(20,42,54,.10);
+      --radius:22px; --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.72}
+    a{color:inherit}
+    .wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
+    .hero{background:radial-gradient(circle at 85% 15%,rgba(216,183,130,.38),transparent 28%),linear-gradient(135deg,#0d2538,#174b5b 72%,#4b7e86);color:white;padding:72px 0 56px;position:relative;overflow:hidden}
+    .hero:after{content:"旅";position:absolute;right:4vw;bottom:-90px;font-size:310px;font-weight:800;color:rgba(255,255,255,.035);line-height:1}
+    .eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;opacity:.78;font-weight:700}
+    h1{font-size:clamp(36px,7vw,74px);line-height:1.05;margin:14px 0 18px;letter-spacing:-.04em;max-width:900px}
+    .lead{font-size:clamp(17px,2vw,21px);max-width:760px;color:rgba(255,255,255,.86);margin:0}
+    .chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:28px}
+    .chip{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.09);padding:8px 12px;border-radius:999px;font-size:14px}
+    .nav{position:sticky;top:0;z-index:20;background:rgba(245,242,235,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(18,33,43,.08)}
+    .nav .wrap{display:flex;gap:8px;overflow:auto;padding:10px 0;scrollbar-width:none}
+    .nav a{text-decoration:none;white-space:nowrap;padding:8px 12px;border-radius:999px;font-size:14px;color:#3d4b54}
+    .nav a:hover{background:white}
+    section{padding:58px 0}
+    .kicker{font-size:13px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--sea)}
+    h2{font-size:clamp(28px,4vw,44px);line-height:1.16;margin:8px 0 12px;letter-spacing:-.03em}
+    h3{font-size:21px;line-height:1.3;margin:0 0 9px}
+    .sub{color:var(--muted);max-width:760px;margin:0 0 26px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{background:var(--card);border:1px solid rgba(18,33,43,.08);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+    .rank{grid-column:span 6;position:relative;min-height:255px}
+    .rank.best{grid-column:span 12;background:linear-gradient(135deg,#fffdf8,#eef5f3)}
+    .num{font-size:13px;font-weight:800;color:var(--sea);letter-spacing:.12em}
+    .city{font-size:34px;font-weight:800;letter-spacing:-.04em;margin:4px 0 4px}
+    .country{color:var(--muted);font-size:14px}
+    .why{margin:16px 0 0;color:#33434d}
+    .badge{display:inline-block;margin:5px 5px 0 0;background:#edf2ef;color:#315c4e;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:700}
+    .score{position:absolute;right:22px;top:20px;font-size:28px;font-weight:800;color:var(--navy)}
+    .score small{font-size:12px;color:var(--muted);font-weight:600}
+    .pick{background:var(--navy);color:white;border-radius:var(--radius);padding:30px;display:grid;grid-template-columns:1.5fr .8fr;gap:20px;align-items:center;box-shadow:var(--shadow)}
+    .pick p{color:rgba(255,255,255,.78);margin:8px 0 0}
+    .pick .big{font-size:58px;font-weight:850;letter-spacing:-.06em;text-align:right}
+    .pick .big small{display:block;font-size:14px;letter-spacing:0;color:rgba(255,255,255,.6)}
+    .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+    .fact{background:rgba(255,255,255,.08);padding:14px;border-radius:16px}
+    .fact b{display:block;font-size:18px}.fact span{font-size:12px;color:rgba(255,255,255,.65)}
+    .alert{border-left:4px solid var(--sand);background:#fff8ea;border-radius:0 16px 16px 0;padding:16px 18px;margin-top:20px;color:#5d482a}
+    .flight-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .flight{background:var(--card);border:1px solid rgba(18,33,43,.08);border-radius:20px;padding:22px}
+    .flight .route{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0}
+    .airport{font-size:30px;font-weight:850}.arrow{color:var(--sea);font-size:24px}.time{font-weight:750}
+    .note{font-size:13px;color:var(--muted)}
+    .pricebox{margin-top:16px;padding:16px;border-radius:16px;background:#eef4f4}
+    .pricebox strong{font-size:25px;color:var(--good)}
+    .buttonrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:12px;padding:10px 14px;font-weight:750;font-size:14px;background:var(--navy);color:white}
+    .btn.secondary{background:white;color:var(--navy);border:1px solid #ccd6d8}
+    .timeline{position:relative;margin-top:24px}
+    .day{display:grid;grid-template-columns:140px 1fr;gap:22px;margin-bottom:20px}
+    .daylabel{font-size:13px;color:var(--sea);font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding-top:8px}
+    .daylabel b{display:block;font-size:28px;color:var(--navy);letter-spacing:-.04em;line-height:1.1}
+    .daycard{background:var(--card);border:1px solid rgba(18,33,43,.08);border-radius:22px;padding:22px;box-shadow:0 8px 26px rgba(20,42,54,.06)}
+    .stops{display:flex;flex-wrap:wrap;gap:7px;margin:11px 0 16px}.stop{font-size:13px;background:#edf2f2;border-radius:999px;padding:6px 10px}
+    .schedule{display:grid;grid-template-columns:72px 1fr;gap:8px 13px;margin-top:10px}.schedule time{font-weight:800;color:var(--sea)}
+    .food{margin-top:15px;background:#fff7eb;border-radius:14px;padding:13px 15px}.food b{color:var(--warm)}
+    .mom{margin-top:10px;background:#edf5ef;border-radius:14px;padding:13px 15px;color:#315846;font-size:14px}
+    .budget{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+    .budgetlist{background:var(--card);border-radius:22px;padding:22px;border:1px solid rgba(18,33,43,.08)}
+    .brow{display:grid;grid-template-columns:1fr auto;gap:10px;padding:13px 0;border-bottom:1px solid #ece8df}.brow:last-child{border-bottom:0}.brow span{color:var(--muted)}.brow strong{white-space:nowrap}
+    .total{background:linear-gradient(135deg,#163848,#1f5d69);color:white;border-radius:22px;padding:26px}.total .amount{font-size:48px;font-weight:850;letter-spacing:-.06em}.total p{color:rgba(255,255,255,.72)}
+    .alt{grid-column:span 6}.alt ul{padding-left:20px;color:#3d4c56}.alt li{margin:5px 0}.alt .mini{font-size:13px;color:var(--muted);margin-top:14px}
+    .compare{width:100%;border-collapse:collapse;background:var(--card);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+    .compare th,.compare td{text-align:left;padding:13px 14px;border-bottom:1px solid #ece8df;font-size:14px}.compare th{background:#eaf0f0;font-size:12px;letter-spacing:.04em}.compare tr:last-child td{border-bottom:0}.yes{color:var(--good);font-weight:800}.mid{color:var(--warm);font-weight:800}
+    .sources{font-size:13px;color:var(--muted)}.sources a{color:var(--sea)}
+    footer{padding:34px 0 60px;color:var(--muted);font-size:13px}
+    @media (max-width:780px){
+      .rank,.rank.best,.alt{grid-column:span 12}.pick,.budget,.flight-layout{grid-template-columns:1fr}.pick .big{text-align:left}.facts{grid-template-columns:1fr 1fr}.day{grid-template-columns:1fr;gap:7px}.daylabel{padding-left:3px}.compare{display:block;overflow-x:auto;white-space:nowrap}.hero{padding-top:55px}.score{font-size:23px}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Taiwan → East Asia · Autumn 2026</div>
+      <h1>和媽媽的<br>4天3夜秋日小旅行</h1>
+      <p class="lead">2026/09/26（六）— 09/29（二）｜兩人同行｜每人約 NT$30,000｜飛行不超過 4 小時｜景點 × 文化 × 美食</p>
+      <div class="chips">
+        <span class="chip">✈️ 桃園 TPE 出發</span><span class="chip">👩‍👦 母子同行</span><span class="chip">🏛 文化景點優先</span><span class="chip">🍜 在地美食</span><span class="chip">🧳 不換飯店</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav"><div class="wrap">
+    <a href="#ranking">目的地</a><a href="#pick">首選</a><a href="#flights">機票</a><a href="#itinerary">4日行程</a><a href="#budget">預算</a><a href="#alternatives">備選行程</a><a href="#compare">比較</a><a href="#sources">資料來源</a>
+  </div></nav>
+
+  <main>
+    <section id="ranking"><div class="wrap">
+      <div class="kicker">Shortlist</div><h2>最適合這趟旅行的 4 個目的地</h2>
+      <p class="sub">排序重點不是「哪裡最熱門」，而是把四天三夜、媽媽同行、交通負擔、文化密度、美食與 NT$30,000 預算一起算進去。</p>
+      <div class="grid">
+        <article class="card rank best"><div class="num">01 · BEST FIT</div><div class="city">福岡 Fukuoka</div><div class="country">日本 · 九州</div><div class="score">9.4<small>/10</small></div><p class="why">機場離市中心近，博多老城、太宰府、神社、博物館、屋台與九州料理都能在短天數內舒服完成。對長輩而言，移動效率是四個選項中最漂亮的。</p><span class="badge">文化 ★★★★★</span><span class="badge">美食 ★★★★★</span><span class="badge">交通 ★★★★★</span><span class="badge">媽媽友善</span></article>
+        <article class="card rank"><div class="num">02 · VALUE</div><div class="city">釜山 Busan</div><div class="country">韓國</div><div class="score">9.0<small>/10</small></div><p class="why">海景、寺廟、市場與韓食兼具，機票常有競爭力。缺點是景點比福岡分散，甘川洞等區域坡度較明顯。</p><span class="badge">海景 ★★★★★</span><span class="badge">美食 ★★★★☆</span><span class="badge">CP值高</span></article>
+        <article class="card rank"><div class="num">03 · FOOD CITY</div><div class="city">香港 Hong Kong</div><div class="country">香港</div><div class="score">8.7<small>/10</small></div><p class="why">飛行短、飲茶與粵菜強，天星小輪、上環、中環、太平山、廟街都有城市文化感；但九月底仍偏熱濕，住宿也較容易吃掉預算。</p><span class="badge">美食 ★★★★★</span><span class="badge">飛行最短</span><span class="badge">城市文化</span></article>
+        <article class="card rank"><div class="num">04 · ISLAND</div><div class="city">沖繩 Okinawa</div><div class="country">日本 · 琉球</div><div class="score">8.3<small>/10</small></div><p class="why">琉球文化與海景很有特色，但若想跑美麗海水族館等北部景點，巴士／租車時間較多；九月仍是颱風季尾段，四天行程彈性要留大一點。</p><span class="badge">琉球文化</span><span class="badge">海景 ★★★★★</span><span class="badge">颱風風險較高</span></article>
+      </div>
+    </div></section>
+
+    <section id="pick"><div class="wrap">
+      <div class="pick">
+        <div><div class="kicker" style="color:#d8b782">My pick</div><h2 style="margin-top:8px">這次，我會選福岡。</h2><p>原因很實際：四天三夜最怕交通吃掉時間。福岡機場到市中心非常近，文化、美食、購物又集中；第三天遇週一時，還能把容易週一休館的博物館留在週日，把週一改成戶外景點。</p>
+          <div class="facts"><div class="fact"><b>約 2–2.5h</b><span>直飛航程</span></div><div class="fact"><b>3 晚同飯店</b><span>建議住博多／祇園</span></div><div class="fact"><b>中等步行</b><span>每日排午茶休息</span></div><div class="fact"><b>NT$ 26–30K</b><span>每人規劃目標</span></div></div>
+        </div><div class="big">福岡<small>FUKUOKA · KYUSHU</small></div>
+      </div>
+      <div class="alert"><strong>連假票價提醒：</strong>台灣 2026/09/25 是中秋節，09/28 是教師節／孔子誕辰紀念日假日。你的 09/26–09/29 正落在熱門出境區間，因此不要拿一般週末的最低票價當標準；以下用「可接受買入價」控制整趟預算。</div>
+    </div></section>
+
+    <section id="flights"><div class="wrap">
+      <div class="kicker">Flights</div><h2>福岡機票：怎麼買最適合這趟</h2><p class="sub">重點不是只追最低價，而是「去程早、回程晚」，把 4 天真的用滿。以下班次是依目前公開班表與月曆票價做的搜尋優先順序；航空公司仍可能調整，付款前請再確認 9/26、9/29 當日班表。</p>
+      <div class="flight-layout">
+        <article class="flight"><div class="num">9/26 · OUTBOUND</div><h3>優先找早班直飛</h3><div class="route"><div><div class="airport">TPE</div><div class="note">桃園</div></div><div class="arrow">→</div><div style="text-align:right"><div class="airport">FUK</div><div class="note">福岡</div></div></div><div class="time">首選搜尋：台灣虎航 IT240，公開班表常見約 06:45 起飛</div><p class="note">早上抵達，D1 下午就能開始博多老城與屋台行程。若廉航加完 20kg 行李、選位後價差很小，直接比較華航／長榮／星宇。</p><div class="pricebox">含行李後 <strong>≤ NT$11,000</strong><br><span class="note">來回／人：我會視為值得下手的廉航目標價。</span></div></article>
+        <article class="flight"><div class="num">9/29 · RETURN</div><h3>回程盡量選晚班</h3><div class="route"><div><div class="airport">FUK</div><div class="note">福岡</div></div><div class="arrow">→</div><div style="text-align:right"><div class="airport">TPE</div><div class="note">桃園</div></div></div><div class="time">首選搜尋：長榮 BR101，公開班表常見約 19:20 起飛</div><p class="note">晚班能保留 D4 白天吃市場、逛博多與最後採買。若價格超預算，再退到中午班，會犧牲約半天行程。</p><div class="pricebox">全服務航空 <strong>≤ NT$14,000</strong><br><span class="note">來回／人：連假區間我會接受的目標上限。</span></div></article>
+      </div>
+      <div class="card" style="margin-top:16px"><h3>目前可參考的票價錨點</h3><p style="margin:0">華航官網的 2026 年 9 月 TPE–FUK 來回經濟艙月曆，目前顯示「From NT$13,558」等級；這是整月最低價，不代表 9/26–9/29 一定有同價位。因為你的日期碰台灣假期，我會用 <b>NT$14,000／人</b> 當全服務航空的判斷線；若遠高於此價，改查釜山通常更有預算空間。</p>
+        <div class="buttonrow"><a class="btn" href="https://www.google.com/travel/flights?hl=zh-TW&curr=TWD&q=TPE%20FUK%202026-09-26%202026-09-29" target="_blank" rel="noopener">搜尋 TPE ⇄ FUK</a><a class="btn secondary" href="https://flights.china-airlines.com/en-tw/flights-from-taipei-to-fukuoka" target="_blank" rel="noopener">華航票價月曆</a><a class="btn secondary" href="https://www.evaair.com/" target="_blank" rel="noopener">長榮官網</a></div>
+      </div>
+    </div></section>
+
+    <section id="itinerary"><div class="wrap">
+      <div class="kicker">4 Days / 3 Nights</div><h2>福岡主方案｜不趕路但每天都有內容</h2><p class="sub">住宿建議固定在「博多站～祇園」區域。機場、地鐵、JR、西鐵轉乘都方便，也比較適合帶媽媽回飯店休息後再出門吃晚餐。</p>
+      <div class="timeline">
+        <article class="day"><div class="daylabel">Sat · 09/26<b>DAY 1</b>博多初見</div><div class="daycard"><h3>博多老城文化＋屋台夜生活</h3><div class="stops"><span class="stop">福岡機場</span><span class="stop">櫛田神社</span><span class="stop">博多町家</span><span class="stop">川端商店街</span><span class="stop">Canal City</span><span class="stop">中洲／天神屋台</span></div>
+          <div class="schedule"><time>10:00</time><div>抵達福岡，搭地鐵進市區、飯店寄放行李。</div><time>12:00</time><div>博多午餐：先吃一餐水炊鍋、明太子定食或博多烏龍麵。</div><time>14:00</time><div>櫛田神社 → 博多町家一帶 → 川端商店街，慢慢走老城。</div><time>17:00</time><div>Canal City／咖啡休息，回飯店 Check-in 也可以。</div><time>19:00</time><div>中洲或天神屋台。若媽媽不喜歡排隊或矮凳，改訂有座位的牛腸鍋餐廳。</div></div>
+          <div class="food"><b>今天吃：</b>明太子、水炊鍋、博多拉麵／一口餃子、屋台料理。</div><div class="mom">👩‍🦳 媽媽友善：第一天只排市中心，長途飛行後不直接衝郊區；下午可隨時回飯店休息。</div></div></article>
+
+        <article class="day"><div class="daylabel">Sun · 09/27<b>DAY 2</b>太宰府文化日</div><div class="daycard"><h3>太宰府天滿宮＋九州國立博物館</h3><div class="stops"><span class="stop">太宰府</span><span class="stop">參道</span><span class="stop">天滿宮</span><span class="stop">九州國立博物館</span><span class="stop">天神</span></div>
+          <div class="schedule"><time>08:30</time><div>早餐後出發，避開中午後主要人潮。</div><time>10:00</time><div>太宰府參道、天滿宮。慢慢看神社建築與文化。</div><time>12:00</time><div>參道午餐＋梅枝餅。</div><time>13:30</time><div>九州國立博物館。把「室內博物館」安排週日，避開週一休館風險。</div><time>16:30</time><div>回福岡市區；天神地下街／百貨，順便休息。</div><time>19:00</time><div>牛腸鍋晚餐；想吃清爽一點可換海鮮／胡麻鯖。</div></div>
+          <div class="food"><b>今天吃：</b>梅枝餅、牛腸鍋、胡麻鯖（芝麻鯖魚）或九州刺身。</div><div class="mom">👩‍🦳 媽媽友善：太宰府參道有步行量，但全日只抓一個主要郊區，下午博物館有冷氣與座位。</div></div></article>
+
+        <article class="day"><div class="daylabel">Mon · 09/28<b>DAY 3</b>城市景觀日</div><div class="daycard"><h3>大濠公園＋福岡城跡＋百道海濱</h3><div class="stops"><span class="stop">大濠公園</span><span class="stop">舞鶴公園</span><span class="stop">福岡城跡</span><span class="stop">百道海濱</span><span class="stop">福岡塔</span></div>
+          <div class="schedule"><time>09:00</time><div>大濠公園湖畔散步，喝咖啡看城市日常。</div><time>10:30</time><div>舞鶴公園、福岡城跡戶外區。週一以戶外為主，不把行程綁在休館設施。</div><time>12:30</time><div>回市區午餐，安排 60–90 分鐘坐著休息。</div><time>15:00</time><div>百道海濱散步；體力好再上福岡塔看城市與海。</div><time>18:30</time><div>回天神／博多吃壽司、燒鳥或鰻魚。</div></div>
+          <div class="food"><b>今天吃：</b>海鮮丼／壽司、博多燒鳥、甜點咖啡。</div><div class="mom">👩‍🦳 媽媽友善：今天景點彈性最大。若天氣熱或媽媽累，可直接砍掉福岡塔，改百貨／咖啡廳。</div></div></article>
+
+        <article class="day"><div class="daylabel">Tue · 09/29<b>DAY 4</b>市場與返台</div><div class="daycard"><h3>最後採買＋晚班機回台灣</h3><div class="stops"><span class="stop">柳橋連合市場</span><span class="stop">住吉神社</span><span class="stop">博多站</span><span class="stop">福岡機場</span></div>
+          <div class="schedule"><time>09:00</time><div>退房、寄行李。柳橋連合市場吃早餐／早午餐。</div><time>11:00</time><div>住吉神社，或依媽媽興趣改成博多站購物。</div><time>12:30</time><div>最後一餐：鰻魚、天婦羅、燒肉或想再吃一次的福岡料理。</div><time>14:00</time><div>JR Hakata City／伴手禮採買，回飯店拿行李。</div><time>16:30</time><div>前往福岡機場；若搭約 19:20 晚班，時間很充裕。</div></div>
+          <div class="food"><b>伴手禮：</b>明太子相關、博多通りもん、福砂屋／長崎蛋糕、九州限定零食。</div><div class="mom">👩‍🦳 媽媽友善：最後一天不排遠程景點，避免拖行李、趕車或錯過班機。</div></div></article>
+      </div>
+    </div></section>
+
+    <section id="budget"><div class="wrap">
+      <div class="kicker">Budget</div><h2>每人 NT$30,000 怎麼分</h2><p class="sub">以下是「兩人共住一間雙人房」的規劃額度，不是即時報價。最重要的是先把機票鎖在合理範圍，住宿與餐費就很好控制。</p>
+      <div class="budget"><div class="budgetlist">
+        <div class="brow"><span>✈️ 來回機票（含行李目標）</span><strong>NT$11,000–14,000</strong></div>
+        <div class="brow"><span>🏨 住宿 3 晚（兩人分攤）</span><strong>NT$5,000–6,500</strong></div>
+        <div class="brow"><span>🍜 餐食＋咖啡甜點</span><strong>NT$5,000–6,000</strong></div>
+        <div class="brow"><span>🚇 市區／太宰府交通</span><strong>NT$1,500–2,000</strong></div>
+        <div class="brow"><span>🎟 門票／雜支</span><strong>NT$1,000–1,500</strong></div>
+      </div><div class="total"><div class="eyebrow">Target total / person</div><div class="amount">26–30K</div><p>兩人總預算抓約 NT$52,000–60,000。若機票做到 11K 左右，就可以把省下來的錢放在一餐好料理或更舒服的飯店。</p><b>訂票規則：全服務航空 ＞14K／人時，先比較釜山。</b></div></div>
+    </div></section>
+
+    <section id="alternatives"><div class="wrap">
+      <div class="kicker">Plan B / C / D</div><h2>如果福岡機票太貴，這三個直接替換</h2>
+      <div class="grid">
+        <article class="card alt"><div class="num">PLAN B · BUSAN</div><h3>釜山｜海景＋寺廟＋市場</h3><ul><li><b>D1：</b>西面 → 南浦洞 → BIFF → 札嘎其市場</li><li><b>D2：</b>甘川文化村 → 松島 → 白淺文化村</li><li><b>D3：</b>海東龍宮寺 → 海雲台 Blue Line Park → 廣安里夜景</li><li><b>D4：</b>梵魚寺或國際市場 → 機場</li></ul><div class="mini">優點：通常更好控制預算、韓食與海景強。提醒：景點較分散，甘川／白淺一帶有坡度。</div><div class="buttonrow"><a class="btn secondary" href="https://www.google.com/travel/flights?hl=zh-TW&curr=TWD&q=TPE%20PUS%202026-09-26%202026-09-29" target="_blank" rel="noopener">查釜山機票</a></div></article>
+        <article class="card alt"><div class="num">PLAN C · HONG KONG</div><h3>香港｜粵菜＋老城＋港島景觀</h3><ul><li><b>D1：</b>尖沙咀 → 天星小輪 → 維港夜景</li><li><b>D2：</b>中環 → 上環 → 文武廟 → 太平山</li><li><b>D3：</b>黃大仙 → 深水埗 → 油麻地／廟街</li><li><b>D4：</b>早茶 → 西九文化區 → 機場</li></ul><div class="mini">優點：航程短、美食密度高。提醒：九月底仍炎熱潮濕且可能下雨，住宿通常比福岡／釜山更吃預算。</div><div class="buttonrow"><a class="btn secondary" href="https://www.google.com/travel/flights?hl=zh-TW&curr=TWD&q=TPE%20HKG%202026-09-26%202026-09-29" target="_blank" rel="noopener">查香港機票</a></div></article>
+        <article class="card alt"><div class="num">PLAN D · OKINAWA</div><h3>沖繩｜琉球文化＋海景</h3><ul><li><b>D1：</b>那霸 → 國際通 → 壺屋通</li><li><b>D2：</b>首里城周邊 → 玉陵 → 識名園</li><li><b>D3：</b>美麗海水族館／北部一日遊</li><li><b>D4：</b>牧志市場 → 採買 → 機場</li></ul><div class="mini">優點：完全不同於本州的琉球文化。提醒：九月仍在颱風季，北部景點交通時間長；若不自駕，建議買一日遊巴士。</div><div class="buttonrow"><a class="btn secondary" href="https://www.google.com/travel/flights?hl=zh-TW&curr=TWD&q=TPE%20OKA%202026-09-26%202026-09-29" target="_blank" rel="noopener">查沖繩機票</a></div></article>
+        <article class="card alt"><div class="num">DECISION RULE</div><h3>最後怎麼選？</h3><ul><li>福岡全服務航空 <b>≤14K</b>：選福岡。</li><li>福岡 >14K、釜山含行李便宜 <b>≥4K</b>：選釜山。</li><li>媽媽最重視港式美食／城市感：香港可超車。</li><li>最想看海、接受天氣風險與較多車程：沖繩。</li></ul><div class="mini">這條規則比只看機票最低價更實用，因為住宿、交通與有效旅遊時間也都是成本。</div></article>
+      </div>
+    </div></section>
+
+    <section id="compare"><div class="wrap">
+      <div class="kicker">At a glance</div><h2>四地快速比較</h2>
+      <table class="compare"><thead><tr><th>目的地</th><th>文化</th><th>美食</th><th>交通效率</th><th>9月底舒適度</th><th>預算掌控</th><th>媽媽同行</th></tr></thead><tbody>
+        <tr><td><b>福岡</b></td><td class="yes">★★★★★</td><td class="yes">★★★★★</td><td class="yes">★★★★★</td><td class="yes">佳</td><td class="yes">佳</td><td class="yes">最推薦</td></tr>
+        <tr><td><b>釜山</b></td><td>★★★★☆</td><td>★★★★☆</td><td>★★★☆☆</td><td class="yes">佳</td><td class="yes">很好</td><td class="mid">注意坡度</td></tr>
+        <tr><td><b>香港</b></td><td>★★★★☆</td><td class="yes">★★★★★</td><td class="yes">★★★★★</td><td class="mid">熱濕</td><td>中等</td><td class="yes">佳</td></tr>
+        <tr><td><b>沖繩</b></td><td>★★★★☆</td><td>★★★☆☆</td><td>★★★☆☆</td><td class="mid">颱風季尾段</td><td>中等</td><td class="mid">車程較多</td></tr>
+      </tbody></table>
+    </div></section>
+
+    <section id="sources"><div class="wrap">
+      <div class="kicker">Sources & Notes</div><h2>資料來源與使用提醒</h2>
+      <div class="card sources">
+        <p><b>最後整理：</b>2026-08-16。票價屬高度浮動資訊；本頁的金額分成「航空公司當下月曆可見的參考價」與「為控制 NT$30,000 總預算而設定的買入目標」，後者不是航空公司報價。</p>
+        <p>官方／主要資料：<a href="https://www.dgpa.gov.tw/information?pid=12580&uid=353" target="_blank" rel="noopener">台灣 2026 辦公日曆（DGPA）</a> · <a href="https://gofukuoka.jp/en/plan/detail/43ac4ead-b709-4d00-98db-7fd88da6d885" target="_blank" rel="noopener">Fukuoka City Official Tourist Guide｜Ohori Park Area</a> · <a href="https://gofukuoka.jp/yatai/" target="_blank" rel="noopener">福岡官方屋台指南</a> · <a href="https://www.data.jma.go.jp/stats/data/en/normal/normal.html" target="_blank" rel="noopener">日本氣象廳氣候平年值</a> · <a href="https://flights.china-airlines.com/en-tw/flights-from-taipei-to-fukuoka" target="_blank" rel="noopener">China Airlines TPE–FUK Fare Calendar</a> · <a href="https://www.visitbusan.net/" target="_blank" rel="noopener">Visit Busan</a> · <a href="https://visitokinawajapan.com/plan-your-trip/when-to-visit-climate-seasons/okinawa-september/" target="_blank" rel="noopener">Visit Okinawa｜September</a>。</p>
+        <p>班表參考：公開航班時刻資料顯示台灣虎航 IT240 常見早班 TPE→FUK、長榮 BR101 常見晚班 FUK→TPE。實際 9/26 與 9/29 是否執飛、時間與航廈，請以訂票當下航空公司頁面為準。</p>
+      </div>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap">Made for a 2026 autumn trip from Taiwan · Static travel planner under adam951502.github.io/travel/</div></footer>
+</body>
+</html>
