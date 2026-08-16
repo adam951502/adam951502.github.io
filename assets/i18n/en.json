@@ -350,5 +350,8 @@
   "footer.resumeEu": "EU CV",
   "footer.copyright": "© 2026 Adam Tang.",
   "footer.madeBy": "Made by Adam Tang | <a href=\"https://github.com/adam951502\">@adam951502</a>",
-  "footer.rights": "All rights reserved."
+  "footer.rights": "All rights reserved.",
+  "experience.overview.title": "Career overview",
+  "experience.overview.hint": "Select a milestone to jump to the role.",
+  "experience.overview.jump": "Jump to role"
 }

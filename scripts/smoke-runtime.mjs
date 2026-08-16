@@ -181,6 +181,55 @@ try {
     }
   }
 
+  const experienceOverview = await page.evaluate(() => {
+    const shell = document.getElementById("experienceOverview");
+    const nav = shell?.querySelector(".experience-overview");
+    const links = Array.from(shell?.querySelectorAll(".experience-overview__link") || []);
+    return {
+      visible: nav ? getComputedStyle(nav).display !== "none" : false,
+      range: shell?.querySelector(".experience-overview__range")?.textContent?.trim() || "",
+      items: links.map((link) => ({
+        href: link.getAttribute("href"),
+        target: link.dataset.experienceTarget || "",
+        year: Number.parseInt(link.querySelector(".experience-overview__year")?.textContent || "0", 10),
+        name: link.querySelector(".experience-overview__name")?.textContent?.trim() || "",
+        targetExists: Boolean(document.querySelector(link.getAttribute("href") || ""))
+      }))
+    };
+  });
+  if (!experienceOverview.visible) throw new Error("Experience overview timeline is not visible on desktop");
+  if (experienceOverview.items.length !== 10) throw new Error(`Expected 10 Experience overview milestones, got ${experienceOverview.items.length}`);
+  if (experienceOverview.range !== "2012–2025") throw new Error(`Unexpected Experience overview range: ${experienceOverview.range}`);
+  for (let index = 0; index < experienceOverview.items.length; index += 1) {
+    const item = experienceOverview.items[index];
+    if (!item.href || !item.target || !item.targetExists) throw new Error(`Experience overview milestone ${index + 1} is not linked to a detailed step`);
+    if (!item.name) throw new Error(`Experience overview milestone ${index + 1} is missing its organization label`);
+    if (index > 0 && item.year < experienceOverview.items[index - 1].year) {
+      throw new Error("Experience overview milestones are not in chronological order");
+    }
+  }
+
+  const overviewJump = page.locator("#experienceOverview .experience-overview__link").nth(1);
+  const overviewJumpHref = await overviewJump.getAttribute("href");
+  if (!overviewJumpHref) throw new Error("Experience overview jump target is missing");
+  const overviewTarget = page.locator(overviewJumpHref);
+  await page.locator("#experience").evaluate((element) => element.scrollIntoView({ block: "start" }));
+  await page.waitForTimeout(100);
+  await overviewJump.click();
+  await page.waitForTimeout(900);
+  const overviewJumpResult = await overviewTarget.evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    return {
+      center: rect.top + rect.height / 2,
+      viewportCenter: window.innerHeight / 2,
+      hash: window.location.hash
+    };
+  });
+  if (overviewJumpResult.hash !== overviewJumpHref) throw new Error(`Experience overview click did not update the hash: ${overviewJumpResult.hash}`);
+  if (Math.abs(overviewJumpResult.center - overviewJumpResult.viewportCenter) > 460) {
+    throw new Error("Experience overview click did not move the matching Experience step into view");
+  }
+
   const blogNavHref = await page.locator('.site-nav a[href="./blog/"]').getAttribute("href");
   if (blogNavHref !== "./blog/") throw new Error("Main navigation is missing the Blog route");
 
@@ -248,6 +297,9 @@ try {
   if (Math.abs(desktopAffiliationMetrics.duration - 58.8) > 0.2) throw new Error(`Unexpected fixed desktop marquee duration: ${desktopAffiliationMetrics.duration}`);
 
   await page.setViewportSize({ width: 390, height: 844 });
+  const mobileExperienceOverviewDisplay = await page.locator("#experienceOverview").evaluate((element) => getComputedStyle(element).display);
+  if (mobileExperienceOverviewDisplay !== "none") throw new Error(`Experience overview should be hidden on mobile, got display=${mobileExperienceOverviewDisplay}`);
+
   const mobileExperienceTimeline = await page.evaluate(() => {
     const timeline = document.getElementById("experienceList");
     const steps = Array.from(document.querySelectorAll("#experienceList .experience-step"));
