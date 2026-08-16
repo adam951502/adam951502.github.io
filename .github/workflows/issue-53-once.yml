@@ -1,0 +1,63 @@
+name: Apply issue 53 portfolio update once
+
+on:
+  push:
+    branches:
+      - agent/freelance-ai-projects
+
+permissions:
+  contents: write
+
+jobs:
+  implement:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v6
+        with:
+          ref: agent/freelance-ai-projects
+          fetch-depth: 0
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Apply portfolio changes
+        run: python3 scripts/issue-53-apply.py
+      - name: Build generated content
+        run: npm run build:content
+      - name: Install validation dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate structured content and runtime architecture
+        run: npm run validate
+      - name: Check JavaScript module syntax
+        run: find assets/js -name '*.js' -print0 | sort -z | xargs -0 -n1 node --check
+      - name: Smoke test browser runtime
+        run: npm run smoke:runtime
+      - name: Verify X Media Downloader is fully retired
+        run: |
+          ! grep -R "x-media-downloader\|X Media Downloader\|projects.xDownloader" index.html assets/data assets/i18n scripts --exclude='issue-53-apply.py'
+      - name: Commit implementation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A \
+            assets/data/experience.json \
+            assets/data/projects.json \
+            assets/data/projects.bundle.json \
+            assets/data/projects/production-copilot.json \
+            assets/data/projects/market-888.json \
+            assets/data/projects/udi-decoder.json \
+            assets/data/projects/shipping-assistant.json \
+            assets/data/projects/t93-lab.json \
+            assets/data/projects/snkr-psa-automation.json \
+            assets/data/projects/x-media-downloader.json \
+            assets/images/project-x-downloader.webp \
+            assets/i18n/en.json \
+            assets/i18n/zh.json \
+            index.html \
+            scripts/smoke-runtime.mjs
+          git commit -m "feat: add Taiwan freelance AI engineering period"
+          git push origin HEAD:agent/freelance-ai-projects
