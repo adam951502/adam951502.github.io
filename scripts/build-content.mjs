@@ -60,11 +60,13 @@ function getTimelinePeriod(value = "") {
 }
 
 function getTimelineRange(items) {
-  const years = items.flatMap((item) =>
-    Array.from(String(translate(item.datesKey)).matchAll(/(?:19|20)\d{2}/g), (match) => Number.parseInt(match[0], 10))
+  const dates = items.map((item) => String(translate(item.datesKey)));
+  const years = dates.flatMap((value) =>
+    Array.from(value.matchAll(/(?:19|20)\d{2}/g), (match) => Number.parseInt(match[0], 10))
   );
   if (!years.length) return "";
-  return `${Math.min(...years)}–${Math.max(...years)}`;
+  const ongoingLabel = dates.some((value) => /\bPresent\b/i.test(value)) ? "Present" : "";
+  return `${Math.min(...years)}–${ongoingLabel || Math.max(...years)}`;
 }
 
 function renderExperienceSpan() {
