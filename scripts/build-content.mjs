@@ -59,6 +59,66 @@ function getTimelinePeriod(value = "") {
   return String(value).split("|")[0].trim();
 }
 
+function getTimelineYear(value = "") {
+  return String(value).match(/(?:19|20)\d{2}/)?.[0] || "";
+}
+
+function getTimelineLabel(value = "") {
+  const text = String(value).trim();
+  if (text.includes(" — ")) return text.split(" — ").at(-1).trim();
+  if (text.includes(" - ")) return text.split(" - ").at(-1).trim();
+  return text;
+}
+
+function getChronologicalExperience(items) {
+  return items
+    .map((item, originalIndex) => ({
+      item,
+      originalIndex,
+      year: Number.parseInt(getTimelineYear(translate(item.datesKey)), 10) || 9999
+    }))
+    .sort((left, right) => left.year - right.year || right.originalIndex - left.originalIndex);
+}
+
+function getTimelineRange(items) {
+  const years = items.flatMap((item) =>
+    Array.from(String(translate(item.datesKey)).matchAll(/(?:19|20)\d{2}/g), (match) => Number.parseInt(match[0], 10))
+  );
+  if (!years.length) return "";
+  return `${Math.min(...years)}–${Math.max(...years)}`;
+}
+
+function renderExperienceOverview() {
+  const jumpLabel = translate("experience.overview.jump", "Jump to role");
+  const items = getChronologicalExperience(experience).map(({ item }) => {
+    const dates = translate(item.datesKey);
+    const title = translate(item.titleKey);
+    const year = getTimelineYear(dates);
+    const label = getTimelineLabel(title);
+    const latestClass = item.id === experience[0]?.id ? " experience-overview__item-latest" : "";
+    return `            <li class="experience-overview__item${latestClass}">
+              <a class="experience-overview__link" href="#experience-${escapeHtml(item.id)}" data-experience-target="${escapeHtml(item.id)}" aria-label="${escapeHtml(`${year ? `${year}, ` : ""}${label}. ${jumpLabel}`)}">
+                <span class="experience-overview__year">${escapeHtml(year)}</span>
+                <span class="experience-overview__dot"></span>
+                <span class="experience-overview__name">${escapeHtml(label)}</span>
+              </a>
+            </li>`;
+  }).join("\n");
+
+  return `        <nav class="experience-overview" aria-label="${escapeHtml(translate("experience.overview.title", "Career overview"))}">
+          <div class="experience-overview__head">
+            <div class="experience-overview__heading-group">
+              <span class="experience-overview__title">${escapeHtml(translate("experience.overview.title", "Career overview"))}</span>
+              <span class="experience-overview__hint">${escapeHtml(translate("experience.overview.hint", "Select a milestone to jump to the role."))}</span>
+            </div>
+            <span class="experience-overview__range">${escapeHtml(getTimelineRange(experience))}</span>
+          </div>
+          <ol class="experience-overview__list">
+${items}
+          </ol>
+        </nav>`;
+}
+
 function renderExperience() {
   return experience.map((item, index) => {
     const listItems = parseTranslatedList(translate(item.listKey), item.listKey);
@@ -66,7 +126,7 @@ function renderExperience() {
       ? `<span class="icon-badge small"><i class="${escapeHtml(item.pillIcon)}" aria-hidden="true"></i></span>`
       : "";
     const period = getTimelinePeriod(translate(item.datesKey));
-    return `      <div class="experience-step${index === 0 ? " experience-step-latest" : ""}" role="listitem">
+    return `      <div class="experience-step${index === 0 ? " experience-step-latest" : ""}" id="experience-${escapeHtml(item.id)}" data-experience-id="${escapeHtml(item.id)}" role="listitem">
         <div class="experience-marker" aria-hidden="true">
           <span class="experience-dot"></span>
           <span class="experience-period">${escapeHtml(period)}</span>
@@ -200,6 +260,8 @@ ${linksSection}
       </details>`;
 }
 
+const EXPERIENCE_OVERVIEW_START = "      <!-- GENERATED EXPERIENCE OVERVIEW START -->";
+const EXPERIENCE_OVERVIEW_END = "      <!-- GENERATED EXPERIENCE OVERVIEW END -->";
 const EXPERIENCE_START = "      <!-- GENERATED EXPERIENCE START -->";
 const EXPERIENCE_END = "      <!-- GENERATED EXPERIENCE END -->";
 const PROJECTS_START = "      <!-- GENERATED PROJECTS START -->";
@@ -234,6 +296,12 @@ function addNoJsFallback(html) {
 
 function buildIndex(currentHtml) {
   let html = addNoJsFallback(currentHtml);
+  html = replaceGeneratedRegion(html, {
+    emptyContainer: '<div id="experienceOverview"></div>',
+    startMarker: EXPERIENCE_OVERVIEW_START,
+    endMarker: EXPERIENCE_OVERVIEW_END,
+    generated: renderExperienceOverview()
+  });
   html = replaceGeneratedRegion(html, {
     emptyContainer: '<div class="timeline" id="experienceList" role="list"></div>',
     startMarker: EXPERIENCE_START,
