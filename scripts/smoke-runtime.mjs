@@ -138,6 +138,18 @@ try {
   }));
   if (initial.projects !== 25) throw new Error(`Expected 25 projects, got ${initial.projects}`);
   if (initial.experiences !== 10) throw new Error(`Expected 10 experience entries, got ${initial.experiences}`);
+
+  const experienceSpan = await page.evaluate(() => ({
+    overviewCount: document.querySelectorAll(".experience-overview").length,
+    range: document.querySelector(".experience-span__range")?.textContent?.trim() || "",
+    count: document.querySelector(".experience-span__count")?.textContent?.trim() || "",
+    display: document.querySelector(".experience-span") ? getComputedStyle(document.querySelector(".experience-span")).display : "none"
+  }));
+  if (experienceSpan.overviewCount !== 0) throw new Error("Complex Experience overview timeline still exists");
+  if (experienceSpan.range !== "2012–2025") throw new Error(`Unexpected Experience career span: ${experienceSpan.range}`);
+  if (experienceSpan.count !== "10 roles") throw new Error(`Unexpected Experience role count: ${experienceSpan.count}`);
+  if (experienceSpan.display === "none") throw new Error("Experience career span is hidden on desktop");
+
   if (initial.lang !== "en") throw new Error(`Expected initial lang=en, got ${initial.lang}`);
   if (initial.theme !== "light") throw new Error(`Expected initial theme=light, got ${initial.theme}`);
 
@@ -179,55 +191,6 @@ try {
     if (step.index % 2 === 1 && step.cardLeft <= desktopExperienceTimeline.axisX) {
       throw new Error(`Experience step ${step.index + 1} should be on the right side of the desktop axis`);
     }
-  }
-
-  const experienceOverview = await page.evaluate(() => {
-    const shell = document.getElementById("experienceOverview");
-    const nav = shell?.querySelector(".experience-overview");
-    const links = Array.from(shell?.querySelectorAll(".experience-overview__link") || []);
-    return {
-      visible: nav ? getComputedStyle(nav).display !== "none" : false,
-      range: shell?.querySelector(".experience-overview__range")?.textContent?.trim() || "",
-      items: links.map((link) => ({
-        href: link.getAttribute("href"),
-        target: link.dataset.experienceTarget || "",
-        year: Number.parseInt(link.querySelector(".experience-overview__year")?.textContent || "0", 10),
-        name: link.querySelector(".experience-overview__name")?.textContent?.trim() || "",
-        targetExists: Boolean(document.querySelector(link.getAttribute("href") || ""))
-      }))
-    };
-  });
-  if (!experienceOverview.visible) throw new Error("Experience overview timeline is not visible on desktop");
-  if (experienceOverview.items.length !== 10) throw new Error(`Expected 10 Experience overview milestones, got ${experienceOverview.items.length}`);
-  if (experienceOverview.range !== "2012–2025") throw new Error(`Unexpected Experience overview range: ${experienceOverview.range}`);
-  for (let index = 0; index < experienceOverview.items.length; index += 1) {
-    const item = experienceOverview.items[index];
-    if (!item.href || !item.target || !item.targetExists) throw new Error(`Experience overview milestone ${index + 1} is not linked to a detailed step`);
-    if (!item.name) throw new Error(`Experience overview milestone ${index + 1} is missing its organization label`);
-    if (index > 0 && item.year < experienceOverview.items[index - 1].year) {
-      throw new Error("Experience overview milestones are not in chronological order");
-    }
-  }
-
-  const overviewJump = page.locator("#experienceOverview .experience-overview__link").nth(1);
-  const overviewJumpHref = await overviewJump.getAttribute("href");
-  if (!overviewJumpHref) throw new Error("Experience overview jump target is missing");
-  const overviewTarget = page.locator(overviewJumpHref);
-  await page.locator("#experience").evaluate((element) => element.scrollIntoView({ block: "start" }));
-  await page.waitForTimeout(100);
-  await overviewJump.click();
-  await page.waitForTimeout(900);
-  const overviewJumpResult = await overviewTarget.evaluate((element) => {
-    const rect = element.getBoundingClientRect();
-    return {
-      center: rect.top + rect.height / 2,
-      viewportCenter: window.innerHeight / 2,
-      hash: window.location.hash
-    };
-  });
-  if (overviewJumpResult.hash !== overviewJumpHref) throw new Error(`Experience overview click did not update the hash: ${overviewJumpResult.hash}`);
-  if (Math.abs(overviewJumpResult.center - overviewJumpResult.viewportCenter) > 460) {
-    throw new Error("Experience overview click did not move the matching Experience step into view");
   }
 
   const blogNavHref = await page.locator('.site-nav a[href="./blog/"]').getAttribute("href");
@@ -297,9 +260,6 @@ try {
   if (Math.abs(desktopAffiliationMetrics.duration - 58.8) > 0.2) throw new Error(`Unexpected fixed desktop marquee duration: ${desktopAffiliationMetrics.duration}`);
 
   await page.setViewportSize({ width: 390, height: 844 });
-  const mobileExperienceOverviewDisplay = await page.locator("#experienceOverview").evaluate((element) => getComputedStyle(element).display);
-  if (mobileExperienceOverviewDisplay !== "none") throw new Error(`Experience overview should be hidden on mobile, got display=${mobileExperienceOverviewDisplay}`);
-
   const mobileExperienceTimeline = await page.evaluate(() => {
     const timeline = document.getElementById("experienceList");
     const steps = Array.from(document.querySelectorAll("#experienceList .experience-step"));
@@ -327,6 +287,13 @@ try {
   });
   if (!mobileExperienceTimeline.valid) throw new Error("Mobile Experience timeline is missing");
   if (mobileExperienceTimeline.overflow) throw new Error("Mobile Experience timeline causes horizontal overflow");
+  const mobileExperienceSpan = await page.evaluate(() => ({
+    display: document.querySelector(".experience-span") ? getComputedStyle(document.querySelector(".experience-span")).display : "none",
+    right: document.querySelector(".experience-span")?.getBoundingClientRect().right || 0,
+    viewport: window.innerWidth
+  }));
+  if (mobileExperienceSpan.display === "none") throw new Error("Experience career span is hidden on mobile");
+  if (mobileExperienceSpan.right > mobileExperienceSpan.viewport + 1) throw new Error("Experience career span escapes the mobile viewport");
   for (const step of mobileExperienceTimeline.steps) {
     if (Math.abs(step.dotCenter - mobileExperienceTimeline.axisX) > 1.5) {
       throw new Error(`Experience step ${step.index + 1} dot is not aligned to the mobile left axis`);
