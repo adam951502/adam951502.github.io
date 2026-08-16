@@ -1,0 +1,44 @@
+name: Implement Experience alternating timeline once
+
+on:
+  push:
+    branches:
+      - agent/experience-alternating-timeline
+
+permissions:
+  contents: write
+
+jobs:
+  implement:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v6
+        with:
+          ref: agent/experience-alternating-timeline
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Apply timeline redesign
+        run: python3 scripts/tmp-experience-timeline.py
+      - name: Build generated fallback
+        run: npm run build:content
+      - name: Install validation dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate
+        run: npm run validate
+      - name: Check JavaScript syntax
+        run: find assets/js -name '*.js' -print0 | sort -z | xargs -0 -n1 node --check
+      - name: Chromium smoke
+        run: npm run smoke:runtime
+      - name: Commit implementation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/js/experience.js assets/css/style.css scripts/build-content.mjs scripts/smoke-runtime.mjs index.html
+          git commit -m "feat: redesign Experience as alternating timeline"
+          git push origin HEAD:agent/experience-alternating-timeline
