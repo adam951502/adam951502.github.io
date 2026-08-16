@@ -55,36 +55,47 @@ function sortProjects(items) {
   });
 }
 
+function getTimelinePeriod(value = "") {
+  return String(value).split("|")[0].trim();
+}
+
 function renderExperience() {
   return experience.map((item, index) => {
     const listItems = parseTranslatedList(translate(item.listKey), item.listKey);
     const icon = item.pillIcon
       ? `<span class="icon-badge small"><i class="${escapeHtml(item.pillIcon)}" aria-hidden="true"></i></span>`
       : "";
-    return `      <details class="timeline-card"${item.open ? " open" : ""}>
-        <summary>
-          <div class="timeline-head">
-            <span class="timeline-index">${formatIndex(index)}</span>
-            <div class="summary-text">
-              <p class="label">${escapeHtml(translate(item.datesKey))}</p>
-              <h3>${escapeHtml(translate(item.titleKey))}</h3>
-            </div>
-          </div>
-          <div class="summary-icons">
-            ${icon}
-            <span class="pill">${escapeHtml(translate(item.pillKey))}</span>
-          </div>
-        </summary>
-        <div class="disclosure-body">
-          <p class="muted">${escapeHtml(translate(item.descKey))}</p>
-          <details class="inline-details"${item.inlineOpen ? " open" : ""}>
-            <summary>${escapeHtml(translate("common.keyWork", "Key work"))}</summary>
-            <ul class="mini-list">
-${listItems.map((entry) => `              <li>${escapeHtml(entry)}</li>`).join("\n")}
-            </ul>
-          </details>
+    const period = getTimelinePeriod(translate(item.datesKey));
+    return `      <div class="experience-step${index === 0 ? " experience-step-latest" : ""}" role="listitem">
+        <div class="experience-marker" aria-hidden="true">
+          <span class="experience-dot"></span>
+          <span class="experience-period">${escapeHtml(period)}</span>
         </div>
-      </details>`;
+        <details class="timeline-card experience-card"${item.open ? " open" : ""}>
+          <summary>
+            <div class="timeline-head">
+              <span class="timeline-index">${formatIndex(index)}</span>
+              <div class="summary-text">
+                <p class="label">${escapeHtml(translate(item.datesKey))}</p>
+                <h3>${escapeHtml(translate(item.titleKey))}</h3>
+              </div>
+            </div>
+            <div class="summary-icons">
+              ${icon}
+              <span class="pill">${escapeHtml(translate(item.pillKey))}</span>
+            </div>
+          </summary>
+          <div class="disclosure-body">
+            <p class="muted">${escapeHtml(translate(item.descKey))}</p>
+            <details class="inline-details"${item.inlineOpen ? " open" : ""}>
+              <summary>${escapeHtml(translate("common.keyWork", "Key work"))}</summary>
+              <ul class="mini-list">
+${listItems.map((entry) => `                <li>${escapeHtml(entry)}</li>`).join("\n")}
+              </ul>
+            </details>
+          </div>
+        </details>
+      </div>`;
   }).join("\n");
 }
 
@@ -224,7 +235,7 @@ function addNoJsFallback(html) {
 function buildIndex(currentHtml) {
   let html = addNoJsFallback(currentHtml);
   html = replaceGeneratedRegion(html, {
-    emptyContainer: '<div class="timeline" id="experienceList"></div>',
+    emptyContainer: '<div class="timeline" id="experienceList" role="list"></div>',
     startMarker: EXPERIENCE_START,
     endMarker: EXPERIENCE_END,
     generated: renderExperience()

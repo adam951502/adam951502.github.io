@@ -1,5 +1,9 @@
 import { createElement, formatIndex, setSafeTranslatedMarkup } from "./shared.js";
 
+function getTimelinePeriod(value = "") {
+  return String(value).split("|")[0].trim();
+}
+
 export function renderExperience({ experienceData, translateFn, registerReveal }) {
   const container = document.getElementById("experienceList");
   if (!container) return;
@@ -7,7 +11,17 @@ export function renderExperience({ experienceData, translateFn, registerReveal }
   container.innerHTML = "";
 
   experienceData.forEach((item, index) => {
-    const details = createElement("details", "timeline-card reveal-target");
+    const step = createElement("div", `experience-step reveal-target${index === 0 ? " experience-step-latest" : ""}`);
+    step.setAttribute("role", "listitem");
+
+    const marker = createElement("div", "experience-marker");
+    marker.setAttribute("aria-hidden", "true");
+    marker.append(
+      createElement("span", "experience-dot"),
+      createElement("span", "experience-period", getTimelinePeriod(translateFn(item.datesKey) || ""))
+    );
+
+    const details = createElement("details", "timeline-card experience-card");
     if (item.open) details.open = true;
 
     const summary = document.createElement("summary");
@@ -43,8 +57,10 @@ export function renderExperience({ experienceData, translateFn, registerReveal }
 
     body.append(desc, inline);
     details.append(summary, body);
-    container.appendChild(details);
+    step.append(marker, details);
+    container.appendChild(step);
   });
 
+  container.setAttribute("role", "list");
   registerReveal(container.querySelectorAll(".reveal-target"));
 }
