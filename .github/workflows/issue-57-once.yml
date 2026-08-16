@@ -1,0 +1,43 @@
+name: Apply issue 57 recruiter UX once
+
+on:
+  push:
+    branches:
+      - agent/recruiter-first-ux
+
+permissions:
+  contents: write
+
+jobs:
+  implement:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/recruiter-first-ux
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Apply recruiter-first UX
+        run: python3 scripts/issue-57-apply.py
+      - name: Build generated content
+        run: npm run build:content
+      - name: Install validation dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate portfolio
+        run: npm run validate
+      - name: Check JavaScript syntax
+        run: find assets/js -name '*.js' -print0 | sort -z | xargs -0 -n1 node --check
+      - name: Chromium smoke
+        run: npm run smoke:runtime
+      - name: Commit implementation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/experience.json assets/i18n/en.json assets/i18n/zh.json assets/js/i18n.js assets/css/style.css index.html scripts/smoke-runtime.mjs
+          git commit -m "feat: make portfolio recruiter-first on mobile"
+          git push origin HEAD:agent/recruiter-first-ux
