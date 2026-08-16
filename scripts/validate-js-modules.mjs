@@ -3,7 +3,6 @@ import path from "node:path";
 
 const jsRoot = path.join("assets", "js");
 const expectedModules = [
-  "affiliation-scale.js",
   "app.js",
   "blog.js",
   "carousel.js",
@@ -42,7 +41,6 @@ if ((sources["script.js"] || "").includes("(function ()")) {
 }
 
 const requiredAppImports = [
-  "./affiliation-scale.js",
   "./carousel.js",
   "./data.js",
   "./experience.js",
@@ -69,7 +67,6 @@ if (!(sources["navigation.js"] || "").includes('./mobile-menu.js')) {
 }
 
 const responsibilityChecks = {
-  "affiliation-scale.js": ["createAffiliationScaleController", "portfolio.affiliationScale", "localStorage", "matchMedia"],
   "data.js": ["createDataStore", "ensureData", "loadJson"],
   "i18n.js": ["createI18nController", "applyTranslations", "languageToggle", "i18nBasePath", "pageTitleKey"],
   "projects.js": ["createProjectsController", "render", "setFilter"],

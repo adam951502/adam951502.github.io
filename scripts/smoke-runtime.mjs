@@ -184,42 +184,44 @@ try {
   if (reducedMotion.duplicateDisplay !== "none") throw new Error("Reduced-motion mode still renders the duplicate marquee group");
   await page.emulateMedia({ reducedMotion: "no-preference" });
 
-  const affiliationScaleInput = page.locator("[data-affiliation-scale]");
-  if (await affiliationScaleInput.count() !== 1) throw new Error("Affiliation scale slider is missing");
-  if (await affiliationScaleInput.inputValue() !== "100") throw new Error("Affiliation scale slider does not start at 100%");
+  if (await page.locator("[data-affiliation-scale]").count() !== 0) throw new Error("Affiliation scale slider still exists after freezing the design");
+  if (await page.locator("[data-affiliation-scale-reset]").count() !== 0) throw new Error("Affiliation scale reset still exists after freezing the design");
 
-  const logoHeightAt100 = await heraklionLogo.evaluate((element) => element.getBoundingClientRect().height);
-  await affiliationScaleInput.evaluate((element) => {
-    element.value = "130";
-    element.dispatchEvent(new Event("input", { bubbles: true }));
+  const affiliationLogos = page.locator(".affiliation-marquee img");
+  if (await affiliationLogos.count() !== 12) throw new Error(`Expected 12 affiliation logo nodes, got ${await affiliationLogos.count()}`);
+  const logoLoadingModes = await affiliationLogos.evaluateAll((images) => images.map((image) => image.getAttribute("loading")));
+  if (logoLoadingModes.some((mode) => mode !== "eager")) throw new Error(`Affiliation logos are not all eager-loaded: ${logoLoadingModes.join(",")}`);
+  await page.waitForFunction(() => Array.from(document.querySelectorAll(".affiliation-marquee img")).every((image) => image.complete && image.naturalWidth > 0));
+
+  const desktopAffiliationMetrics = await page.evaluate(() => {
+    const item = document.querySelector('.affiliation-marquee__group:not([aria-hidden="true"]) .affiliation-item');
+    const image = item?.querySelector("img");
+    const track = document.querySelector(".affiliation-marquee__track");
+    return {
+      itemHeight: item ? Number.parseFloat(getComputedStyle(item).height) : 0,
+      logoMaxHeight: image ? Number.parseFloat(getComputedStyle(image).maxHeight) : 0,
+      duration: track ? Number.parseFloat(getComputedStyle(track).animationDuration) : 0
+    };
   });
-  await page.waitForFunction(() => localStorage.getItem("portfolio.affiliationScale") === "130");
-  const logoHeightAt130 = await heraklionLogo.evaluate((element) => element.getBoundingClientRect().height);
-  if (logoHeightAt130 <= logoHeightAt100) throw new Error(`Affiliation scale did not enlarge the logo: 100%=${logoHeightAt100}, 130%=${logoHeightAt130}`);
+  if (Math.abs(desktopAffiliationMetrics.itemHeight - 123.2) > 0.6) throw new Error(`Unexpected fixed desktop affiliation height: ${desktopAffiliationMetrics.itemHeight}`);
+  if (Math.abs(desktopAffiliationMetrics.logoMaxHeight - 67.2) > 0.6) throw new Error(`Unexpected fixed desktop logo max-height: ${desktopAffiliationMetrics.logoMaxHeight}`);
+  if (Math.abs(desktopAffiliationMetrics.duration - 58.8) > 0.2) throw new Error(`Unexpected fixed desktop marquee duration: ${desktopAffiliationMetrics.duration}`);
 
-  const desktopItemHeightVar = await page.locator(".signature-strip").evaluate((element) =>
-    Number.parseFloat(element.style.getPropertyValue("--affiliation-item-height"))
-  );
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.waitForFunction(() => window.matchMedia("(max-width: 720px)").matches);
-  const mobileItemHeightVar = await page.locator(".signature-strip").evaluate((element) =>
-    Number.parseFloat(element.style.getPropertyValue("--affiliation-item-height"))
-  );
-  if (!(mobileItemHeightVar > 0 && mobileItemHeightVar < desktopItemHeightVar)) {
-    throw new Error(`Affiliation scale did not recalculate for mobile: desktop=${desktopItemHeightVar}, mobile=${mobileItemHeightVar}`);
-  }
-
+  const mobileAffiliationMetrics = await page.evaluate(() => {
+    const item = document.querySelector('.affiliation-marquee__group:not([aria-hidden="true"]) .affiliation-item');
+    const image = item?.querySelector("img");
+    const track = document.querySelector(".affiliation-marquee__track");
+    return {
+      itemHeight: item ? Number.parseFloat(getComputedStyle(item).height) : 0,
+      logoMaxHeight: image ? Number.parseFloat(getComputedStyle(image).maxHeight) : 0,
+      duration: track ? Number.parseFloat(getComputedStyle(track).animationDuration) : 0
+    };
+  });
+  if (Math.abs(mobileAffiliationMetrics.itemHeight - 100.8) > 0.6) throw new Error(`Unexpected fixed mobile affiliation height: ${mobileAffiliationMetrics.itemHeight}`);
+  if (Math.abs(mobileAffiliationMetrics.logoMaxHeight - 53.2) > 0.6) throw new Error(`Unexpected fixed mobile logo max-height: ${mobileAffiliationMetrics.logoMaxHeight}`);
+  if (Math.abs(mobileAffiliationMetrics.duration - 53.2) > 0.2) throw new Error(`Unexpected fixed mobile marquee duration: ${mobileAffiliationMetrics.duration}`);
   await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.reload({ waitUntil: "networkidle" });
-  await page.waitForFunction(() => document.querySelectorAll("#projectGrid .reveal-target").length === 25);
-  if (await page.locator("[data-affiliation-scale]").inputValue() !== "130") throw new Error("Affiliation scale did not persist after reload");
-  const storedScaleAfterReload = await page.evaluate(() => localStorage.getItem("portfolio.affiliationScale"));
-  if (storedScaleAfterReload !== "130") throw new Error(`Unexpected stored affiliation scale after reload: ${storedScaleAfterReload}`);
-
-  await page.locator("[data-affiliation-scale-reset]").click();
-  if (await page.locator("[data-affiliation-scale]").inputValue() !== "100") throw new Error("Affiliation scale reset did not restore 100%");
-  const storedScaleAfterReset = await page.evaluate(() => localStorage.getItem("portfolio.affiliationScale"));
-  if (storedScaleAfterReset !== null) throw new Error("Affiliation scale reset did not clear localStorage");
 
   await assertSkillIconsContained("desktop");
 
