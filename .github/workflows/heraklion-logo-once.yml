@@ -1,0 +1,87 @@
+name: Import HERAKLION logo once
+
+on:
+  push:
+    branches:
+      - agent/heraklion-official-logo
+
+permissions:
+  contents: write
+
+jobs:
+  import-logo:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v6
+        with:
+          ref: agent/heraklion-official-logo
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Download and verify official HERAKLION logo
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            'https://www.heraklion-projekt.de/wp-content/uploads/2023/08/logo-heraklion.gif' \
+            -o assets/images/logo-heraklion.gif
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('assets/images/logo-heraklion.gif')
+          data = p.read_bytes()
+          if not data.startswith((b'GIF87a', b'GIF89a')):
+              raise SystemExit('Downloaded HERAKLION asset is not a GIF')
+          if len(data) > 2 * 1024 * 1024:
+              raise SystemExit(f'HERAKLION logo unexpectedly large: {len(data)} bytes')
+          width = int.from_bytes(data[6:8], 'little')
+          height = int.from_bytes(data[8:10], 'little')
+          print(f'HERAKLION logo: {width}x{height}, {len(data)} bytes')
+          PY
+
+      - name: Replace HERAKLION wordmark fallback
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          index_path = Path('index.html')
+          html = index_path.read_text()
+          primary = '<span class="affiliation-wordmark" aria-label="HERAKLION">HERAKLION</span>'
+          duplicate = '<span class="affiliation-wordmark">HERAKLION</span>'
+          if html.count(primary) != 1 or html.count(duplicate) != 1:
+              raise SystemExit('Unexpected HERAKLION fallback markup count')
+          html = html.replace(primary, '<img src="assets/images/logo-heraklion.gif" alt="HERAKLION" loading="lazy">', 1)
+          html = html.replace(duplicate, '<img src="assets/images/logo-heraklion.gif" alt="" loading="lazy">', 1)
+          index_path.write_text(html)
+
+          smoke_path = Path('scripts/smoke-runtime.mjs')
+          smoke = smoke_path.read_text()
+          marker = '  if (marqueeStructure.duplicateHidden !== "true") throw new Error("Duplicate affiliation group is not aria-hidden");\n'
+          addition = marker + '''  const heraklionLogo = page.locator('.affiliation-marquee__group:not([aria-hidden="true"]) img[alt="HERAKLION"]');\n  if (await heraklionLogo.count() !== 1) throw new Error("Official HERAKLION logo is missing from the primary affiliation group");\n  const heraklionSrc = await heraklionLogo.getAttribute("src");\n  if (heraklionSrc !== "assets/images/logo-heraklion.gif") throw new Error(`Unexpected HERAKLION logo source: ${heraklionSrc}`);\n'''
+          if marker not in smoke:
+              raise SystemExit('Smoke insertion marker not found')
+          smoke_path.write_text(smoke.replace(marker, addition, 1))
+          PY
+
+      - name: Install validation dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Run complete validation
+        run: npm run validate
+
+      - name: Check JavaScript syntax
+        run: find assets/js -name '*.js' -print0 | sort -z | xargs -0 -n1 node --check
+
+      - name: Run Chromium smoke
+        run: npm run smoke:runtime
+
+      - name: Commit implementation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/images/logo-heraklion.gif index.html scripts/smoke-runtime.mjs
+          git commit -m "feat: use official HERAKLION logo"
+          git push origin HEAD:agent/heraklion-official-logo
