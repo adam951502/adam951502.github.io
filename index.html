@@ -204,6 +204,19 @@
       <div class="signature-copy">
         <p class="eyebrow" data-i18n="hero.aside.title">Experience across research &amp; industry</p>
         <p class="muted" data-i18n="hero.aside.body">Organizations and research ecosystems from my professional journey.</p>
+        <div class="affiliation-scale-control">
+          <div class="affiliation-scale-control__header">
+            <label class="affiliation-scale-label" for="affiliationScale" data-i18n="hero.aside.scaleLabel">Logo size</label>
+            <output id="affiliationScaleValue" class="affiliation-scale-value" for="affiliationScale">100%</output>
+          </div>
+          <div class="affiliation-scale-control__row">
+            <i class="ri-subtract-line" aria-hidden="true"></i>
+            <input id="affiliationScale" class="affiliation-scale-range" type="range" min="80" max="140" step="5" value="100" data-affiliation-scale aria-describedby="affiliationScaleHint">
+            <i class="ri-add-line" aria-hidden="true"></i>
+            <button type="button" class="affiliation-scale-reset" data-affiliation-scale-reset data-i18n="hero.aside.scaleReset">Reset</button>
+          </div>
+          <p id="affiliationScaleHint" class="affiliation-scale-hint" data-i18n="hero.aside.scaleHint">Saved on this device.</p>
+        </div>
       </div>
       <div class="affiliation-marquee" aria-label="Professional and research contexts">
         <div class="affiliation-marquee__track">
