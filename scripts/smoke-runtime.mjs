@@ -150,6 +150,17 @@ try {
   if (experienceSpan.count !== "11 roles") throw new Error(`Unexpected Experience role count: ${experienceSpan.count}`);
   if (experienceSpan.display === "none") throw new Error("Experience career span is hidden on desktop");
 
+  const recruiterOverview = await page.evaluate(() => ({
+    trustItems: document.querySelectorAll(".trust-strip .trust-item").length,
+    journeySteps: document.querySelectorAll(".journey-track .journey-step").length,
+    journeyTitle: document.querySelector(".journey-heading h2")?.textContent?.trim() || "",
+    openExperience: document.querySelectorAll("#experienceList .experience-card[open]").length
+  }));
+  if (recruiterOverview.trustItems !== 5) throw new Error(`Expected 5 recruiter trust signals, got ${recruiterOverview.trustItems}`);
+  if (recruiterOverview.journeySteps !== 5) throw new Error(`Expected 5 journey steps, got ${recruiterOverview.journeySteps}`);
+  if (!recruiterOverview.journeyTitle.includes("engineering fundamentals")) throw new Error(`Unexpected journey title: ${recruiterOverview.journeyTitle}`);
+  if (recruiterOverview.openExperience !== 0) throw new Error(`Experience should be collapsed by default, found ${recruiterOverview.openExperience} open cards`);
+
   const currentFreelance = await page.evaluate(() => ({
     title: document.querySelector("#experienceList .experience-step:first-child h3")?.textContent?.trim() || "",
     period: document.querySelector("#experienceList .experience-step:first-child .experience-period")?.textContent?.trim() || "",
@@ -311,6 +322,21 @@ try {
   }));
   if (mobileExperienceSpan.display === "none") throw new Error("Experience career span is hidden on mobile");
   if (mobileExperienceSpan.right > mobileExperienceSpan.viewport + 1) throw new Error("Experience career span escapes the mobile viewport");
+
+  const mobileQuickLang = await page.evaluate(() => {
+    const pill = document.querySelector(".mobile-lang-pill");
+    const buttons = Array.from(document.querySelectorAll(".lang-quick-option"));
+    const rect = pill?.getBoundingClientRect();
+    return { display: pill ? getComputedStyle(pill).display : "none", count: buttons.length, right: rect?.right || 0, top: rect?.top || 0, viewport: window.innerWidth };
+  });
+  if (mobileQuickLang.display === "none" || mobileQuickLang.count !== 2) throw new Error("Fixed mobile language pill is missing");
+  if (mobileQuickLang.right > mobileQuickLang.viewport + 1 || mobileQuickLang.top < 0) throw new Error("Mobile language pill escapes viewport");
+  await page.click('.lang-quick-option[data-lang="zh"]');
+  await page.waitForFunction(() => document.documentElement.lang === "zh-Hant");
+  const quickZhJourney = await page.locator('.journey-heading [data-i18n="journey.eyebrow"]').textContent();
+  if (quickZhJourney?.trim() !== "我的旅程") throw new Error(`Mobile quick language switch did not translate journey: ${quickZhJourney}`);
+  await page.click('.lang-quick-option[data-lang="en"]');
+  await page.waitForFunction(() => document.documentElement.lang === "en");
   for (const step of mobileExperienceTimeline.steps) {
     if (Math.abs(step.dotCenter - mobileExperienceTimeline.axisX) > 1.5) {
       throw new Error(`Experience step ${step.index + 1} dot is not aligned to the mobile left axis`);

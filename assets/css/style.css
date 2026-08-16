@@ -3171,3 +3171,62 @@ h3 {
   }
 }
 
+
+
+/* Recruiter-first UX: issue #57 */
+.mobile-lang-pill { display: none; }
+.recruiter-overview { padding-top: 0.5rem; }
+.trust-strip { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; margin: 0 0 1.25rem; }
+.trust-item { min-width: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.65rem; align-items: start; padding: 0.9rem 0.95rem; border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--surface) 88%, transparent); }
+.trust-item > i { font-size: 1.1rem; margin-top: 0.08rem; color: var(--accent); }
+.trust-item strong, .trust-item span { display: block; }
+.trust-item strong { font-size: 0.82rem; line-height: 1.25; }
+.trust-item span { margin-top: 0.22rem; color: var(--muted); font-size: 0.72rem; line-height: 1.4; }
+.trust-item--accent { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+.journey-shell { padding: clamp(1rem, 2.2vw, 1.6rem); overflow: hidden; }
+.journey-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 0.65fr); gap: 1.5rem; align-items: end; margin-bottom: 1.4rem; }
+.journey-heading h2 { margin: 0.25rem 0 0; font-size: clamp(1.45rem, 2.8vw, 2.25rem); }
+.journey-heading > .muted { margin: 0; max-width: 42ch; justify-self: end; }
+.journey-track { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; list-style: none; padding: 0; margin: 0; }
+.journey-track::before { content: ''; position: absolute; left: 8%; right: 8%; top: 1.35rem; height: 1px; background: var(--line); }
+.journey-step { position: relative; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.28rem; padding: 0 0.55rem; }
+.journey-icon { position: relative; z-index: 1; width: 2.7rem; height: 2.7rem; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); box-shadow: 0 0 0 6px var(--surface); }
+.journey-icon i { font-size: 1.15rem; color: var(--accent); }
+.journey-year { margin-top: 0.4rem; font: 500 0.66rem/1 'IBM Plex Mono', monospace; color: var(--muted); }
+.journey-step strong { font-size: 0.82rem; line-height: 1.25; }
+.journey-step > span:last-child { max-width: 20ch; font-size: 0.7rem; line-height: 1.38; color: var(--muted); }
+.journey-step--current .journey-icon { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+
+@media (max-width: 1050px) {
+  .trust-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .trust-item--accent { grid-column: 1 / -1; }
+  .journey-heading { grid-template-columns: 1fr; gap: 0.55rem; }
+  .journey-heading > .muted { justify-self: start; }
+}
+
+@media (max-width: 760px) {
+  .language-dropdown { display: none !important; }
+  .mobile-lang-pill { position: fixed; z-index: 1200; top: 0.72rem; right: 4.7rem; display: flex; align-items: center; gap: 0.2rem; padding: 0.32rem 0.42rem; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb, var(--surface) 94%, transparent); box-shadow: 0 8px 24px rgba(0,0,0,0.08); backdrop-filter: blur(12px); }
+  .mobile-lang-pill > span { color: var(--muted); font-size: 0.7rem; }
+  .lang-quick-option { min-width: 2.1rem; min-height: 2rem; padding: 0.25rem 0.42rem; border: 0; border-radius: 999px; background: transparent; color: var(--muted); font: 700 0.72rem/1 Manrope, sans-serif; cursor: pointer; }
+  .lang-quick-option.active { background: var(--text); color: var(--surface); }
+  .recruiter-overview { padding-top: 0.2rem; }
+  .trust-strip { display: flex; gap: 0.6rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.35rem; margin-right: calc(var(--page-pad) * -1); padding-right: var(--page-pad); scrollbar-width: none; }
+  .trust-strip::-webkit-scrollbar { display: none; }
+  .trust-item, .trust-item--accent { flex: 0 0 min(76vw, 270px); grid-column: auto; scroll-snap-align: start; }
+  .journey-shell { padding: 1rem; }
+  .journey-heading { margin-bottom: 1rem; }
+  .journey-heading h2 { font-size: 1.4rem; }
+  .journey-track { grid-template-columns: 1fr; gap: 0; padding-left: 0.2rem; }
+  .journey-track::before { left: 1.32rem; right: auto; top: 1.35rem; bottom: 1.35rem; width: 1px; height: auto; }
+  .journey-step { display: grid; grid-template-columns: 2.7rem 2rem minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 0.65rem; row-gap: 0.15rem; align-items: center; text-align: left; padding: 0 0 0.9rem; }
+  .journey-icon { grid-column: 1; grid-row: 1 / 3; box-shadow: 0 0 0 5px var(--surface); }
+  .journey-year { grid-column: 2; grid-row: 1 / 3; margin: 0; }
+  .journey-step strong { grid-column: 3; grid-row: 1; }
+  .journey-step > span:last-child { grid-column: 3; grid-row: 2; max-width: none; }
+}
+
+@media (max-width: 390px) {
+  .mobile-lang-pill { right: 4.35rem; }
+  .lang-quick-option { min-width: 1.85rem; padding-inline: 0.32rem; }
+}
