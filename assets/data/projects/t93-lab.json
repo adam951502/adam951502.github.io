@@ -13,7 +13,8 @@
     "Jinja2",
     "Notion API",
     "Supabase",
-    "Cloudflare"
+    "Cloudflare",
+    "GitHub Actions"
   ],
   "links": [
     {
@@ -27,7 +28,7 @@
       "title": "T93.Lab Collection & Market Platform",
       "summary": "Notion-powered collectible vault with valuation analytics, private access, scheduled publishing, market lookup, and commerce prototypes.",
       "dates": "Jul 2025 - Present",
-      "status": "Active product",
+      "status": "Ongoing client product",
       "role": "Product owner & full-stack engineer",
       "challenge": "A private trading-card collection needed to work as a searchable collection, valuation dashboard, wishlist, and member-only market experience while keeping editorial data easy to maintain.",
       "contribution": [
@@ -68,7 +69,7 @@
       "title": "T93.Lab 收藏與市場平台",
       "summary": "以 Notion 驅動的收藏品管理庫，整合估值分析、私人存取、排程發布、市場查詢與商務原型。",
       "dates": "2025 年 7 月 - 目前",
-      "status": "持續營運",
+      "status": "持續進行中的客戶產品",
       "role": "產品負責人與全端工程師",
       "challenge": "私人卡牌收藏需要同時成為可搜尋的收藏庫、估值儀表板、願望清單與會員限定市場體驗，並讓編輯資料維持容易管理。",
       "contribution": [
@@ -82,10 +83,22 @@
         "Supabase Auth 與 Postgres 提供身分及存取邊界；GitHub Actions 每小時重建並排程更新市場資料。"
       ],
       "architecture": [
-        { "label": "內容來源", "detail": "Notion 資料庫保存收藏詮釋資料、研究筆記、價格與願望清單。" },
-        { "label": "建置管線", "detail": "Python 擷取並標準化紀錄、快取匯率，再渲染 Jinja2 頁面。" },
-        { "label": "交付", "detail": "GitHub Actions 依排程或需求將產生的網站發布至 Cloudflare Pages。" },
-        { "label": "私人服務", "detail": "Cloudflare 中介軟體與 Functions 搭配 Supabase Auth／Postgres，保護使用者、管理資料及彙總 API。" }
+        {
+          "label": "內容來源",
+          "detail": "Notion 資料庫保存收藏詮釋資料、研究筆記、價格與願望清單。"
+        },
+        {
+          "label": "建置管線",
+          "detail": "Python 擷取並標準化紀錄、快取匯率，再渲染 Jinja2 頁面。"
+        },
+        {
+          "label": "交付",
+          "detail": "GitHub Actions 依排程或需求將產生的網站發布至 Cloudflare Pages。"
+        },
+        {
+          "label": "私人服務",
+          "detail": "Cloudflare 中介軟體與 Functions 搭配 Supabase Auth／Postgres，保護使用者、管理資料及彙總 API。"
+        }
       ],
       "outcomes": [
         "建立單一產品介面，整合收藏瀏覽、價值分析、願望清單與身分驗證市場展示。",

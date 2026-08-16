@@ -12,14 +12,15 @@
     "SQLite",
     "GS1 UDI",
     "Excel",
-    "Docker"
+    "Docker",
+    "Integration Tests"
   ],
   "content": {
     "en": {
       "title": "UDI Shipping Assistance System",
       "summary": "Operational scanning workflow that imports shipment plans, validates GS1 UDI, flags exceptions, and exports auditable completion records.",
       "dates": "Apr 2026 - May 2026",
-      "status": "Operational system",
+      "status": "Client operational system",
       "role": "Solution architect & full-stack engineer",
       "challenge": "Daily shipping teams needed a safer way to import shipment plans, scan medical-product UDI codes, catch over-scans or mismatches, and produce an auditable end-of-day result.",
       "contribution": [
@@ -60,7 +61,7 @@
       "title": "UDI 出貨輔助系統",
       "summary": "匯入出貨計畫、驗證 GS1 UDI、標示例外，並輸出可稽核完成紀錄的作業系統。",
       "dates": "2026 年 4 月 - 2026 年 5 月",
-      "status": "作業系統",
+      "status": "客戶作業系統",
       "role": "解決方案架構師與全端工程師",
       "challenge": "每日出貨團隊需要更安全的方式匯入出貨計畫、掃描醫療產品 UDI、攔截超量掃描或不符項目，並產生可稽核的日終結果。",
       "contribution": [
@@ -74,10 +75,22 @@
         "服務模組分離計畫匯入、UDI 對應、驗證、送出、報告與啟動器行為。"
       ],
       "architecture": [
-        { "label": "輸入", "detail": "CSV／XLSX 出貨計畫與掃描的 GS1 UDI 字串進入操作員工作區。" },
-        { "label": "驗證", "detail": "UDI 解析器與對應資料解析 GTIN／UDI-DI、料號、品項與預期數量。" },
-        { "label": "工作流程 API", "detail": "FastAPI 服務管理預覽、例外狀態、送出、統計與工作階段重設。" },
-        { "label": "紀錄", "detail": "確認結果保存至 SQLite；結束作業時匯出 Excel 摘要與資料庫備份。" }
+        {
+          "label": "輸入",
+          "detail": "CSV／XLSX 出貨計畫與掃描的 GS1 UDI 字串進入操作員工作區。"
+        },
+        {
+          "label": "驗證",
+          "detail": "UDI 解析器與對應資料解析 GTIN／UDI-DI、料號、品項與預期數量。"
+        },
+        {
+          "label": "工作流程 API",
+          "detail": "FastAPI 服務管理預覽、例外狀態、送出、統計與工作階段重設。"
+        },
+        {
+          "label": "紀錄",
+          "detail": "確認結果保存至 SQLite；結束作業時匯出 Excel 摘要與資料庫備份。"
+        }
       ],
       "outcomes": [
         "將掃描例外轉換為明確的操作員決策，避免成為未被發現的出貨錯誤。",

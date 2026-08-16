@@ -116,7 +116,8 @@
       "Jinja2",
       "Notion API",
       "Supabase",
-      "Cloudflare"
+      "Cloudflare",
+      "GitHub Actions"
     ],
     "links": [
       {
@@ -130,7 +131,7 @@
         "title": "T93.Lab Collection & Market Platform",
         "summary": "Notion-powered collectible vault with valuation analytics, private access, scheduled publishing, market lookup, and commerce prototypes.",
         "dates": "Jul 2025 - Present",
-        "status": "Active product",
+        "status": "Ongoing client product",
         "role": "Product owner & full-stack engineer",
         "challenge": "A private trading-card collection needed to work as a searchable collection, valuation dashboard, wishlist, and member-only market experience while keeping editorial data easy to maintain.",
         "contribution": [
@@ -171,7 +172,7 @@
         "title": "T93.Lab 收藏與市場平台",
         "summary": "以 Notion 驅動的收藏品管理庫，整合估值分析、私人存取、排程發布、市場查詢與商務原型。",
         "dates": "2025 年 7 月 - 目前",
-        "status": "持續營運",
+        "status": "持續進行中的客戶產品",
         "role": "產品負責人與全端工程師",
         "challenge": "私人卡牌收藏需要同時成為可搜尋的收藏庫、估值儀表板、願望清單與會員限定市場體驗，並讓編輯資料維持容易管理。",
         "contribution": [
@@ -315,6 +316,110 @@
   },
   {
     "$schema": "./project.schema.json",
+    "id": "snkr-psa-automation",
+    "category": "data",
+    "sortStart": "2026-07",
+    "sortEnd": "9999-12",
+    "sortUpdated": "2026-08-16",
+    "pillKey": "projects.pills.data",
+    "icon": "ri-price-tag-3-line",
+    "image": "assets/images/project-snkr-psa.svg",
+    "imageFit": "cover",
+    "chips": [
+      "Python",
+      "Telegram Bot",
+      "SNKRDUNK APIs",
+      "Playwright",
+      "RapidFuzz",
+      "BeautifulSoup"
+    ],
+    "content": {
+      "en": {
+        "title": "PSA / SNKRDUNK Card Price Automation",
+        "summary": "Multi-route card identification and live PSA10 pricing workflow with Telegram UX, verified mappings, caching, and resilient fallbacks.",
+        "dates": "Jul 2026 - Present",
+        "status": "Active automation",
+        "role": "Data automation & integration engineer",
+        "challenge": "PSA API quotas and browser security checks make certificate lookup unreliable, while code-only marketplace search can produce ambiguous card matches. The workflow needed safer identification routes without pretending blocked data sources were dependable.",
+        "contribution": [
+          "Designed a route hierarchy that prioritizes direct SNKRDUNK IDs, verified mappings, and exact series/card-code matches before falling back to PSA metadata or browser-assisted lookup.",
+          "Built a Telegram-first workflow that returns card identity, images, grading-condition prices, market context, and multilingual responses for daily collection use.",
+          "Added mapping and history caches, batch summaries, CSV/JSON outputs, diagnostics, and explicit low-confidence or security-check states instead of silently accepting weak matches."
+        ],
+        "technical": [
+          "Python services use httpx/requests, BeautifulSoup, RapidFuzz, structured mappings, and SNKRDUNK product/condition endpoints for matching and live pricing.",
+          "Playwright is retained as a user-controlled browser fallback for public PSA certificate pages; the workflow detects Cloudflare/security pages and does not treat them as certificate data.",
+          "Telegram commands, route caches, batch processing, environment-based configuration, and deployment profiles turn the research script into a reusable operational tool."
+        ],
+        "architecture": [
+          {
+            "label": "Input",
+            "detail": "Series/card code, SNKRDUNK URL/ID, PSA certificate number, or Telegram command enters the router."
+          },
+          {
+            "label": "Resolve",
+            "detail": "Verified mappings and exact code matching resolve the canonical SNKRDUNK card; PSA metadata is a fallback rather than the default dependency."
+          },
+          {
+            "label": "Price & enrich",
+            "detail": "SNKRDUNK endpoints return card metadata, thumbnails, condition prices, and current PSA10 market data."
+          },
+          {
+            "label": "Deliver & cache",
+            "detail": "Telegram/CLI output, CSV/JSON summaries, route caches, and diagnostics provide a repeatable user workflow."
+          }
+        ],
+        "outcomes": [
+          "Reduced dependence on fragile PSA lookups by making series/card-code and verified mapping routes first-class inputs.",
+          "Separates canonical card mapping from live price retrieval so cached identity does not become stale market pricing.",
+          "Turns failures into explicit review states and diagnostics, improving trust when external sites rate-limit or challenge automated requests."
+        ]
+      },
+      "zh": {
+        "title": "PSA / SNKRDUNK 卡牌價格自動化",
+        "summary": "多路徑卡牌識別與即時 PSA10 價格流程，整合 Telegram 體驗、已驗證對應、快取與韌性備援。",
+        "dates": "2026 年 7 月 - 目前",
+        "status": "持續開發的自動化工具",
+        "role": "資料自動化與系統整合工程師",
+        "challenge": "PSA API 配額與瀏覽器安全驗證使證書查詢不穩定，而只用卡號在市場搜尋也可能產生模糊配對。系統需要更安全的識別路徑，而不能假設受阻的資料來源永遠可靠。",
+        "contribution": [
+          "設計路由優先序，先使用 SNKRDUNK ID、已驗證對應與精確系列／卡號配對，再視需要退回 PSA metadata 或瀏覽器輔助查詢。",
+          "建立以 Telegram 為主要入口的工作流程，回傳卡片身分、圖片、不同鑑定條件價格、市場資訊與多語回覆，支援日常收藏使用。",
+          "加入對應與歷史快取、批次摘要、CSV／JSON 輸出、診斷工具，以及明確的低信心或安全驗證狀態，避免默默接受錯誤配對。"
+        ],
+        "technical": [
+          "Python 服務使用 httpx／requests、BeautifulSoup、RapidFuzz、結構化 mapping 與 SNKRDUNK 商品／條件端點進行卡牌配對與即時價格取得。",
+          "保留 Playwright 作為使用者可控制的 PSA 公開證書頁瀏覽器備援；流程會辨識 Cloudflare／安全驗證頁，且不會把它當成證書資料。",
+          "Telegram 指令、路由快取、批次處理、環境變數設定與部署 profile，將研究腳本轉成可重複使用的作業工具。"
+        ],
+        "architecture": [
+          {
+            "label": "輸入",
+            "detail": "系列／卡號、SNKRDUNK URL／ID、PSA 證書號碼或 Telegram 指令進入路由層。"
+          },
+          {
+            "label": "識別",
+            "detail": "已驗證 mapping 與精確卡號比對解析 canonical SNKRDUNK 卡片；PSA metadata 作為備援而非主要依賴。"
+          },
+          {
+            "label": "價格與補充",
+            "detail": "SNKRDUNK 端點回傳卡片 metadata、縮圖、不同條件價格與即時 PSA10 市場資料。"
+          },
+          {
+            "label": "交付與快取",
+            "detail": "Telegram／CLI 回覆、CSV／JSON 摘要、路由快取與診斷資訊形成可重複的使用流程。"
+          }
+        ],
+        "outcomes": [
+          "將系列／卡號與已驗證 mapping 提升為主要輸入，降低對不穩定 PSA 查詢的依賴。",
+          "把 canonical 卡片對應與即時價格取得分離，避免身分快取變成過期的市場價格。",
+          "把外部網站限流或安全驗證轉成明確覆核狀態與診斷資訊，提高整體可信度。"
+        ]
+      }
+    }
+  },
+  {
+    "$schema": "./project.schema.json",
     "id": "shipping-assistant",
     "category": "web",
     "sortStart": "2026-04",
@@ -327,14 +432,15 @@
       "SQLite",
       "GS1 UDI",
       "Excel",
-      "Docker"
+      "Docker",
+      "Integration Tests"
     ],
     "content": {
       "en": {
         "title": "UDI Shipping Assistance System",
         "summary": "Operational scanning workflow that imports shipment plans, validates GS1 UDI, flags exceptions, and exports auditable completion records.",
         "dates": "Apr 2026 - May 2026",
-        "status": "Operational system",
+        "status": "Client operational system",
         "role": "Solution architect & full-stack engineer",
         "challenge": "Daily shipping teams needed a safer way to import shipment plans, scan medical-product UDI codes, catch over-scans or mismatches, and produce an auditable end-of-day result.",
         "contribution": [
@@ -375,7 +481,7 @@
         "title": "UDI 出貨輔助系統",
         "summary": "匯入出貨計畫、驗證 GS1 UDI、標示例外，並輸出可稽核完成紀錄的作業系統。",
         "dates": "2026 年 4 月 - 2026 年 5 月",
-        "status": "作業系統",
+        "status": "客戶作業系統",
         "role": "解決方案架構師與全端工程師",
         "challenge": "每日出貨團隊需要更安全的方式匯入出貨計畫、掃描醫療產品 UDI、攔截超量掃描或不符項目，並產生可稽核的日終結果。",
         "contribution": [
@@ -426,9 +532,10 @@
     "imageFit": "cover",
     "chips": [
       "Python",
+      "OpenCV",
       "ZXing",
       "pylibdmtx",
-      "GS1",
+      "GS1 UDI",
       "Benchmarking"
     ],
     "content": {
@@ -436,7 +543,7 @@
         "title": "Multi-box UDI Data Matrix Decoder",
         "summary": "Benchmark-driven computer-vision POC for decoding dense carton images into GS1 business fields with safe PASS/REVIEW handling.",
         "dates": "Mar 2026 - Apr 2026",
-        "status": "Validated POC",
+        "status": "Client computer-vision POC",
         "role": "Computer-vision & data engineer",
         "challenge": "Dense shipping photos can contain many small Data Matrix codes with perspective, occlusion, and repeated cartons. Missing a code must lead to review rather than an unsafe automatic pass.",
         "contribution": [
@@ -477,7 +584,7 @@
         "title": "多箱 UDI Data Matrix 解碼器",
         "summary": "以基準測試驅動的電腦視覺概念驗證，將高密度紙箱影像解碼為 GS1 業務欄位，並以 PASS／REVIEW 安全分流。",
         "dates": "2026 年 3 月 - 2026 年 4 月",
-        "status": "已驗證概念",
+        "status": "客戶電腦視覺 POC",
         "role": "電腦視覺與資料工程師",
         "challenge": "高密度出貨照片可能包含大量尺寸很小、具有透視變形、遮擋及重複紙箱的 Data Matrix。若漏讀任何代碼，系統必須轉交人工覆核，而不能不安全地自動通過。",
         "contribution": [
@@ -529,15 +636,16 @@
       "Vue 3",
       "Express",
       "MySQL",
-      "Docker",
-      "PDFKit"
+      "JWT",
+      "PDFKit",
+      "Docker"
     ],
     "content": {
       "en": {
         "title": "888 Card Market Platform",
         "summary": "Full-stack vendor reservation and administration system with booth availability, rental inventory, and generated contracts.",
         "dates": "Feb 2026 - Mar 2026",
-        "status": "Full-stack demo",
+        "status": "Client full-stack system",
         "role": "Solution architect & full-stack engineer",
         "challenge": "A physical card market needed one system for brand presentation, vendor onboarding, booth availability, reservations, rental extras, contract generation, and staff administration.",
         "contribution": [
@@ -578,7 +686,7 @@
         "title": "888 卡牌市集平台",
         "summary": "全端攤商預約與管理系統，整合攤位可用性、租賃庫存與合約產生。",
         "dates": "2026 年 2 月 - 2026 年 3 月",
-        "status": "全端展示",
+        "status": "客戶全端系統",
         "role": "解決方案架構師與全端工程師",
         "challenge": "實體卡牌市集需要一套系統，統一處理品牌展示、攤商加入、攤位可用性、預約、加租設備、合約產生與員工管理。",
         "contribution": [
@@ -619,107 +727,6 @@
   },
   {
     "$schema": "./project.schema.json",
-    "id": "x-media-downloader",
-    "category": "data",
-    "sortStart": "2025-12",
-    "sortEnd": "2025-12",
-    "pillKey": "projects.pills.data",
-    "icon": "ri-download-cloud-2-line",
-    "image": "assets/images/project-x-downloader.webp",
-    "chips": [
-      "Python",
-      "X API v2",
-      "Requests",
-      "CLI",
-      "dotenv"
-    ],
-    "content": {
-      "en": {
-        "title": "X Media Downloader",
-        "summary": "Configurable Python utility for retrieving recent account media through X API v2 with filters, pagination, rate limits, and CDN fallbacks.",
-        "dates": "Dec 2025",
-        "status": "Automation utility",
-        "role": "Python engineer",
-        "challenge": "A repeatable collection workflow needed to retrieve only recent media from a selected X account while handling API limits, media variants, and unreliable image URLs.",
-        "contribution": [
-          "Built a configurable CLI with environment defaults and command-line overrides for account, lookback window, output, and media types.",
-          "Implemented pagination, keyword filters, best-video selection, rate-limit waiting, and photo-size fallbacks.",
-          "Separated API retrieval, media normalization, and file download into testable utility functions and data objects."
-        ],
-        "technical": [
-          "X API v2 resolves accounts and recent posts; expansions return attached media metadata.",
-          "The downloader selects original/large/medium/small fallbacks and browser-compatible headers for CDN reliability.",
-          "dotenv configuration keeps bearer tokens out of source while CLI flags support scheduled or ad-hoc runs."
-        ],
-        "architecture": [
-          {
-            "label": "Configuration",
-            "detail": "Environment variables and CLI options define account, time range, filters, and output policy."
-          },
-          {
-            "label": "X API",
-            "detail": "Authenticated requests resolve the user, page through recent posts, and expand media metadata."
-          },
-          {
-            "label": "Selection",
-            "detail": "Keyword/media filters, variant ranking, URL normalization, and duplicate control select artifacts."
-          },
-          {
-            "label": "Download",
-            "detail": "Resilient HTTP retrieval writes timestamped media files and reports rate-limit or content failures."
-          }
-        ],
-        "outcomes": [
-          "Reduced a manual monitoring task to a repeatable, configurable Python workflow.",
-          "Handles common operational failure modes instead of assuming one media URL or an unlimited API.",
-          "Supports photo-first use while allowing videos, replies, and reposts when explicitly enabled."
-        ]
-      },
-      "zh": {
-        "title": "X 媒體下載工具",
-        "summary": "可設定的 Python 工具，透過 X API v2 擷取近期帳號媒體，並處理篩選、分頁、速率限制與 CDN 備援。",
-        "dates": "2025 年 12 月",
-        "status": "自動化工具",
-        "role": "Python 工程師",
-        "challenge": "可重複的蒐集流程需要只擷取指定 X 帳號的近期媒體，同時處理 API 限制、媒體版本與不穩定的圖片網址。",
-        "contribution": [
-          "建立可設定的命令列工具，以環境變數作為預設值，並支援帳號、回溯期間、輸出與媒體類型參數覆寫。",
-          "實作分頁、關鍵字篩選、最佳影片版本選擇、速率限制等待與圖片尺寸備援。",
-          "將 API 擷取、媒體標準化與檔案下載拆分為可測試的工具函式與資料物件。"
-        ],
-        "technical": [
-          "X API v2 解析帳號與近期貼文，並透過 expansions 回傳附件媒體的詮釋資料。",
-          "下載器選擇原始、大、中、小尺寸備援，並使用瀏覽器相容標頭提升 CDN 可靠度。",
-          "dotenv 設定避免將 Bearer Token 寫入原始碼，CLI 旗標則支援排程或臨時執行。"
-        ],
-        "architecture": [
-          {
-            "label": "設定",
-            "detail": "環境變數與 CLI 選項定義帳號、時間範圍、篩選及輸出政策。"
-          },
-          {
-            "label": "X API",
-            "detail": "通過驗證的請求解析使用者、分頁取得近期貼文，並展開媒體詮釋資料。"
-          },
-          {
-            "label": "選取",
-            "detail": "關鍵字與媒體篩選、版本排序、網址標準化及重複控制共同選出檔案。"
-          },
-          {
-            "label": "下載",
-            "detail": "具備復原能力的 HTTP 擷取會寫入含時間戳記的媒體檔，並回報速率限制或內容錯誤。"
-          }
-        ],
-        "outcomes": [
-          "將人工監控工作縮減為可重複、可設定的 Python 流程。",
-          "處理常見營運失敗情境，而非假設只有單一媒體網址或無限制 API。",
-          "預設支援圖片優先使用，也可在明確啟用後處理影片、回覆與轉發。"
-        ]
-      }
-    }
-  },
-  {
-    "$schema": "./project.schema.json",
     "id": "production-copilot",
     "category": "genai",
     "sortStart": "2025-11",
@@ -730,18 +737,20 @@
     "image": "assets/images/project-production-copilot-v2.png",
     "chips": [
       "FastAPI",
-      "Chainlit",
+      "Agentic RAG",
       "Postgres",
       "Neo4j",
       "Chroma",
-      "Ollama"
+      "Ollama",
+      "Chainlit",
+      "Docker"
     ],
     "content": {
       "en": {
         "title": "Production Planning Copilot",
         "summary": "Assistant that transforms product specs into optimized production plans with domain RAG and safety rails.",
         "dates": "Nov 2025 - Dec 2025",
-        "status": "GenAI demonstrator",
+        "status": "Client AI demonstrator",
         "role": "GenAI architect & backend engineer",
         "challenge": "Production planners need to query schedules, facts, constraints, and operating knowledge in natural language without letting an LLM invent production data.",
         "contribution": [
@@ -782,7 +791,7 @@
         "title": "生產規劃 Copilot",
         "summary": "以領域 RAG 與防護機制，將產品規格轉成最佳化生產計畫的助理。",
         "dates": "2025 年 11 月 - 2025 年 12 月",
-        "status": "生成式 AI 展示",
+        "status": "客戶 AI 展示系統",
         "role": "生成式 AI 架構師與後端工程師",
         "challenge": "生產規劃人員需要用自然語言查詢排程、事實、限制與作業知識，同時避免大型語言模型虛構生產資料。",
         "contribution": [

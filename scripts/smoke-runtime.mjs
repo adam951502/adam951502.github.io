@@ -128,7 +128,7 @@ async function assertSkillIconsContained(label) {
 try {
   await page.goto(`http://127.0.0.1:${port}/`, { waitUntil: "networkidle" });
   await page.waitForFunction(() => document.querySelectorAll("#projectGrid .reveal-target").length === 25);
-  await page.waitForFunction(() => document.querySelectorAll("#experienceList .reveal-target").length === 10);
+  await page.waitForFunction(() => document.querySelectorAll("#experienceList .reveal-target").length === 11);
 
   const initial = await page.evaluate(() => ({
     projects: document.querySelectorAll("#projectGrid [data-project-id]").length,
@@ -137,7 +137,7 @@ try {
     theme: document.documentElement.dataset.theme
   }));
   if (initial.projects !== 25) throw new Error(`Expected 25 projects, got ${initial.projects}`);
-  if (initial.experiences !== 10) throw new Error(`Expected 10 experience entries, got ${initial.experiences}`);
+  if (initial.experiences !== 11) throw new Error(`Expected 11 experience entries, got ${initial.experiences}`);
 
   const experienceSpan = await page.evaluate(() => ({
     overviewCount: document.querySelectorAll(".experience-overview").length,
@@ -147,8 +147,25 @@ try {
   }));
   if (experienceSpan.overviewCount !== 0) throw new Error("Complex Experience overview timeline still exists");
   if (experienceSpan.range !== "2012–2025") throw new Error(`Unexpected Experience career span: ${experienceSpan.range}`);
-  if (experienceSpan.count !== "10 roles") throw new Error(`Unexpected Experience role count: ${experienceSpan.count}`);
+  if (experienceSpan.count !== "11 roles") throw new Error(`Unexpected Experience role count: ${experienceSpan.count}`);
   if (experienceSpan.display === "none") throw new Error("Experience career span is hidden on desktop");
+
+  const currentFreelance = await page.evaluate(() => ({
+    title: document.querySelector("#experienceList .experience-step:first-child h3")?.textContent?.trim() || "",
+    period: document.querySelector("#experienceList .experience-step:first-child .experience-period")?.textContent?.trim() || "",
+    projectSnkr: document.querySelectorAll('[data-project-id="snkr-psa-automation"]').length,
+    projectX: document.querySelectorAll('[data-project-id="x-media-downloader"]').length,
+    skillsText: document.querySelector("#skills")?.textContent || ""
+  }));
+  if (!currentFreelance.title.includes("Independent AI & Software Engineer")) throw new Error(`Unexpected newest freelance role: ${currentFreelance.title}`);
+  if (!currentFreelance.period.includes("Nov 2025")) throw new Error(`Unexpected freelance timeline period: ${currentFreelance.period}`);
+  if (currentFreelance.projectSnkr !== 1) throw new Error("SNKR / PSA automation project is missing");
+  if (currentFreelance.projectX !== 0) throw new Error("Retired X Media Downloader is still rendered");
+  for (const requiredSkill of ["Neo4j", "Chroma", "Chainlit", "OpenCV", "GS1 UDI", "Backtrader", "Shioaji", "Vue 3", "Node.js / Express", "Telegram Bot", "OAuth", "Playwright"]) {
+    if (!currentFreelance.skillsText.includes(requiredSkill)) throw new Error(`Updated Skills section is missing ${requiredSkill}`);
+  }
+  if (fs.existsSync(path.join(repoRoot, "assets/data/projects/x-media-downloader.json"))) throw new Error("Retired X Media Downloader source file still exists");
+  if (fs.existsSync(path.join(repoRoot, "assets/images/project-x-downloader.webp"))) throw new Error("Retired X Media Downloader image still exists");
 
   if (initial.lang !== "en") throw new Error(`Expected initial lang=en, got ${initial.lang}`);
   if (initial.theme !== "light") throw new Error(`Expected initial theme=light, got ${initial.theme}`);
@@ -179,7 +196,7 @@ try {
     };
   });
   if (!desktopExperienceTimeline.valid) throw new Error("Experience timeline is missing");
-  if (desktopExperienceTimeline.steps.length !== 10) throw new Error(`Expected 10 Experience timeline steps, got ${desktopExperienceTimeline.steps.length}`);
+  if (desktopExperienceTimeline.steps.length !== 11) throw new Error(`Expected 11 Experience timeline steps, got ${desktopExperienceTimeline.steps.length}`);
   for (const step of desktopExperienceTimeline.steps) {
     if (!step.period) throw new Error(`Experience step ${step.index + 1} is missing its period marker`);
     if (Math.abs(step.dotCenter - desktopExperienceTimeline.axisX) > 1.5) {
@@ -378,6 +395,11 @@ try {
   if (translatedAffiliationTitle?.trim() !== "跨研究與產業經歷") {
     throw new Error(`Unexpected translated affiliation heading: ${translatedAffiliationTitle}`);
   }
+
+  const translatedFreelance = await page.locator("#experienceList .experience-step:first-child h3").textContent();
+  if (!translatedFreelance?.includes("獨立 AI 與軟體工程師")) throw new Error(`Freelance role did not translate to zh: ${translatedFreelance}`);
+  const translatedExperienceCount = await page.locator(".experience-span__count").textContent();
+  if (translatedExperienceCount?.trim() !== "11 段經歷") throw new Error(`Unexpected translated Experience count: ${translatedExperienceCount}`);
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(100);

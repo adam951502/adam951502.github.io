@@ -1,5 +1,16 @@
 [
   {
+    "id": "freelance-taiwan",
+    "datesKey": "experience.freelanceTaiwan.dates",
+    "titleKey": "experience.freelanceTaiwan.title",
+    "pillKey": "experience.pills.freelance",
+    "pillIcon": "ri-code-s-slash-line",
+    "descKey": "experience.freelanceTaiwan.desc",
+    "listKey": "experience.freelanceTaiwan.list",
+    "open": true,
+    "inlineOpen": true
+  },
+  {
     "id": "fraunhofer-2021",
     "datesKey": "experience.fraunhofer2021.dates",
     "titleKey": "experience.fraunhofer2021.title",

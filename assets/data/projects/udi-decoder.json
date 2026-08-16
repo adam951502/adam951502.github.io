@@ -10,9 +10,10 @@
   "imageFit": "cover",
   "chips": [
     "Python",
+    "OpenCV",
     "ZXing",
     "pylibdmtx",
-    "GS1",
+    "GS1 UDI",
     "Benchmarking"
   ],
   "content": {
@@ -20,7 +21,7 @@
       "title": "Multi-box UDI Data Matrix Decoder",
       "summary": "Benchmark-driven computer-vision POC for decoding dense carton images into GS1 business fields with safe PASS/REVIEW handling.",
       "dates": "Mar 2026 - Apr 2026",
-      "status": "Validated POC",
+      "status": "Client computer-vision POC",
       "role": "Computer-vision & data engineer",
       "challenge": "Dense shipping photos can contain many small Data Matrix codes with perspective, occlusion, and repeated cartons. Missing a code must lead to review rather than an unsafe automatic pass.",
       "contribution": [
@@ -61,7 +62,7 @@
       "title": "多箱 UDI Data Matrix 解碼器",
       "summary": "以基準測試驅動的電腦視覺概念驗證，將高密度紙箱影像解碼為 GS1 業務欄位，並以 PASS／REVIEW 安全分流。",
       "dates": "2026 年 3 月 - 2026 年 4 月",
-      "status": "已驗證概念",
+      "status": "客戶電腦視覺 POC",
       "role": "電腦視覺與資料工程師",
       "challenge": "高密度出貨照片可能包含大量尺寸很小、具有透視變形、遮擋及重複紙箱的 Data Matrix。若漏讀任何代碼，系統必須轉交人工覆核，而不能不安全地自動通過。",
       "contribution": [
@@ -75,10 +76,22 @@
         "每次執行可輸出 JSON、CSV、候選資料、嘗試摘要、基準快照與供覆核使用的標註影像。"
       ],
       "architecture": [
-        { "label": "影像", "detail": "完整出貨影像進入產品紙箱候選產生與排序流程。" },
-        { "label": "區域搜尋", "detail": "針對每個紙箱的下方區域與補救策略產生 Data Matrix 候選。" },
-        { "label": "解碼與解析", "detail": "ZXing 與 pylibdmtx 解碼符號；GS1 解析器擷取 DI、日期、批號與序號。" },
-        { "label": "業務輸出", "detail": "產品對應補充、預期數量閘門、JSON／CSV 檔案與標註覆核共同支援 PASS 或 REVIEW。" }
+        {
+          "label": "影像",
+          "detail": "完整出貨影像進入產品紙箱候選產生與排序流程。"
+        },
+        {
+          "label": "區域搜尋",
+          "detail": "針對每個紙箱的下方區域與補救策略產生 Data Matrix 候選。"
+        },
+        {
+          "label": "解碼與解析",
+          "detail": "ZXing 與 pylibdmtx 解碼符號；GS1 解析器擷取 DI、日期、批號與序號。"
+        },
+        {
+          "label": "業務輸出",
+          "detail": "產品對應補充、預期數量閘門、JSON／CSV 檔案與標註覆核共同支援 PASS 或 REVIEW。"
+        }
       ],
       "outcomes": [
         "在記錄的固定五張影像測試集中，分別達成 5／5、5／5、7／7、8／8 與 12／12 個符號解碼。",

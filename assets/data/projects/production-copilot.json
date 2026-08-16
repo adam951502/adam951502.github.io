@@ -10,18 +10,20 @@
   "image": "assets/images/project-production-copilot-v2.png",
   "chips": [
     "FastAPI",
-    "Chainlit",
+    "Agentic RAG",
     "Postgres",
     "Neo4j",
     "Chroma",
-    "Ollama"
+    "Ollama",
+    "Chainlit",
+    "Docker"
   ],
   "content": {
     "en": {
       "title": "Production Planning Copilot",
       "summary": "Assistant that transforms product specs into optimized production plans with domain RAG and safety rails.",
       "dates": "Nov 2025 - Dec 2025",
-      "status": "GenAI demonstrator",
+      "status": "Client AI demonstrator",
       "role": "GenAI architect & backend engineer",
       "challenge": "Production planners need to query schedules, facts, constraints, and operating knowledge in natural language without letting an LLM invent production data.",
       "contribution": [
@@ -62,7 +64,7 @@
       "title": "生產規劃 Copilot",
       "summary": "以領域 RAG 與防護機制，將產品規格轉成最佳化生產計畫的助理。",
       "dates": "2025 年 11 月 - 2025 年 12 月",
-      "status": "生成式 AI 展示",
+      "status": "客戶 AI 展示系統",
       "role": "生成式 AI 架構師與後端工程師",
       "challenge": "生產規劃人員需要用自然語言查詢排程、事實、限制與作業知識，同時避免大型語言模型虛構生產資料。",
       "contribution": [
@@ -76,10 +78,22 @@
         "FastAPI 編排 Graph-to-SQL 與 Graph-to-Vector 工具，Chainlit 提供對話式展示介面。"
       ],
       "architecture": [
-        { "label": "介面", "detail": "Chainlit 接收多語規劃問題，並顯示具有依據的回覆。" },
-        { "label": "編排", "detail": "FastAPI 代理判斷意圖，並將工作路由至圖譜、SQL、向量或翻譯工具。" },
-        { "label": "知識", "detail": "Postgres 事實、Neo4j 語意、Chroma 文件與預設規則共同提供受限上下文。" },
-        { "label": "執行環境", "detail": "Docker Compose 協調 API、介面、資料庫、向量儲存與本地 Ollama 服務。" }
+        {
+          "label": "介面",
+          "detail": "Chainlit 接收多語規劃問題，並顯示具有依據的回覆。"
+        },
+        {
+          "label": "編排",
+          "detail": "FastAPI 代理判斷意圖，並將工作路由至圖譜、SQL、向量或翻譯工具。"
+        },
+        {
+          "label": "知識",
+          "detail": "Postgres 事實、Neo4j 語意、Chroma 文件與預設規則共同提供受限上下文。"
+        },
+        {
+          "label": "執行環境",
+          "detail": "Docker Compose 協調 API、介面、資料庫、向量儲存與本地 Ollama 服務。"
+        }
       ],
       "outcomes": [
         "展示如何將 LLM 互動建立在營運系統的事實上，而非自由生成。",

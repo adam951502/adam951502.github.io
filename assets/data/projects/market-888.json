@@ -11,15 +11,16 @@
     "Vue 3",
     "Express",
     "MySQL",
-    "Docker",
-    "PDFKit"
+    "JWT",
+    "PDFKit",
+    "Docker"
   ],
   "content": {
     "en": {
       "title": "888 Card Market Platform",
       "summary": "Full-stack vendor reservation and administration system with booth availability, rental inventory, and generated contracts.",
       "dates": "Feb 2026 - Mar 2026",
-      "status": "Full-stack demo",
+      "status": "Client full-stack system",
       "role": "Solution architect & full-stack engineer",
       "challenge": "A physical card market needed one system for brand presentation, vendor onboarding, booth availability, reservations, rental extras, contract generation, and staff administration.",
       "contribution": [
@@ -60,7 +61,7 @@
       "title": "888 卡牌市集平台",
       "summary": "全端攤商預約與管理系統，整合攤位可用性、租賃庫存與合約產生。",
       "dates": "2026 年 2 月 - 2026 年 3 月",
-      "status": "全端展示",
+      "status": "客戶全端系統",
       "role": "解決方案架構師與全端工程師",
       "challenge": "實體卡牌市集需要一套系統，統一處理品牌展示、攤商加入、攤位可用性、預約、加租設備、合約產生與員工管理。",
       "contribution": [
@@ -74,10 +75,22 @@
         "PDFKit 產生中文預約合約，Docker Volume 保存合約與 MySQL 資料。"
       ],
       "architecture": [
-        { "label": "用戶端", "detail": "Vue 單頁應用呈現品牌網站、攤商預約流程與依角色顯示的管理介面。" },
-        { "label": "API", "detail": "Express 驗證身分，並協調攤位、日期、租賃、預約與後台服務。" },
-        { "label": "領域資料", "detail": "Sequelize 將會員、可用性、預約與設定資料保存至 MySQL。" },
-        { "label": "文件與交付", "detail": "PDFKit 將合約存入持久化儲存空間；Docker Compose 啟動用戶端、API、資料庫與選用通道。" }
+        {
+          "label": "用戶端",
+          "detail": "Vue 單頁應用呈現品牌網站、攤商預約流程與依角色顯示的管理介面。"
+        },
+        {
+          "label": "API",
+          "detail": "Express 驗證身分，並協調攤位、日期、租賃、預約與後台服務。"
+        },
+        {
+          "label": "領域資料",
+          "detail": "Sequelize 將會員、可用性、預約與設定資料保存至 MySQL。"
+        },
+        {
+          "label": "文件與交付",
+          "detail": "PDFKit 將合約存入持久化儲存空間；Docker Compose 啟動用戶端、API、資料庫與選用通道。"
+        }
       ],
       "outcomes": [
         "交付端到端展示系統，而非彼此分離的行銷頁面與後台模型。",
