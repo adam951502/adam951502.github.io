@@ -24,7 +24,9 @@ jobs:
           cache: npm
           cache-dependency-path: package-lock.json
       - name: Apply timeline redesign
-        run: python3 scripts/tmp-experience-timeline.py
+        run: |
+          python3 scripts/tmp-experience-timeline.py
+          python3 scripts/tmp-fix-experience-smoke.py
       - name: Build generated fallback
         run: npm run build:content
       - name: Install validation dependencies
