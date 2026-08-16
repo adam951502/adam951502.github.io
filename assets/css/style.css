@@ -2903,3 +2903,211 @@ h3 {
     display: none;
   }
 }
+
+
+/* Issue #47: responsive alternating Experience timeline */
+#experienceList.timeline {
+  position: relative;
+  display: grid;
+  gap: 28px;
+  padding: 12px 0;
+}
+
+#experienceList.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent), var(--border-strong));
+  transform: translateX(-50%);
+  opacity: 0.72;
+}
+
+.experience-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 112px minmax(0, 1fr);
+  align-items: start;
+  min-width: 0;
+}
+
+.experience-step::after {
+  content: "";
+  position: absolute;
+  top: 34px;
+  z-index: 0;
+  width: 70px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+.experience-step:nth-child(odd)::after {
+  right: 50%;
+}
+
+.experience-step:nth-child(even)::after {
+  left: 50%;
+}
+
+.experience-marker {
+  position: relative;
+  z-index: 2;
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+  padding-top: 24px;
+}
+
+.experience-dot {
+  width: 21px;
+  height: 21px;
+  border: 6px solid var(--bg);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--border-strong), 0 6px 18px rgba(82, 60, 40, 0.16);
+}
+
+.experience-period {
+  width: max-content;
+  max-width: 108px;
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--panel-strong);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.experience-card {
+  position: relative;
+  z-index: 1;
+  grid-row: 1;
+  width: min(100%, 520px);
+  min-width: 0;
+  padding: 22px;
+}
+
+.experience-step:nth-child(odd) .experience-card {
+  grid-column: 1;
+  justify-self: end;
+  margin-right: 14px;
+}
+
+.experience-step:nth-child(even) .experience-card {
+  grid-column: 3;
+  justify-self: start;
+  margin-left: 14px;
+}
+
+.experience-step-latest .experience-dot {
+  background: var(--accent-2);
+  box-shadow: 0 0 0 1px var(--accent-2), 0 0 0 6px var(--accent-soft-2);
+}
+
+.experience-step-latest .experience-period {
+  border-color: var(--border-strong);
+  color: var(--accent-2);
+}
+
+.experience-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-soft);
+}
+
+@media (max-width: 900px) {
+  .experience-step {
+    grid-template-columns: minmax(0, 1fr) 86px minmax(0, 1fr);
+  }
+
+  .experience-step::after {
+    width: 57px;
+  }
+
+  .experience-period {
+    max-width: 86px;
+    font-size: 0.59rem;
+  }
+
+  .experience-card {
+    padding: 18px;
+  }
+
+  .experience-card summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  #experienceList.timeline {
+    gap: 20px;
+    padding: 4px 0;
+  }
+
+  #experienceList.timeline::before {
+    left: 10px;
+    width: 1px;
+    transform: none;
+  }
+
+  .experience-step {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+  }
+
+  .experience-step::after,
+  .experience-step:nth-child(odd)::after,
+  .experience-step:nth-child(even)::after {
+    top: 31px;
+    right: auto;
+    left: 10px;
+    width: 32px;
+  }
+
+  .experience-marker {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    width: 21px;
+    padding-top: 21px;
+  }
+
+  .experience-period {
+    display: none;
+  }
+
+  .experience-card,
+  .experience-step:nth-child(odd) .experience-card,
+  .experience-step:nth-child(even) .experience-card {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    margin: 0;
+    justify-self: stretch;
+  }
+
+  .experience-card summary {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .experience-card .timeline-head {
+    gap: 10px;
+  }
+
+  .experience-card .timeline-index {
+    min-width: 30px;
+  }
+}

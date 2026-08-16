@@ -141,6 +141,46 @@ try {
   if (initial.lang !== "en") throw new Error(`Expected initial lang=en, got ${initial.lang}`);
   if (initial.theme !== "light") throw new Error(`Expected initial theme=light, got ${initial.theme}`);
 
+  const desktopExperienceTimeline = await page.evaluate(() => {
+    const timeline = document.getElementById("experienceList");
+    const steps = Array.from(document.querySelectorAll("#experienceList .experience-step"));
+    if (!timeline) return { valid: false, steps: [] };
+    const timelineRect = timeline.getBoundingClientRect();
+    const axisX = timelineRect.left + timelineRect.width / 2;
+    return {
+      valid: true,
+      axisX,
+      steps: steps.map((step, index) => {
+        const card = step.querySelector(".experience-card");
+        const dot = step.querySelector(".experience-dot");
+        const period = step.querySelector(".experience-period");
+        const cardRect = card?.getBoundingClientRect();
+        const dotRect = dot?.getBoundingClientRect();
+        return {
+          index,
+          cardLeft: cardRect?.left ?? 0,
+          cardRight: cardRect?.right ?? 0,
+          dotCenter: dotRect ? dotRect.left + dotRect.width / 2 : 0,
+          period: period?.textContent?.trim() || ""
+        };
+      })
+    };
+  });
+  if (!desktopExperienceTimeline.valid) throw new Error("Experience timeline is missing");
+  if (desktopExperienceTimeline.steps.length !== 10) throw new Error(`Expected 10 Experience timeline steps, got ${desktopExperienceTimeline.steps.length}`);
+  for (const step of desktopExperienceTimeline.steps) {
+    if (!step.period) throw new Error(`Experience step ${step.index + 1} is missing its period marker`);
+    if (Math.abs(step.dotCenter - desktopExperienceTimeline.axisX) > 1.5) {
+      throw new Error(`Experience step ${step.index + 1} dot is not centered on the desktop axis`);
+    }
+    if (step.index % 2 === 0 && step.cardRight >= desktopExperienceTimeline.axisX) {
+      throw new Error(`Experience step ${step.index + 1} should be on the left side of the desktop axis`);
+    }
+    if (step.index % 2 === 1 && step.cardLeft <= desktopExperienceTimeline.axisX) {
+      throw new Error(`Experience step ${step.index + 1} should be on the right side of the desktop axis`);
+    }
+  }
+
   const blogNavHref = await page.locator('.site-nav a[href="./blog/"]').getAttribute("href");
   if (blogNavHref !== "./blog/") throw new Error("Main navigation is missing the Blog route");
 
@@ -208,6 +248,45 @@ try {
   if (Math.abs(desktopAffiliationMetrics.duration - 58.8) > 0.2) throw new Error(`Unexpected fixed desktop marquee duration: ${desktopAffiliationMetrics.duration}`);
 
   await page.setViewportSize({ width: 390, height: 844 });
+  const mobileExperienceTimeline = await page.evaluate(() => {
+    const timeline = document.getElementById("experienceList");
+    const steps = Array.from(document.querySelectorAll("#experienceList .experience-step"));
+    if (!timeline) return { valid: false, steps: [], overflow: true };
+    const timelineRect = timeline.getBoundingClientRect();
+    const axisX = timelineRect.left + 10;
+    return {
+      valid: true,
+      axisX,
+      viewportWidth: window.innerWidth,
+      overflow: document.documentElement.scrollWidth > window.innerWidth + 1,
+      steps: steps.map((step, index) => {
+        const card = step.querySelector(".experience-card");
+        const dot = step.querySelector(".experience-dot");
+        const cardRect = card?.getBoundingClientRect();
+        const dotRect = dot?.getBoundingClientRect();
+        return {
+          index,
+          cardLeft: cardRect?.left ?? 0,
+          cardRight: cardRect?.right ?? 0,
+          dotCenter: dotRect ? dotRect.left + dotRect.width / 2 : 0
+        };
+      })
+    };
+  });
+  if (!mobileExperienceTimeline.valid) throw new Error("Mobile Experience timeline is missing");
+  if (mobileExperienceTimeline.overflow) throw new Error("Mobile Experience timeline causes horizontal overflow");
+  for (const step of mobileExperienceTimeline.steps) {
+    if (Math.abs(step.dotCenter - mobileExperienceTimeline.axisX) > 1.5) {
+      throw new Error(`Experience step ${step.index + 1} dot is not aligned to the mobile left axis`);
+    }
+    if (step.cardLeft <= mobileExperienceTimeline.axisX) {
+      throw new Error(`Experience step ${step.index + 1} card is not to the right of the mobile axis`);
+    }
+    if (step.cardRight > mobileExperienceTimeline.viewportWidth + 1) {
+      throw new Error(`Experience step ${step.index + 1} card escapes the mobile viewport`);
+    }
+  }
+
   const mobileAffiliationMetrics = await page.evaluate(() => {
     const item = document.querySelector('.affiliation-marquee__group:not([aria-hidden="true"]) .affiliation-item');
     const image = item?.querySelector("img");
