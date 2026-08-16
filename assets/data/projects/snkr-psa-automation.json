@@ -1,0 +1,104 @@
+{
+  "$schema": "./project.schema.json",
+  "id": "snkr-psa-automation",
+  "category": "data",
+  "sortStart": "2026-07",
+  "sortEnd": "9999-12",
+  "sortUpdated": "2026-08-16",
+  "pillKey": "projects.pills.data",
+  "icon": "ri-price-tag-3-line",
+  "image": "assets/images/project-snkr-psa.svg",
+  "imageFit": "cover",
+  "chips": [
+    "Python",
+    "Telegram Bot",
+    "SNKRDUNK APIs",
+    "Playwright",
+    "RapidFuzz",
+    "BeautifulSoup"
+  ],
+  "content": {
+    "en": {
+      "title": "PSA / SNKRDUNK Card Price Automation",
+      "summary": "Multi-route card identification and live PSA10 pricing workflow with Telegram UX, verified mappings, caching, and resilient fallbacks.",
+      "dates": "Jul 2026 - Present",
+      "status": "Active automation",
+      "role": "Data automation & integration engineer",
+      "challenge": "PSA API quotas and browser security checks make certificate lookup unreliable, while code-only marketplace search can produce ambiguous card matches. The workflow needed safer identification routes without pretending blocked data sources were dependable.",
+      "contribution": [
+        "Designed a route hierarchy that prioritizes direct SNKRDUNK IDs, verified mappings, and exact series/card-code matches before falling back to PSA metadata or browser-assisted lookup.",
+        "Built a Telegram-first workflow that returns card identity, images, grading-condition prices, market context, and multilingual responses for daily collection use.",
+        "Added mapping and history caches, batch summaries, CSV/JSON outputs, diagnostics, and explicit low-confidence or security-check states instead of silently accepting weak matches."
+      ],
+      "technical": [
+        "Python services use httpx/requests, BeautifulSoup, RapidFuzz, structured mappings, and SNKRDUNK product/condition endpoints for matching and live pricing.",
+        "Playwright is retained as a user-controlled browser fallback for public PSA certificate pages; the workflow detects Cloudflare/security pages and does not treat them as certificate data.",
+        "Telegram commands, route caches, batch processing, environment-based configuration, and deployment profiles turn the research script into a reusable operational tool."
+      ],
+      "architecture": [
+        {
+          "label": "Input",
+          "detail": "Series/card code, SNKRDUNK URL/ID, PSA certificate number, or Telegram command enters the router."
+        },
+        {
+          "label": "Resolve",
+          "detail": "Verified mappings and exact code matching resolve the canonical SNKRDUNK card; PSA metadata is a fallback rather than the default dependency."
+        },
+        {
+          "label": "Price & enrich",
+          "detail": "SNKRDUNK endpoints return card metadata, thumbnails, condition prices, and current PSA10 market data."
+        },
+        {
+          "label": "Deliver & cache",
+          "detail": "Telegram/CLI output, CSV/JSON summaries, route caches, and diagnostics provide a repeatable user workflow."
+        }
+      ],
+      "outcomes": [
+        "Reduced dependence on fragile PSA lookups by making series/card-code and verified mapping routes first-class inputs.",
+        "Separates canonical card mapping from live price retrieval so cached identity does not become stale market pricing.",
+        "Turns failures into explicit review states and diagnostics, improving trust when external sites rate-limit or challenge automated requests."
+      ]
+    },
+    "zh": {
+      "title": "PSA / SNKRDUNK 卡牌價格自動化",
+      "summary": "多路徑卡牌識別與即時 PSA10 價格流程，整合 Telegram 體驗、已驗證對應、快取與韌性備援。",
+      "dates": "2026 年 7 月 - 目前",
+      "status": "持續開發的自動化工具",
+      "role": "資料自動化與系統整合工程師",
+      "challenge": "PSA API 配額與瀏覽器安全驗證使證書查詢不穩定，而只用卡號在市場搜尋也可能產生模糊配對。系統需要更安全的識別路徑，而不能假設受阻的資料來源永遠可靠。",
+      "contribution": [
+        "設計路由優先序，先使用 SNKRDUNK ID、已驗證對應與精確系列／卡號配對，再視需要退回 PSA metadata 或瀏覽器輔助查詢。",
+        "建立以 Telegram 為主要入口的工作流程，回傳卡片身分、圖片、不同鑑定條件價格、市場資訊與多語回覆，支援日常收藏使用。",
+        "加入對應與歷史快取、批次摘要、CSV／JSON 輸出、診斷工具，以及明確的低信心或安全驗證狀態，避免默默接受錯誤配對。"
+      ],
+      "technical": [
+        "Python 服務使用 httpx／requests、BeautifulSoup、RapidFuzz、結構化 mapping 與 SNKRDUNK 商品／條件端點進行卡牌配對與即時價格取得。",
+        "保留 Playwright 作為使用者可控制的 PSA 公開證書頁瀏覽器備援；流程會辨識 Cloudflare／安全驗證頁，且不會把它當成證書資料。",
+        "Telegram 指令、路由快取、批次處理、環境變數設定與部署 profile，將研究腳本轉成可重複使用的作業工具。"
+      ],
+      "architecture": [
+        {
+          "label": "輸入",
+          "detail": "系列／卡號、SNKRDUNK URL／ID、PSA 證書號碼或 Telegram 指令進入路由層。"
+        },
+        {
+          "label": "識別",
+          "detail": "已驗證 mapping 與精確卡號比對解析 canonical SNKRDUNK 卡片；PSA metadata 作為備援而非主要依賴。"
+        },
+        {
+          "label": "價格與補充",
+          "detail": "SNKRDUNK 端點回傳卡片 metadata、縮圖、不同條件價格與即時 PSA10 市場資料。"
+        },
+        {
+          "label": "交付與快取",
+          "detail": "Telegram／CLI 回覆、CSV／JSON 摘要、路由快取與診斷資訊形成可重複的使用流程。"
+        }
+      ],
+      "outcomes": [
+        "將系列／卡號與已驗證 mapping 提升為主要輸入，降低對不穩定 PSA 查詢的依賴。",
+        "把 canonical 卡片對應與即時價格取得分離，避免身分快取變成過期的市場價格。",
+        "把外部網站限流或安全驗證轉成明確覆核狀態與診斷資訊，提高整體可信度。"
+      ]
+    }
+  }
+}
