@@ -146,7 +146,7 @@ try {
     display: document.querySelector(".experience-span") ? getComputedStyle(document.querySelector(".experience-span")).display : "none"
   }));
   if (experienceSpan.overviewCount !== 0) throw new Error("Complex Experience overview timeline still exists");
-  if (experienceSpan.range !== "2012–2025") throw new Error(`Unexpected Experience career span: ${experienceSpan.range}`);
+  if (experienceSpan.range !== "2012–Present") throw new Error(`Unexpected Experience career span: ${experienceSpan.range}`);
   if (experienceSpan.count !== "11 roles") throw new Error(`Unexpected Experience role count: ${experienceSpan.count}`);
   if (experienceSpan.display === "none") throw new Error("Experience career span is hidden on desktop");
 
@@ -400,6 +400,8 @@ try {
   if (!translatedFreelance?.includes("獨立 AI 與軟體工程師")) throw new Error(`Freelance role did not translate to zh: ${translatedFreelance}`);
   const translatedExperienceCount = await page.locator(".experience-span__count").textContent();
   if (translatedExperienceCount?.trim() !== "11 段經歷") throw new Error(`Unexpected translated Experience count: ${translatedExperienceCount}`);
+  const translatedExperienceRange = await page.locator(".experience-span__range").textContent();
+  if (translatedExperienceRange?.trim() !== "2012–目前") throw new Error(`Unexpected translated Experience range: ${translatedExperienceRange}`);
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(100);

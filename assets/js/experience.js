@@ -5,11 +5,17 @@ function getTimelinePeriod(value = "") {
 }
 
 function getTimelineRange(experienceData, translateFn) {
-  const years = experienceData.flatMap((item) =>
-    Array.from(String(translateFn(item.datesKey) || "").matchAll(/(?:19|20)\d{2}/g), (match) => Number.parseInt(match[0], 10))
+  const dates = experienceData.map((item) => String(translateFn(item.datesKey) || ""));
+  const years = dates.flatMap((value) =>
+    Array.from(value.matchAll(/(?:19|20)\d{2}/g), (match) => Number.parseInt(match[0], 10))
   );
   if (!years.length) return "";
-  return `${Math.min(...years)}–${Math.max(...years)}`;
+  const ongoingLabel = dates.some((value) => /目前/.test(value))
+    ? "目前"
+    : dates.some((value) => /\bPresent\b/i.test(value))
+      ? "Present"
+      : "";
+  return `${Math.min(...years)}–${ongoingLabel || Math.max(...years)}`;
 }
 
 function renderExperienceSpan({ experienceData, translateFn }) {
