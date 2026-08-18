@@ -6,7 +6,9 @@ const SOUNDON_RSS_HOST = "rss.soundon.fm";
 const SOUNDON_CDN_HOST = "filesb.soundon.fm";
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
-type WorkerEnv = Env;
+type WorkerEnv = Env & {
+  INVOCATION_SECRET: string;
+};
 
 type SttJob = {
   jobId: string;
@@ -52,6 +54,22 @@ function positiveInt(value: string | undefined, fallback: number): number {
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
 }
 
+async function secretsMatch(provided: string, expected: string): Promise<boolean> {
+  if (!provided || !expected) return false;
+  const encoder = new TextEncoder();
+  const [providedHash, expectedHash] = await Promise.all([
+    crypto.subtle.digest("SHA-256", encoder.encode(provided)),
+    crypto.subtle.digest("SHA-256", encoder.encode(expected)),
+  ]);
+  return crypto.subtle.timingSafeEqual(providedHash, expectedHash);
+}
+
+async function authorize(url: URL, env: WorkerEnv): Promise<string | null> {
+  const token = url.searchParams.get("token") ?? "";
+  if (!(await secretsMatch(token, env.INVOCATION_SECRET ?? ""))) return null;
+  return token;
+}
+
 function parseDuration(value: string | null): number | null {
   if (!value) return null;
   const parsed = Number(value);
@@ -62,16 +80,12 @@ function parseDuration(value: string | null): number | null {
 }
 
 function buildCanonicalAudioUrl(uuid: string, timestamp: string | null): string {
-  if (!UUID_RE.test(uuid)) {
-    throw new Error("Invalid SoundOn UUID");
-  }
+  if (!UUID_RE.test(uuid)) throw new Error("Invalid SoundOn UUID");
   const url = new URL(
     `https://${SOUNDON_RSS_HOST}/rssf/${GOOAYE_SHOW_UUID}/feedurl/${uuid}/rssFileVip.mp3`,
   );
   if (timestamp) {
-    if (!/^\d{8,20}$/.test(timestamp)) {
-      throw new Error("timestamp must contain only digits");
-    }
+    if (!/^\d{8,20}$/.test(timestamp)) throw new Error("timestamp must contain only digits");
     url.searchParams.set("timestamp", timestamp);
   }
   return url.toString();
@@ -79,9 +93,7 @@ function buildCanonicalAudioUrl(uuid: string, timestamp: string | null): string 
 
 function assertAllowedRedirect(urlText: string): URL {
   const url = new URL(urlText);
-  if (url.protocol !== "https:") {
-    throw new Error("Only HTTPS audio redirects are allowed");
-  }
+  if (url.protocol !== "https:") throw new Error("Only HTTPS audio redirects are allowed");
   if (url.hostname !== SOUNDON_RSS_HOST && url.hostname !== SOUNDON_CDN_HOST) {
     throw new Error(`Unexpected audio redirect host: ${url.hostname}`);
   }
@@ -113,9 +125,7 @@ async function fetchAudio(
       continue;
     }
 
-    if (!response.ok) {
-      throw new Error(`Audio download failed with HTTP ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`Audio download failed with HTTP ${response.status}`);
 
     const contentType = response.headers.get("content-type") ?? "application/octet-stream";
     if (!contentType.startsWith("audio/") && contentType !== "application/octet-stream") {
@@ -267,7 +277,11 @@ async function saveStoredJob(env: WorkerEnv, job: StoredJob): Promise<void> {
 }
 
 async function submitJob(request: Request, env: WorkerEnv): Promise<Response> {
-  const { searchParams, origin } = new URL(request.url);
+  const url = new URL(request.url);
+  const token = await authorize(url, env);
+  if (!token) return json({ error: "Unauthorized" }, 401);
+
+  const { searchParams, origin } = url;
   const soundOnUuid = searchParams.get("uuid") ?? "";
   const timestamp = searchParams.get("timestamp");
   const episodeRaw = searchParams.get("episode");
@@ -285,9 +299,7 @@ async function submitJob(request: Request, env: WorkerEnv): Promise<Response> {
   }
 
   const { success } = await env.SUBMIT_LIMITER.limit({ key: "gooaye-stt-global-submit" });
-  if (!success) {
-    return json({ error: "Submission rate limit reached. Try again shortly." }, 429);
-  }
+  if (!success) return json({ error: "Submission rate limit reached. Try again shortly." }, 429);
 
   const existingJobId = await env.JOBS.get(`episode:${soundOnUuid}`);
   if (existingJobId) {
@@ -296,7 +308,7 @@ async function submitJob(request: Request, env: WorkerEnv): Promise<Response> {
       return json({
         reused: true,
         ...existing,
-        statusUrl: `${origin}/v1/jobs/${existing.jobId}`,
+        statusUrl: `${origin}/v1/jobs/${existing.jobId}?token=${encodeURIComponent(token)}`,
       }, existing.status === "done" || existing.status === "partial" ? 200 : 202);
     }
   }
@@ -329,15 +341,16 @@ async function submitJob(request: Request, env: WorkerEnv): Promise<Response> {
   return json({
     reused: false,
     ...stored,
-    statusUrl: `${origin}/v1/jobs/${jobId}`,
+    statusUrl: `${origin}/v1/jobs/${jobId}?token=${encodeURIComponent(token)}`,
   }, 202);
 }
 
 async function getJob(request: Request, env: WorkerEnv): Promise<Response> {
   const url = new URL(request.url);
+  if (!(await authorize(url, env))) return json({ error: "Unauthorized" }, 401);
+
   const jobId = url.pathname.split("/").pop() ?? "";
   if (!UUID_RE.test(jobId)) return json({ error: "Invalid job id" }, 400);
-
   const job = await getStoredJob(env, jobId);
   if (!job) return json({ error: "Job not found or expired" }, 404);
   return json(job, job.status === "queued" || job.status === "processing" ? 202 : 200);
@@ -355,11 +368,7 @@ async function consumeJob(message: Message<SttJob>, env: WorkerEnv): Promise<voi
     updatedAt: job.createdAt,
   };
 
-  await saveStoredJob(env, {
-    ...base,
-    status: "processing",
-    updatedAt: new Date().toISOString(),
-  });
+  await saveStoredJob(env, { ...base, status: "processing", updatedAt: new Date().toISOString() });
 
   try {
     const result = await transcribeAudio(job, env);
@@ -408,13 +417,11 @@ export default {
 
     return json({
       error: "Not found",
-      usage: "GET /v1/transcribe?uuid=<soundon-uuid>&episode=EP686&durationSeconds=3001.939&timestamp=<optional>",
+      usage: "GET /v1/transcribe?token=<secret>&uuid=<soundon-uuid>&episode=EP686&durationSeconds=3001.939&timestamp=<optional>",
     }, 404);
   },
 
   async queue(batch: MessageBatch<SttJob>, env: WorkerEnv): Promise<void> {
-    for (const message of batch.messages) {
-      await consumeJob(message, env);
-    }
+    for (const message of batch.messages) await consumeJob(message, env);
   },
 } satisfies ExportedHandler<WorkerEnv>;
