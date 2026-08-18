@@ -55,22 +55,21 @@ Other controls:
 - Results expire after 7 days by default.
 - Responses use `Cache-Control: no-store`.
 
-## One-click deploy
+## Deployment
 
-Cloudflare Deploy buttons support a fully isolated Worker subdirectory and can automatically provision Workers AI, Queues, and KV from `wrangler.jsonc`.
+For a private GitHub repository, connect this repository through **Cloudflare Workers Builds / Git integration** in the Cloudflare dashboard. Deploy-to-Cloudflare buttons require a public source repository.
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/adam951502/adam951502.github.io/tree/gooaye-stt-template/gooaye-stt-worker)
+In Cloudflare:
 
-During setup:
+1. Workers & Pages → Create application.
+2. Import a repository.
+3. Authorize the Cloudflare GitHub app to access this private repository.
+4. Select this repository.
+5. Keep Worker name `gooaye-stt-backend`.
+6. Add the `INVOCATION_SECRET` secret.
+7. Save and deploy.
 
-1. Choose your Cloudflare account / Free plan.
-2. Keep the generated Worker name or use `gooaye-stt-backend`.
-3. For `INVOCATION_SECRET`, paste a long random string.
-4. Allow Cloudflare to provision the AI binding, Queue, and KV namespace.
-5. Select **Create and deploy**.
-6. Copy the resulting `https://<worker>.<subdomain>.workers.dev` URL.
-
-No `CLOUDFLARE_API_TOKEN` needs to be stored in this repository.
+No `CLOUDFLARE_API_TOKEN` needs to be committed to this repository.
 
 ## Endpoints
 
@@ -86,77 +85,20 @@ GET /health
 GET /v1/transcribe?token=<INVOCATION_SECRET>&uuid=<SOUNDON_UUID>&episode=EP686&durationSeconds=3001.939&timestamp=<OPTIONAL_SOUNDON_TIMESTAMP>
 ```
 
-Example response while queued:
-
-```json
-{
-  "status": "queued",
-  "jobId": "...",
-  "episode": "EP686",
-  "soundOnUuid": "0e0b7654-dec7-479d-8edd-b5d51f76126d",
-  "statusUrl": "https://.../v1/jobs/...?..."
-}
-```
-
 ### Read job
 
 ```http
 GET /v1/jobs/<jobId>?token=<INVOCATION_SECRET>
 ```
 
-Possible statuses:
+Possible statuses: `queued`, `processing`, `done`, `partial`, `error`.
 
-- `queued`
-- `processing`
-- `done`
-- `partial`
-- `error`
-
-A completed result contains:
-
-- `transcript`
-- `segments`
-- canonical and final SoundOn URLs
-- source audio bytes and official duration supplied by the caller
-- chunk success/failure counts
-- byte coverage percentage
-- timestamp-quality metadata
-
-If any chunk fails, status becomes `partial`. GPT must run Coverage QA before treating the episode as complete.
+A completed result contains transcript, segments, SoundOn source URLs, chunk success/failure counts, byte coverage percentage, and timestamp-quality metadata. GPT must run Coverage QA before treating an episode as complete.
 
 ## Transcription settings
 
-Model:
+Model: `@cf/openai/whisper-large-v3-turbo`
 
-```text
-@cf/openai/whisper-large-v3-turbo
-```
-
-Defaults:
-
-- language: `zh`
-- `vad_filter: true`
-- `condition_on_previous_text: false`
-- 1 MiB audio chunks
-- financial/Gooaye context prompt to improve proper nouns and English ticker/product retention
+Defaults: Chinese (`zh`), VAD enabled, 1 MiB chunks, and a financial/Gooaye context prompt to improve proper nouns and English ticker/product retention.
 
 Raw ASR is working data. The Gooaye Notion note should store structured paraphrase rather than reproducing the full copyrighted episode transcript.
-
-## Local verification
-
-```bash
-npm install
-npm run types
-npm run check
-```
-
-Deploy manually if desired:
-
-```bash
-npx wrangler login
-npm run deploy
-```
-
-## Relationship to the existing Gooaye repo
-
-This backend is intentionally separate from the old GitHub Action/Ollama note-generation pipeline. It may be used only as an **STT capability** by GPT Production when the live Gooaye Skill reaches the Audio Pipeline fallback.
