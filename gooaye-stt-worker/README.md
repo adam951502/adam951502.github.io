@@ -59,7 +59,7 @@ Other controls:
 
 Cloudflare Deploy buttons support a fully isolated Worker subdirectory and can automatically provision Workers AI, Queues, and KV from `wrangler.jsonc`.
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/adam951502/adam951502.github.io/tree/feat/gooaye-cloudflare-stt-template/gooaye-stt-worker)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/adam951502/adam951502.github.io/tree/gooaye-stt-template/gooaye-stt-worker)
 
 During setup:
 
