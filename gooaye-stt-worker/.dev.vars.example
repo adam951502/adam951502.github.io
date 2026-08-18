@@ -1,0 +1,3 @@
+# Paste a long random value during Deploy to Cloudflare setup.
+# This is only a low-privilege invocation secret for the Gooaye STT endpoint.
+INVOCATION_SECRET=replace-with-a-long-random-string
