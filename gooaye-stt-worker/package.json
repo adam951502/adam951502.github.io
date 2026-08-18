@@ -7,6 +7,13 @@
     "check": "npm run types && tsc --noEmit",
     "deploy": "wrangler deploy"
   },
+  "cloudflare": {
+    "bindings": {
+      "INVOCATION_SECRET": {
+        "description": "Low-privilege secret used only to invoke this Gooaye STT Worker. Paste a long random value; it is not a Cloudflare API token."
+      }
+    }
+  },
   "devDependencies": {
     "typescript": "^5.9.2",
     "wrangler": "^4.102.0"
