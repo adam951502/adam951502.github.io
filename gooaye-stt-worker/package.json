@@ -1,0 +1,14 @@
+{
+  "name": "gooaye-cloudflare-stt-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "types": "wrangler types",
+    "check": "npm run types && tsc --noEmit",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "wrangler": "^4.102.0"
+  }
+}
