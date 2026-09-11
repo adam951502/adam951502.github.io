@@ -18,3 +18,9 @@
 .ig-card .community-photo:after{background:linear-gradient(transparent,rgba(53,19,44,.44))}
 @media(max-width:900px){.must-grid,.ptt-grid,.ig-grid{grid-template-columns:1fr}.community-card{grid-template-columns:36% 1fr}.community-head{align-items:flex-start;flex-direction:column}.community-head span{text-align:left}}
 @media(max-width:620px){.community-card{grid-template-columns:1fr}.community-photo{min-height:220px}.community-body{padding:17px}.community-head h3{font-size:21px}}
+
+/* Mobile length reduction: reservation and backup cards become horizontal swipe rows */
+@media(max-width:900px){
+  .reservation-cards{display:flex!important;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;padding:2px 2px 12px;scrollbar-width:none}.reservation-cards::-webkit-scrollbar{display:none}.reservation-card{min-width:86vw;max-width:86vw;scroll-snap-align:start}
+  .optiongrid{display:flex!important;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;padding:2px 2px 12px;scrollbar-width:none}.optiongrid::-webkit-scrollbar{display:none}.option.option-rich{min-width:88vw;max-width:88vw;scroll-snap-align:start}
+}
