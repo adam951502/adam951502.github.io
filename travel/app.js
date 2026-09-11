@@ -1,7 +1,83 @@
 const trip=window.NYC_TRIP;
 const richStyle=document.createElement('link');richStyle.rel='stylesheet';richStyle.href='./option-rich.css';document.head.appendChild(richStyle);
+
+const mapsSearch=q=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+const mapBtn=(label,q)=>`<a class="timeline-map" href="${mapsSearch(q)}" target="_blank" rel="noopener">📍 ${label}</a>`;
+
+const DAY_MAPS={
+  oct3:[
+    [{label:'LIC / Vernon Blvd',q:'Vernon Boulevard Long Island City NY'}],
+    [{label:'Gantry Plaza',q:'Gantry Plaza State Park Long Island City NY'}],
+    [{label:'Koreatown',q:'Koreatown Manhattan New York NY'}],
+    [{label:'Parade start',q:'6th Avenue and West 38th Street New York NY'}],
+    [{label:'Koreatown Festival',q:'West 32nd Street Koreatown New York NY'}],
+    [{label:'Bryant Park',q:'Bryant Park New York NY'},{label:'Queens Night Market',q:'Queens Night Market Queens NY'}]
+  ],
+  oct4:[
+    [{label:'Grand Central',q:'Grand Central Terminal New York NY'}],
+    [{label:'Central Park',q:'Bethesda Terrace Central Park New York NY'}],
+    [{label:'Upper East Side',q:'restaurants Upper East Side New York NY'}],
+    [{label:'The Met',q:'The Metropolitan Museum of Art New York NY'}],
+    [{label:'Rockefeller Center',q:'Rockefeller Center New York NY'},{label:"St. Patrick's",q:"St. Patrick's Cathedral New York NY"}],
+    [{label:'Top of the Rock',q:'Top of the Rock New York NY'}]
+  ],
+  oct5:[
+    [{label:'Hunters Point Ferry',q:'Hunters Point South Ferry Landing Queens NY'},{label:'Wall St Pier 11',q:'Wall Street Pier 11 New York NY'}],
+    [{label:'Statue ferry',q:'Statue City Cruises Battery Park New York NY'}],
+    [{label:'Stone Street',q:'Stone Street New York NY'}],
+    [{label:'Wall Street',q:'Wall Street New York NY'},{label:'Charging Bull',q:'Charging Bull New York NY'}],
+    [{label:'9/11 Memorial',q:'9/11 Memorial New York NY'}],
+    [{label:'Oculus',q:'Oculus World Trade Center New York NY'},{label:'Brookfield Place',q:'Brookfield Place New York NY'}]
+  ],
+  oct6:[
+    [{label:'Meatpacking District',q:'Meatpacking District New York NY'}],
+    [{label:'High Line',q:'The High Line New York NY'}],
+    [{label:'Chelsea Market',q:'Chelsea Market New York NY'}],
+    [{label:'Little Island',q:'Little Island New York NY'},{label:'Whitney',q:'Whitney Museum of American Art New York NY'}],
+    [{label:'Hudson Yards',q:'Hudson Yards New York NY'}],
+    [{label:'Edge',q:'Edge NYC New York NY'}],
+    [{label:'West Village',q:'West Village New York NY'}]
+  ],
+  oct7:[
+    [{label:'DUMBO',q:'DUMBO Brooklyn NY'}],
+    [{label:'Brooklyn Bridge Park',q:'Brooklyn Bridge Park New York NY'},{label:'Pebble Beach',q:'Pebble Beach Brooklyn Bridge Park NY'}],
+    [{label:'Time Out Market',q:'Time Out Market New York NY'}],
+    [{label:'Brooklyn Heights',q:'Brooklyn Heights Promenade Brooklyn NY'}],
+    [{label:'Brooklyn Bridge',q:'Brooklyn Bridge Pedestrian Walkway New York NY'}],
+    [{label:'SoHo',q:'SoHo Manhattan New York NY'},{label:'Chinatown',q:'Chinatown Manhattan New York NY'}]
+  ],
+  oct8:[
+    [{label:'MoMA',q:'Museum of Modern Art New York NY'}],
+    [{label:'Midtown food',q:'restaurants Midtown Manhattan New York NY'}],
+    [{label:'Rockefeller Center',q:'Rockefeller Center New York NY'},{label:'Bryant Park',q:'Bryant Park New York NY'}],
+    [{label:'Theater District',q:'Theater District New York NY'}],
+    [{label:'Broadway',q:'Broadway Theatre District New York NY'}],
+    [{label:'Javits Center',q:'Jacob K Javits Convention Center New York NY'}]
+  ],
+  oct9:[
+    [{label:'AMNH',q:'American Museum of Natural History New York NY'}],
+    [{label:'Upper West Side',q:'restaurants Upper West Side New York NY'}],
+    [{label:'Lincoln Center',q:'Lincoln Center New York NY'},{label:'Columbus Circle',q:'Columbus Circle New York NY'}],
+    [{label:'Lincoln Square',q:'Lincoln Square New York NY'}],
+    [{label:'Film at Lincoln Center',q:'Film at Lincoln Center New York NY'}],
+    [{label:'SoHo',q:'SoHo Manhattan New York NY'},{label:'Nolita',q:'Nolita Manhattan New York NY'}]
+  ],
+  oct10:[
+    [{label:'LIC / Vernon Blvd',q:'Vernon Boulevard Long Island City NY'}],
+    [{label:'Flushing Meadows',q:'Flushing Meadows Corona Park Queens NY'},{label:'Unisphere',q:'Unisphere Queens NY'},{label:'Flushing Main St',q:'Flushing Main Street Queens NY'}],
+    [{label:'Gantry Plaza',q:'Gantry Plaza State Park Long Island City NY'}],
+    [{label:'LIC dinner',q:'restaurants Vernon Boulevard Long Island City NY'}],
+    [{label:'LIC pickup',q:'Vernon Boulevard Long Island City NY'}],
+    [{label:'JFK Terminal 1',q:'JFK Airport Terminal 1 Queens NY'}],
+    [{label:'JFK Terminal 1',q:'JFK Airport Terminal 1 Queens NY'}]
+  ]
+};
+
 const tabs=document.querySelector('#dayTabs'),panel=document.querySelector('#dayPanel');
-function renderDay(d){panel.innerHTML=`<article class="card daydetail"><div class="dayhero"><div><div class="datebig">${d.date} <small>週${d.dow}</small></div><h3>${d.title}</h3><p>${d.area}</p></div><span class="tone ${d.tone}">${d.tone}</span></div><div class="timeline">${d.core.map(x=>`<div class="time"><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}</div><div class="daynotes"><div class="food"><b>🍴 吃什麼</b><span>${d.food}</span></div><div class="mom"><b>👩‍👦 媽媽同行</b><span>${d.mom}</span></div><div class="optional"><b>↪ Optional / B plan</b><span>${d.optional}</span></div></div></article>`}
+function renderDay(d){
+  const maps=DAY_MAPS[d.id]||[];
+  panel.innerHTML=`<article class="card daydetail"><div class="dayhero"><div><div class="datebig">${d.date} <small>週${d.dow}</small></div><h3>${d.title}</h3><p>${d.area}</p></div><span class="tone ${d.tone}">${d.tone}</span></div><div class="timeline">${d.core.map((x,i)=>`<div class="time"><b>${x[0]}</b><div class="timeline-copy"><span>${x[1]}</span>${maps[i]?.length?`<div class="timeline-maps">${maps[i].map(m=>mapBtn(m.label,m.q)).join('')}</div>`:''}</div></div>`).join('')}</div><div class="daynotes"><div class="food"><b>🍴 吃什麼</b><span>${d.food}</span></div><div class="mom"><b>👩‍👦 媽媽同行</b><span>${d.mom}</span></div><div class="optional"><b>↪ Optional / B plan</b><span>${d.optional}</span></div></div></article>`
+}
 tabs.innerHTML=trip.days.map((d,i)=>`<button class="tab ${i===0?'active':''}" data-id="${d.id}">${d.date}<small>週${d.dow}</small></button>`).join('');
 tabs.addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;tabs.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderDay(trip.days.find(x=>x.id===b.dataset.id));});renderDay(trip.days[0]);
 
@@ -31,13 +107,13 @@ const OPTION_MEDIA={
 const cats=['全部',...new Set(trip.options.map(x=>x.cat))],filters=document.querySelector('#optionFilters'),grid=document.querySelector('#optionGrid');
 filters.innerHTML=cats.map((c,i)=>`<button class="tab ${i===0?'active':''}" data-cat="${c}">${c}</button>`).join('');
 function dots(n){return `<span class="dots">${'●'.repeat(n)}${'○'.repeat(5-n)}</span>`}
-const optionMapsUrl=q=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+const optionMapsUrl=q=>mapsSearch(q);
 const wikiPage=t=>`https://en.wikipedia.org/wiki/${t}`;
 function renderOptions(cat='全部'){
   const list=cat==='全部'?trip.options:trip.options.filter(x=>x.cat===cat);
-  grid.innerHTML=list.map((o,i)=>{const m=OPTION_MEDIA[o.name]||{};return `<article class="card option option-rich" data-wiki="${m.wiki||''}">
+  grid.innerHTML=list.map(o=>{const m=OPTION_MEDIA[o.name]||{};return `<article class="card option option-rich" data-wiki="${m.wiki||''}">
     <a class="option-photo" href="${m.wiki?wikiPage(m.wiki):optionMapsUrl(m.map||o.name)}" target="_blank" rel="noopener">
-      <div class="option-photo-placeholder">NYC</div><img alt="${o.name}" loading="lazy"><span>Photo · Wikipedia / Wikimedia</span>
+      <div class="option-photo-placeholder">NYC</div><img alt="${o.name}" loading="lazy" decoding="async"><span>Photo · Wikipedia / Wikimedia</span>
     </a>
     <div class="option-content">
       <div class="optop"><span class="badge">${o.cat}</span><h3>${o.name}</h3></div>
@@ -58,7 +134,9 @@ async function hydrateOptionImages(){
       const r=await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${title}`,{headers:{Accept:'application/json'}});
       if(!r.ok)return;
       const d=await r.json();
-      const src=d.thumbnail?.source||d.originalimage?.source;
+      // Important: use the original Wikimedia file first. The former thumbnail-first
+      // logic was the reason photos looked soft when stretched across desktop cards.
+      const src=d.originalimage?.source||d.thumbnail?.source;
       if(src){img.src=src;img.onload=()=>{img.classList.add('loaded');placeholder?.remove()};}
     }catch(e){}
   }));
