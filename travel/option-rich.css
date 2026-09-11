@@ -2,7 +2,7 @@
 .optiongrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .option.option-rich{padding:0;overflow:hidden;display:grid;grid-template-columns:minmax(0,42%) 1fr;min-height:300px}
 .option-photo{position:relative;display:block;min-height:100%;background:linear-gradient(145deg,#dfe9e7,#b9ced0);overflow:hidden;text-decoration:none;color:#fff}
-.option-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s ease,transform .35s ease}
+.option-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s ease,transform .35s ease;image-rendering:auto}
 .option-photo img.loaded{opacity:1}
 .option-photo:hover img.loaded{transform:scale(1.03)}
 .option-photo:after{content:"";position:absolute;inset:auto 0 0;height:42%;background:linear-gradient(transparent,rgba(10,25,34,.62));pointer-events:none}
@@ -18,5 +18,12 @@
 .option-actions a,.map-btn,.official-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:12px;font-weight:850;padding:8px 11px;border-radius:10px}
 .option-actions .map-btn,.map-btn{background:#17324d;color:#fff}
 .option-actions .official-btn,.official-btn{background:#fff;border:1px solid #d5ddd9;color:#245b70}
+
+/* Google Maps links inside Day 1–8 timeline */
+.timeline-copy{display:grid;gap:8px;min-width:0}
+.timeline-maps{display:flex;gap:7px;flex-wrap:wrap}
+.timeline-map{display:inline-flex;align-items:center;text-decoration:none;background:#edf4f7;color:#20556c;border:1px solid #d5e1e6;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:850;line-height:1.2;transition:transform .15s ease,background .15s ease}
+.timeline-map:hover{background:#dfeef3;transform:translateY(-1px)}
+
 @media(max-width:900px){.optiongrid{grid-template-columns:1fr}.option.option-rich{grid-template-columns:38% 1fr}}
-@media(max-width:620px){.option.option-rich{grid-template-columns:1fr}.option-photo{min-height:220px}.option-content{padding:17px}}
+@media(max-width:620px){.option.option-rich{grid-template-columns:1fr}.option-photo{min-height:220px}.option-content{padding:17px}.timeline-maps{gap:6px}.timeline-map{font-size:10px;padding:5px 8px}}
