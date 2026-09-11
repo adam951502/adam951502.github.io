@@ -19,7 +19,7 @@ const OPTION_MEDIA={
 'Gantry Plaza State Park':{wiki:'Gantry_Plaza_State_Park',intro:'你們 LIC 住宿基地附近最實用的免費景點。河岸正對 Midtown skyline，日落、夜景都很漂亮，累了也能隨時回去。',map:'Gantry Plaza State Park, Long Island City, NY',official:'https://parks.ny.gov/parks/gantryplaza'},
 'NYC Ferry East River':{wiki:'NYC_Ferry',intro:'把交通本身變成 sightseeing。從 Hunters Point South 前往 DUMBO、Wall Street 或 East 34th St 時尤其適合，能少轉乘又看 skyline。',map:'Hunters Point South Ferry Landing, Queens, NY',official:'https://www.ferry.nyc/routes-and-schedules/east-river/'},
 'Flushing 美食半日':{wiki:'Flushing,_Queens',intro:'法拉盛是紐約最值得專程吃東西的亞洲街區之一，華人、台灣、韓國與東北菜都很密集；而且 7 Train 從 LIC 直達。',map:'Flushing Main Street, Queens, NY'},
-'Queens Night Market':{wiki:'Queens_Night_Market',intro:'週六晚在 Flushing Meadows–Corona Park 的大型國際小吃市集。攤商多、價格相對友善，很適合用吃東西認識 Queens 的多元文化。',map:'Queens Night Market, Queens, NY',official:'https://queensnightmarket.com/'},
+'Queens Night Market':{wiki:'Flushing_Meadows%E2%80%93Corona_Park',intro:'週六晚在 Flushing Meadows–Corona Park 的大型國際小吃市集。攤商多、價格相對友善，很適合用吃東西認識 Queens 的多元文化。',map:'Queens Night Market, Queens, NY',official:'https://queensnightmarket.com/'},
 'Korean Parade & Festival':{wiki:'Koreatown,_Manhattan',intro:'你們 10/3 剛好遇到 Korean Parade 與 Koreatown Festival。它不是常態景點，而是這趟才有的限定街區體驗。',map:'Koreatown, Manhattan, New York, NY',official:'https://kaagny.org/'},
 'New York Film Festival':{wiki:'New_York_Film_Festival',intro:'Lincoln Center 的代表性電影節，2026 年檔期和你們整趟旅程重疊。若有喜歡的導演或首映，是很有「人在紐約」感的夜間活動。',map:'Film at Lincoln Center, New York, NY',official:'https://www.filmlinc.org/nyff/'},
 'New York Comic Con':{wiki:'New_York_Comic_Con',intro:'Javits Center 的大型動漫與流行文化展。內容豐富但人潮與排隊強度都高，只有真的有興趣才值得把一整天換給它。',map:'Jacob K. Javits Convention Center, New York, NY',official:'https://www.newyorkcomiccon.com/'},
