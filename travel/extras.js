@@ -121,7 +121,7 @@ const NYC_ATTRACTIONS = [
   }
 ];
 
-const commonsImg = file => `https://commons.wikimedia.org/wiki/Special:Redirect/file/${encodeURIComponent(file)}?width=1200`;
+const commonsImg = file => `https://commons.wikimedia.org/wiki/Special:Redirect/file/${encodeURIComponent(file)}?width=1600`;
 const mapsUrl = q => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 
 function renderAttractions(){
@@ -178,5 +178,102 @@ function makeChecklistInteractive(){
   update();
 }
 
+const COMMUNITY_MUST_GO=[
+  {rank:'01',title:'Central Park + The Met',tag:'最完整的城市＋文化組合',wiki:'Central_Park',copy:'第一次紐約我會一定保留。中央公園只走 Bethesda Terrace / The Lake / Bow Bridge 精華區，再把 2–3 小時留給 The Met，不追求把公園或博物館走完。',map:'Bethesda Terrace, Central Park, New York, NY'},
+  {rank:'02',title:'Statue of Liberty + Ellis Island',tag:'最需要先預約',wiki:'Statue_of_Liberty',copy:'正式登島比遠遠拍照完整很多；Liberty Island 看地標，Ellis Island 補上紐約移民史。建議早場，下午接 Wall Street / 9/11。',map:'Statue of Liberty National Monument, New York, NY'},
+  {rank:'03',title:'DUMBO + Brooklyn Bridge Park',tag:'最好拍、又不必太累',wiki:'Dumbo,_Brooklyn',copy:'從 LIC 搭 Ferry 過去特別順。Manhattan Bridge 街景、Brooklyn Bridge、河岸 skyline 一次收齊；媽媽累了不用硬走完整座橋。',map:'DUMBO, Brooklyn, NY'},
+  {rank:'04',title:'9/11 Memorial + Oculus + Wall Street',tag:'Lower Manhattan 必排同一天',wiki:'National_September_11_Memorial_%26_Museum',copy:'自由女神回來後接這組最有效率。戶外 Memorial 本身就值得看，是否進 Museum 再看體力；Oculus 和金融區都在步行範圍。',map:'9/11 Memorial & Museum, New York, NY'},
+  {rank:'05',title:'High Line + Chelsea + Hudson Yards',tag:'城市設計＋吃東西＋夕陽',wiki:'High_Line',copy:'這組路線自然、幾乎不用折返。High Line 南往北走，Chelsea Market 吃午餐，最後 Hudson Yards；若你選 Edge 就放在這一天。',map:'The High Line, New York, NY'},
+  {rank:'06',title:'Broadway + Times Square at Night',tag:'真正有「來到紐約」的夜晚',wiki:'Broadway_theatre',copy:'Times Square 不用排半天，最佳玩法是先看一場 Broadway，散場後走去 Times Square 逛 30–45 分鐘，再搭 7 Train 回 LIC。',map:'Times Square, New York, NY'},
+  {rank:'07',title:'Top of the Rock',tag:'三個觀景台只選一個',wiki:'30_Rockefeller_Plaza',copy:'我仍最偏向 Top of the Rock：向南能看 Empire State Building，向北能看 Central Park。SUMMIT 或 Edge 都很好，但沒有必要三個全買。',map:'Top of the Rock, New York, NY'},
+  {rank:'08',title:'Grand Central Terminal',tag:'你們住 LIC 的零成本必看',wiki:'Grand_Central_Terminal',copy:'7 Train 幾站就到，幾乎不用為它增加交通成本。放在 Midtown 任一天前後都很順，也適合下雨時補進去。',map:'Grand Central Terminal, New York, NY'}
+];
+
+const PTT_THREADS=[
+  {year:'2026',title:'中央公園＋自然史博物館實際遊記',board:'NewYork',wiki:'Central_Park',url:'https://www.ptt.cc/bbs/NewYork/M.1770951109.A.8E6.html',copy:'近期實際心得很有用：AMNH 館藏大到不可能一次看完，Central Park 也只走了一部分。最值得參考的是「不要貪心、挑重點逛」這件事，跟我們現在的媽媽友善排法一致。',use:'近期現場感／博物館＋公園體力評估'},
+  {year:'2026',title:'總督島 Governors Island 遊記',board:'NewYork',wiki:'Governors_Island',url:'https://www.ptt.cc/bbs/NewYork/M.1771443190.A.3CB.html',copy:'近期台灣旅客的總督島實遊。它不是第一次紐約的 Must-Go，但如果主行程已完成、天氣很好，又想搭 Ferry 看紐約港，可以拿來替換半天。',use:'近期備案／Ferry／港灣景色'},
+  {year:'2019',title:'紐約自助懶人包：七日行程規劃／景點地圖',board:'Ind-travel',wiki:'Manhattan',url:'https://www.ptt.cc/bbs/Ind-travel/M.1576074944.A.B75.html',copy:'最值得看的是分區方式與七日骨架：The Met＋Central Park、自由女神＋金融區、High Line＋Chelsea 等組合，現在仍然合理。舊票價與交通票制不要照抄。',use:'路線骨架／分區安排'},
+  {year:'2018',title:'紐約自由行資訊：天氣、交通、行程安排',board:'Ind-travel',wiki:'Midtown_Manhattan',url:'https://www.ptt.cc/bbs/Ind-travel/M.1532965202.A.C05.html',copy:'很適合理解 Manhattan 的 Midtown / Downtown 分區，以及「住宿地點不同，動線就要跟著調整」。作者也直接提醒每天塞太滿會走到鐵腿。',use:'區域概念／體力提醒'},
+  {year:'2017',title:'紐約行前準備篇',board:'NewYork',wiki:'New_York_City_Subway',url:'https://www.ptt.cc/bbs/NewYork/M.1512366246.A.7CB.html',copy:'適合看第一次自由行會遇到哪些問題：JFK、百老匯、Google Maps、餐廳與票券思路。但 ESTA 費用、MetroCard／交通與票價資訊都已過時，只看經驗、不看數字。',use:'行前問題清單／經驗型參考'}
+];
+
+const IG_GUIDES=[
+  {handle:'@secret_nyc',title:'Secret NYC',type:'即時活動 / pop-up',wiki:'Times_Square',url:'https://www.instagram.com/secret_nyc/',copy:'最適合出發前 1–2 週再看一次。臨時展覽、季節活動、快閃、免費活動很多；不要拿它重排主行程，而是拿來補空檔。'},
+  {handle:'@timeoutnewyork',title:'Time Out New York',type:'城市編輯推薦',wiki:'High_Line',url:'https://www.instagram.com/timeoutnewyork/',copy:'適合判斷「這個熱門點現在還值不值得去」以及近期展覽、表演、餐廳。比純打卡帳號更有編輯篩選。'},
+  {handle:'@nyctourism',title:'NYC Tourism',type:'官方活動 / 五大 borough',wiki:'New_York_City',url:'https://www.instagram.com/nyctourism/',copy:'官方旅遊帳號，適合確認季節活動、borough-based ideas 與大型活動；資訊通常比網紅貼文更適合拿來確認是否真的存在。'},
+  {handle:'@infatuationnyc',title:'The Infatuation NYC',type:'餐廳 / 吃什麼',wiki:'Chelsea_Market',url:'https://www.instagram.com/infatuationnyc/',copy:'吃的部分我最建議追這個。適合臨時找某區「現在吃哪間」，尤其 Chelsea、West Village、SoHo、Brooklyn 等行程日。'},
+  {handle:'@newyorknico',title:'New York Nico',type:'在地人物 / 紐約文化',wiki:'Lower_East_Side',url:'https://www.instagram.com/newyorknico/',copy:'不是傳統旅遊攻略，而是看真正的紐約人物、店家和街區個性。想讓行程不要只剩地標打卡，這個很值得在出發前滑一輪。'}
+];
+
+const communityWikiImg=title=>`https://en.wikipedia.org/api/rest_v1/page/summary/${title}`;
+
+function communityCardImage(title,alt){
+  return `<div class="community-photo" data-community-wiki="${title}"><div class="community-placeholder">NYC</div><img alt="${alt}" loading="lazy"></div>`;
+}
+
+function renderCommunityGuide(){
+  const events=document.querySelector('#events');
+  if(!events || document.querySelector('#community')) return;
+  const section=document.createElement('section');
+  section.id='community';
+  section.innerHTML=`<div class="wrap">
+    <div class="kicker">Community consensus · PTT + Instagram</div>
+    <h2>必去行程＋台灣旅客 PTT＋IG 即時情報</h2>
+    <p class="sub">這區把「第一次紐約真正要留什麼」和社群資訊分開。Must-Go 用來守住主行程；PTT 看實際旅行經驗與動線；IG 則適合出發前補 2026 當週活動、美食與臨時靈感。</p>
+
+    <div class="community-head"><h3>我會守住的 8 個 Must-Go</h3><span>不是熱門點越多越好，而是這 8 組最值得保留。</span></div>
+    <div class="must-grid">${COMMUNITY_MUST_GO.map(x=>`<article class="community-card must-card">
+      ${communityCardImage(x.wiki,x.title)}
+      <div class="community-body"><div class="community-meta"><b>${x.rank}</b><span>${x.tag}</span></div><h3>${x.title}</h3><p>${x.copy}</p><a class="map-btn" href="${mapsUrl(x.map)}" target="_blank" rel="noopener">📍 Google Maps</a></div>
+    </article>`).join('')}</div>
+
+    <div class="community-head spaced"><h3>PTT 精選 threads</h3><span>舊文主要看動線與經驗；價格、票制、ESTA 與交通規則一律以 2026 官方資訊為準。</span></div>
+    <div class="ptt-grid">${PTT_THREADS.map(x=>`<article class="community-card source-card">
+      ${communityCardImage(x.wiki,x.title)}
+      <div class="community-body"><div class="community-meta"><b>PTT · ${x.year}</b><span>${x.board}</span></div><h3>${x.title}</h3><p>${x.copy}</p><div class="source-use"><b>最值得看：</b>${x.use}</div><a class="source-link ptt-link" href="${x.url}" target="_blank" rel="noopener">開啟 PTT 原文 ↗</a></div>
+    </article>`).join('')}</div>
+
+    <div class="community-head spaced"><h3>IG 值得追</h3><span>把 IG 當「即時補充」而不是主行程來源；看到 Reel 想去，再回來看地理位置是否順路。</span></div>
+    <div class="ig-grid">${IG_GUIDES.map(x=>`<article class="community-card source-card ig-card">
+      ${communityCardImage(x.wiki,x.title)}
+      <div class="community-body"><div class="community-meta"><b>${x.handle}</b><span>${x.type}</span></div><h3>${x.title}</h3><p>${x.copy}</p><a class="source-link ig-link" href="${x.url}" target="_blank" rel="noopener">Open Instagram ↗</a></div>
+    </article>`).join('')}</div>
+
+    <div class="community-search card"><b>IG 搜尋字建議</b><div class="tagrow"><span>NYC first time itinerary</span><span>DUMBO photo spots</span><span>Central Park fall NYC</span><span>High Line Chelsea</span><span>Top of the Rock sunset</span><span>Long Island City Gantry sunset</span><span>Flushing NYC food</span><span>NYC October 2026 events</span></div></div>
+  </div>`;
+  events.parentNode.insertBefore(section,events);
+
+  const nav=document.querySelector('.nav .wrap');
+  if(nav && !nav.querySelector('a[href="#community"]')){
+    const a=document.createElement('a');a.href='#community';a.textContent='社群推薦';
+    const eventsLink=nav.querySelector('a[href="#events"]');
+    eventsLink?nav.insertBefore(a,eventsLink):nav.appendChild(a);
+  }
+  hydrateCommunityImages();
+}
+
+async function hydrateCommunityImages(){
+  const nodes=[...document.querySelectorAll('[data-community-wiki]')];
+  await Promise.all(nodes.map(async node=>{
+    const title=node.dataset.communityWiki;
+    const img=node.querySelector('img');
+    const placeholder=node.querySelector('.community-placeholder');
+    try{
+      const r=await fetch(communityWikiImg(title),{headers:{Accept:'application/json'}});
+      if(!r.ok)return;
+      const d=await r.json();
+      const src=d.originalimage?.source||d.thumbnail?.source;
+      if(src){img.src=src;img.onload=()=>{img.classList.add('loaded');placeholder?.remove()};}
+    }catch(e){}
+  }));
+}
+
+function loadCommunityStyle(){
+  if(document.querySelector('link[href="./community.css"]')) return;
+  const link=document.createElement('link');link.rel='stylesheet';link.href='./community.css';document.head.appendChild(link);
+}
+
 renderAttractions();
 makeChecklistInteractive();
+loadCommunityStyle();
+renderCommunityGuide();
