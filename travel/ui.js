@@ -141,7 +141,27 @@ function compactMobile(){
   if(hotel && window.matchMedia('(min-width: 901px)').matches) hotel.open=true;
 }
 
+function applyTravelBranding(){
+  const iconUrl='https://cdn-icons-png.flaticon.com/512/284/284489.png';
+  if(!document.querySelector('link[data-travel-favicon]')){
+    const favicon=document.createElement('link');
+    favicon.rel='icon';favicon.type='image/png';favicon.href=iconUrl;favicon.dataset.travelFavicon='1';
+    document.head.appendChild(favicon);
+    const apple=document.createElement('link');
+    apple.rel='apple-touch-icon';apple.href=iconUrl;apple.dataset.travelFavicon='1';
+    document.head.appendChild(apple);
+  }
+  const footer=document.querySelector('footer .wrap')||document.querySelector('footer');
+  if(footer && !footer.querySelector('.icon-credit')){
+    const credit=document.createElement('span');
+    credit.className='icon-credit';
+    credit.innerHTML=' · New York icon by <a href="https://www.flaticon.com/authors/icon-pond" target="_blank" rel="noopener">Icon Pond</a> on <a href="https://www.flaticon.com/free-icon/new-york_284489" target="_blank" rel="noopener">Flaticon</a>';
+    footer.appendChild(credit);
+  }
+}
+
 renderReservations();
 cleanCommunityDuplication();
 buildDrawer();
 compactMobile();
+applyTravelBranding();
