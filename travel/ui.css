@@ -7,6 +7,20 @@
 
 .hotel-details{margin-top:28px}.hotel-details summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 17px;background:#fffdf9;border:1px solid rgba(24,37,47,.08);border-radius:16px;font-weight:850;box-shadow:var(--shadow)}.hotel-details summary::-webkit-details-marker{display:none}.hotel-details summary:after{content:'＋';font-size:21px;color:var(--blue)}.hotel-details[open] summary:after{content:'−'}.hotel-details .hotelgrid{margin-top:12px}
 
+
+/* Confirmed accommodation */
+.stay-hero{display:flex;justify-content:space-between;gap:24px;align-items:center;margin-top:18px;background:linear-gradient(145deg,#fffdf9,#eef5f4)}
+.stay-status{display:inline-flex;font-size:10px;font-weight:950;letter-spacing:.08em;color:#27634c;background:#e7f3ec;border-radius:999px;padding:5px 8px;margin-bottom:8px}
+.stay-hero h3{font-size:25px;line-height:1.15;margin:0 0 6px}.stay-hero p{margin:0;color:var(--muted)}
+.stay-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.stay-actions a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:12px;font-weight:850;padding:8px 11px;border-radius:10px}
+.stay-actions .map-btn{background:#17324d;color:#fff}.stay-actions .official-btn{background:#fff;border:1px solid #d5ddd9;color:#245b70}
+.stay-datebox{min-width:185px;padding:16px 18px;border-radius:18px;background:#17324d;color:#fff;display:grid;gap:2px;text-align:center}.stay-datebox strong{font-size:21px}.stay-datebox span{font-size:12px;font-weight:850}.stay-datebox small{font-size:10px;opacity:.72}
+.stay-quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.stay-quick{display:grid;gap:5px}.stay-quick>span{font-size:10px;font-weight:950;letter-spacing:.1em;color:var(--blue)}.stay-quick>b{font-size:20px;color:var(--navy)}.stay-quick p{font-size:12px;color:#53636c;margin:0}.stay-quick a{overflow-wrap:anywhere}
+.stay-details-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.stay-detail{padding:0;overflow:hidden}.stay-detail summary{cursor:pointer;list-style:none;padding:16px 18px;font-weight:900;color:var(--navy);display:flex;justify-content:space-between;align-items:center}.stay-detail summary::-webkit-details-marker{display:none}.stay-detail summary:after{content:'＋';font-size:20px;color:var(--blue)}.stay-detail[open] summary:after{content:'−'}.stay-detail-body{padding:0 18px 18px;border-top:1px solid var(--line)}.stay-detail-body p{font-size:13px;color:#455760;margin:12px 0 0}
+.stay-points{display:flex;gap:14px;align-items:flex-start;margin-top:14px;background:#fff7df;border-color:#ead89d}.stay-points-icon{font-size:26px;line-height:1}.stay-points h3{margin:0 0 7px;font-size:19px}.stay-points p{font-size:13px;color:#5b5138;margin:5px 0}
+.family-stay{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-top:14px}.family-stay h3{font-size:20px;margin:3px 0 5px}.family-stay p{font-size:13px;color:#52626c;margin:0;max-width:720px}
+.stay-source{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;font-size:10px;color:var(--muted)}.stay-source a{font-weight:800}.privacy-note{flex-basis:100%;color:#7b6e62}
+
 .menu-fab,.mobile-drawer,.drawer-shade{display:none}
 @media(max-width:900px){
   body{padding-bottom:72px}.nav{display:none}
@@ -18,9 +32,10 @@
   section{padding:36px 0}.hero{padding:48px 0 38px}.hero h1{font-size:clamp(34px,12vw,56px)}
   .reservation-cards{grid-template-columns:1fr}.reservation-card{grid-template-columns:1fr}.reservation-photo{min-height:220px}.reservation-body{padding:16px}.reservation-group-head{align-items:flex-start;flex-direction:column}.reservation-group-head h3{font-size:21px}
   .no-rush-row{grid-template-columns:1fr;gap:4px}.hotel-details{margin-top:20px}
+  .stay-hero,.family-stay{align-items:flex-start;flex-direction:column}.stay-datebox{width:100%;min-width:0}.stay-quick-grid,.stay-details-grid{grid-template-columns:1fr}.stay-points{padding:17px}.stay-detail summary{padding:14px 16px}.stay-detail-body{padding:0 16px 16px}
   /* Turn long visual sections into swipe rows on phones */
   .attraction-grid{display:flex!important;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;padding:2px 2px 12px;scrollbar-width:none}.attraction-grid::-webkit-scrollbar{display:none}.attraction-card{min-width:86vw;max-width:86vw;scroll-snap-align:start}
   .eventgrid{display:flex!important;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;padding:2px 2px 12px;scrollbar-width:none}.eventgrid::-webkit-scrollbar{display:none}.eventgrid .event{min-width:84vw;scroll-snap-align:start}
   #community .ptt-grid,#community .ig-grid{display:flex!important;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;padding:2px 2px 12px;scrollbar-width:none}#community .ptt-grid::-webkit-scrollbar,#community .ig-grid::-webkit-scrollbar{display:none}#community .source-card{min-width:86vw;scroll-snap-align:start}
 }
-@media(max-width:620px){.reservation-photo{min-height:205px}.reserve-actions a{flex:1}.hotel-details summary{font-size:13px}.no-rush{padding:17px}}
+@media(max-width:620px){.reservation-photo{min-height:205px}.reserve-actions a{flex:1}.hotel-details summary{font-size:13px}.no-rush{padding:17px}.stay-actions{width:100%}.stay-actions a{flex:1}.stay-hero h3{font-size:22px}.stay-points{gap:10px}.family-stay{padding:17px}}
