@@ -117,81 +117,28 @@ function cleanCommunityDuplication(){
   const options=document.querySelector('#options'); if(options) options.after(community);
 }
 
-const USD_EUR=0.867077;
-const USD_TWD=31.786;
-const HOTEL_STAYS=[
-  {
-    id:'even',name:'EVEN Hotel Long Island City - New York by IHG',address:'42-59 Crescent Street, Long Island City, NY 11101',distance:'家人同飯店 · 0 km',price:2913,
-    tags:[['family','家人同飯店'],['','最省時間']],quotes:[['Booking.com',2913],['IHG direct',2992]],
-    summary:'如果「跟家人住同一棟」最重要，這仍是最省事的選擇。你提供的 Booking.com 價格比 IHG direct 少 US$79；你也註明目前已沒有 member points option。',
-    official:'https://www.ihg.com/evenhotels/hotels/us/en/long-island-city/nycis/hoteldetail',booking:'https://www.booking.com/searchresults.html?ss=EVEN+Hotel+Long+Island+City+-+New+York+by+IHG&checkin=2026-10-02&checkout=2026-10-10&group_adults=2&no_rooms=1&group_children=0',
-    map:'42-59 Crescent Street Long Island City NY 11101',image:'https://images.trvl-media.com/lodging/59000000/58160000/58150200/58150117/aacde280.jpg?impolicy=resizecrop&ra=fill&rh=575&rw=575',photo:'Representative King guest room'
-  },
-  {
-    id:'hgi',name:'Hilton Garden Inn Long Island City New York',address:'29-21 41st Avenue, Long Island City, NY 11101',distance:'約 0.3 mi / 0.5 km from EVEN',price:2777,
-    tags:[['','附近最佳價差'],['gold','Hilton Gold trade-off']],quotes:[['Booking.com',2777],['Hilton direct',3230]],
-    summary:'離 EVEN 很近，而且 Booking.com 比 EVEN Booking 再少 US$136，是「靠家人＋省錢」最平衡的選項。不過若走 Booking.com，Hilton 官方規則不給 Honors points、stay/night credits 或額外會員 benefits。',
-    official:'https://www.hilton.com/en/hotels/ispicgi-hilton-garden-inn-long-island-city-new-york/',booking:'https://www.booking.com/searchresults.html?ss=Hilton+Garden+Inn+Long+Island+City+New+York&checkin=2026-10-02&checkout=2026-10-10&group_adults=2&no_rooms=1&group_children=0',
-    map:'29-21 41st Avenue Long Island City NY 11101',image:'https://www.hilton.com/im/en/ISPICGI/11276573/ispic-hgi-lic-standard-king-room.jpg?ch=3359&cw=6000&gravity=NorthWest&impolicy=crop&rh=430&rw=768&xposition=0&yposition=320',photo:'Hilton · Standard King Room'
-  },
-  {
-    id:'doubletree',name:'DoubleTree by Hilton Long Island City New York',address:'38-15 9th Street, Long Island City, NY 11101',distance:'約 1.1 km from EVEN',price:2666,
-    tags:[['cheapest','最低總價'],['gold','Hilton Gold eligible if direct']],quotes:[['Quoted rate',2666]],
-    summary:'目前你列出的最低現金總價。若這個 US$2,666 是 Hilton direct rate，還可保留 Hilton Gold qualifying-stay benefits；缺點是離 EVEN 明顯比 Garden / Aloft / Courtyard 遠。',
-    official:'https://www.hilton.com/en/hotels/lgapidt-doubletree-long-island-city-new-york/',map:'38-15 9th Street Long Island City NY 11101',image:'https://www.hilton.com/im/en/NYCCLDT/17148176/20220517-nyccl-king.jpg?ch=3333&cw=5000&gravity=NorthWest&impolicy=crop&rh=427&rw=640&xposition=0&yposition=0',photo:'Hilton · King guest room'
-  },
-  {
-    id:'home2',name:'Home2 Suites by Hilton New York Long Island City/Manhattan View, NY',address:'39-06 30th St., Long Island City, NY 11101',distance:'約 0.5 mi / 0.8 km from EVEN',price:3199,
-    tags:[['','Free hot breakfast'],['','Kitchenette / suite']],quotes:[['Quoted rate',3199]],
-    summary:'總價較高，但房型更適合 8 晚長住：Home2 官方列有免費 hot breakfast，studio/suite 也有廚房機能。如果你很在意早餐與空間，它才有理由多付。',
-    official:'https://www.hilton.com/en/hotels/ispmvht-home2-suites-new-york-long-island-city-manhattan-view-ny/',map:'39-06 30th Street Long Island City NY 11101',image:'https://www.hilton.com/im/en/ISPMVHT/19095304/ispmv-1-king-bed-studio-accessible-02.tif?ch=2799&cw=5000&gravity=NorthWest&impolicy=crop&rh=430&rw=768&xposition=0&yposition=267',photo:'Hilton · Studio King reference'
-  },
-  {
-    id:'courtyard',name:'Courtyard by Marriott Long Island City/New York Manhattan View',address:'29-15 Queens Plaza North, Long Island City, NY 11101',distance:'約 0.3 mi / 0.5 km from EVEN',price:3372,
-    tags:[['','很靠近 EVEN'],['','Queens Plaza transit']],quotes:[['Quoted rate',3372]],
-    summary:'位置非常方便，官方也強調就在 Queens Plaza subway 附近；但以目前 US$3,372 的總價，除非你偏好 Marriott / 房型，否則性價比被 Garden 和 EVEN 壓過。',
-    official:'https://www.marriott.com/en-us/hotels/nycql-courtyard-long-island-city-new-york-manhattan-view/overview/',map:'29-15 Queens Plaza North Long Island City NY 11101',image:'https://images.ctfassets.net/1aemqu6a6t65/3qiRrtWCoDR24V2LvE7Mit/073cf1ea32ec5b6b16200d4d05f7a235/king_bedroom_high_res?fit=fill&h=630&q=72&w=1200',photo:'NYC Tourism · King room reference'
-  },
-  {
-    id:'aloft',name:'Aloft by Marriott Long Island City-Manhattan View',address:'27-45 Jackson Avenue, Long Island City, NY 11101',distance:'約 0.1 mi / 0.2 km from EVEN',price:3748,
-    tags:[['family','幾乎隔壁'],['','最貴']],quotes:[['Quoted rate',3748]],
-    summary:'是你清單裡離 EVEN 最近的替代飯店之一，官方也說多條地鐵線只約一個 block；但目前價格最高，而且官方確認不含免費早餐，所以這個價位我不會優先。',
-    official:'https://www.marriott.com/en-us/hotels/ispva-aloft-long-island-city-manhattan-view/overview/',map:'27-45 Jackson Avenue Long Island City NY 11101',image:'https://images.ctfassets.net/1aemqu6a6t65/54kSYbk4kOUAXqWW3751hd/4825d757d661757f3429dae3f2900109/aloftlic_realhospitalitygroup_balcony-room-king',photo:'NYC Tourism · room reference'
-  }
-];
-
-const HOTEL_WATCH=[
-  {name:'Hyatt Place Long Island City / New York City',distance:'約 0.1 mi from EVEN',note:'非常近，官方列有 free breakfast。若你查到 8 晚總價接近 EVEN / Garden，就值得直接加入前三。',url:'https://www.hyatt.com/hyatt-place/en-US/lgazl-hyatt-place-long-island-city-new-york-city',map:'27-03 43rd Ave Long Island City NY 11101'},
-  {name:'LIC Hotel',distance:'約 0.3 mi from EVEN',note:'位置靠 Court Square，常被列為 LIC 的 value option。若房價低於 DoubleTree 又能接受非大型連鎖，也值得比一次。',url:'https://www.lichotelny.com/',map:'44-04 21st Street Long Island City NY 11101'}
-];
-
-const money=(n,currency)=>new Intl.NumberFormat('en-US',{style:'currency',currency,maximumFractionDigits:0}).format(n);
-const eur=n=>Math.round(n*USD_EUR);
-const twd=n=>Math.round(n*USD_TWD);
-
-function loadHotelStyle(){
-  if(document.querySelector('link[href="./hotels.css"]'))return;
-  const link=document.createElement('link');link.rel='stylesheet';link.href='./hotels.css';document.head.appendChild(link);
-}
-
-function renderHotelComparison(){
+function renderAccommodation(){
   const base=document.querySelector('#base');if(!base)return;
-  const h2=base.querySelector('h2');if(h2)h2.textContent='住宿改以 EVEN Hotel 周邊為核心';
-  const sub=base.querySelector('.sub');if(sub)sub.innerHTML='家人目前住在 <b>EVEN Hotel Long Island City - New York</b>，所以現在住宿比較不再以 Hunters Point 公寓為中心，而是以「離 EVEN 近、地鐵方便、8 晚總價」排序。以下價格是你在 <b>2026/09/17</b> 提供的 10/2→10/10、8 晚 snapshot。';
-  const basegrid=base.querySelector('.basegrid');
-  if(basegrid)basegrid.innerHTML=`<article class="card"><h3>👨‍👩‍👦 家人 anchor</h3><p><b>EVEN Hotel</b><br>42-59 Crescent Street。住同飯店最方便；Aloft / Hyatt Place 約 0.1 mi，Garden / Courtyard 約 0.3 mi。</p><div class="tagrow"><span>Queens Plaza</span><span>family-first</span></div></article><article class="card"><h3>🚇 交通</h3><p>EVEN 官方主打鄰近 Queensboro Plaza；Garden / Courtyard 也靠 Queens Plaza。這區進 Midtown 很快，比原本每天從 waterfront 走回來更直接。</p><div class="tagrow"><span>Midtown easy</span><span>多條 subway</span></div></article><article class="card"><h3>💳 Hilton Gold</h3><p>若選 Hilton 系並想保留 Gold benefits，盡量 direct book。Hilton 官方明確寫 Booking.com 等第三方不給 Points、stay/night credits 或額外會員 benefits。</p><div class="tagrow"><span>Direct matters</span><span>OTA trade-off</span></div></article>`;
-
-  const old=base.querySelector('.hotel-details');
-  const wrap=document.createElement('div');wrap.className='hotel-compare';
-  const sorted=[...HOTEL_STAYS].sort((a,b)=>a.price-b.price);
-  const tableRows=sorted.map((h,i)=>`<tr class="${h.id==='doubletree'?'best':''} ${h.id==='even'?'same':''}"><td>${i+1}</td><td><b>${h.name}</b><br><small>${h.distance}</small></td><td class="price-main">${money(h.price,'USD')}</td><td>${money(eur(h.price),'EUR')}</td><td>${money(twd(h.price),'TWD')}</td><td>${money(h.price/8,'USD')}</td></tr>`).join('');
-  const cards=HOTEL_STAYS.map(h=>`<article class="hotel-card"><div class="hotel-photo"><img src="${h.image}" alt="${h.name} room reference" loading="lazy"><span class="hotel-photo-credit">${h.photo}</span></div><div class="hotel-card-body"><div class="hotel-card-top">${h.tags.map(t=>`<span class="hotel-pill ${t[0]}">${t[1]}</span>`).join('')}</div><h4>${h.name}</h4><div class="hotel-address">${h.address} · ${h.distance}</div><div class="hotel-total"><strong>${money(h.price,'USD')}</strong><span>lowest quoted / 8 nights</span></div><div class="hotel-fx">≈ ${money(eur(h.price),'EUR')} · ${money(twd(h.price),'TWD')} · ${money(h.price/8,'USD')}/night</div><div class="hotel-channel">${h.quotes.map(q=>`<div><b>${q[0]}</b> ${money(q[1],'USD')} · ${money(eur(q[1]),'EUR')} · ${money(twd(q[1]),'TWD')}</div>`).join('')}</div><p class="hotel-summary">${h.summary}</p><div class="hotel-actions"><a class="official" href="${h.official}" target="_blank" rel="noopener">Official ↗</a><a class="maps" href="${googleMap(h.map)}" target="_blank" rel="noopener">📍 Maps</a>${h.booking?`<a class="booking" href="${h.booking}" target="_blank" rel="noopener">Booking.com ↗</a>`:''}</div></div></article>`).join('');
-  wrap.innerHTML=`<div class="hotel-compare-head"><div><div class="kicker">Hotel shortlist · 8 nights</div><h3>10/02 → 10/10 住宿比較</h3><p>先看「跟家人的距離」，再看 cash price。EUR / TWD 以 2026/09/17 即期參考匯率換算：1 USD ≈ €0.8671 / NT$31.786。</p></div><div class="hotel-rate-note">2 people · 1 room · 8 nights</div></div><div class="hotel-reco"><div class="card"><b>👨‍👩‍👦 最方便</b><span>EVEN Booking.com · 同一間飯店 · US$2,913</span></div><div class="card"><b>⚖️ 附近最佳平衡</b><span>Hilton Garden Inn Booking.com · 約 0.3 mi · US$2,777</span></div><div class="card"><b>💰 最低總價</b><span>DoubleTree · 約 1.1 km · US$2,666</span></div></div><div class="hotel-table-wrap"><table class="hotel-price-table"><thead><tr><th>#</th><th>Hotel / distance from EVEN</th><th>USD total</th><th>EUR approx.</th><th>NTD approx.</th><th>USD/night</th></tr></thead><tbody>${tableRows}</tbody></table></div><div class="hotel-cards">${cards}</div><div class="hotel-watch"><h4>另外值得查一次價格</h4><div class="hotel-watch-grid">${HOTEL_WATCH.map(x=>`<div class="card"><b>${x.name}</b><div class="rankbadge">${x.distance}</div><p>${x.note}</p><a href="${x.url}" target="_blank" rel="noopener">Official ↗</a> · <a href="${googleMap(x.map)}" target="_blank" rel="noopener">Maps ↗</a></div>`).join('')}</div></div><div class="hotel-disclaimer">價格以你提供的目前總價為 snapshot；我能驗證飯店名稱、地址、距離級距、官方 amenities 與網站，但動態訂房頁沒有穩定曝露你這組 10/2–10/10 的完整 final checkout total。房間照片以 standard / entry-level room reference 為主；實際最低房型會隨庫存改變。</div>`;
-  if(old)old.replaceWith(wrap);else base.querySelector('.wrap')?.appendChild(wrap);
+  const wrap=base.querySelector('.wrap');if(!wrap)return;
+  wrap.innerHTML=`
+    <div class="kicker">Accommodation · confirmed</div>
+    <h2>住宿已決定</h2>
+    <p class="sub">這區只保留目前已確定的住宿資訊，不再顯示飯店比價或其他備選。</p>
+    <div class="basegrid accommodation-confirmed">
+      <article class="card">
+        <h3>🏨 我的住宿</h3>
+        <p><b>10/02 → 10/10，共 8 晚</b></p>
+        <a href="https://app.notion.com/p/adam-tang/10-2-10-10-8-nights-3d6ef2bc2b7480b08ba5c3ebcda6d6f0?v=3d5ef2bc2b748168b7f2000c3a164306&source=copy_link" target="_blank" rel="noopener">住宿詳細資料（Notion） ↗</a>
+      </article>
+      <article class="card">
+        <h3>👨‍👩‍👦 家人住宿</h3>
+        <p>家人住在 <b>EVEN Hotel Long Island City - New York by IHG</b>。</p>
+      </article>
+    </div>`;
 }
 
 const MENU_ITEMS=[
-  ['flight','航班與日期'],['base','住宿比較 / LIC'],['plan','每日行程'],['highlights','必去景點'],['reservations','預約中心'],['events','秋季限定'],['options','備選景點'],['community','PTT / IG'],['checklist','交通＋Checklist']
+  ['flight','航班與日期'],['base','住宿'],['plan','每日行程'],['highlights','必去景點'],['reservations','預約中心'],['events','秋季限定'],['options','備選景點'],['community','PTT / IG'],['checklist','交通＋Checklist']
 ];
 
 function buildDrawer(){
@@ -224,8 +171,7 @@ function applyTravelBranding(){
 
 renderReservations();
 cleanCommunityDuplication();
-loadHotelStyle();
-renderHotelComparison();
+renderAccommodation();
 buildDrawer();
 compactMobile();
 applyTravelBranding();
