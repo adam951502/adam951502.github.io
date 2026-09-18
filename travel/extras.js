@@ -217,7 +217,7 @@ function renderCommunityGuide(){
   const section=document.createElement('section');
   section.id='community';
   section.innerHTML=`<div class="wrap">
-    <div class="kicker">Community consensus · PTT + Instagram</div>
+    <div class="kicker">Community references · PTT + Instagram</div>
     <h2>必去行程＋台灣旅客 PTT＋IG 即時情報</h2>
     <p class="sub">這區把「第一次紐約真正要留什麼」和社群資訊分開。Must-Go 用來守住主行程；PTT 看實際旅行經驗與動線；IG 則適合出發前補 2026 當週活動、美食與臨時靈感。</p>
 
@@ -227,19 +227,19 @@ function renderCommunityGuide(){
       <div class="community-body"><div class="community-meta"><b>${x.rank}</b><span>${x.tag}</span></div><h3>${x.title}</h3><p>${x.copy}</p><a class="map-btn" href="${mapsUrl(x.map)}" target="_blank" rel="noopener">📍 Google Maps</a></div>
     </article>`).join('')}</div>
 
-    <div class="community-head spaced"><h3>PTT 精選 threads</h3><span>舊文主要看動線與經驗；價格、票制、ESTA 與交通規則一律以 2026 官方資訊為準。</span></div>
+    <div class="community-head spaced"><h3>PTT 參考文章</h3><span>舊文主要看動線與經驗；價格、票制、ESTA 與交通規則一律以 2026 官方資訊為準。</span></div>
     <div class="ptt-grid">${PTT_THREADS.map(x=>`<article class="community-card source-card">
       ${communityCardImage(x.wiki,x.title)}
       <div class="community-body"><div class="community-meta"><b>PTT · ${x.year}</b><span>${x.board}</span></div><h3>${x.title}</h3><p>${x.copy}</p><div class="source-use"><b>最值得看：</b>${x.use}</div><a class="source-link ptt-link" href="${x.url}" target="_blank" rel="noopener">開啟 PTT 原文 ↗</a></div>
     </article>`).join('')}</div>
 
-    <div class="community-head spaced"><h3>IG 值得追</h3><span>把 IG 當「即時補充」而不是主行程來源；看到 Reel 想去，再回來看地理位置是否順路。</span></div>
+    <div class="community-head spaced"><h3>Instagram 參考帳號</h3><span>把 IG 當「即時補充」而不是主行程來源；看到 Reel 想去，再回來看地理位置是否順路。</span></div>
     <div class="ig-grid">${IG_GUIDES.map(x=>`<article class="community-card source-card ig-card">
       ${communityCardImage(x.wiki,x.title)}
       <div class="community-body"><div class="community-meta"><b>${x.handle}</b><span>${x.type}</span></div><h3>${x.title}</h3><p>${x.copy}</p><a class="source-link ig-link" href="${x.url}" target="_blank" rel="noopener">Open Instagram ↗</a></div>
     </article>`).join('')}</div>
 
-    <div class="community-search card"><b>IG 搜尋字建議</b><div class="tagrow"><span>NYC first time itinerary</span><span>DUMBO photo spots</span><span>Central Park fall NYC</span><span>High Line Chelsea</span><span>Top of the Rock sunset</span><span>Long Island City Gantry sunset</span><span>Flushing NYC food</span><span>NYC October 2026 events</span></div></div>
+    <div class="community-search card"><b>Instagram 搜尋關鍵字</b><div class="tagrow"><span>NYC first time itinerary</span><span>DUMBO photo spots</span><span>Central Park fall NYC</span><span>High Line Chelsea</span><span>Top of the Rock sunset</span><span>Long Island City Gantry sunset</span><span>Flushing NYC food</span><span>NYC October 2026 events</span></div></div>
   </div>`;
   events.parentNode.insertBefore(section,events);
 
