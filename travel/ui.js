@@ -204,9 +204,9 @@ function renderAccommodation(){
 
     <div class="family-stay card">
       <div>
-        <div class="kicker">同行家人住宿</div>
+        <div class="kicker">同行者住宿</div>
         <h3>EVEN Hotel Long Island City - New York by IHG</h3>
-        <p>同行家人住宿於 EVEN Hotel，可作為旅程期間的固定會合地點。</p>
+        <p>同行者住宿於 EVEN Hotel，可作為旅程期間的固定會合地點。</p>
       </div>
       <div class="stay-actions">
         <a class="map-btn" href="${googleMap('EVEN Hotel Long Island City New York by IHG')}" target="_blank" rel="noopener">📍 EVEN Hotel Maps</a>
