@@ -4,9 +4,9 @@ const NYC_ATTRACTIONS = [
     zh:'甘特里廣場州立公園',
     day:'Day 1 / 回住宿前',
     image:'View from Gantry Plaza State Park.jpg',
-    intro:'就在 Long Island City 河岸，是你們住宿基地附近最值得反覆去的免費景點。正對 Midtown skyline，黃昏到夜景特別漂亮。',
+    intro:'位於 Long Island City 河岸，是 LIC 一帶非常值得安排的免費景點。正對 Midtown skyline，黃昏到夜景特別漂亮。',
     why:'第一天剛落地最適合用這裡調時差；不需要進 Manhattan，也不用排隊。之後某天提早回 LIC，也可以再來一次。',
-    tags:['免費','低體力','夕陽','媽媽友善'],
+    tags:['免費','低體力','夕陽','步調友善'],
     map:'Gantry Plaza State Park, Long Island City, NY',
     official:'https://parks.ny.gov/parks/gantryplaza',
     source:'https://commons.wikimedia.org/wiki/File:View_from_Gantry_Plaza_State_Park.jpg'
@@ -17,7 +17,7 @@ const NYC_ATTRACTIONS = [
     day:'Day 1 / Midtown 順路',
     image:'Main Concourse of Grand Central Terminal, October 2025.jpg',
     intro:'Beaux-Arts 建築代表作，也是從 LIC 搭 7 Train 進 Manhattan 最自然的第一站之一。主大廳天花板、四面鐘和整體空間感非常值得看。',
-    why:'你們從 Vernon Blvd 一帶坐 7 號線很快就到，幾乎沒有額外繞路，適合放在任何 Midtown 行程前後。',
+    why:'從 Vernon Blvd 一帶搭 7 號線即可快速抵達，幾乎不需額外繞路，適合安排在任何 Midtown 行程前後。',
     tags:['室內','免費','建築','交通順路'],
     map:'Grand Central Terminal, New York, NY',
     official:'https://www.grandcentralterminal.com/',
@@ -29,7 +29,7 @@ const NYC_ATTRACTIONS = [
     day:'Day 2',
     image:'Bow Bridge with the Central Park South skyline, Central Park, Manhattan, New York.jpg',
     intro:'第一次來紐約最值得留半天慢走的城市綠地。Bow Bridge、The Lake、Bethesda Terrace 都在相對集中的區域，不需要把整座公園走完。',
-    why:'和 The Met 排同一天最合理。對媽媽同行，我會主張「只走精華區＋坐下喝咖啡」，不要追求從南走到北。',
+    why:'和 The Met 排同一天最順。建議只走精華區並保留休息時間，不必追求從公園南端一路走到北端。',
     tags:['經典','秋天','散步','可縮短'],
     map:'Bow Bridge, Central Park, New York, NY',
     official:'https://www.centralparknyc.org/',
@@ -65,7 +65,7 @@ const NYC_ATTRACTIONS = [
     day:'Day 3',
     image:'National September 11 Memorial, World Trade Center, Manhattan, New York.jpg',
     intro:'兩座紀念池位在原雙塔基址，空間本身就很有力量。旁邊 Oculus 則是完全不同的現代建築語言，很適合和 Wall Street 一起走。',
-    why:'不用另外跨區，正好接自由女神之後的 Lower Manhattan 動線。若媽媽累了，可以只看戶外 Memorial，不一定進 Museum。',
+    why:'不用另外跨區，正好接自由女神之後的 Lower Manhattan 動線。若體力有限，可只看戶外 Memorial，不一定進 Museum。',
     tags:['免費戶外','歷史','Lower Manhattan'],
     map:'9/11 Memorial & Museum, New York, NY',
     official:'https://www.911memorial.org/',
@@ -89,8 +89,8 @@ const NYC_ATTRACTIONS = [
     day:'Day 5',
     image:'Brooklyn Bridge from DUMBO.jpg',
     intro:'這裡有最經典的 Manhattan Bridge 街景、Brooklyn Bridge、河岸 skyline，也有很多咖啡店和可以坐下休息的公園空間。',
-    why:'從 LIC 搭 NYC Ferry 過去特別適合你們，省掉很多地鐵轉乘。媽媽如果累了，就不要硬走整座 Brooklyn Bridge，在河岸看橋反而更舒服。',
-    tags:['拍照','河景','Ferry','媽媽友善'],
+    why:'從 LIC 搭 NYC Ferry 前往很順，可減少地鐵轉乘。若體力有限，不必走完整座 Brooklyn Bridge，在河岸看橋也很完整。',
+    tags:['拍照','河景','Ferry','步調友善'],
     map:'DUMBO, Brooklyn, NY',
     official:'https://www.brooklynbridgepark.org/',
     source:'https://commons.wikimedia.org/wiki/File:Brooklyn_Bridge_from_DUMBO.jpg'
@@ -112,8 +112,8 @@ const NYC_ATTRACTIONS = [
     zh:'紐約植物園',
     day:'Optional · 秋季替換日',
     image:'NYBG Conservatory NY1.jpg',
-    intro:'Bronx 的大型植物園，秋季很適合慢走。你們的日期又碰上 2026 Día de los Muertos 活動，會比一般月份更有季節感。',
-    why:'如果媽媽對博物館已經看夠，或想安排一天更鬆、更有秋天感，NYBG 是我最推薦的替換選項。',
+    intro:'Bronx 的大型植物園，秋季很適合慢走。2026 年旅程日期正逢 Día de los Muertos 活動，比一般月份更有季節感。',
+    why:'若博物館行程已足夠，或想安排更輕鬆、更有秋季感的一天，NYBG 是很適合的替換選項。',
     tags:['秋季限定','低壓力','Bronx','半日～一日'],
     map:'New York Botanical Garden, Bronx, NY',
     official:'https://www.nybg.org/',
@@ -179,18 +179,18 @@ function makeChecklistInteractive(){
 }
 
 const COMMUNITY_MUST_GO=[
-  {rank:'01',title:'Central Park + The Met',tag:'最完整的城市＋文化組合',wiki:'Central_Park',copy:'第一次紐約我會一定保留。中央公園只走 Bethesda Terrace / The Lake / Bow Bridge 精華區，再把 2–3 小時留給 The Met，不追求把公園或博物館走完。',map:'Bethesda Terrace, Central Park, New York, NY'},
+  {rank:'01',title:'Central Park + The Met',tag:'最完整的城市＋文化組合',wiki:'Central_Park',copy:'第一次到紐約很值得保留。中央公園可只走 Bethesda Terrace / The Lake / Bow Bridge 精華區，再留 2–3 小時給 The Met，不必追求把公園或博物館全部走完。',map:'Bethesda Terrace, Central Park, New York, NY'},
   {rank:'02',title:'Statue of Liberty + Ellis Island',tag:'最需要先預約',wiki:'Statue_of_Liberty',copy:'正式登島比遠遠拍照完整很多；Liberty Island 看地標，Ellis Island 補上紐約移民史。建議早場，下午接 Wall Street / 9/11。',map:'Statue of Liberty National Monument, New York, NY'},
-  {rank:'03',title:'DUMBO + Brooklyn Bridge Park',tag:'最好拍、又不必太累',wiki:'Dumbo,_Brooklyn',copy:'從 LIC 搭 Ferry 過去特別順。Manhattan Bridge 街景、Brooklyn Bridge、河岸 skyline 一次收齊；媽媽累了不用硬走完整座橋。',map:'DUMBO, Brooklyn, NY'},
+  {rank:'03',title:'DUMBO + Brooklyn Bridge Park',tag:'最好拍、又不必太累',wiki:'Dumbo,_Brooklyn',copy:'從 LIC 搭 Ferry 前往很順。Manhattan Bridge 街景、Brooklyn Bridge、河岸 skyline 一次收齊；體力有限時不必走完整座橋。',map:'DUMBO, Brooklyn, NY'},
   {rank:'04',title:'9/11 Memorial + Oculus + Wall Street',tag:'Lower Manhattan 必排同一天',wiki:'National_September_11_Memorial_%26_Museum',copy:'自由女神回來後接這組最有效率。戶外 Memorial 本身就值得看，是否進 Museum 再看體力；Oculus 和金融區都在步行範圍。',map:'9/11 Memorial & Museum, New York, NY'},
-  {rank:'05',title:'High Line + Chelsea + Hudson Yards',tag:'城市設計＋吃東西＋夕陽',wiki:'High_Line',copy:'這組路線自然、幾乎不用折返。High Line 南往北走，Chelsea Market 吃午餐，最後 Hudson Yards；若你選 Edge 就放在這一天。',map:'The High Line, New York, NY'},
+  {rank:'05',title:'High Line + Chelsea + Hudson Yards',tag:'城市設計＋吃東西＋夕陽',wiki:'High_Line',copy:'這組路線自然、幾乎不用折返。High Line 南往北走，Chelsea Market 吃午餐，最後到 Hudson Yards；若選 Edge，可安排在這一天。',map:'The High Line, New York, NY'},
   {rank:'06',title:'Broadway + Times Square at Night',tag:'真正有「來到紐約」的夜晚',wiki:'Broadway_theatre',copy:'Times Square 不用排半天，最佳玩法是先看一場 Broadway，散場後走去 Times Square 逛 30–45 分鐘，再搭 7 Train 回 LIC。',map:'Times Square, New York, NY'},
-  {rank:'07',title:'Top of the Rock',tag:'三個觀景台只選一個',wiki:'30_Rockefeller_Plaza',copy:'我仍最偏向 Top of the Rock：向南能看 Empire State Building，向北能看 Central Park。SUMMIT 或 Edge 都很好，但沒有必要三個全買。',map:'Top of the Rock, New York, NY'},
-  {rank:'08',title:'Grand Central Terminal',tag:'你們住 LIC 的零成本必看',wiki:'Grand_Central_Terminal',copy:'7 Train 幾站就到，幾乎不用為它增加交通成本。放在 Midtown 任一天前後都很順，也適合下雨時補進去。',map:'Grand Central Terminal, New York, NY'}
+  {rank:'07',title:'Top of the Rock',tag:'三個觀景台只選一個',wiki:'30_Rockefeller_Plaza',copy:'若只選一個觀景台，可優先考慮 Top of the Rock：向南能看 Empire State Building，向北能看 Central Park。SUMMIT 與 Edge 也各有特色，但不必三個都安排。',map:'Top of the Rock, New York, NY'},
+  {rank:'08',title:'Grand Central Terminal',tag:'LIC 出發的順路經典',wiki:'Grand_Central_Terminal',copy:'7 Train 幾站就到，幾乎不用為它增加交通成本。放在 Midtown 任一天前後都很順，也適合下雨時補進去。',map:'Grand Central Terminal, New York, NY'}
 ];
 
 const PTT_THREADS=[
-  {year:'2026',title:'中央公園＋自然史博物館實際遊記',board:'NewYork',wiki:'Central_Park',url:'https://www.ptt.cc/bbs/NewYork/M.1770951109.A.8E6.html',copy:'近期實際心得很有用：AMNH 館藏大到不可能一次看完，Central Park 也只走了一部分。最值得參考的是「不要貪心、挑重點逛」這件事，跟我們現在的媽媽友善排法一致。',use:'近期現場感／博物館＋公園體力評估'},
+  {year:'2026',title:'中央公園＋自然史博物館實際遊記',board:'NewYork',wiki:'Central_Park',url:'https://www.ptt.cc/bbs/NewYork/M.1770951109.A.8E6.html',copy:'近期實際心得很有參考價值：AMNH 館藏規模大，Central Park 也很難一次走完。重點是挑選精華區域並保留體力。',use:'近期現場感／博物館＋公園體力評估'},
   {year:'2026',title:'總督島 Governors Island 遊記',board:'NewYork',wiki:'Governors_Island',url:'https://www.ptt.cc/bbs/NewYork/M.1771443190.A.3CB.html',copy:'近期台灣旅客的總督島實遊。它不是第一次紐約的 Must-Go，但如果主行程已完成、天氣很好，又想搭 Ferry 看紐約港，可以拿來替換半天。',use:'近期備案／Ferry／港灣景色'},
   {year:'2019',title:'紐約自助懶人包：七日行程規劃／景點地圖',board:'Ind-travel',wiki:'Manhattan',url:'https://www.ptt.cc/bbs/Ind-travel/M.1576074944.A.B75.html',copy:'最值得看的是分區方式與七日骨架：The Met＋Central Park、自由女神＋金融區、High Line＋Chelsea 等組合，現在仍然合理。舊票價與交通票制不要照抄。',use:'路線骨架／分區安排'},
   {year:'2018',title:'紐約自由行資訊：天氣、交通、行程安排',board:'Ind-travel',wiki:'Midtown_Manhattan',url:'https://www.ptt.cc/bbs/Ind-travel/M.1532965202.A.C05.html',copy:'很適合理解 Manhattan 的 Midtown / Downtown 分區，以及「住宿地點不同，動線就要跟著調整」。作者也直接提醒每天塞太滿會走到鐵腿。',use:'區域概念／體力提醒'},
@@ -221,7 +221,7 @@ function renderCommunityGuide(){
     <h2>必去行程＋台灣旅客 PTT＋IG 即時情報</h2>
     <p class="sub">這區把「第一次紐約真正要留什麼」和社群資訊分開。Must-Go 用來守住主行程；PTT 看實際旅行經驗與動線；IG 則適合出發前補 2026 當週活動、美食與臨時靈感。</p>
 
-    <div class="community-head"><h3>我會守住的 8 個 Must-Go</h3><span>不是熱門點越多越好，而是這 8 組最值得保留。</span></div>
+    <div class="community-head"><h3>8 個 Must-Go</h3><span>精選最值得保留的經典組合，避免過度排程。</span></div>
     <div class="must-grid">${COMMUNITY_MUST_GO.map(x=>`<article class="community-card must-card">
       ${communityCardImage(x.wiki,x.title)}
       <div class="community-body"><div class="community-meta"><b>${x.rank}</b><span>${x.tag}</span></div><h3>${x.title}</h3><p>${x.copy}</p><a class="map-btn" href="${mapsUrl(x.map)}" target="_blank" rel="noopener">📍 Google Maps</a></div>
