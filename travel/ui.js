@@ -120,22 +120,109 @@ function cleanCommunityDuplication(){
 function renderAccommodation(){
   const base=document.querySelector('#base');if(!base)return;
   const wrap=base.querySelector('.wrap');if(!wrap)return;
+  const notionUrl='https://app.notion.com/p/adam-tang/10-2-10-10-8-nights-3d6ef2bc2b7480b08ba5c3ebcda6d6f0?v=3d5ef2bc2b748168b7f2000c3a164306&source=copy_link';
   wrap.innerHTML=`
     <div class="kicker">Accommodation · confirmed</div>
-    <h2>住宿已決定</h2>
-    <p class="sub">這區只保留目前已確定的住宿資訊，不再顯示飯店比價或其他備選。</p>
-    <div class="basegrid accommodation-confirmed">
-      <article class="card">
-        <h3>🏨 我的住宿</h3>
-        <p><b>10/02 → 10/10，共 8 晚</b></p>
-        <a href="https://app.notion.com/p/adam-tang/10-2-10-10-8-nights-3d6ef2bc2b7480b08ba5c3ebcda6d6f0?v=3d5ef2bc2b748168b7f2000c3a164306&source=copy_link" target="_blank" rel="noopener">住宿詳細資料（Notion） ↗</a>
+    <h2>住宿已確認｜Hilton Garden Inn Long Island City New York</h2>
+    <p class="sub">10/02 入住 → 10/10 退房，共 <b>8 晚</b>；<b>1 間房、2 位成人</b>。以下把飯店回覆與 Notion 住宿頁的實用資訊全部整理在這裡，旅行時不用再切 App。</p>
+
+    <div class="stay-hero card">
+      <div>
+        <span class="stay-status">✓ CONFIRMED</span>
+        <h3>Hilton Garden Inn Long Island City New York</h3>
+        <p>29-21 41st Ave, Long Island City, NY 11101</p>
+        <div class="stay-actions">
+          <a class="map-btn" href="${googleMap('29-21 41st Ave Long Island City NY 11101')}" target="_blank" rel="noopener">📍 Google Maps</a>
+          <a class="official-btn" href="https://www.hilton.com/en/hotels/ispicgi-hilton-garden-inn-long-island-city-new-york/" target="_blank" rel="noopener">Hilton Official ↗</a>
+        </div>
+      </div>
+      <div class="stay-datebox">
+        <strong>10/02 → 10/10</strong>
+        <span>8 nights</span>
+        <small>1 room · 2 adults</small>
+      </div>
+    </div>
+
+    <div class="stay-quick-grid">
+      <article class="card stay-quick">
+        <span>CHECK-IN</span><b>15:00 起</b>
+        <p>若提早抵達且有空房，可協助 Early Check-in；沒有房也可先寄放行李。</p>
       </article>
-      <article class="card">
-        <h3>👨‍👩‍👦 家人住宿</h3>
-        <p>家人住在 <b>EVEN Hotel Long Island City - New York by IHG</b>。</p>
+      <article class="card stay-quick">
+        <span>CHECK-OUT</span><b>12:00</b>
+        <p>Late Check-out 要在退房當天向櫃檯確認可否提供，以及能延後到幾點。</p>
       </article>
-    </div>`;
+      <article class="card stay-quick">
+        <span>CONTACT</span><b><a href="tel:+17187866001">(718) 786-6001</a></b>
+        <p>Front Desk 24 小時。<a href="mailto:hiltongardeninnlic@gmail.com">hiltongardeninnlic@gmail.com</a></p>
+      </article>
+    </div>
+
+    <div class="stay-details-grid">
+      <details class="card stay-detail" open>
+        <summary>🚕 機場與交通</summary>
+        <div class="stay-detail-body">
+          <p>飯店附近有多條 <b>Subway</b> 路線，飯店建議用 Transit App 查即時大眾運輸。</p>
+          <p><b>沒有機場接駁車。</b>櫃檯可協助安排合作的當地 Car Service 往返紐約三大機場，也可以直接使用 Uber / Lyft。</p>
+          <div class="tagrow"><span>Subway</span><span>Car Service</span><span>Uber / Lyft</span><span>No airport shuttle</span></div>
+        </div>
+      </details>
+
+      <details class="card stay-detail" open>
+        <summary>🅿️ 停車</summary>
+        <div class="stay-detail-body">
+          <p>飯店本身<b>沒有停車場</b>。</p>
+          <p>隔壁 <b>Champion Parking</b> 約 <b>US$45–50 / 24 小時</b>，一般不提供自由進出（in-and-out privileges）。路邊停車可能有，但數量非常有限。</p>
+        </div>
+      </details>
+
+      <details class="card stay-detail" open>
+        <summary>🍳 餐飲與 24 小時補給</summary>
+        <div class="stay-detail-body">
+          <p><b>The Garden Grille</b>：提供早餐與晚餐。</p>
+          <p><b>Pavillion Pantry</b>：Front Desk 旁，<b>24 小時</b>供應零食、飲料（含酒精飲品）與簡單食品。</p>
+        </div>
+      </details>
+
+      <details class="card stay-detail" open>
+        <summary>📶 Wi‑Fi / Fitness / 洗衣</summary>
+        <div class="stay-detail-body">
+          <p><b>免費 Wi‑Fi</b>：連線至 <b>“Honors”</b> 網路，以訂房姓氏＋入住後房號登入；還沒 Check-in 可向櫃檯索取 Promo Code。</p>
+          <p><b>Fitness Center</b>：Level C，24 小時開放。</p>
+          <p><b>自助洗衣</b>：Level C，可用投幣／App 操作。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="stay-points card">
+      <div class="stay-points-icon">⭐</div>
+      <div>
+        <h3>Hilton Honors：不使用 Housekeeping 可拿 2,000 Points</h3>
+        <p>如果是 <b>Hilton Honors 會員</b>且住宿 <b>3 晚以上</b>，可在 Check-in 時選擇整段住宿完全不使用 Housekeeping，飯店會加贈 <b>2,000 Hilton Honors Points</b>。</p>
+        <p>即使選擇不打掃，仍可向飯店索取毛巾、備品等需要的物品。</p>
+      </div>
+    </div>
+
+    <div class="family-stay card">
+      <div>
+        <div class="kicker">Family anchor</div>
+        <h3>家人住在 EVEN Hotel Long Island City - New York by IHG</h3>
+        <p>旅行期間可以把 EVEN Hotel 當成和家人會合的固定 anchor；你的住宿則維持 Hilton Garden Inn。</p>
+      </div>
+      <div class="stay-actions">
+        <a class="map-btn" href="${googleMap('EVEN Hotel Long Island City New York by IHG')}" target="_blank" rel="noopener">📍 EVEN Hotel Maps</a>
+        <a class="official-btn" href="https://www.ihg.com/evenhotels/hotels/us/en/long-island-city/nycis/hoteldetail" target="_blank" rel="noopener">IHG Official ↗</a>
+      </div>
+    </div>
+
+    <div class="stay-source">
+      <span>住宿資料最後同步：2026/09/18 · 來源：飯店回覆＋Notion 住宿頁</span>
+      <a href="${notionUrl}" target="_blank" rel="noopener">原始 Notion ↗</a>
+      <span class="privacy-note">公開頁面不顯示 Agoda 訂單編號或私人住宅完整門牌／房號。</span>
+    </div>
+  `;
 }
+
 
 const MENU_ITEMS=[
   ['flight','航班與日期'],['base','住宿'],['plan','每日行程'],['highlights','必去景點'],['reservations','預約中心'],['events','秋季限定'],['options','備選景點'],['community','PTT / IG'],['checklist','交通＋Checklist']
