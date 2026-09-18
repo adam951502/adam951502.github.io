@@ -22,12 +22,12 @@ const DAY_MAPS={
     [{label:'Top of the Rock',q:'Top of the Rock New York NY'}]
   ],
   oct5:[
-    [{label:'Hunters Point Ferry',q:'Hunters Point South Ferry Landing Queens NY'},{label:'Wall St Pier 11',q:'Wall Street Pier 11 New York NY'}],
-    [{label:'Statue ferry',q:'Statue City Cruises Battery Park New York NY'}],
-    [{label:'Stone Street',q:'Stone Street New York NY'}],
-    [{label:'Wall Street',q:'Wall Street New York NY'},{label:'Charging Bull',q:'Charging Bull New York NY'}],
-    [{label:'9/11 Memorial',q:'9/11 Memorial New York NY'}],
-    [{label:'Oculus',q:'Oculus World Trade Center New York NY'},{label:'Brookfield Place',q:'Brookfield Place New York NY'}]
+    [{label:'Hotel',q:'Hilton Garden Inn Long Island City New York'}],
+    [{label:'First Dept · pending',q:'27 Madison Avenue New York NY 10010'},{label:'Second Dept · pending',q:'45 Monroe Place Brooklyn NY 11201'}],
+    [{label:'First Dept · pending',q:'27 Madison Avenue New York NY 10010'},{label:'Second Dept · pending',q:'45 Monroe Place Brooklyn NY 11201'}],
+    [{label:'Family lunch nearby',q:'restaurants near New York Supreme Court Appellate Division New York NY'}],
+    [{label:'Madison Square Park',q:'Madison Square Park New York NY'},{label:'9/11 Memorial',q:'9/11 Memorial New York NY'},{label:'Brooklyn Heights',q:'Brooklyn Heights Promenade Brooklyn NY'},{label:'DUMBO',q:'DUMBO Brooklyn NY'}],
+    [{label:'LIC',q:'Long Island City Queens NY'}]
   ],
   oct6:[
     [{label:'Meatpacking District',q:'Meatpacking District New York NY'}],
@@ -39,12 +39,12 @@ const DAY_MAPS={
     [{label:'West Village',q:'West Village New York NY'}]
   ],
   oct7:[
-    [{label:'DUMBO',q:'DUMBO Brooklyn NY'}],
+    [{label:'Battery Park',q:'Battery Park New York NY'},{label:'Statue ferry',q:'Statue City Cruises Battery Park New York NY'}],
+    [{label:'Statue ferry',q:'Statue City Cruises Battery Park New York NY'}],
+    [{label:'Stone Street',q:'Stone Street New York NY'},{label:'Wall Street',q:'Wall Street New York NY'},{label:'Charging Bull',q:'Charging Bull New York NY'}],
+    [{label:'Wall St Pier 11',q:'Wall Street Pier 11 New York NY'},{label:'DUMBO',q:'DUMBO Brooklyn NY'}],
     [{label:'Brooklyn Bridge Park',q:'Brooklyn Bridge Park New York NY'},{label:'Pebble Beach',q:'Pebble Beach Brooklyn Bridge Park NY'}],
-    [{label:'Time Out Market',q:'Time Out Market New York NY'}],
-    [{label:'Brooklyn Heights',q:'Brooklyn Heights Promenade Brooklyn NY'}],
-    [{label:'Brooklyn Bridge',q:'Brooklyn Bridge Pedestrian Walkway New York NY'}],
-    [{label:'SoHo',q:'SoHo Manhattan New York NY'},{label:'Chinatown',q:'Chinatown Manhattan New York NY'}]
+    [{label:'Brooklyn Heights',q:'Brooklyn Heights Promenade Brooklyn NY'},{label:'Time Out Market',q:'Time Out Market New York NY'}]
   ],
   oct8:[
     [{label:'MoMA',q:'Museum of Modern Art New York NY'}],
