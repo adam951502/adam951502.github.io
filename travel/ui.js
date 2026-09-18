@@ -1,9 +1,9 @@
 const RESERVATIONS = [
   {
-    id:'statue',tier:'now',badge:'現在就訂',recommend:'★★★★★',date:'10/05（一）上午',
+    id:'statue',tier:'now',badge:'現在就訂',recommend:'★★★★★',date:'10/07（三）上午',
     name:'自由女神＋Ellis Island',en:'Statue of Liberty & Ellis Island',wiki:'Statue_of_Liberty',
     intro:'第一次紐約很值得正式登島。官方 ferry 一張票就包含 Liberty Island、Ellis Island、自由女神博物館與移民博物館；比只在岸邊拍照完整很多。',
-    advice:'一般旅客可先考慮 General Admission；若 Pedestal Reserve 仍有名額且可接受較多樓梯，再考慮升級。早場較適合，下午也能保留時間給 Wall Street／9/11。',
+    advice:'10/5 已改為 Bar Admission Ceremony family day，因此自由女神移到 10/7 上午。可先考慮 General Admission；若 Pedestal Reserve 仍有名額且可接受較多樓梯，再考慮升級。早場結束後可接 Lower Manhattan＋DUMBO。',
     fact:'官方票種：General / Pedestal Reserve / Crown Reserve。官方也提醒要預留安檢與登船時間。',
     link:'https://statuecitycruises.com/tickets',map:'Statue City Cruises Battery Park New York NY'
   },
@@ -18,16 +18,16 @@ const RESERVATIONS = [
   {
     id:'broadway',tier:'now',badge:'劇目確定就訂',recommend:'★★★★★',date:'10/08（四）晚間',
     name:'Broadway',en:'Broadway Show',wiki:'Broadway_theatre',
-    intro:'我把它列為第一次紐約的 Must-Go 夜間體驗。看完戲再去 Times Square 走 30–45 分鐘，會比單獨去時代廣場完整很多。',
+    intro:'Broadway 是第一次到紐約很經典的夜間體驗。看完戲再去 Times Square 走 30–45 分鐘，會比單獨去時代廣場完整很多。',
     advice:'若有指定熱門劇，建議從 Broadway.org 進入官方售票渠道購票；若只是想體驗一場 Broadway，可以保留彈性再比較票價與座位。避免使用來源不明的 resale 網站。',
     fact:'Broadway.org 是 Broadway League 的官方資訊入口，可連至各劇院／製作的官方售票渠道。',
     link:'https://www.broadway.org/shows',map:'Theater District New York NY'
   },
   {
-    id:'911',tier:'now',badge:'建議先訂',recommend:'★★★★½',date:'10/05（一）下午',
+    id:'911',tier:'now',badge:'建議先訂',recommend:'★★★★½',date:'彈性：10/05 或 10/07',
     name:'9/11 Museum',en:'National September 11 Memorial & Museum',wiki:'National_September_11_Memorial_%26_Museum',
     intro:'戶外 Memorial 免費；若想更完整理解事件與重建歷史，可再安排 Museum。內容情緒較重，也可只參觀戶外紀念區。',
-    advice:'如果確定要進館，就把它和自由女神同一天，抓下午 16:00 左右。這張票是 timed ticket，不要現場賭。',
+    advice:'先等 10/5 Bar Admission Ceremony 的正式場地與時間確認。若典禮在 Manhattan 且較早結束，可排 10/5 下午；否則放在 10/7 Statue / Lower Manhattan 行程後。Museum 使用 timed ticket，確定日期後再鎖時段。',
     fact:'Museum admission 目前 US$24–36，可提前最多 6 個月購買；官方要求 timed tickets 先行購買。',
     link:'https://www.911memorial.org/visit/visit-museum-1',map:'9/11 Memorial & Museum New York NY'
   },
