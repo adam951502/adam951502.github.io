@@ -7,6 +7,7 @@ window.NYC_TRIP={
         ["入境後","領取行李後直接使用 Uber / rideshare 前往 Long Island City"],
         ["深夜","入住 Hilton Garden Inn Long Island City New York"]
       ],
+      fun:"第一個有感的瞬間不是景點，而是深夜車窗外第一次看到紐約。飛了快 15 小時，終於從 JFK 往城市裡走，整趟旅行正式開始。",
       food:"長途飛行抵達日不安排固定餐廳，以機場或飯店附近簡單補給為主。",
       note:"實際做法是深夜直接叫車，不在長途飛行後再拖行李轉 AirTrain / subway。",
       tip:"分享給第一次到紐約的旅客：如果抵達時間已晚、行李又多，直接叫車會比省交通費更省體力。"
@@ -21,6 +22,7 @@ window.NYC_TRIP={
         ["傍晚","Louis Vuitton Fifth Avenue 客製燙印"],
         ["晚上","Broadway / Times Square 一帶散步"]
       ],
+      fun:"第一天最好玩的地方是『交通本身就是景點』：搭 Roosevelt Island Tram 飛過 East River，再一路走進 Fifth Avenue、Grand Central 和 Times Square，城市感一下子全部打開。",
       food:"Utopia Bagel、The Grey Dog。",
       note:"第一天沒有排太多硬性時段，適合利用 tram＋Midtown 經典點慢慢進入紐約節奏。",
       tip:"Roosevelt Island Tram 很適合第一次到紐約：交通本身就是景點，接 Fifth Avenue / Midtown 也順。"
@@ -35,6 +37,7 @@ window.NYC_TRIP={
         ["18:00","抵達 Battery Maritime Building"],
         ["晚上","Lower Manhattan 順路看 Charging Bull"]
       ],
+      fun:"這天的反差最大：早上還站在 Manhattan 碼頭，沿 Hudson River 一路往北，到了 Bear Mountain 之後真的像暫時離開紐約。船、秋色、山景放在同一天，非常有旅行感。",
       food:"Paris Baguette、麻辣串串。",
       note:"這是整趟很有季節性的體驗：不是只搭觀光船，而是把 Hudson River 航程與 Bear Mountain 半日健行合在一起。",
       tip:"Seastreak 官方提醒碼頭到 Bear Mountain State Park 約 0.6 mile 上坡，前段較陡，務必穿好走的鞋。"
@@ -48,6 +51,7 @@ window.NYC_TRIP={
         ["傍晚","Hudson Yards：Vessel"],
         ["傍晚","Edge NYC 高空觀景"]
       ],
+      fun:"這天最特別的不是熱門景點，而是家人的重要時刻。參加 Bar Admission Ceremony 之後，再去 NYPL、Vessel 和 Edge，把私人回憶和紐約城市景觀接在同一天。",
       food:"Apollo Bagels、Jollibee。",
       note:"這一天有私人家庭活動；如果照此行程給一般旅客參考，可把上午替換成 Bryant Park＋NYPL，再接 Hudson Yards。",
       tip:"NYPL、Vessel、Edge 可以順成一條 Midtown → West Side 動線；Edge 適合留在傍晚到入夜。"
@@ -60,6 +64,7 @@ window.NYC_TRIP={
         ["白天","Outlet 購物日"],
         ["傍晚","開車返回 New York City"]
       ],
+      fun:"連續幾天搭地鐵後，突然自己開車離開紐約非常有新鮮感。一路開到 Woodbury，把購物變成一整天的 road trip，也讓行程節奏完全換了一種味道。",
       food:"Utopia Bagel、Shake Shack。",
       note:"把 Woodbury 完整切成一日，不和 Manhattan 景點混排，實際上比較不會趕。",
       tip:"Woodbury 距 NYC 約一小時車程；自駕的優勢是戰利品多時不用搬著購物袋搭巴士。"
@@ -75,6 +80,7 @@ window.NYC_TRIP={
         ["傍晚","Moynihan Train Hall"],
         ["晚上","Broadway：Harry Potter and the Cursed Child · Lyric Theatre"]
       ],
+      fun:"這可能是整趟最『紐約電影感』的一天：從咖啡、Chelsea Market、Little Island、High Line 一路走到 Hudson Yards，天黑後再進 Broadway 看 Harry Potter，從早到晚沒有一段無聊。",
       food:"Los Tacos No. 1、Blue Bottle、Joe's Pizza、The Halal Guys。",
       note:"這天是很完整的 West Side 步行路線：咖啡 → 市場 → 河岸公園 → High Line → Hudson Yards → Penn District → Broadway。",
       tip:"High Line 不需要來回走；南往北一路接 Hudson Yards，再往 Moynihan / Times Square 最省折返。"
@@ -91,6 +97,7 @@ window.NYC_TRIP={
         ["傍晚","DUMBO / Manhattan Bridge 經典視角"],
         ["晚上","Supreme New York"]
       ],
+      fun:"這天把最經典的紐約濃縮在一起：真的登上自由女神基座、走過 Wall Street，再一路過 Brooklyn Bridge 到 DUMBO。腳很累，但也是最有『我真的來到紐約了』感的一天。",
       food:"Ess-a-Bagel、Los Tacos No. 1、王記魚丸店。",
       note:"這是全程景點密度最高的一天；自由女神、Financial District、Brooklyn 一次串起來，步行量也最高。",
       tip:"自由女神務必認 Statue City Cruises 官方入口。Battery Park 周邊會有非官方售票人員；Pedestal Access 也建議事先預約。"
@@ -103,6 +110,7 @@ window.NYC_TRIP={
         ["傍晚","前往 Rockefeller Center"],
         ["日落前後","Top of the Rock：sunset → blue hour → night view"]
       ],
+      fun:"白天在 Chinatown 和 Washington Square Park 慢慢走，傍晚再上 Top of the Rock 等城市亮燈。從街頭生活一路看到 Manhattan 全景，節奏非常舒服。",
       food:"787 Coffee、La Colombe Coffee、The Halal Guys。",
       note:"Top of the Rock 特別留到日落前入場，能一次看到白天、夕陽與夜景三種城市狀態。",
       tip:"如果只選一個 Manhattan 觀景台，Top of the Rock 最大優點是畫面裡會直接看到 Empire State Building。"
@@ -117,6 +125,7 @@ window.NYC_TRIP={
         ["晚上","Uber 前往 JFK"],
         ["深夜","使用 VIP ONE 機場快速通關／協助服務，準備搭 BR31"]
       ],
+      fun:"最後一天沒有再拚景點，反而變成最像『住在紐約』的一天：在 Central Park 野餐、和親友吃飯，晚上才回飯店拿行李去 JFK，旅行是慢慢收尾的。",
       food:"Central Park picnic＋晚餐。",
       note:"最後一天沒有再塞遠距離景點；公園、晚餐、取行李、機場是一個很舒服的離境節奏。",
       tip:"深夜國際線離境日，最後一個景點最好留在 Manhattan 中央或住宿附近，不要把行程推到 Queens 深處再折返。"
