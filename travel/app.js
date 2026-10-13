@@ -1,7 +1,7 @@
 const trip=window.NYC_TRIP;
 
-const mapsSearch=q=>\`https://www.google.com/maps/search/?api=1&query=\${encodeURIComponent(q)}\`;
-const mapBtn=m=>\`<a class="timeline-map" href="\${m.url||mapsSearch(m.q)}" target="_blank" rel="noopener">📍 \${m.label}</a>\`;
+const mapsSearch=q=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+const mapBtn=m=>`<a class="timeline-map" href="${m.url||mapsSearch(m.q)}" target="_blank" rel="noopener">📍 ${m.label}</a>`;
 
 const DAY_MAPS={
   oct2:[
@@ -78,33 +78,33 @@ const panel=document.querySelector("#dayPanel");
 
 function renderDay(d){
   const maps=DAY_MAPS[d.id]||[];
-  panel.innerHTML=\`<article class="card daydetail final-day">
+  panel.innerHTML=`<article class="card daydetail final-day">
     <div class="dayhero">
       <div>
-        <div class="datebig">\${d.date} <small>週\${d.dow}</small></div>
-        <h3>\${d.title}</h3>
-        <p>\${d.area}</p>
+        <div class="datebig">${d.date} <small>週${d.dow}</small></div>
+        <h3>${d.title}</h3>
+        <p>${d.area}</p>
       </div>
-      <span class="tone \${d.tone}">實際走訪</span>
+      <span class="tone ${d.tone}">實際走訪</span>
     </div>
     <div class="timeline">
-      \${d.core.map((x,i)=>\`<div class="time">
-        <b>\${x[0]}</b>
+      ${d.core.map((x,i)=>`<div class="time">
+        <b>${x[0]}</b>
         <div class="timeline-copy">
-          <span>\${x[1]}</span>
-          \${maps[i]?.length?\`<div class="timeline-maps">\${maps[i].map(mapBtn).join("")}</div>\`:""}
+          <span>${x[1]}</span>
+          ${maps[i]?.length?`<div class="timeline-maps">${maps[i].map(mapBtn).join("")}</div>`:""}
         </div>
-      </div>\`).join("")}
+      </div>`).join("")}
     </div>
     <div class="daynotes">
-      <div class="food"><b>🍴 當日吃喝</b><span>\${d.food}</span></div>
-      <div class="mom"><b>🧭 實際心得</b><span>\${d.note}</span></div>
-      <div class="optional"><b>💡 給其他旅客</b><span>\${d.tip}</span></div>
+      <div class="food"><b>🍴 當日吃喝</b><span>${d.food}</span></div>
+      <div class="mom"><b>🧭 實際心得</b><span>${d.note}</span></div>
+      <div class="optional"><b>💡 給其他旅客</b><span>${d.tip}</span></div>
     </div>
-  </article>\`;
+  </article>`;
 }
 
-tabs.innerHTML=trip.days.map((d,i)=>\`<button class="tab \${i===0?"active":""}" data-id="\${d.id}">\${d.date}<small>週\${d.dow}</small></button>\`).join("");
+tabs.innerHTML=trip.days.map((d,i)=>`<button class="tab ${i===0?"active":""}" data-id="${d.id}">${d.date}<small>週${d.dow}</small></button>`).join("");
 tabs.addEventListener("click",e=>{
   const b=e.target.closest(".tab");
   if(!b)return;
