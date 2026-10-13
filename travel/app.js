@@ -3,6 +3,37 @@ const trip=window.NYC_TRIP;
 const mapsSearch=q=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 const mapBtn=m=>`<a class="timeline-map" href="${m.url||mapsSearch(m.q)}" target="_blank" rel="noopener">📍 ${m.label}</a>`;
 
+const DAY_VISUALS={
+  oct2:[["John_F._Kennedy_International_Airport","JFK arrival"],["Long_Island_City","Long Island City"]],
+  oct3:[["Roosevelt_Island_Tramway","Roosevelt Island Tram"],["Grand_Central_Terminal","Grand Central"],["Times_Square","Times Square"]],
+  oct4:[["Bear_Mountain_State_Park","Bear Mountain"],["Hudson_River","Hudson River"],["Hudson_Highlands","Hudson Highlands"]],
+  oct5:[["New_York_Public_Library_Main_Branch","New York Public Library"],["Vessel_(structure)","Vessel"],["30_Hudson_Yards","Edge / Hudson Yards"]],
+  oct6:[["Woodbury_Common_Premium_Outlets","Woodbury Common"],["Hudson_Valley","Hudson Valley drive"]],
+  oct7:[["Chelsea_Market","Chelsea Market"],["High_Line","High Line"],["Lyric_Theatre_(1998_New_York_City)","Broadway night"]],
+  oct8:[["Statue_of_Liberty","Statue of Liberty"],["New_York_Stock_Exchange","Wall Street"],["Dumbo,_Brooklyn","DUMBO"]],
+  oct9:[["Washington_Square_Park","Washington Square"],["30_Rockefeller_Plaza","Top of the Rock"],["Empire_State_Building","Empire State view"]],
+  oct10:[["Central_Park","Central Park"],["Bethesda_Terrace_and_Fountain","Central Park details"]]
+};
+
+const dayWikiThumb=(title,size=1100)=>`https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&origin=*&piprop=thumbnail&pithumbsize=${size}&titles=${encodeURIComponent(title)}`;
+
+async function hydrateDayPhotos(d){
+  const imgs=[...panel.querySelectorAll(".day-photo img[data-wiki]")];
+  await Promise.all(imgs.map(async img=>{
+    try{
+      const response=await fetch(dayWikiThumb(img.dataset.wiki));
+      if(!response.ok)return;
+      const data=await response.json();
+      const page=Object.values(data.query?.pages||{})[0];
+      const src=page?.thumbnail?.source;
+      if(src){
+        img.src=src;
+        img.onload=()=>{img.classList.add("loaded");img.previousElementSibling?.remove();};
+      }
+    }catch(e){}
+  }));
+}
+
 const DAY_MAPS={
   oct2:[
     [{label:"JFK Terminal 1",q:"JFK Airport Terminal 1 Queens NY"}],
@@ -78,6 +109,7 @@ const panel=document.querySelector("#dayPanel");
 
 function renderDay(d){
   const maps=DAY_MAPS[d.id]||[];
+  const visuals=DAY_VISUALS[d.id]||[];
   panel.innerHTML=`<article class="card daydetail final-day">
     <div class="dayhero">
       <div>
@@ -86,6 +118,15 @@ function renderDay(d){
         <p>${d.area}</p>
       </div>
       <span class="tone ${d.tone}">實際走訪</span>
+    </div>
+    <div class="day-story">
+      <div class="day-story-copy">
+        <span>WHY THIS DAY WAS FUN</span>
+        <p>${d.fun}</p>
+      </div>
+      <div class="day-photo-strip ${visuals.length===2?"two":""}">
+        ${visuals.map((v,i)=>`<figure class="day-photo"><div class="day-photo-placeholder">NYC</div><img data-wiki="${v[0]}" alt="${v[1]}" loading="lazy"><figcaption>${v[1]}</figcaption></figure>`).join("")}
+      </div>
     </div>
     <div class="timeline">
       ${d.core.map((x,i)=>`<div class="time">
@@ -102,6 +143,7 @@ function renderDay(d){
       <div class="optional"><b>💡 給其他旅客</b><span>${d.tip}</span></div>
     </div>
   </article>`;
+  hydrateDayPhotos(d);
 }
 
 tabs.innerHTML=trip.days.map((d,i)=>`<button class="tab ${i===0?"active":""}" data-id="${d.id}">${d.date}<small>週${d.dow}</small></button>`).join("");
