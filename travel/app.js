@@ -64,18 +64,21 @@ function renderDaySpotCards(dayId){
 async function hydrateDaySpotImages(){
   const imgs=[...panel.querySelectorAll(".day-spot-photo img[data-wiki]")];
   await Promise.all(imgs.map(async img=>{
-    if(!img.dataset.wiki)return;
-    try{
-      const response=await fetch(dayWikiThumb(img.dataset.wiki,1000));
-      if(!response.ok)return;
-      const data=await response.json();
-      const page=Object.values(data.query?.pages||{})[0];
-      const src=page?.thumbnail?.source;
-      if(src){
-        img.src=src;
-        img.onload=()=>{img.classList.add("loaded");img.previousElementSibling?.remove();};
-      }
-    }catch(e){}
+    const loadTitle=async title=>{
+      try{
+        const response=await fetch(dayWikiThumb(title,1000));
+        if(!response.ok)return "";
+        const data=await response.json();
+        const page=Object.values(data.query?.pages||{})[0];
+        return page?.thumbnail?.source||"";
+      }catch(e){return ""}
+    };
+    let src=img.dataset.wiki?await loadTitle(img.dataset.wiki):"";
+    if(!src)src=await loadTitle("New_York_City");
+    if(src){
+      img.src=src;
+      img.onload=()=>{img.classList.add("loaded");img.previousElementSibling?.remove();};
+    }
   }));
 }
 
