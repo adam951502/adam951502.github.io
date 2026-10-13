@@ -34,6 +34,51 @@ async function hydrateDayPhotos(d){
   }));
 }
 
+
+const spotIndex=new Map((window.NYC_SPOTS||[]).map(x=>[x.id,x]));
+
+function renderDaySpotCards(dayId){
+  const ids=(window.NYC_DAY_SPOTS&&window.NYC_DAY_SPOTS[dayId])||[];
+  const spots=ids.map(id=>spotIndex.get(id)).filter(Boolean);
+  if(!spots.length)return "";
+  return "<section class='day-spot-section'>" +
+    "<div class='day-spot-head'><div><span>VISITED SPOTS</span><h4>今天走過的景點｜每一站都有圖＋介紹</h4></div><small>"+spots.length+" stops</small></div>" +
+    "<div class='day-spot-grid'>" +
+    spots.map(spot=>
+      "<article class='day-spot-card'>" +
+        "<div class='day-spot-photo'><div class='day-spot-placeholder'>NYC</div><img data-wiki='"+((spot.wiki&&spot.wiki[0])||"")+"' alt='"+spot.title+"' loading='lazy'></div>" +
+        "<div class='day-spot-copy'>" +
+          "<div class='day-spot-meta'><span>"+spot.cat+"</span><small>"+spot.day+"</small></div>" +
+          "<h5>"+spot.title+"<small>"+(spot.en||"")+"</small></h5>" +
+          "<p>"+spot.intro+"</p>" +
+          "<div class='day-spot-tip'><b>實際心得：</b>"+spot.tip+"</div>" +
+          "<div class='day-spot-actions'><a href='"+mapsSearch(spot.map)+"' target='_blank' rel='noopener'>📍 Maps</a>" +
+            (spot.official?"<a href='"+spot.official+"' target='_blank' rel='noopener'>Official ↗</a>":"") +
+          "</div>" +
+        "</div>" +
+      "</article>"
+    ).join("") +
+    "</div></section>";
+}
+
+async function hydrateDaySpotImages(){
+  const imgs=[...panel.querySelectorAll(".day-spot-photo img[data-wiki]")];
+  await Promise.all(imgs.map(async img=>{
+    if(!img.dataset.wiki)return;
+    try{
+      const response=await fetch(dayWikiThumb(img.dataset.wiki,1000));
+      if(!response.ok)return;
+      const data=await response.json();
+      const page=Object.values(data.query?.pages||{})[0];
+      const src=page?.thumbnail?.source;
+      if(src){
+        img.src=src;
+        img.onload=()=>{img.classList.add("loaded");img.previousElementSibling?.remove();};
+      }
+    }catch(e){}
+  }));
+}
+
 const DAY_MAPS={
   oct2:[
     [{label:"JFK Terminal 1",q:"JFK Airport Terminal 1 Queens NY"}],
@@ -142,8 +187,10 @@ function renderDay(d){
       <div class="mom"><b>🧭 實際心得</b><span>${d.note}</span></div>
       <div class="optional"><b>💡 給其他旅客</b><span>${d.tip}</span></div>
     </div>
+    ${renderDaySpotCards(d.id)}
   </article>`;
   hydrateDayPhotos(d);
+  hydrateDaySpotImages();
 }
 
 tabs.innerHTML=trip.days.map((d,i)=>`<button class="tab ${i===0?"active":""}" data-id="${d.id}">${d.date}<small>週${d.dow}</small></button>`).join("");
