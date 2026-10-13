@@ -26,12 +26,12 @@ function buildDrawer(){
   const drawer=document.createElement("aside");
   drawer.id="mobileDrawer";
   drawer.className="mobile-drawer";
-  drawer.innerHTML=\`<div class="drawer-head">
+  drawer.innerHTML=`<div class="drawer-head">
     <div><b>NYC 2026</b><span>Actual trip guide</span></div>
     <button type="button" class="drawer-close" aria-label="關閉">×</button>
   </div>
-  <nav>\${MENU_ITEMS.map(([id,label],i)=>\`<a href="#\${id}" data-target="\${id}"><span>\${String(i+1).padStart(2,"0")}</span>\${label}</a>\`).join("")}</nav>
-  <a class="drawer-top" href="#top">↑ 回到最上方</a>\`;
+  <nav>${MENU_ITEMS.map(([id,label],i)=>`<a href="#${id}" data-target="${id}"><span>${String(i+1).padStart(2,"0")}</span>${label}</a>`).join("")}</nav>
+  <a class="drawer-top" href="#top">↑ 回到最上方</a>`;
 
   document.body.prepend(shade);
   document.body.prepend(drawer);
