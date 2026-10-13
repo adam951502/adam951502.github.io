@@ -111,3 +111,61 @@
   .visited-media.triple{height:280px;grid-template-rows:1.2fr .8fr}
   .visited-media.triple .visited-shot{min-height:0}
 }
+
+
+/* Fun-first story moments */
+.moments-section{padding-top:26px}
+.moments-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:22px}
+.moment-card{background:var(--card);border:1px solid rgba(24,37,47,.08);border-radius:26px;overflow:hidden;box-shadow:var(--shadow);display:grid;grid-template-columns:minmax(0,46%) 1fr;min-height:390px}
+.moment-card.wide{grid-column:1/-1;grid-template-columns:minmax(0,58%) 1fr}
+.moment-media{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#dce7e4;min-height:100%}
+.moment-shot{position:relative;min-height:220px;overflow:hidden}
+.moment-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s ease,transform .4s ease}
+.moment-shot img.loaded{opacity:1}.moment-card:hover .moment-shot img.loaded{transform:scale(1.025)}
+.moment-copy{padding:24px;display:flex;flex-direction:column;justify-content:center}
+.moment-copy>span{font-size:10px;font-weight:950;letter-spacing:.13em;color:var(--blue)}
+.moment-copy h3{font-size:clamp(23px,3vw,34px);line-height:1.08;letter-spacing:-.025em;margin:8px 0 12px}
+.moment-copy p{font-size:14px;line-height:1.72;color:#465962;margin:0}
+.moment-why{margin-top:16px;padding:12px 13px;border-radius:14px;background:#fff4df;color:#704b19;font-size:12px;font-weight:750;line-height:1.55}
+
+/* Daily route becomes an illustrated story, not only a timeline */
+.day-story{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;padding:20px 24px 2px;background:linear-gradient(180deg,#fffdf9,#faf9f5)}
+.day-story-copy{padding:8px 2px 12px;display:flex;flex-direction:column;justify-content:center}
+.day-story-copy>span{font-size:10px;font-weight:950;letter-spacing:.13em;color:var(--gold)}
+.day-story-copy p{font-size:16px;line-height:1.72;font-weight:720;color:#31434e;margin:8px 0 0}
+.day-photo-strip{height:260px;display:grid;grid-template-columns:1.25fr .75fr .75fr;gap:5px}
+.day-photo-strip.two{grid-template-columns:1.3fr .7fr}
+.day-photo{position:relative;margin:0;overflow:hidden;border-radius:16px;background:#dce6e3}
+.day-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s ease,transform .4s ease}
+.day-photo img.loaded{opacity:1}.day-photo:hover img.loaded{transform:scale(1.025)}
+.day-photo-placeholder{position:absolute;inset:0;display:grid;place-items:center;font-size:18px;font-weight:950;letter-spacing:.1em;color:rgba(23,50,77,.22)}
+.day-photo figcaption{position:absolute;bottom:8px;left:8px;right:8px;width:max-content;max-width:calc(100% - 16px);background:rgba(18,35,48,.67);color:#fff;border-radius:999px;padding:5px 8px;font-size:9px;font-weight:800;backdrop-filter:blur(7px)}
+
+/* Journal cards should read like postcards */
+.journal-card:nth-child(3n+1){transform:rotate(-.25deg)}
+.journal-card:nth-child(3n+2){transform:rotate(.25deg)}
+.journal-card:nth-child(3n){transform:rotate(-.1deg)}
+.journal-card:hover{transform:translateY(-3px) rotate(0)}
+.journal-card{transition:transform .2s ease,box-shadow .2s ease}
+
+@media(max-width:900px){
+  .moments-grid{grid-template-columns:1fr}
+  .moment-card,.moment-card.wide{grid-column:auto;grid-template-columns:42% 1fr}
+  .day-story{grid-template-columns:1fr}
+  .day-photo-strip{height:240px}
+}
+
+@media(max-width:620px){
+  .moment-card,.moment-card.wide{grid-template-columns:1fr;min-height:0}
+  .moment-media{height:240px}
+  .moment-shot{min-height:240px}
+  .moment-copy{padding:18px}
+  .moment-copy h3{font-size:25px}
+  .day-story{padding:16px 16px 2px;gap:10px}
+  .day-story-copy p{font-size:14px}
+  .day-photo-strip,.day-photo-strip.two{height:300px;grid-template-columns:1fr 1fr;grid-template-rows:1.25fr .75fr}
+  .day-photo-strip .day-photo:first-child{grid-column:1/3}
+  .day-photo-strip.two .day-photo:first-child{grid-column:1}
+  .day-photo-strip.two{grid-template-rows:1fr}
+  .day-photo{border-radius:13px}
+}
