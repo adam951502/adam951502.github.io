@@ -237,7 +237,7 @@ async function renderJournalStrip(){
 function spotCard(x){
   const images=x.wiki.slice(0,3).map(w=>`<div class="visited-shot"><div class="visited-placeholder">NYC</div><img data-wiki="${w}" alt="${x.title}" loading="lazy"></div>`).join("");
   return `<article class="visited-card" data-cat="${x.cat}">
-    <div class="visited-media ${x.wiki.length>1?"double":""}">${images}</div>
+    <div class="visited-media ${x.wiki.length>=3?"triple":x.wiki.length>1?"double":""}">${images}</div>
     <div class="visited-body">
       <div class="visited-meta"><span>${x.day}</span><b>${x.cat}</b></div>
       <h3>${x.title}<small>${x.en}</small></h3>
