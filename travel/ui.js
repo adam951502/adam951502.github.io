@@ -1,5 +1,6 @@
 const MENU_ITEMS=[
   ["journal","旅程故事"],
+  ["moments","最好玩的瞬間"],
   ["plan","每日路線"],
   ["highlights","照片景點"],
   ["food","吃喝紀錄"],
