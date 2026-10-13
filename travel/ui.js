@@ -1,11 +1,11 @@
 const MENU_ITEMS=[
-  ["flight","航班與日期"],
-  ["base","住宿"],
-  ["plan","實際行程"],
-  ["highlights","走過的景點"],
-  ["booking","預約心得"],
-  ["special","特別行程"],
+  ["journal","旅程故事"],
+  ["plan","每日路線"],
+  ["highlights","照片景點"],
   ["food","吃喝紀錄"],
+  ["special","特別行程"],
+  ["base","住宿資訊"],
+  ["booking","預約心得"],
   ["tips","旅行心得"]
 ];
 
@@ -27,7 +27,7 @@ function buildDrawer(){
   drawer.id="mobileDrawer";
   drawer.className="mobile-drawer";
   drawer.innerHTML=`<div class="drawer-head">
-    <div><b>NYC 2026</b><span>Actual trip guide</span></div>
+    <div><b>NYC 2026</b><span>Trip Journal</span></div>
     <button type="button" class="drawer-close" aria-label="關閉">×</button>
   </div>
   <nav>${MENU_ITEMS.map(([id,label],i)=>`<a href="#${id}" data-target="${id}"><span>${String(i+1).padStart(2,"0")}</span>${label}</a>`).join("")}</nav>
