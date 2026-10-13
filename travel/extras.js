@@ -169,6 +169,51 @@ const JOURNAL_DAYS=[
   {date:"10/10",title:"A Slow Goodbye",wiki:"Central_Park",text:"最後一天只留下 Central Park picnic、晚餐與前往 JFK。"}
 ];
 
+const BEST_MOMENTS=[
+  {
+    kicker:"DAY 2 · FIRST WOW",
+    title:"搭纜車飛進 Manhattan skyline",
+    wiki:["Roosevelt_Island_Tramway","Queensboro_Bridge"],
+    copy:"第一個完整觀光日沒有急著衝博物館，而是先搭 Roosevelt Island Tram。纜車升空的幾分鐘裡，East River、Queensboro Bridge 和 Midtown 一起出現在窗外，會有很明確的『真的到紐約了』感。",
+    why:"適合第一天：刺激度夠，但體力成本很低。"
+  },
+  {
+    kicker:"DAY 3 · AUTUMN ESCAPE",
+    title:"早上還在 Manhattan，下午已經在 Hudson 秋色裡",
+    wiki:["Bear_Mountain_State_Park","Hudson_River"],
+    copy:"Seastreak 從 Lower Manhattan 往北開，城市慢慢變成河谷和山景。下船後再走進 Bear Mountain，看秋天的樹色和 Hudson River，這一天讓整趟旅行不只剩下高樓與街景。",
+    why:"最有季節限定感的一天，也是城市與自然反差最大的一天。"
+  },
+  {
+    kicker:"DAY 4 · FAMILY MEMORY",
+    title:"一個只有這趟旅行才會有的家庭時刻",
+    wiki:["New_York_Public_Library_Main_Branch","30_Hudson_Yards"],
+    copy:"Bar Admission Ceremony 是很私人、很難複製的旅行記憶。典禮結束後沒有把整天留白，而是繼續走 NYPL、Vessel、Edge，讓家庭的重要時刻和紐約城市景觀接在一起。",
+    why:"旅行最好玩的地方，有時不是最熱門的景點，而是只有你們會記得的那一天。"
+  },
+  {
+    kicker:"DAY 6 · PERFECT NYC DAY",
+    title:"咖啡、High Line、Hudson Yards，最後直接進 Broadway",
+    wiki:["High_Line","Lyric_Theatre_(1998_New_York_City)"],
+    copy:"從 Starbucks Reserve、Chelsea Market、Little Island 開始，一路沿 High Line 向北走，經過 Hudson Yards 和 Moynihan，晚上直接坐進 Lyric Theatre 看 Harry Potter。這種從白天走到夜晚、每一段都不同的節奏，是整趟最完整的一天。",
+    why:"如果朋友只想抄一天行程，這天最值得直接複製。"
+  },
+  {
+    kicker:"DAY 7 · ICONIC NEW YORK",
+    title:"真的站上自由女神基座，再一路走到 Brooklyn",
+    wiki:["Statue_of_Liberty","Dumbo,_Brooklyn"],
+    copy:"早上搭官方 ferry 登 Liberty Island，而且不是只在外面拍照，而是真的進 Pedestal。回到 Manhattan 後走 Wall Street，再跨到 Brooklyn Bridge、DUMBO，經典紐約在同一天連成一條線。",
+    why:"最累的一天，也是最有『第一次紐約全部收進來』感的一天。"
+  },
+  {
+    kicker:"DAY 8 · BEST SUNSET",
+    title:"看著 Empire State Building 從夕陽亮到夜景",
+    wiki:["30_Rockefeller_Plaza","Empire_State_Building"],
+    copy:"Top of the Rock 特別選在日落前入場。城市從白天、金色夕陽、blue hour 一路變成夜景，Empire State Building 一直都在正前方。不是單純上去拍一張照，而是坐著看整座城市慢慢亮起來。",
+    why:"這是最適合當旅行 ending montage 的畫面。"
+  }
+];
+
 const BOOKINGS=[
   {title:"Bear Mountain Fall Foliage Cruise",when:"季節限定 · 建議提前訂",level:"book",text:"Seastreak 的秋季一日航程從 Manhattan 沿 Hudson River 到 Bear Mountain。週末班次是完整全日行程，碼頭上山路段有明顯坡度。",link:"https://seastreak.com/tour-and-event-cruises/fall-foliage-cruise-to-bear-mountain/",label:"Seastreak Official"},
   {title:"Statue of Liberty · Pedestal Access",when:"強烈建議提前訂",level:"book",text:"Pedestal Access 名額有限；官方 ferry 請走 Statue City Cruises。基座票能進入 pedestal 內部與觀景層，和一般登島體驗不同。",link:"https://statuecitycruises.com/tickets/",label:"Statue City Cruises"},
@@ -289,6 +334,30 @@ async function hydrateVisitedImages(){
   }));
 }
 
+function momentCard(x,i){
+  return `<article class="moment-card ${i===0||i===3?"wide":""}">
+    <div class="moment-media">
+      ${x.wiki.map((w,j)=>`<div class="moment-shot"><div class="photo-placeholder">NYC</div><img data-wiki="${w}" alt="${x.title}" loading="lazy"></div>`).join("")}
+    </div>
+    <div class="moment-copy">
+      <span>${x.kicker}</span>
+      <h3>${x.title}</h3>
+      <p>${x.copy}</p>
+      <div class="moment-why">✨ ${x.why}</div>
+    </div>
+  </article>`;
+}
+
+function renderMoments(){
+  const box=document.querySelector("#momentsGrid"); if(!box)return;
+  box.innerHTML=BEST_MOMENTS.map(momentCard).join("");
+  const imgs=[...box.querySelectorAll(".moment-shot img[data-wiki]")];
+  Promise.all(imgs.map(async img=>{
+    const src=await resolveWikiImage(img.dataset.wiki,1400);
+    if(src){img.src=src;img.onload=()=>{img.classList.add("loaded");img.previousElementSibling?.remove();};}
+  }));
+}
+
 function renderBookings(){
   const box=document.querySelector("#bookingGrid"); if(!box)return;
   box.innerHTML=BOOKINGS.map(x=>`<article class="booking-card ${x.level}">
@@ -317,6 +386,7 @@ function renderFood(){
 
 renderHeroGallery();
 renderJournalStrip();
+renderMoments();
 renderVisited();
 renderBookings();
 renderSpecials();
