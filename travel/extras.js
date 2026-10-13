@@ -172,17 +172,12 @@ function renderVisited(){
 async function hydrateVisitedImages(){
   const imgs=[...document.querySelectorAll(".visited-shot img[data-wiki]")];
   await Promise.all(imgs.map(async img=>{
-    try{
-      const r=await fetch(wikiThumb(img.dataset.wiki));
-      if(!r.ok)return;
-      const d=await r.json();
-      const p=Object.values(d.query?.pages||{})[0];
-      const src=p?.thumbnail?.source;
-      if(src){
-        img.src=src;
-        img.onload=()=>{img.classList.add("loaded");img.previousElementSibling?.remove();};
-      }
-    }catch(e){}
+    let src=await resolveWikiImage(img.dataset.wiki,1200);
+    if(!src)src=await resolveWikiImage("New_York_City",1200);
+    if(src){
+      img.src=src;
+      img.onload=()=>{img.classList.add("loaded");img.previousElementSibling?.remove();};
+    }
   }));
 }
 
