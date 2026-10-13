@@ -175,24 +175,24 @@ const FOOD_DAYS=[
   ["10/10",["Central Park picnic","Family dinner"]]
 ];
 
-const mapsSearch=q=>\`https://www.google.com/maps/search/?api=1&query=\${encodeURIComponent(q)}\`;
-const wikiThumb=title=>\`https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&origin=*&piprop=thumbnail&pithumbsize=1200&titles=\${encodeURIComponent(title)}\`;
+const mapsSearch=q=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+const wikiThumb=title=>`https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&origin=*&piprop=thumbnail&pithumbsize=1200&titles=${encodeURIComponent(title)}`;
 
 function spotCard(x){
-  const images=x.wiki.slice(0,2).map(w=>\`<div class="visited-shot"><div class="visited-placeholder">NYC</div><img data-wiki="\${w}" alt="\${x.title}" loading="lazy"></div>\`).join("");
-  return \`<article class="visited-card" data-cat="\${x.cat}">
-    <div class="visited-media \${x.wiki.length>1?"double":""}">\${images}</div>
+  const images=x.wiki.slice(0,2).map(w=>`<div class="visited-shot"><div class="visited-placeholder">NYC</div><img data-wiki="${w}" alt="${x.title}" loading="lazy"></div>`).join("");
+  return `<article class="visited-card" data-cat="${x.cat}">
+    <div class="visited-media ${x.wiki.length>1?"double":""}">${images}</div>
     <div class="visited-body">
-      <div class="visited-meta"><span>\${x.day}</span><b>\${x.cat}</b></div>
-      <h3>\${x.title}<small>\${x.en}</small></h3>
-      <p>\${x.intro}</p>
-      <div class="visited-tip"><b>實際心得：</b>\${x.tip}</div>
+      <div class="visited-meta"><span>${x.day}</span><b>${x.cat}</b></div>
+      <h3>${x.title}<small>${x.en}</small></h3>
+      <p>${x.intro}</p>
+      <div class="visited-tip"><b>實際心得：</b>${x.tip}</div>
       <div class="visited-actions">
-        <a href="\${mapsSearch(x.map)}" target="_blank" rel="noopener">📍 Google Maps</a>
-        <a href="\${x.official}" target="_blank" rel="noopener">Official ↗</a>
+        <a href="${mapsSearch(x.map)}" target="_blank" rel="noopener">📍 Google Maps</a>
+        <a href="${x.official}" target="_blank" rel="noopener">Official ↗</a>
       </div>
     </div>
-  </article>\`;
+  </article>`;
 }
 
 function renderVisited(){
@@ -206,7 +206,7 @@ function renderVisited(){
     hydrateVisitedImages();
   };
   if(filters){
-    filters.innerHTML=cats.map((x,i)=>\`<button class="tab \${i===0?"active":""}" data-cat="\${x}">\${x}</button>\`).join("");
+    filters.innerHTML=cats.map((x,i)=>`<button class="tab ${i===0?"active":""}" data-cat="${x}">${x}</button>`).join("");
     filters.addEventListener("click",e=>{
       const b=e.target.closest(".tab"); if(!b)return;
       filters.querySelectorAll(".tab").forEach(x=>x.classList.remove("active")); b.classList.add("active");
@@ -235,28 +235,28 @@ async function hydrateVisitedImages(){
 
 function renderBookings(){
   const box=document.querySelector("#bookingGrid"); if(!box)return;
-  box.innerHTML=BOOKINGS.map(x=>\`<article class="booking-card \${x.level}">
-    <div class="booking-top"><span>\${x.when}</span><b>\${x.level==="book"?"需規劃":"Walk-in"}</b></div>
-    <h3>\${x.title}</h3>
-    <p>\${x.text}</p>
-    <a href="\${x.link}" target="_blank" rel="noopener">\${x.label} ↗</a>
-  </article>\`).join("");
+  box.innerHTML=BOOKINGS.map(x=>`<article class="booking-card ${x.level}">
+    <div class="booking-top"><span>${x.when}</span><b>${x.level==="book"?"需規劃":"Walk-in"}</b></div>
+    <h3>${x.title}</h3>
+    <p>${x.text}</p>
+    <a href="${x.link}" target="_blank" rel="noopener">${x.label} ↗</a>
+  </article>`).join("");
 }
 
 function renderSpecials(){
   const box=document.querySelector("#specialGrid"); if(!box)return;
-  box.innerHTML=SPECIALS.map(x=>\`<article class="special-card card">
-    <span>\${x[0]}</span><h3>\${x[1]}</h3><p>\${x[2]}</p>
-    <a href="\${mapsSearch(x[3])}" target="_blank" rel="noopener">📍 Maps</a>
-  </article>\`).join("");
+  box.innerHTML=SPECIALS.map(x=>`<article class="special-card card">
+    <span>${x[0]}</span><h3>${x[1]}</h3><p>${x[2]}</p>
+    <a href="${mapsSearch(x[3])}" target="_blank" rel="noopener">📍 Maps</a>
+  </article>`).join("");
 }
 
 function renderFood(){
   const box=document.querySelector("#foodGrid"); if(!box)return;
-  box.innerHTML=FOOD_DAYS.map(([day,items])=>\`<article class="food-day card">
-    <div class="food-day-date">\${day}</div>
-    <div class="food-chip-list">\${items.map(name=>\`<a href="\${mapsSearch(name+" New York NY")}" target="_blank" rel="noopener">\${name}<span>↗</span></a>\`).join("")}</div>
-  </article>\`).join("");
+  box.innerHTML=FOOD_DAYS.map(([day,items])=>`<article class="food-day card">
+    <div class="food-day-date">${day}</div>
+    <div class="food-chip-list">${items.map(name=>`<a href="${mapsSearch(name+" New York NY")}" target="_blank" rel="noopener">${name}<span>↗</span></a>`).join("")}</div>
+  </article>`).join("");
 }
 
 renderVisited();
