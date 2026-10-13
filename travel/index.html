@@ -10,15 +10,15 @@
 <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/284/284489.png">
 <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/284/284489.png">
 <link rel="stylesheet" href="./styles.css">
-<link rel="stylesheet" href="./extras.css?v=20261013-4">
-<link rel="stylesheet" href="./ui.css?v=20261013-4">
+<link rel="stylesheet" href="./extras.css?v=20261013-5">
+<link rel="stylesheet" href="./ui.css?v=20261013-5">
 </head>
 <body>
 <header class="hero journal-hero" id="top"><div class="wrap hero-layout">
   <div class="hero-copy">
     <div class="eyebrow">NEW YORK CITY · OCT 2026 · ACTUAL TRIP JOURNAL</div>
     <h1>9 Days in New York<br><span>我們真的走過的紐約</span></h1>
-    <p>從 Long Island City 出發，走進 Midtown、Hudson River 秋色、Chelsea、Broadway、Liberty Island、DUMBO 與 Central Park。這是一份旅行結束後才完成的 journal：保留真實路線、照片、吃喝、預約方式與走完之後才知道的心得。</p>
+    <p>這趟最好玩的地方，是每天的紐約都長得不一樣：前一天搭纜車穿過 East River，隔天已經坐船去 Hudson River 看秋色；白天可以一路走 High Line，晚上直接進 Broadway；也真的登上自由女神基座、走過 Brooklyn Bridge，再用 Top of the Rock 的夜景收尾。這裡記錄的是我們實際走過、吃過、覺得值得再推薦給朋友的紐約。</p>
     <div class="hero-stats">
       <div><strong>9</strong><span>days</span></div>
       <div><strong>8</strong><span>nights</span></div>
@@ -27,7 +27,7 @@
     </div>
     <div class="hero-actions">
       <a href="#journal">看旅程故事 ↓</a>
-      <a href="#highlights" class="ghost">看照片景點</a>
+      <a href="#moments" class="ghost">看最好玩的瞬間</a>
     </div>
   </div>
   <div id="heroGallery" class="hero-gallery" aria-label="New York trip photo collage"></div>
@@ -35,6 +35,7 @@
 
 <nav class="nav"><div class="wrap">
   <a href="#journal">旅程故事</a>
+  <a href="#moments">最好玩的瞬間</a>
   <a href="#plan">每日路線</a>
   <a href="#highlights">照片景點</a>
   <a href="#food">吃喝紀錄</a>
@@ -49,18 +50,25 @@
   <div class="journal-head">
     <div>
       <div class="kicker">The trip at a glance</div>
-      <h2>先看 9 天故事，再決定哪些路線值得照走</h2>
-      <p class="sub">每一天用一張代表照片和一句旅程摘要串起來。想看細節，再往下切到「每日路線」；想找景點，再進「照片景點」。</p>
+      <h2>這 9 天不是打卡清單，而是一趟每天都換場景的紐約</h2>
+      <p class="sub">城市纜車、秋季遊船、家庭的重要時刻、West Side 散步、Broadway、自由女神、Brooklyn、夕陽觀景台到最後一天的 Central Park picnic。先用照片把整趟旅行看一遍，再挑喜歡的路線往下看。</p>
     </div>
     <div class="journal-note">ACTUAL ROUTE · NOT A WISHLIST</div>
   </div>
   <div id="journalStrip" class="journal-strip"></div>
 </div></section>
 
+<section id="moments" class="moments-section"><div class="wrap">
+  <div class="kicker">Best moments · why this trip was fun</div>
+  <h2>這趟最值得記住的 6 個瞬間</h2>
+  <p class="sub">不是「去了幾個景點」讓旅行好玩，而是每天都有不同的情緒和畫面。這 6 個瞬間最能代表為什麼我們會想把這趟行程分享給其他人。</p>
+  <div id="momentsGrid" class="moments-grid"></div>
+</div></section>
+
 <section id="plan"><div class="wrap">
   <div class="kicker">Actual itinerary · 10/02–10/10</div>
   <h2>每日實際行程</h2>
-  <p class="sub">這裡已改成旅程結束後的實際版本。點日期可以看當天真的走過的路線、吃喝、Google Maps，以及哪些安排值得其他旅客照抄或調整。</p>
+  <p class="sub">點日期看當天真正走過的路線。每一天都有代表照片、最好玩的地方、吃喝、Google Maps 與實際心得；不是只告訴你「去哪裡」，而是讓你知道這一天為什麼值得排。</p>
   <div id="dayTabs" class="tabs"></div>
   <div id="dayPanel"></div>
 </div></section>
@@ -68,7 +76,7 @@
 <section id="highlights"><div class="wrap">
   <div class="kicker">Visited · illustrated guide</div>
   <h2>實際走過的景點圖文指南</h2>
-  <p class="sub">只保留這次真的去過的地方。每張卡片都有較完整的介紹、實際心得、Google Maps、官方網站，並改用約 1200px 的 Wikipedia / Wikimedia 圖片載入，避免之前縮圖放大後模糊。</p>
+  <p class="sub">只保留這次真的走過的地方。每個景點用多張照片搭配簡介與實際心得，讓讀者先看到畫面，再知道它為什麼值得去；需要規劃時，也能直接開 Google Maps 或官方網站。</p>
   <div id="visitedFilters" class="tabs compact"></div>
   <div id="attractionGrid" class="visited-grid"></div>
 </div></section>
@@ -184,7 +192,7 @@
 
 <section id="tips"><div class="wrap">
   <div class="kicker">What worked in real life</div>
-  <h2>走完 8 天後，最值得留下的旅行心得</h2>
+  <h2>走完 9 天後，最值得留下的旅行心得</h2>
   <div class="lesson-grid">
     <article class="card"><h3>🚕 深夜 JFK → LIC：直接叫車</h3><p>長途飛行、2PC 行李、22:05 才落地，實際上 Uber 比再研究轉車更適合保留體力。</p></article>
     <article class="card"><h3>🚡 Roosevelt Island Tram 很適合第一天</h3><p>不用長時間走路，又有 skyline；還能直接接 Midtown / Fifth Avenue，對 jet lag 日很友善。</p></article>
@@ -198,15 +206,15 @@
 </div></section>
 
 <section><div class="wrap"><div class="card sourcebox">
-  <b>Trip Journal update：</b>2026-10-13。內容依實際旅行紀錄整理；景點介紹與預約連結優先採官方來源。照片以 Wikipedia / Wikimedia 的高解析縮圖呈現，適合用網址直接分享。
+  <b>Trip Journal update：</b>2026-10-13。內容依實際旅行紀錄整理；景點介紹與預約連結優先採官方來源。頁面中的景點示意圖片用來輔助呈現旅程氛圍，實際每日路線與心得則依這次旅程紀錄整理。
 </div></div></section>
 </main>
 
 <footer><div class="wrap">NYC 2026 · Actual trip guide · Long Island City base <span class="icon-credit">· New York icon by <a href="https://www.flaticon.com/authors/icon-pond" target="_blank" rel="noopener">Icon Pond</a> on <a href="https://www.flaticon.com/free-icon/new-york_284489" target="_blank" rel="noopener">Flaticon</a></span></div></footer>
 
-<script src="./data.js?v=20261013-4"></script>
-<script src="./app.js?v=20261013-4"></script>
-<script src="./extras.js?v=20261013-4"></script>
-<script src="./ui.js?v=20261013-4"></script>
+<script src="./data.js?v=20261013-5"></script>
+<script src="./app.js?v=20261013-5"></script>
+<script src="./extras.js?v=20261013-5"></script>
+<script src="./ui.js?v=20261013-5"></script>
 </body>
 </html>
