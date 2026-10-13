@@ -1,33 +1,125 @@
 window.NYC_TRIP={
-days:[
-{id:'oct3',date:'10/03',dow:'六',title:'調時差＋K-Culture 第一日',area:'LIC → Koreatown / Midtown →（可選）Queens',tone:'easy',core:[['09:30','睡到自然醒、LIC brunch'],['11:00','Gantry Plaza State Park / Hunters Point waterfront，先用低強度行程開場'],['11:45','7 Train 進 Manhattan，前往 Koreatown / 6th Ave'],['12:00–14:00','42nd Korean Parade（6th Ave 38th→27th St）'],['14:00–16:30','Koreatown Festival + 午晚餐，32nd St 一帶'],['17:00 之後','二選一：A. Bryant Park / Times Square 輕鬆收尾；B. 有體力再去 Queens Night Market 18:00–21:00']],food:'Koreatown：韓式烤肉／雪濃湯／炸雞；Queens Night Market 留肚子給國際小吃。',mom:'抵達後第一天避免同時安排 parade、night market 與 Times Square；晚間擇一即可。',optional:'Queens Night Market（4pm–midnight）是本週六最值得的季節限定，但如果 jet lag 明顯就放棄。'},
-{id:'oct4',date:'10/04',dow:'日',title:'Central Park＋The Met＋5th Avenue',area:'Upper East Side / Midtown',tone:'classic',core:[['09:00','7 Train → Grand Central；可先看主大廳與 Chrysler Building 外觀'],['10:00','Central Park 南側慢走：Gapstow Bridge / The Mall / Bethesda Terrace 擇 2–3 個'],['12:00','午餐＋休息'],['13:30–16:30','The Metropolitan Museum of Art，挑重點館藏不要全逛'],['17:00','5th Ave 往南：St. Patrick’s Cathedral / Rockefeller Center'],['18:00–19:30','Top of the Rock 日落（若選它當唯一觀景台）或直接晚餐']],food:'Upper East Side / Midtown 可安排 deli、bagel、steakhouse 或日式。',mom:'Central Park 建議只走精華區；The Met 也可挑 2–3 個重點展區。',optional:'若完全不想逛美術館，可把 The Met 換成 Central Park + Roosevelt Island Tram。'},
-{id:'oct5',date:'10/05',dow:'一',title:'Bar Admission Ceremony＋Family Day',area:'Official ceremony venue TBD → family lunch → flexible afternoon',tone:'must',core:[['09:00','早餐＋準備正式服裝；當天以 Bar Admission Ceremony 為唯一固定主行程'],['TBD','依正式 invitation 的報到時間，建議至少提前 45–60 分鐘從 LIC 出發'],['TBD','New York Bar Admission Ceremony（場地與時間待 invitation 確認；目前不要先假設在 NYU）'],['典禮後','拍照／祝賀＋family lunch，預留約 1–1.5 小時給典禮與進場、安檢、散場'],['下午','若在 Manhattan：Madison Square Park / Flatiron / Union Square，或依體力加 9/11 Memorial；若在 Brooklyn：Brooklyn Heights / DUMBO 輕鬆走'],['18:00 後','回 LIC 或與家人晚餐；不再安排需要準時入場的第二個大型景點']],food:'典禮後以 family lunch 為主；餐廳等正式場地確認後再依區域決定。',mom:'這天保留大量緩衝，不安排需要跨區趕場的固定票券；正式 invitation 到手後再鎖定交通與午餐。',optional:'自由女神＋Ellis Island 已移出 10/5，改到 10/7 上午；若典禮提早結束，可再依實際場地選擇 Lower Manhattan 或 Brooklyn 的輕鬆行程。'},
-{id:'oct6',date:'10/06',dow:'二',title:'High Line＋Chelsea＋Hudson Yards',area:'West Side',tone:'walk',core:[['09:30','Chelsea / Meatpacking 開始'],['10:00','High Line 北走；沿途坐下休息，不必每個觀景點都停'],['12:00','Chelsea Market 午餐'],['13:30','Little Island 或 Whitney（擇一）'],['15:30','Hudson Yards / Vessel 外觀 / 商場休息'],['17:30','Edge 日落（若選 Edge 當唯一觀景台）'],['19:00','Greenwich Village / West Village 晚餐']],food:'Chelsea Market、West Village 義式／pizza。',mom:'這天步行量較高；若體力有限，可刪除 Little Island 或 Greenwich Village 其中一站。',optional:'雨天版本：Whitney → Chelsea Market → Hudson Yards 商場 → Edge。'},
-{id:'oct7',date:'10/07',dow:'三',title:'Statue of Liberty＋DUMBO / Brooklyn',area:'Battery Park → Lower Manhattan → DUMBO / Brooklyn Heights',tone:'scenic',core:[['08:30','前往 Battery Park；預留安檢與登船時間'],['09:30–13:30','Statue of Liberty / Ellis Island（官方 ferry，改由 10/5 移到今天）'],['14:00','Stone Street / Financial District 午餐；時間夠再看 Wall Street / Charging Bull'],['15:00','從 Wall St / Pier 11 搭 NYC Ferry 或地鐵前往 DUMBO'],['15:30–17:30','Brooklyn Bridge Park + Pebble Beach + Manhattan Bridge 經典視角'],['18:00','Brooklyn Heights Promenade 或 Time Out Market 晚餐；之後回 LIC']],food:'Lower Manhattan 可選 Stone Street；DUMBO 可安排 pizza 或 Time Out Market。',mom:'這天行程較長，建議不走完整座 Brooklyn Bridge；把體力留給 Liberty / Ellis Island 與 DUMBO 河岸。',optional:'若 Statue ferry 時段買不到，10/7 可恢復為純 Brooklyn 日，Statue 再改到 10/8 上午或其他可行日期。'},
-{id:'oct8',date:'10/08',dow:'四',title:'Special Event Day：NYCC 或 MoMA＋Broadway',area:'Javits / Midtown',tone:'choice',core:[['09:30','方案 A（不去 NYCC）：MoMA 2–3 小時'],['12:30','Midtown 午餐'],['14:00','Rockefeller / 5th Ave / Bryant Park 補漏'],['17:30','提早吃晚餐'],['19:00','Broadway show'],['—','方案 B（NYCC）：白天整段換成 Javits Center，晚上不要再排太滿']],food:'Theater District 盡量提早 17:00–17:30 吃，避免趕開演。',mom:'NYCC 人潮通常較大；若沒有特定興趣，可優先保留 MoMA＋Broadway 的較輕鬆行程。',optional:'SUMMIT One Vanderbilt 可放在 Grand Central 附近，但不要再同時買第二個觀景台。'},
-{id:'oct9',date:'10/09',dow:'五',title:'Upper West Side＋NYFF',area:'AMNH / Lincoln Center',tone:'culture',core:[['09:30','American Museum of Natural History（挑主題逛）'],['13:00','Upper West Side 午餐'],['14:30','Lincoln Center / Columbus Circle / Central Park 西南角'],['17:00','休息＋早晚餐'],['18:00 之後','NYFF screening / Closing Night（若買到票）；沒有票則回 Midtown / LIC 輕鬆晚餐']],food:'Upper West Side cafe、Jewish deli、Lincoln Square。',mom:'博物館不必逛到閉館；若晚間還有電影，下午建議保留休息時間。',optional:'完全不看 NYFF：下午改 SoHo / Nolita / Chinatown。'},
-{id:'oct10',date:'10/10',dow:'六',title:'Queens 收尾＋深夜班機',area:'Flushing / LIC → JFK',tone:'departure',core:[['09:00','退房；寄放行李（若有 late checkout 更舒服）'],['10:00','7 Train 往 Flushing：Flushing Meadows / Unisphere 擇一＋法拉盛吃東西'],['14:30','回 LIC，最後咖啡 / Gantry waterfront / 採買'],['17:30','早晚餐；確認行李、護照、電子登機資料'],['20:00','取行李、叫車'],['20:30','建議離開 LIC 前往 JFK Terminal 1'],['01:25','10/11 BR31 起飛']],food:'Flushing 中餐／台灣小吃／韓式都很強；最後一餐不要排需久候名店。',mom:'離境日不建議安排 Queens Night Market，時間會太接近國際線回程。',optional:'若前幾天太累，上午完全留在 LIC 也沒問題；最後一天寧可少一個景點。'}
-],
-options:[
-{name:'Grand Central Terminal',cat:'經典',effort:1,indoor:5,mom:5,note:'離 LIC 很近，適合安排為順路景點。'},
-{name:'Times Square 夜景',cat:'經典',effort:2,indoor:2,mom:3,note:'第一次紐約值得看一次，30–60 分鐘就夠。'},
-{name:'Top of the Rock',cat:'觀景',effort:2,indoor:3,mom:4,note:'最適合看 Empire State + Central Park；三個觀景台只選一個。'},
-{name:'SUMMIT One Vanderbilt',cat:'觀景',effort:2,indoor:5,mom:4,note:'在 Grand Central 旁，沉浸式、下雨也好用。'},
-{name:'Edge',cat:'觀景',effort:2,indoor:3,mom:4,note:'跟 High Line / Hudson Yards 同日最順。'},
-{name:'The Met',cat:'博物館',effort:3,indoor:5,mom:4,note:'世界級館藏，適合 3 小時重點逛。'},
-{name:'MoMA',cat:'博物館',effort:2,indoor:5,mom:5,note:'比 Met 更容易控制在 2–3 小時。'},
-{name:'AMNH',cat:'博物館',effort:3,indoor:5,mom:4,note:'Upper West Side 文化日很好搭。'},
-{name:'9/11 Museum',cat:'博物館',effort:2,indoor:5,mom:5,note:'雨天 Lower Manhattan 最強備案。'},
-{name:'Roosevelt Island Tram',cat:'輕鬆',effort:1,indoor:2,mom:5,note:'短時間就有空中景觀，適合補空檔。'},
-{name:'Gantry Plaza State Park',cat:'輕鬆',effort:1,indoor:1,mom:5,note:'LIC 河岸免費 skyline，第一天或最後一天都很適合。'},
-{name:'NYC Ferry East River',cat:'輕鬆',effort:1,indoor:3,mom:5,note:'把交通變景點，去 DUMBO / Wall St 特別適合。'},
-{name:'Flushing 美食半日',cat:'美食',effort:2,indoor:4,mom:5,note:'7 Train 直達，最後一天很實用。'},
-{name:'Queens Night Market',cat:'活動',effort:3,indoor:1,mom:3,note:'10/3 最適合；10/10 不建議因為深夜班機。'},
-{name:'Korean Parade & Festival',cat:'活動',effort:2,indoor:1,mom:4,note:'10/3 限定，位置就在 Midtown / Koreatown。'},
-{name:'New York Film Festival',cat:'活動',effort:1,indoor:5,mom:5,note:'9/25–10/12；適合 10/9 Lincoln Center 文化日。'},
-{name:'New York Comic Con',cat:'活動',effort:4,indoor:5,mom:2,note:'10/8–11；人潮較大，適合對展會內容有明確興趣的旅客。'},
-{name:'NYBG Día de los Muertos',cat:'秋季',effort:3,indoor:2,mom:4,note:'10/3–11/2；秋天花園＋墨西哥文化，需多一段 Bronx 交通。'},
-{name:'Brooklyn Bridge walk',cat:'經典',effort:4,indoor:1,mom:2,note:'可以只在 DUMBO 看橋，不必一定走完整座。'},
-{name:'SoHo / Nolita / Chinatown',cat:'美食',effort:3,indoor:2,mom:3,note:'適合用來補 NYFF 沒買票或下半天自由時間。'}
-]};
+  days:[
+    {
+      id:"oct2",date:"10/02",dow:"五",title:"抵達紐約｜JFK → Long Island City",area:"JFK Terminal 1 → Long Island City",tone:"arrival",
+      core:[
+        ["22:05","BR32 抵達 JFK Terminal 1"],
+        ["入境後","領取行李後直接使用 Uber / rideshare 前往 Long Island City"],
+        ["深夜","入住 Hilton Garden Inn Long Island City New York"]
+      ],
+      food:"長途飛行抵達日不安排固定餐廳，以機場或飯店附近簡單補給為主。",
+      note:"實際做法是深夜直接叫車，不在長途飛行後再拖行李轉 AirTrain / subway。",
+      tip:"分享給第一次到紐約的旅客：如果抵達時間已晚、行李又多，直接叫車會比省交通費更省體力。"
+    },
+    {
+      id:"oct3",date:"10/03",dow:"六",title:"Roosevelt Island Tram＋Midtown 經典散步",area:"Roosevelt Island → Midtown / Fifth Ave",tone:"easy",
+      core:[
+        ["上午","調時差，Roosevelt Island 隨興散步"],
+        ["上午","搭 Roosevelt Island Tram 看 East River 與 Midtown skyline"],
+        ["下午","Trump Tower → Fifth Avenue → Rockefeller Center → St. Patrick's Cathedral"],
+        ["下午","Grand Central Terminal"],
+        ["傍晚","Louis Vuitton Fifth Avenue 客製燙印"],
+        ["晚上","Broadway / Times Square 一帶散步"]
+      ],
+      food:"Utopia Bagel、The Grey Dog。",
+      note:"第一天沒有排太多硬性時段，適合利用 tram＋Midtown 經典點慢慢進入紐約節奏。",
+      tip:"Roosevelt Island Tram 很適合第一次到紐約：交通本身就是景點，接 Fifth Avenue / Midtown 也順。"
+    },
+    {
+      id:"oct4",date:"10/04",dow:"日",title:"Hudson River 秋色｜Bear Mountain Fall Foliage Cruise",area:"Battery Maritime Building → Hudson River → Bear Mountain",tone:"special",
+      core:[
+        ["08:30","前往 Battery Maritime Building · Slip 5"],
+        ["09:10","搭 Seastreak Fall Foliage Cruise 從 Manhattan 出發"],
+        ["10:40","抵達 Bear Mountain，步行上山、看秋色與 Hudson River 景觀"],
+        ["16:30","Bear Mountain 開船返回 Manhattan"],
+        ["18:00","抵達 Battery Maritime Building"],
+        ["晚上","Lower Manhattan 順路看 Charging Bull"]
+      ],
+      food:"Paris Baguette、麻辣串串。",
+      note:"這是整趟很有季節性的體驗：不是只搭觀光船，而是把 Hudson River 航程與 Bear Mountain 半日健行合在一起。",
+      tip:"Seastreak 官方提醒碼頭到 Bear Mountain State Park 約 0.6 mile 上坡，前段較陡，務必穿好走的鞋。"
+    },
+    {
+      id:"oct5",date:"10/05",dow:"一",title:"Bar Admission Ceremony＋NYPL＋Hudson Yards",area:"Manhattan · family event → Midtown → Hudson Yards",tone:"family",
+      core:[
+        ["上午","參加 New York Attorney Bar Admission / Swearing-In Ceremony（家庭行程）"],
+        ["典禮後","家人拍照、祝賀與午餐"],
+        ["下午","New York Public Library · Stephen A. Schwarzman Building"],
+        ["傍晚","Hudson Yards：Vessel"],
+        ["傍晚","Edge NYC 高空觀景"]
+      ],
+      food:"Apollo Bagels、Jollibee。",
+      note:"這一天有私人家庭活動；如果照此行程給一般旅客參考，可把上午替換成 Bryant Park＋NYPL，再接 Hudson Yards。",
+      tip:"NYPL、Vessel、Edge 可以順成一條 Midtown → West Side 動線；Edge 適合留在傍晚到入夜。"
+    },
+    {
+      id:"oct6",date:"10/06",dow:"二",title:"租車一日｜Woodbury Common Premium Outlets",area:"Long Island City → Central Valley, NY",tone:"daytrip",
+      core:[
+        ["上午","Avis 取車"],
+        ["上午","從 NYC 開車前往 Woodbury Common Premium Outlets"],
+        ["白天","Outlet 購物日"],
+        ["傍晚","開車返回 New York City"]
+      ],
+      food:"Utopia Bagel、Shake Shack。",
+      note:"把 Woodbury 完整切成一日，不和 Manhattan 景點混排，實際上比較不會趕。",
+      tip:"Woodbury 距 NYC 約一小時車程；自駕的優勢是戰利品多時不用搬著購物袋搭巴士。"
+    },
+    {
+      id:"oct7",date:"10/07",dow:"三",title:"Chelsea＋High Line＋Broadway Harry Potter",area:"Meatpacking / Chelsea → Hudson Yards → Theater District",tone:"walk",
+      core:[
+        ["上午","Starbucks Reserve Roastery New York"],
+        ["上午","Chelsea Market"],
+        ["中午","Little Island"],
+        ["下午","High Line 往北走"],
+        ["下午","Hudson Yards"],
+        ["傍晚","Moynihan Train Hall"],
+        ["晚上","Broadway：Harry Potter and the Cursed Child · Lyric Theatre"]
+      ],
+      food:"Los Tacos No. 1、Blue Bottle、Joe's Pizza、The Halal Guys。",
+      note:"這天是很完整的 West Side 步行路線：咖啡 → 市場 → 河岸公園 → High Line → Hudson Yards → Penn District → Broadway。",
+      tip:"High Line 不需要來回走；南往北一路接 Hudson Yards，再往 Moynihan / Times Square 最省折返。"
+    },
+    {
+      id:"oct8",date:"10/08",dow:"四",title:"自由女神基座＋Financial District＋DUMBO",area:"Battery Park → Liberty Island → FiDi → Brooklyn",tone:"must",
+      core:[
+        ["上午","Statue City Cruises · Battery Park 搭官方 ferry"],
+        ["上午","Statue of Liberty · Pedestal Access 登上基座"],
+        ["中午","Battery Urban Farm"],
+        ["下午","Charging Bull → New York Stock Exchange → Fearless Girl"],
+        ["下午","One World Trade Center 一帶"],
+        ["傍晚","Brooklyn Bridge"],
+        ["傍晚","DUMBO / Manhattan Bridge 經典視角"],
+        ["晚上","Supreme New York"]
+      ],
+      food:"Ess-a-Bagel、Los Tacos No. 1、王記魚丸店。",
+      note:"這是全程景點密度最高的一天；自由女神、Financial District、Brooklyn 一次串起來，步行量也最高。",
+      tip:"自由女神務必認 Statue City Cruises 官方入口。Battery Park 周邊會有非官方售票人員；Pedestal Access 也建議事先預約。"
+    },
+    {
+      id:"oct9",date:"10/09",dow:"五",title:"Chinatown＋Washington Square＋Top of the Rock 夜景",area:"Downtown → Greenwich Village → Midtown",tone:"scenic",
+      core:[
+        ["上午","Chinatown 隨興散步與吃東西"],
+        ["下午","Washington Square Park / Washington Square Arch"],
+        ["傍晚","前往 Rockefeller Center"],
+        ["日落前後","Top of the Rock：sunset → blue hour → night view"]
+      ],
+      food:"787 Coffee、La Colombe Coffee、The Halal Guys。",
+      note:"Top of the Rock 特別留到日落前入場，能一次看到白天、夕陽與夜景三種城市狀態。",
+      tip:"如果只選一個 Manhattan 觀景台，Top of the Rock 最大優點是畫面裡會直接看到 Empire State Building。"
+    },
+    {
+      id:"oct10",date:"10/10",dow:"六",title:"Central Park Picnic＋Family Dinner＋JFK",area:"Central Park → Long Island City → JFK",tone:"departure",
+      core:[
+        ["上午","飯店退房／寄放行李"],
+        ["白天","Central Park picnic，最後一天放慢節奏"],
+        ["傍晚","與親友晚餐"],
+        ["晚上","回 Hilton Garden Inn 取行李"],
+        ["晚上","Uber 前往 JFK"],
+        ["深夜","使用 VIP ONE 機場快速通關／協助服務，準備搭 BR31"]
+      ],
+      food:"Central Park picnic＋晚餐。",
+      note:"最後一天沒有再塞遠距離景點；公園、晚餐、取行李、機場是一個很舒服的離境節奏。",
+      tip:"深夜國際線離境日，最後一個景點最好留在 Manhattan 中央或住宿附近，不要把行程推到 Queens 深處再折返。"
+    }
+  ]
+};
