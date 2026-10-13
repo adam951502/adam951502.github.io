@@ -61,3 +61,53 @@
   .visited-actions a{flex:1}
   .food-day{grid-template-columns:62px 1fr}
 }
+
+/* Story-first trip journal */
+.journal-hero{padding:42px 0 38px}
+.hero-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(460px,.9fr);gap:34px;align-items:center}
+.hero-copy{position:relative;z-index:2}
+.hero-copy h1{font-size:clamp(42px,6.2vw,78px);max-width:720px}
+.hero-copy p{max-width:720px}
+.hero-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:24px;max-width:650px}
+.hero-stats>div{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);backdrop-filter:blur(8px);border-radius:16px;padding:12px 13px;display:grid;gap:0}
+.hero-stats strong{font-size:26px;line-height:1;font-weight:950}.hero-stats span{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.68);margin-top:5px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.hero-actions a{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:999px;background:#fff;color:#17324d;text-decoration:none;font-size:12px;font-weight:900}.hero-actions a.ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.23)}
+.hero-gallery{height:520px;display:grid;grid-template-columns:1.25fr .8fr .8fr;grid-template-rows:1fr 1fr .72fr;gap:8px;position:relative;z-index:2}
+.hero-photo{margin:0;position:relative;overflow:hidden;border-radius:20px;background:rgba(255,255,255,.08);min-width:0}.hero-photo-1{grid-column:1/3;grid-row:1/3}.hero-photo-2{grid-column:3;grid-row:1}.hero-photo-3{grid-column:3;grid-row:2}.hero-photo-4{grid-column:1;grid-row:3}.hero-photo-5{grid-column:2;grid-row:3}.hero-photo-6{grid-column:3;grid-row:3}
+.hero-photo img,.journal-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s ease,transform .45s ease}.hero-photo img.loaded,.journal-photo img.loaded{opacity:1}.hero-photo:hover img.loaded{transform:scale(1.025)}
+.hero-photo figcaption{position:absolute;left:10px;bottom:9px;padding:5px 8px;border-radius:999px;background:rgba(14,28,40,.66);backdrop-filter:blur(8px);color:#fff;font-size:10px;font-weight:800}
+.photo-placeholder{position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.42);font-size:28px;font-weight:950;letter-spacing:.12em;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(13,35,48,.28))}
+
+.journal-overview{padding-top:58px;background:linear-gradient(180deg,rgba(255,255,255,.18),transparent)}
+.journal-head{display:flex;justify-content:space-between;align-items:flex-end;gap:22px}.journal-head .sub{margin-bottom:0}.journal-note{white-space:nowrap;font-size:10px;font-weight:950;letter-spacing:.12em;color:var(--blue);background:#e9f1ef;border-radius:999px;padding:7px 10px}
+.journal-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px}
+.journal-card{position:relative;overflow:hidden;border-radius:24px;background:var(--card);border:1px solid rgba(24,37,47,.08);box-shadow:var(--shadow);min-height:330px}
+.journal-photo{height:210px;position:relative;overflow:hidden;background:#dfe8e5}.journal-card:hover .journal-photo img.loaded{transform:scale(1.03)}
+.journal-copy{padding:16px 17px 18px}.journal-copy>span{font-size:10px;font-weight:950;letter-spacing:.1em;color:var(--blue)}.journal-copy h3{font-size:22px;line-height:1.15;margin:5px 0 7px}.journal-copy p{font-size:12px;line-height:1.55;color:#53636b;margin:0}
+
+.visited-media.triple{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1.15fr .85fr;gap:2px}
+.visited-media.triple .visited-shot:first-child{grid-column:1/3}
+.visited-media.triple .visited-shot{min-height:0}
+.visited-media.triple .visited-shot:nth-child(2),.visited-media.triple .visited-shot:nth-child(3){min-height:135px}
+
+/* Make practical information feel secondary to the journal story */
+#base,#flight,#booking{background:rgba(255,255,255,.16)}
+#food .food-day,#special .special-card{transition:transform .18s ease,box-shadow .18s ease}
+#food .food-day:hover,#special .special-card:hover{transform:translateY(-2px)}
+
+@media(max-width:1000px){
+  .hero-layout{grid-template-columns:1fr}.hero-gallery{height:430px}
+  .journal-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .journal-hero{padding:34px 0 26px}.hero-copy h1{font-size:clamp(38px,12vw,58px)}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .hero-gallery{height:360px;grid-template-columns:1fr 1fr;grid-template-rows:1.35fr 1fr 1fr;gap:6px;margin-top:4px}
+  .hero-photo{border-radius:15px}.hero-photo-1{grid-column:1/3;grid-row:1}.hero-photo-2{grid-column:1;grid-row:2}.hero-photo-3{grid-column:2;grid-row:2}.hero-photo-4{grid-column:1;grid-row:3}.hero-photo-5{grid-column:2;grid-row:3}.hero-photo-6{display:none}
+  .journal-head{align-items:flex-start;flex-direction:column}.journal-note{white-space:normal}
+  .journal-strip{display:flex;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;padding:2px 2px 14px;scrollbar-width:none}.journal-strip::-webkit-scrollbar{display:none}.journal-card{min-width:82vw;max-width:82vw;scroll-snap-align:start}
+}
+@media(max-width:620px){
+  .visited-media.triple{height:280px;grid-template-rows:1.2fr .8fr}
+  .visited-media.triple .visited-shot{min-height:0}
+}
