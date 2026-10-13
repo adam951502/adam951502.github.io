@@ -93,7 +93,7 @@ const FOOD_DAYS=[
   ["10/10",["Central Park picnic","Family dinner"]]
 ];
 
-const mapsSearch=q=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+const journalMapsSearch=q=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 const wikiThumb=(title,size=1200)=>`https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&origin=*&piprop=thumbnail&pithumbsize=${size}&titles=${encodeURIComponent(title)}`;
 
 async function resolveWikiImage(title,size=1400){
@@ -141,7 +141,7 @@ function spotCard(x){
       <p>${x.intro}</p>
       <div class="visited-tip"><b>實際心得：</b>${x.tip}</div>
       <div class="visited-actions">
-        <a href="${mapsSearch(x.map)}" target="_blank" rel="noopener">📍 Google Maps</a>
+        <a href="${journalMapsSearch(x.map)}" target="_blank" rel="noopener">📍 Google Maps</a>
         <a href="${x.official}" target="_blank" rel="noopener">Official ↗</a>
       </div>
     </div>
@@ -219,7 +219,7 @@ function renderSpecials(){
   const box=document.querySelector("#specialGrid"); if(!box)return;
   box.innerHTML=SPECIALS.map(x=>`<article class="special-card card">
     <span>${x[0]}</span><h3>${x[1]}</h3><p>${x[2]}</p>
-    <a href="${mapsSearch(x[3])}" target="_blank" rel="noopener">📍 Maps</a>
+    <a href="${journalMapsSearch(x[3])}" target="_blank" rel="noopener">📍 Maps</a>
   </article>`).join("");
 }
 
@@ -227,7 +227,7 @@ function renderFood(){
   const box=document.querySelector("#foodGrid"); if(!box)return;
   box.innerHTML=FOOD_DAYS.map(([day,items])=>`<article class="food-day card">
     <div class="food-day-date">${day}</div>
-    <div class="food-chip-list">${items.map(name=>`<a href="${mapsSearch(name+" New York NY")}" target="_blank" rel="noopener">${name}<span>↗</span></a>`).join("")}</div>
+    <div class="food-chip-list">${items.map(name=>`<a href="${journalMapsSearch(name+" New York NY")}" target="_blank" rel="noopener">${name}<span>↗</span></a>`).join("")}</div>
   </article>`).join("");
 }
 
