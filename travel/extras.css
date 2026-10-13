@@ -169,3 +169,40 @@
   .day-photo-strip.two{grid-template-rows:1fr}
   .day-photo{border-radius:13px}
 }
+
+
+/* Every daily attraction gets its own image + introduction card */
+.day-spot-section{padding:6px 24px 26px;background:#fbfaf6;border-top:1px solid var(--line)}
+.day-spot-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:8px 0 14px}
+.day-spot-head span{font-size:10px;font-weight:950;letter-spacing:.12em;color:var(--blue)}
+.day-spot-head h4{font-size:19px;line-height:1.2;margin:3px 0 0;color:var(--navy)}
+.day-spot-head>small{font-size:10px;font-weight:850;color:var(--muted);white-space:nowrap}
+.day-spot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.day-spot-card{background:#fff;border:1px solid rgba(24,37,47,.08);border-radius:18px;overflow:hidden;display:grid;grid-template-columns:170px 1fr;min-height:215px}
+.day-spot-photo{position:relative;overflow:hidden;background:linear-gradient(145deg,#dfe8e6,#cbd8d5)}
+.day-spot-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .28s ease,transform .35s ease}
+.day-spot-photo img.loaded{opacity:1}
+.day-spot-card:hover .day-spot-photo img.loaded{transform:scale(1.025)}
+.day-spot-placeholder{position:absolute;inset:0;display:grid;place-items:center;font-size:18px;font-weight:950;letter-spacing:.12em;color:rgba(23,50,77,.22)}
+.day-spot-copy{padding:14px 15px;display:flex;flex-direction:column;min-width:0}
+.day-spot-meta{display:flex;justify-content:space-between;gap:8px;font-size:9px;color:var(--muted)}
+.day-spot-meta span{font-weight:850;color:#315a4e;background:#eaf2f1;border-radius:999px;padding:3px 6px}
+.day-spot-copy h5{font-size:17px;line-height:1.16;margin:8px 0 7px;color:var(--navy)}
+.day-spot-copy h5 small{display:block;font-size:10px;color:var(--muted);font-weight:700;margin-top:3px}
+.day-spot-copy p{font-size:12px;line-height:1.55;color:#4d5e67;margin:0 0 9px}
+.day-spot-tip{font-size:10px;line-height:1.5;color:#6c4e24;background:#fff6e7;padding:8px 9px;border-radius:10px;margin-top:auto}
+.day-spot-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+.day-spot-actions a{font-size:10px;font-weight:850;text-decoration:none;padding:6px 8px;border-radius:9px;background:#17324d;color:#fff}
+.day-spot-actions a+a{background:#edf3f1;color:#315a4e}
+
+@media(max-width:900px){
+  .day-spot-grid{display:flex;overflow-x:auto;gap:10px;scroll-snap-type:x mandatory;padding:1px 1px 10px;scrollbar-width:none}
+  .day-spot-grid::-webkit-scrollbar{display:none}
+  .day-spot-card{min-width:78vw;max-width:78vw;scroll-snap-align:start}
+}
+@media(max-width:620px){
+  .day-spot-section{padding:6px 16px 20px}
+  .day-spot-card{grid-template-columns:1fr;min-width:86vw;max-width:86vw}
+  .day-spot-photo{height:190px}
+  .day-spot-copy{padding:13px}
+}
