@@ -1,4 +1,4 @@
-name: Deploy Pages on travel/bike updates
+name: Deploy Pages on travel, bike, or server updates
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
     paths:
       - 'travel/**'
       - 'bike/**'
+      - 'server/**'
       - '.github/workflows/pages-travel.yml'
   workflow_dispatch:
 

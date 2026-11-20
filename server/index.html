@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="MacBook Pro Ubuntu Server 的 SSH、亮度、網路和日常維護指令。">
+  <meta name="theme-color" content="#f5efe8">
+  <title>伺服器指令手冊｜Adam Tang</title>
+  <link rel="icon" href="../assets/images/web-icon.ico">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到內容</a>
+  <header class="site-header">
+    <div class="masthead">
+      <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">AT</span> Adam Tang</a>
+      <span class="page-label">伺服器手冊</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav aria-label="章節目錄">
+        <p class="toc-title">章節目錄</p>
+        <ul>
+          <li><a href="#ssh" aria-current="location">SSH 登入</a></li>
+          <li><a href="#brightness">螢幕與鍵盤亮度</a></li>
+          <li><a href="#network">Wi-Fi 與 IP</a></li>
+          <li><a href="#touch-bar">Touch Bar 排查</a></li>
+          <li><a href="#system">系統狀態與維護</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main id="main" tabindex="-1">
+      <div class="intro">
+        <h1>伺服器指令手冊</h1>
+        <p>2017 MacBook Pro · Ubuntu Server 24.04 LTS</p>
+      </div>
+      <p id="copy-status" class="sr-only" role="status"></p>
+
+      <section id="ssh" aria-labelledby="ssh-title">
+        <h2 id="ssh-title">SSH 登入</h2>
+        <p>在新 Mac 的終端機執行。登入後，後面各節的指令都在 Ubuntu 伺服器上執行。</p>
+
+        <form id="ssh-settings" class="settings" hidden>
+          <div>
+            <label for="ssh-user">Ubuntu 帳號</label>
+            <input id="ssh-user" name="user" type="text" required pattern="[a-zA-Z0-9_][a-zA-Z0-9_\-]*" maxlength="32" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="username">
+          </div>
+          <div>
+            <label for="ssh-host">伺服器 IP 或主機名稱</label>
+            <input id="ssh-host" name="host" type="text" required pattern="[a-zA-Z0-9][a-zA-Z0-9.\-]*" maxlength="253" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="例如 192.168.1.100">
+          </div>
+          <button type="submit">儲存在此瀏覽器</button>
+          <p id="settings-status" class="settings-status" role="status">只在這個瀏覽器儲存連線資料。</p>
+        </form>
+
+        <div class="command">
+          <div class="command-head"><h3>連線到 Ubuntu</h3><button type="button" data-copy="ssh-command" hidden>複製</button></div>
+          <pre><code id="ssh-command">ssh USERNAME@SERVER_IP</code></pre>
+        </div>
+      </section>
+
+      <section id="brightness" aria-labelledby="brightness-title">
+        <h2 id="brightness-title">螢幕與鍵盤亮度</h2>
+        <p>用數值直接調整亮度。這台 Mac 的螢幕範圍是 <code>0–90</code>，鍵盤背光範圍是 <code>0–255</code>。螢幕建議從 <code>45</code> 開始，<code>0</code> 可能讓畫面全黑。</p>
+
+        <div class="command">
+          <div class="command-head"><h3>螢幕亮度約 50%</h3><button type="button" data-copy="display-set" hidden>複製</button></div>
+          <pre><code id="display-set">echo 45 | sudo tee /sys/class/backlight/acpi_video0/brightness</code></pre>
+        </div>
+
+        <div class="command">
+          <div class="command-head"><h3>鍵盤背光約 50%</h3><button type="button" data-copy="keyboard-set" hidden>複製</button></div>
+          <pre><code id="keyboard-set">echo 128 | sudo tee /sys/class/leds/spi::kbd_backlight/brightness</code></pre>
+        </div>
+
+        <div class="command">
+          <div class="command-head"><h3>關閉鍵盤背光</h3><button type="button" data-copy="keyboard-off" hidden>複製</button></div>
+          <pre><code id="keyboard-off">echo 0 | sudo tee /sys/class/leds/spi::kbd_backlight/brightness</code></pre>
+        </div>
+
+        <div class="command">
+          <div class="command-head"><h3>讀取目前的亮度</h3><button type="button" data-copy="brightness-read" hidden>複製</button></div>
+          <pre><code id="brightness-read">cat /sys/class/backlight/acpi_video0/actual_brightness
+cat /sys/class/leds/spi::kbd_backlight/brightness</code></pre>
+        </div>
+      </section>
+
+      <section id="network" aria-labelledby="network-title">
+        <h2 id="network-title">Wi-Fi 與 IP</h2>
+        <p>Wi-Fi 介面是 <code>wlp2s0</code>。路由器可能重新分配 IP，登入位置有變時可從伺服器本機查詢。</p>
+        <div class="command">
+          <div class="command-head"><h3>查看 Wi-Fi IP 和預設路由</h3><button type="button" data-copy="wifi-ip" hidden>複製</button></div>
+          <pre><code id="wifi-ip">ip -br -4 addr show dev wlp2s0
+ip -4 route show default</code></pre>
+        </div>
+        <div class="command">
+          <div class="command-head"><h3>查看 Wi-Fi 連線狀態</h3><button type="button" data-copy="wifi-status" hidden>複製</button></div>
+          <pre><code id="wifi-status">networkctl status wlp2s0 --no-pager</code></pre>
+        </div>
+      </section>
+
+      <section id="touch-bar" aria-labelledby="touch-bar-title">
+        <h2 id="touch-bar-title">Touch Bar 排查</h2>
+        <p>如果按鍵有亮、亮度卻沒變，先檢查亮度服務與最近的紀錄。</p>
+        <div class="command">
+          <div class="command-head"><h3>查看亮度服務</h3><button type="button" data-copy="touch-status" hidden>複製</button></div>
+          <pre><code id="touch-status">systemctl status macbook-touchbar-brightness.service --no-pager
+journalctl -b -u macbook-touchbar-brightness.service -n 20 --no-pager</code></pre>
+        </div>
+        <div class="command">
+          <div class="command-head"><h3>重新啟動亮度服務</h3><button type="button" data-copy="touch-restart" hidden>複製</button></div>
+          <pre><code id="touch-restart">sudo systemctl restart macbook-touchbar-brightness.service</code></pre>
+        </div>
+        <div class="command">
+          <div class="command-head"><h3>確認 T1 iBridge 是否啟動</h3><button type="button" data-copy="t1-status" hidden>複製</button></div>
+          <pre><code id="t1-status">lsusb -d 05ac:8600</code></pre>
+        </div>
+      </section>
+
+      <section id="system" aria-labelledby="system-title">
+        <h2 id="system-title">系統狀態與維護</h2>
+        <div class="command">
+          <div class="command-head"><h3>查看開機時間、記憶體和磁碟</h3><button type="button" data-copy="system-status" hidden>複製</button></div>
+          <pre><code id="system-status">uptime -p
+free -h
+df -h /</code></pre>
+        </div>
+        <p>重開機會中斷目前的 SSH 連線。伺服器開機後，再執行 SSH 登入指令。</p>
+        <div class="command">
+          <div class="command-head"><h3>重開伺服器</h3><button type="button" data-copy="system-reboot" hidden>複製</button></div>
+          <pre><code id="system-reboot">sudo reboot</code></pre>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
