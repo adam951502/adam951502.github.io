@@ -3,6 +3,8 @@ import path from "node:path";
 
 const jsRoot = path.join("assets", "js");
 const expectedModules = [
+  "ai-positioning-copy.js",
+  "ai-positioning.js",
   "app.js",
   "blog.js",
   "carousel.js",
@@ -41,6 +43,7 @@ if ((sources["script.js"] || "").includes("(function ()")) {
 }
 
 const requiredAppImports = [
+  "./ai-positioning.js",
   "./carousel.js",
   "./data.js",
   "./experience.js",
@@ -54,6 +57,9 @@ for (const modulePath of requiredAppImports) {
   if (!(sources["app.js"] || "").includes(modulePath)) {
     errors.push(`assets/js/app.js must explicitly import ${modulePath}`);
   }
+}
+if (!(sources["ai-positioning.js"] || "").includes('./ai-positioning-copy.js')) {
+  errors.push("assets/js/ai-positioning.js must explicitly import ./ai-positioning-copy.js");
 }
 
 const requiredBlogImports = ["./i18n.js", "./mobile-menu.js", "./theme.js"];

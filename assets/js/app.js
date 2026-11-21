@@ -6,6 +6,12 @@ import { createNavigationController } from "./navigation.js";
 import { createProjectsController } from "./projects.js";
 import { createRevealController } from "./shared.js";
 import { createThemeController } from "./theme.js";
+import {
+  applyPositioningDom,
+  createPositionedTranslate,
+  positionExperienceData,
+  positionProjectsData
+} from "./ai-positioning.js";
 
 const config = window.__PORTFOLIO_CONFIG__ || {};
 const dataPaths = config.dataPaths || {
@@ -66,18 +72,25 @@ const navigationController = createNavigationController({
 });
 
 i18nController = createI18nController({
-  onApply: async ({ translate }) => {
+  onApply: async ({ lang, translate }) => {
     await dataStore.ensureData();
+    const positionedTranslate = createPositionedTranslate(lang, translate);
+    const experienceData = positionExperienceData(dataStore.getExperienceData());
+    const projectsData = positionProjectsData(dataStore.getProjectsData());
+
     await Promise.all([
       Promise.resolve(renderExperience({
-        experienceData: dataStore.getExperienceData(),
-        translateFn: translate,
+        experienceData,
+        translateFn: positionedTranslate,
         registerReveal: revealController.register
       })),
-      Promise.resolve(projectsController.render(dataStore.getProjectsData(), translate))
+      Promise.resolve(projectsController.render(projectsData, positionedTranslate))
     ]);
-    themeController.setLabel(translate);
+
+    applyPositioningDom({ lang, translate: positionedTranslate });
+    themeController.setLabel(positionedTranslate);
     carouselController.refreshLanguage();
+    revealController.register(document.querySelectorAll("#ai-proof .reveal-target"));
   }
 });
 
